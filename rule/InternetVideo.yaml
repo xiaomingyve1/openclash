@@ -1,24 +1,24 @@
 payload:
 
 #自定义 国外流媒体
-  - DOMAIN-SUFFIX,amplitude.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,stripchat.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,xxxivjmp.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,go.mnaspm.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,lovense-api.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,cdn.hytto.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,cableav.tv  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,strpst.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,xxxviiijmp.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,doppiocdn.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,tsyndicate.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,doppiostreams.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,chaturbate.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,highwebmedia.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,fluidplayer.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,livehdcams.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,streamate.icfcdn.com  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,ext-twitch.tv  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,jtvnw.net  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,live-video.net  #匹配域名后缀(代理)
-  - DOMAIN-SUFFIX,ttvnw.net  #匹配域名后缀(代理)
+  - DOMAIN-SUFFIX,128100.xyz
+  - DOMAIN-SUFFIX,amplitude.com
+  - DOMAIN-SUFFIX,stripchat.com
+  - DOMAIN-SUFFIX,xxxivjmp.com
+  - DOMAIN-SUFFIX,go.mnaspm.com
+  - DOMAIN-SUFFIX,lovense-api.com
+  - DOMAIN-SUFFIX,cdn.hytto.com
+  - DOMAIN-SUFFIX,cableav.tv
+  - DOMAIN-SUFFIX,strpst.com
+  - DOMAIN-SUFFIX,xxxviiijmp.com
+  - DOMAIN-SUFFIX,doppiocdn.com
+  - DOMAIN-SUFFIX,tsyndicate.com
+  - DOMAIN-SUFFIX,doppiostreams.com
+  - DOMAIN-SUFFIX,chaturbate.com
+  - DOMAIN-SUFFIX,highwebmedia.com
+  - DOMAIN-SUFFIX,fluidplayer.com
+  - DOMAIN-SUFFIX,livehdcams.com
+  - DOMAIN-SUFFIX,streamate.icfcdn.com
+  - DOMAIN-SUFFIX,ext-twitch.tv
+  - DOMAIN-SUFFIX,jtvnw.net
+  - DOMAIN-SUFFIX,live-video.net
