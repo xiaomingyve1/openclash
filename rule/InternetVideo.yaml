@@ -1,6 +1,6 @@
 payload:
 
-#自定义 国外流媒体
+#自定义 国外视频
   - DOMAIN-SUFFIX,128100.xyz
   - DOMAIN-SUFFIX,amplitude.com
   - DOMAIN-SUFFIX,stripchat.com
