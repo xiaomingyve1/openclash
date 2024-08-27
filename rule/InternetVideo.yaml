@@ -22,6 +22,11 @@ payload:
   - DOMAIN-SUFFIX,highwebmedia.com
   - DOMAIN-SUFFIX,fluidplayer.com
   - DOMAIN-SUFFIX,livehdcams.com
+  - DOMAIN-SUFFIX,livelyvideo.tv
+  - DOMAIN,federatedmodules.icfcdn.com
+  - DOMAIN-SUFFIX,nsimg.net
+  - DOMAIN-SUFFIX,naiadsystems.com
+  - DOMAIN-SUFFIX,jsdelivr.net
   - DOMAIN-SUFFIX,streamate.icfcdn.com
   - DOMAIN-SUFFIX,ext-twitch.tv
   - DOMAIN-SUFFIX,jtvnw.net
