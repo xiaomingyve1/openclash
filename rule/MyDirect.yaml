@@ -1,0 +1,20 @@
+payload:
+  - DOMAIN-SUFFIX,time.windows.com
+  - DOMAIN-SUFFIX,lanzov.com
+  - DOMAIN-SUFFIX,hao123.com
+  - DOMAIN-KEYWORD,baidu
+  - IP-CIDR,219.146.1.66/32,no-resolve
+  - DOMAIN-SUFFIX,dns.alidns.com
+  - DOMAIN-SUFFIX,doh.pub
+  - IP-CIDR,219.146.1.66/32,no-resolve
+  - IP-CIDR,219.147.1.66/32,no-resolve
+  - IP-CIDR,119.29.29.29/32,no-resolve
+  - IP-CIDR,223.5.5.5/32,no-resolve
+  - IP-CIDR,223.6.6.6/32,no-resolve
+  - IP-CIDR,180.76.76.76/32,no-resolve
+  - IP-CIDR,114.114.114.114/32,no-resolve
+  - IP-CIDR,114.114.115.115/32,no-resolve
+  - DOMAIN,gst.prod.dl.playstation.net #PS主机下载(直连)
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com #解决谷歌商店无法下载问题(两条一起)
+  - DOMAIN-SUFFIX,googleapis.cn #解决谷歌商店无法下载问题(两条一起)
+  - DOMAIN-SUFFIX,speedtest.cn #解决国内测速
