@@ -38,12 +38,11 @@ p:
       },
   }
 
-# 订阅名，记得修改成自己的
 # 添删订阅在这里和下方订阅链接依葫芦画瓢就行
 use: &use
   type: select
   use:
-    - 备用节点   #填到下面url
+    - 备用节点   #直接填在下面url
 
 # 订阅链接
 proxy-providers:
