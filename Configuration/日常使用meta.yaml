@@ -29,7 +29,7 @@ pr:
 p:
   &p {
     type: http,
-    interval: 86400,
+    interval: 37800,
     health-check:
       {
         enable: true,
