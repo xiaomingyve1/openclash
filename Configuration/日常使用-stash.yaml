@@ -458,12 +458,6 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
     path: ./rule_provider/rule-provider_SteamCN.yaml
     interval: 75600
-  Direct:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml"
-    path: ./rule_provider/rule-provider_Direct.yaml
-    interval: 75600
   Game:
     type: http
     behavior: classical
@@ -968,6 +962,12 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Cloud/CloudCN/CloudCN.yaml"
     path: ./rule_provider/rule-provider_CloudCN.yaml
     interval: 75600
+  Direct:
+    type: http
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml"
+    path: ./rule_provider/rule-provider_Direct.yaml
+    interval: 75600
 # 规则
 rules:
   - RULE-SET,MyDirect,⛔直接连接
@@ -978,7 +978,6 @@ rules:
   - RULE-SET,GameDownloadCN,🚩国内流量
   - RULE-SET,GoogleCN,🚩国内流量
   - RULE-SET,SteamCN,🚩国内流量
-  - RULE-SET,Direct,🚩国内流量
   - RULE-SET,Game,🎮游戏平台
   - RULE-SET,Epic,🎮游戏平台
   - RULE-SET,Origin,🎮游戏平台
@@ -1063,6 +1062,7 @@ rules:
   - RULE-SET,IPTVMainland_Classical,🚩国内流量
   - RULE-SET,ChinaMedia,🚩国内流量
   - RULE-SET,CloudCN,🚩国内流量
+  - RULE-SET,Direct,🚩国内流量
   - GEOSITE,CN,🚩国内流量
   - GEOSITE,geolocation-!cn,💱国外网站
   - GEOIP,CN,🚩国内流量
