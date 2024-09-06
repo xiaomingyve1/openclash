@@ -17,6 +17,8 @@ proxy-providers:
     <<: *p
     url:   #订阅链接
 # ❗️⚠️注意：将" 机场订阅URL "直接填在上面 url 后面⚠️❗️ #
+
+# 订阅文件及过滤
 use: &use
   type: select
   use:
@@ -24,43 +26,45 @@ use: &use
 # 订阅节点关键词过滤器
   exclude-filter: "流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|IEPL|专线|🚧|🎣|x2|x3|x4|x5|x8|x10|x15|x20|×2|×3|×4|×5|×8|×10|×15|×20"
 
+# 策略组   --流媒体用openclash的流媒体检测
 proxy-groups:
-  - {name: 🙌默认代理,type: select,proxies: [⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
-  - {name: 📲Telegram,type: select,proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 🐟漏网之鱼,type: select,proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 🎮游戏平台,type: select,proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
+  - {name: 🙌默认代理, type: select, proxies: [⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
+  - {name: 📲Telegram, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
+  - {name: 🐟漏网之鱼, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
+  - {name: 🎮游戏平台, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
   - {name: 👋手动选择,<<: *use, type: select}
-  - {name: 🤖人工智能,<<: *use,type: select,filter: (?=.*())^((?!(港|🇭🇰|HK)).)*$}
-  - {name: 🌍国际媒体,<<: *use,type: select,filter: (?=.*())^((?!(港|🇭🇰|HK)).)*$}
-  - {name: 📺Youtube,<<: *use,type: select}
-  - {name: 🎬奈飞,<<: *use,type: select}
-  - {name: 🎬迪士尼,<<: *use,type: select}
-  - {name: 🚩国内流量, type: select,proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
-  - {name: 🍎苹果服务, type: select,proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
-  - {name: 🧬DNS服务,type: select,proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
-  - {name: Ⓜ️微软服务,type: select,proxies: [🤖人工智能,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
+#  AI和国际媒体有些不能用香港节点--排除
+  - {name: 🤖人工智能,<<: *use, type: select, filter: (?=.*())^((?!(港|🇭🇰|HK)).)*$}
+  - {name: 🌍国际媒体,<<: *use, type: select, filter: (?=.*())^((?!(港|🇭🇰|HK)).)*$}
+  - {name: 📺Youtube,<<: *use, type: select}
+  - {name: 🎬奈飞,<<: *use, type: select}
+  - {name: 🎬迪士尼,<<: *use, type: select}
+  - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
+  - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
+  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
+  - {name: Ⓜ️微软服务, type: select, proxies: [🤖人工智能,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
 
 ###   以下策略组已隐藏
 ###   以下策略组已隐藏
 ###   以下策略组已隐藏
 # 自动选择
-  - {name: ⚡️🇭🇰香港优选,<<: *use,type: url-test,filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚡️🇸🇬狮城优选,<<: *use,type: url-test,filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚡️🇯🇵日本优选,<<: *use,type: url-test,filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚡️🇹🇼台湾优选,<<: *use,type: url-test,filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚡️🇺🇸美国优选,<<: *use,type: url-test,filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚡️🇭🇰香港优选,<<: *use, type: url-test, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚡️🇸🇬狮城优选,<<: *use, type: url-test, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚡️🇯🇵日本优选,<<: *use, type: url-test, filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚡️🇹🇼台湾优选,<<: *use, type: url-test, filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚡️🇺🇸美国优选,<<: *use, type: url-test, filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
 
 # 负载均衡
-  - {name: ⚖️🇭🇰香港均衡,<<: *use,type: load-balance,filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚖️🇸🇬狮城均衡,<<: *use,type: load-balance,filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚖️🇯🇵日本均衡,<<: *use,type: load-balance,filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚖️🇹🇼台湾均衡,<<: *use,type: load-balance,filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⚖️🇺🇸美国均衡,<<: *use,type: load-balance,filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚖️🇭🇰香港均衡,<<: *use, type: load-balance, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚖️🇸🇬狮城均衡,<<: *use, type: load-balance, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚖️🇯🇵日本均衡,<<: *use, type: load-balance, filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚖️🇹🇼台湾均衡,<<: *use, type: load-balance, filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⚖️🇺🇸美国均衡,<<: *use, type: load-balance, filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true}
 
   # 故障转移
-  - {name: 🚦故障转移,<<: *use,type: fallback, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
-  - {name: ⛔直接连接,type: select,udp: true,hidden: true,proxies: [ DIRECT ]}
-  - {name: 📵拒绝连接,type: select, disable-udp: true,hidden: true,proxies: [ REJECT ]}
+  - {name: 🚦故障转移,<<: *use, type: fallback, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
+  - {name: ⛔直接连接, type: select, udp: true, hidden: true, proxies: [ DIRECT ]}
+  - {name: 📵拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ]}
 
 # 规则提供者
 rule-providers:
@@ -623,7 +627,7 @@ rule-providers:
     path: ./rule_provider/rule-provider_Direct.yaml
     interval: 75600
 
-# 规则
+# 规则（从上往下匹配）
 rules:
 - RULE-SET,MyDirect,⛔直接连接
 - RULE-SET,MyProxy,🧬DNS服务
@@ -721,4 +725,4 @@ rules:
 - GEOSITE,CN,🚩国内流量
 - GEOSITE,geolocation-!cn,🙌默认代理
 - GEOIP,CN,🚩国内流量
-- MATCH,🐟漏网之鱼 # 其他流量
+- MATCH,🐟漏网之鱼 # 不匹配规则的流量
