@@ -44,9 +44,9 @@ proxy-groups:
   - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
   - {name: Ⓜ️微软服务, type: select, proxies: [🤖人工智能,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
 
-###   以下策略组已隐藏
-###   以下策略组已隐藏
-###   以下策略组已隐藏
+###   以下策略组在 METACUBEXD 控制面板 已隐藏
+###   以下策略组在 METACUBEXD 控制面板 已隐藏
+###   以下策略组在 METACUBEXD 控制面板 已隐藏
 # 自动选择
   - {name: ⚡️🇭🇰香港优选,<<: *use, type: url-test, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
   - {name: ⚡️🇸🇬狮城优选,<<: *use, type: url-test, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
