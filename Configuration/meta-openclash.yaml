@@ -26,7 +26,7 @@ use: &use
 # 订阅节点关键词过滤器
   exclude-filter: "流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|IEPL|专线|🚧|🎣|x2|x3|x4|x5|x8|x10|x15|x20|×2|×3|×4|×5|×8|×10|×15|×20"
 
-# 策略组   --流媒体用openclash的流媒体检测
+# 策略组   --AI和流媒体用openclash的流媒体检测
 proxy-groups:
   - {name: 🙌默认代理, type: select, proxies: [⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
   - {name: 📲Telegram, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
@@ -45,8 +45,7 @@ proxy-groups:
   - {name: Ⓜ️微软服务, type: select, proxies: [🤖人工智能,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
 
 ###   以下策略组在 METACUBEXD 控制面板 已隐藏
-###   以下策略组在 METACUBEXD 控制面板 已隐藏
-###   以下策略组在 METACUBEXD 控制面板 已隐藏
+
 # 自动选择
   - {name: ⚡️🇭🇰香港优选,<<: *use, type: url-test, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
   - {name: ⚡️🇸🇬狮城优选,<<: *use, type: url-test, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true}
