@@ -2,21 +2,16 @@ mixed-port: 7890
 allow-lan: true
 bind-address: '*'
 mode: rule
-log-level: silent
-ipv6: true
-http:
-  # 强制使用 HTTP 引擎处理 TCP 连接
-  # 捕获后的连接可以使用高级功能，例如重写和脚本
-  force-http-engine:
-    - '*:4480' # BiliBili CDN
-    - '*:9102' # BiliBili CDN
-#请不要更改其他配置，会导致无法运行
-#可视化编辑-远程代理集填写订阅链接 ⚠️
-#可视化编辑-远程代理集填写订阅链接 ⚠️
-#可视化编辑-远程代理集填写订阅链接 ⚠️
+log-level: info
+ipv6: true # IPv6代理开关 true / false
+udp: true
 external-controller: 127.0.0.1:9090
+
+#请在可视化更改配置，否则可能会导致无法运行
+#可视化编辑-远程代理集填写订阅链接 ⚠️
+
 subscribe-url: 代理连接请填到远程代理集
-#⚠️⚠️⚠️⚠️⚠️首页按住订阅可手动更新流量(订阅自带10.5小时的定时更新)⚠️⚠️⚠️⚠️⚠️
+#首页按住订阅可手动更新流量信息及日期信息(自带定时更新)⚠️⚠️⚠️⚠️⚠️
 proxy-providers:
   明月配置: #替换下面⚠️订阅链接⚠️用于Stash更新节点服务器
     type: http
@@ -28,10 +23,69 @@ proxy-providers:
     health-check:
       enable: true
       interval: 300
-      url: https://www.gstatic.com/generate_204
+      url: https://cp.cloudflare.com/
     benchmark-url: https://www.gstatic.com/generate_204
-    filter: (?=.*())^((?!(流量|群|期|距离|临|回|招|建议|防|禁止|推|TG|倍|试|佣金|节点|延迟|官网|IEPL|专线|🚧|🎣|x2|x3|x4|x5|x8|x10|x15|x20|×2|×3|×4|×5|×8|×10|×15|×20)).)*$
+    filter: (?=.*())^((?!(官网|IEPL|专线)).)*$
     benchmark-timeout: 5
+
+# 缓存
+profile:
+  store-selected: true # 储存 API 对策略组选择，供下次启动时使用
+  store-fake-ip: true # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
+
+# 域名嗅探
+sniffer:
+  enable: true # 嗅探开关 true / false
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+#  - '+'
+    - '+.netflix.com'
+    - '+.nflxvideo.net'
+    - '+.disneyplus.com'
+    - '+.amazonaws.com'
+    - '+.media.dssott.com'
+  skip-domain:
+    - '+.apple.com'
+    - '+.vivox.com'
+    - Mijia Cloud
+    - dlg.io.mi.com
+    - courier.push.apple.com
+    - gateway.push.apple.com
+    - rbsxbxp-mim.vivox.com
+    - rbsxbxp.www.vivox.com
+    - rbsxbxp-ws.vivox.com
+    - rbspsxp.www.vivox.com
+    - rbspsxp-mim.vivox.com
+    - rbspsxp-ws.vivox.com
+    - rbswxp.www.vivox.com
+    - rbswxp-mim.vivox.com
+    - disp-rbspsp-5-1.vivox.com
+    - disp-rbsxbp-5-1.vivox.com
+    - proxy.rbsxbp.vivox.com
+    - proxy.rbspsp.vivox.com
+    - proxy.rbswp.vivox.com
+    - rbswp.vivox.com
+    - rbsxbp.vivox.com
+    - rbspsp.vivox.com
+    - rbspsp.www.vivox.com
+    - rbswp.www.vivox.com
+    - rbsxbp.www.vivox.com
+    - rbsxbxp.vivox.com
+    - rbspsxp.vivox.com
+    - rbswxp.vivox.com
+
+# DNS 设置
 dns:
   enable: true
   ipv6: true
@@ -43,18 +97,28 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
     - system
-  skip-cert-verify: null
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  # 过滤集黑白名单 blacklist / whitelist
+  # 默认为blacklist,即如果匹配成功不返回fake-ip
   fake-ip-filter:
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
+    - '*'
+    - '+.lan'
+    - '+.local'
+    - '+.direct'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.market.xiaomi.com'
+    - '+.push.apple.com'
+    - '+.docker.io'
+    - '+.miwifi.com'
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.home.arpa"
     - time.*.com
     - time.*.gov
     - time.*.edu.cn
@@ -75,61 +139,60 @@ dns:
     - ntp5.*.com
     - ntp6.*.com
     - ntp7.*.com
-    - '*.time.edu.cn'
-    - '*.ntp.org.cn'
-    - +.pool.ntp.org
+    - "*.time.edu.cn"
+    - "*.ntp.org.cn"
+    - "+.pool.ntp.org"
     - time1.cloud.tencent.com
     - music.163.com
-    - '*.music.163.com'
-    - '*.126.net'
+    - "*.music.163.com"
+    - "*.126.net"
     - musicapi.taihe.com
     - music.taihe.com
     - songsearch.kugou.com
     - trackercdn.kugou.com
-    - '*.kuwo.cn'
+    - "*.kuwo.cn"
     - api-jooxtt.sanook.com
     - api.joox.com
     - joox.com
     - y.qq.com
-    - '*.y.qq.com'
+    - "*.y.qq.com"
     - streamoc.music.tc.qq.com
     - mobileoc.music.tc.qq.com
     - isure.stream.qqmusic.qq.com
     - dl.stream.qqmusic.qq.com
     - aqqmusic.tc.qq.com
     - amobile.music.tc.qq.com
-    - '*.xiami.com'
-    - '*.music.migu.cn'
+    - "*.xiami.com"
+    - "*.music.migu.cn"
     - music.migu.cn
-    - +.msftconnecttest.com
-    - +.msftncsi.com
     - localhost.ptlogin2.qq.com
     - localhost.sec.qq.com
-    - +.qq.com
-    - +.tencent.com
-    - +.srv.nintendo.net
-    - '*.n.n.srv.nintendo.net'
-    - +.stun.playstation.net
+    - "+.qq.com"
+    - "+.tencent.com"
+    - "+.srv.nintendo.net"
+    - "*.n.n.srv.nintendo.net"
+    - "+.cdn.nintendo.net"
+    - "+.stun.playstation.net"
     - xbox.*.*.microsoft.com
-    - '*.*.xboxlive.com'
+    - "*.*.xboxlive.com"
     - xbox.*.microsoft.com
     - xnotify.xboxlive.com
-    - +.battlenet.com.cn
-    - +.wotgame.cn
-    - +.wggames.cn
-    - +.wowsgame.cn
-    - +.wargaming.net
+    - "+.battlenet.com.cn"
+    - "+.wotgame.cn"
+    - "+.wggames.cn"
+    - "+.wowsgame.cn"
+    - "+.wargaming.net"
     - proxy.golang.org
     - stun.*.*
     - stun.*.*.*
-    - +.stun.*.*
-    - +.stun.*.*.*
-    - +.stun.*.*.*.*
-    - +.stun.*.*.*.*.*
+    - "+.stun.*.*"
+    - "+.stun.*.*.*"
+    - "+.stun.*.*.*.*"
+    - "+.stun.*.*.*.*.*"
     - heartbeat.belkin.com
-    - '*.linksys.com'
-    - '*.linksyssmartwifi.com'
-    - '*.router.asus.com'
+    - "*.linksys.com"
+    - "*.linksyssmartwifi.com"
+    - "*.router.asus.com"
     - mesu.apple.com
     - swscan.apple.com
     - swquery.apple.com
@@ -139,275 +202,266 @@ dns:
     - lens.l.google.com
     - stun.l.google.com
     - na.b.g-tun.com
-    - +.nflxvideo.net
-    - '*.square-enix.com'
-    - '*.finalfantasyxiv.com'
-    - '*.ffxiv.com'
-    - '*.ff14.sdo.com'
+    - "+.nflxvideo.net"
+    - "*.square-enix.com"
+    - "*.finalfantasyxiv.com"
+    - "*.ffxiv.com"
+    - "*.ff14.sdo.com"
     - ff.dorado.sdo.com
-    - '*.mcdn.bilivideo.cn'
-    - +.media.dssott.com
+    - "*.mcdn.bilivideo.cn"
+    - "+.media.dssott.com"
     - shark007.net
     - Mijia Cloud
-    - +.cmbchina.com
-    - +.cmbimg.com
+    - "+.cmbchina.com"
+    - "+.cmbimg.com"
     - local.adguard.org
-    - +.sandai.net
-    - +.n0808.com
-  follow-rule: null
+    - "+.sandai.net"
+    - "+.n0808.com"
+    - "+.uu.163.com"
+    - rule-set:ChinaTelecom # 绕过电信
+    - rule-set:ChinaMobile  # 绕过移动
+    - rule-set:ChinaUnicom  # 绕过联通
+
 proxy-groups:
-  - name: ♻️自动选择（⬅️自动手动没有规则）
-    type: url-test
-    include-all: null
-    filter: (?=.*())
-    url: "https://www.gstatic.com/generate_204"
-    interval: 300
-    lazy: true
-    use:
-      - 明月配置
-    tolerance: 150
-  - name: 🙌手动选择（⬇️下面列表选择分流）
+
+  - name: 👋手动选择
     type: select
-    include-all: null
-    filter: (?=.*())
-    interval: 300
-    lazy: true
     use:
       - 明月配置
+
+  - name: 🙌默认代理
+    type: select
     proxies:
-      - ♻️自动选择（⬅️自动手动没有规则）
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
       - 🚦故障转移
-  - name: 🐟漏网之鱼（🔄没命中规则走这里）
-    proxies:
       - ⛔直接连接
-      - 💱国外网站
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-    type: select
-    use: null
-    interval: null
-    lazy: null
-  - name: 💱国外网站
-    type: select
-    proxies:
-      - 🙌手动选择（⬇️下面列表选择分流）
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-      - ⛔直接连接
-    include-all: null
-    use: null
-    interval: 300
-    lazy: true
-  - name: 🍎苹果服务
+      - 📵拒绝连接
+
+  - name: 🐟漏网之鱼
     type: select
     proxies:
       - ⛔直接连接
-      - 🙌手动选择（⬇️下面列表选择分流）
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-    lazy: null
-    use: null
-    interval: null
+      - 🙌默认代理
+      - 👋手动选择
+      - 🚦故障转移
+      - 📵拒绝连接
+
   - name: 📲Telegram
     type: select
     proxies:
-      - 🙌手动选择（⬇️下面列表选择分流）
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
+      - 🙌默认代理
+      - 👋手动选择
+      - 🚦故障转移
       - ⛔直接连接
-    lazy: true
-    interval: 300
-  - name: 🌍国际媒体
-    type: select
-    proxies:
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-      - ⛔直接连接
-    filter: (?=.*())
-    interval: 300
-    lazy: true
-    use:
-      - 明月配置
-  - name: 🎞️Youtube
-    type: select
-    proxies:
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-      - ⛔直接连接
-    filter: (?=.*())
-    interval: 300
-    lazy: true
-    use:
-      - 明月配置
-  - name: 🎬奈飞
-    type: select
-    proxies:
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-      - ⛔直接连接
-    filter: (?=.*())
-    interval: 300
-    lazy: true
-    use:
-      - 明月配置
-  - name: 🎬迪士尼
-    type: select
-    proxies:
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-      - ⛔直接连接
-    filter: (?=.*())
-    interval: 300
-    lazy: true
-    use:
-      - 明月配置
-  - name: 🤖OpenAI
-    type: select
-    proxies:
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-      - ⛔直接连接
-    filter: (?=.*())
-    interval: 300
-    lazy: true
-    use:
-      - 明月配置
+      - 📵拒绝连接
+
   - name: 🎮游戏平台
     type: select
     proxies:
-      - 💱国外网站
-      - 🙌手动选择（⬇️下面列表选择分流）
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
+      - 🙌默认代理
+      - 👋手动选择
+      - 🚦故障转移
       - ⛔直接连接
-    filter: (?=.*())
-    interval: 300
-    lazy: true
-    use:
-      - 明月配置
-  - name: Ⓜ️微软服务
+      - 📵拒绝连接
+
+  - name: 🤖人工智能
     type: select
     proxies:
-      - 🤖OpenAI
-      - 🙌手动选择（⬇️下面列表选择分流）
-      - 🇭🇰香港自动选择
-      - 🇸🇬狮城自动选择
-      - 🇯🇵日本自动选择
-      - 🇹🇼台湾自动选择
-      - 🇺🇸美国自动选择
-      - ⛔直接连接
-    interval: 300
-    lazy: true
+      - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
+
+  - name: 🌍国际媒体
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
+
+  - name: 📺Youtube
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
+
+  - name: 🎬奈飞
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
+
+  - name: 🎬迪士尼
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
+
   - name: 🚩国内流量
     type: select
     proxies:
       - ⛔直接连接
+      - 🙌默认代理
+      - 👋手动选择
+      - 🚦故障转移
+      - 📵拒绝连接
+
+  - name: 🍎苹果服务
+    type: select
+    proxies:
+      - ⛔直接连接
+      - 🙌默认代理
+      - 👋手动选择
+      - 🚦故障转移
+      - 📵拒绝连接
+
+  - name: 🧬DNS服务
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 👋手动选择
+      - 🚦故障转移
+      - ⛔直接连接
+      - 📵拒绝连接
+
+  - name: Ⓜ️微软服务
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🤖人工智能
+      - 🚦故障转移
+      - ⛔直接连接
+      - 📵拒绝连接
+
+  - name: 🇭🇰香港优选
+    type: url-test
+    disable-udp: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+    filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
+    url: "https://www.gstatic.com/generate_204"
+    lazy: true
+    interval: 60
+    tolerance: 20
+    timeout: 2000
+    max-failed-times: 3
+    use:
+      - 明月配置
     hidden: true
+
+  - name: 🇸🇬狮城优选
+    type: url-test
+    disable-udp: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
+    url: "https://www.gstatic.com/generate_204"
+    lazy: true
+    interval: 60
+    tolerance: 20
+    timeout: 2000
+    max-failed-times: 3
+    use:
+      - 明月配置
+    hidden: true
+
+  - name: 🇯🇵日本优选
+    type: url-test
+    disable-udp: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+    filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
+    url: "https://www.gstatic.com/generate_204"
+    lazy: true
+    interval: 60
+    tolerance: 20
+    timeout: 2000
+    max-failed-times: 3
+    use:
+      - 明月配置
+    hidden: true
+
+  - name: 🇹🇼台湾优选
+    type: url-test
+    disable-udp: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+    filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$
+    url: "https://www.gstatic.com/generate_204"
+    lazy: true
+    interval: 60
+    tolerance: 20
+    timeout: 2000
+    max-failed-times: 3
+    use:
+      - 明月配置
+    hidden: true
+
+  - name: 🇺🇸美国优选
+    type: url-test
+    disable-udp: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
+    url: "https://www.gstatic.com/generate_204"
+    lazy: true
+    interval: 60
+    tolerance: 20
+    timeout: 2000
+    max-failed-times: 3
+    use:
+      - 明月配置
+    hidden: true
+
   - name: 🚦故障转移
     type: fallback
-    include-all: null
-    filter: (?=.*())
+    disable-udp: false
+    filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
     url: "https://www.gstatic.com/generate_204"
     interval: 1800
+    timeout: 2000
+    max-failed-times: 3
     lazy: null
     use:
       - 明月配置
     hidden: true
-  - name: 🇭🇰香港自动选择
-    type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-    include-all: null
-    filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    use:
-      - 明月配置
-    hidden: null
-    tolerance: 150
-  - name: 🇸🇬狮城自动选择
-    type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-    include-all: null
-    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    use:
-      - 明月配置
-    hidden: null
-    tolerance: 150
-  - name: 🇯🇵日本自动选择
-    type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-    include-all: null
-    filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    use:
-      - 明月配置
-    hidden: null
-    tolerance: 150
-  - name: 🇹🇼台湾自动选择
-    type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
-    include-all: null
-    filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    use:
-      - 明月配置
-    hidden: null
-    tolerance: 150
-  - name: 🇺🇸美国自动选择
-    type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-    include-all: null
-    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    use:
-      - 明月配置
-    tolerance: 150
-    hidden: null
-  - hidden: true
-    name: ⛔直接连接
+
+  - name: ⛔直接连接
+    type: select
+    udp: true
     proxies:
       - DIRECT
+    hidden: true
+
+  - name: 📵拒绝连接
     type: select
-  - hidden: true
-    name: 📵拒绝连接
+    disable-udp: true
     proxies:
       - REJECT
-    type: select
+    hidden: true
+
 # 规则提供者
 rule-providers:
   MyDirect:
@@ -970,103 +1024,103 @@ rule-providers:
     interval: 75600
 # 规则
 rules:
-  - RULE-SET,MyDirect,⛔直接连接
-  - RULE-SET,MyProxy,💱国外网站
-  - RULE-SET,Lan,🚩国内流量
-  - RULE-SET,UnBan,🚩国内流量
-  - RULE-SET,GameDownload,🚩国内流量
-  - RULE-SET,GameDownloadCN,🚩国内流量
-  - RULE-SET,GoogleCN,🚩国内流量
-  - RULE-SET,SteamCN,🚩国内流量
-  - RULE-SET,Game,🎮游戏平台
-  - RULE-SET,Epic,🎮游戏平台
-  - RULE-SET,Origin,🎮游戏平台
-  - RULE-SET,Sony,🎮游戏平台
-  - RULE-SET,Steam,🎮游戏平台
-  - RULE-SET,Nintendo,🎮游戏平台
-  - RULE-SET,Blizzard,🎮游戏平台
-  - RULE-SET,EA,🎮游戏平台
-  - RULE-SET,Xbox,🎮游戏平台
-  - RULE-SET,PlayStation,🎮游戏平台
-  - RULE-SET,Telegram,📲Telegram
-  - RULE-SET,TelegramUS,📲Telegram
-  - RULE-SET,TelegramSG,📲Telegram
-  - RULE-SET,TelegramNL,📲Telegram
-  - RULE-SET,Microsoft,Ⓜ️微软服务
-  - RULE-SET,OneDrive,Ⓜ️微软服务
-  - RULE-SET,MicrosoftEdge,Ⓜ️微软服务
-  - RULE-SET,YouTube,🎞️Youtube
-  - RULE-SET,YouTube_2,🎞️Youtube
-  - RULE-SET,YouTubeMusic,🎞️Youtube
-  - RULE-SET,Netflix,🎬奈飞
-  - RULE-SET,Netflix_Classical,🎬奈飞
-  - RULE-SET,Disney,🎬迪士尼
-  - RULE-SET,Disney_2,🎬迪士尼
-  - RULE-SET,OpenAI,🤖OpenAI
-  - RULE-SET,chatgpt,🤖OpenAI
-  - RULE-SET,OpenAI_2,🤖OpenAI
-  - RULE-SET,AI,🤖OpenAI
-  - RULE-SET,AppleTV,🌍国际媒体
-  - RULE-SET,GlobalMedia_Classical,🌍国际媒体
-  - RULE-SET,TikTok,🌍国际媒体
-  - RULE-SET,Twitch,🌍国际媒体
-  - RULE-SET,Twitter,🌍国际媒体
-  - RULE-SET,Instagram,🌍国际媒体
-  - RULE-SET,Facebook,🌍国际媒体
-  - RULE-SET,Emby,🌍国际媒体
-  - RULE-SET,FOXPlus,🌍国际媒体
-  - RULE-SET,Spotify,🌍国际媒体
-  - RULE-SET,Niconico,🌍国际媒体
-  - RULE-SET,Bahamut,🌍国际媒体
-  - RULE-SET,BBC,🌍国际媒体
-  - RULE-SET,Hulu,🌍国际媒体
-  - RULE-SET,Hulu_2,🌍国际媒体
-  - RULE-SET,HuluUSA,🌍国际媒体
-  - RULE-SET,HuluJP,🌍国际媒体
-  - RULE-SET,HuluJapan,🌍国际媒体
-  - RULE-SET,HBO,🌍国际媒体
-  - RULE-SET,HBOUSA,🌍国际媒体
-  - RULE-SET,HBOHK,🌍国际媒体
-  - RULE-SET,HBOAsia,🌍国际媒体
-  - RULE-SET,HBO_2,🌍国际媒体
-  - RULE-SET,HBO_GO_HKG,🌍国际媒体
-  - RULE-SET,Espn,🌍国际媒体
-  - RULE-SET,DAZN,🌍国际媒体
-  - RULE-SET,TVB,🌍国际媒体
-  - RULE-SET,PandoraTV,🌍国际媒体
-  - RULE-SET,AmazonPrimeVideo,🌍国际媒体
-  - RULE-SET,PrimeVideo,🌍国际媒体
-  - RULE-SET,ParamountPlus,🌍国际媒体
-  - RULE-SET,DiscoveryPlus,🌍国际媒体
-  - RULE-SET,Abema,🌍国际媒体
-  - RULE-SET,MyVideo,🌍国际媒体
-  - RULE-SET,Apple_Classical,🍎苹果服务
-  - RULE-SET,Siri,🍎苹果服务
-  - RULE-SET,SystemOTA,🍎苹果服务
-  - RULE-SET,AppleMusic,🍎苹果服务
-  - RULE-SET,iCloud,🍎苹果服务
-  - RULE-SET,AppStore,🍎苹果服务
-  - RULE-SET,AppleID,🍎苹果服务
-  - RULE-SET,FindMy,🍎苹果服务
-  - RULE-SET,Global_Classical,💱国外网站
-  - RULE-SET,Proxy_Classical,💱国外网站
-  - RULE-SET,IPTVOther_Classical,💱国外网站
-  - RULE-SET,ASN.China,🚩国内流量
-  - RULE-SET,ChinaMax_Classical,🚩国内流量
-  - RULE-SET,ChinaDomain,🚩国内流量
-  - RULE-SET,Download,🚩国内流量
-  - RULE-SET,ChinaTelecom,🚩国内流量
-  - RULE-SET,ChinaMobile,🚩国内流量
-  - RULE-SET,ChinaUnicom,🚩国内流量
-  - RULE-SET,PrivateTracker,🚩国内流量
-  - RULE-SET,IPTVMainland_Classical,🚩国内流量
-  - RULE-SET,ChinaMedia,🚩国内流量
-  - RULE-SET,CloudCN,🚩国内流量
-  - RULE-SET,Direct,🚩国内流量
-  - GEOSITE,CN,🚩国内流量
-  - GEOSITE,geolocation-!cn,💱国外网站
-  - GEOIP,CN,🚩国内流量
-  - DST-PORT,80,💱国外网站
-  - DST-PORT,443,💱国外网站
-  - DST-PORT,22,💱国外网站
-  - MATCH,🐟漏网之鱼（🔄没命中规则走这里） # 不匹配规则的流量
+  - RULE-SET,MyDirect,⛔直接连接,no-resolve
+  - RULE-SET,MyProxy,🧬DNS服务,no-resolve
+  - RULE-SET,Lan,🚩国内流量,no-resolve
+  - RULE-SET,UnBan,🚩国内流量,no-resolve
+  - RULE-SET,GameDownload,🚩国内流量,no-resolve
+  - RULE-SET,GameDownloadCN,🚩国内流量,no-resolve
+  - RULE-SET,GoogleCN,🚩国内流量,no-resolve
+  - RULE-SET,SteamCN,🚩国内流量,no-resolve
+  - RULE-SET,Game,🎮游戏平台,no-resolve
+  - RULE-SET,Epic,🎮游戏平台,no-resolve
+  - RULE-SET,Origin,🎮游戏平台,no-resolve
+  - RULE-SET,Sony,🎮游戏平台,no-resolve
+  - RULE-SET,Steam,🎮游戏平台,no-resolve
+  - RULE-SET,Nintendo,🎮游戏平台,no-resolve
+  - RULE-SET,Blizzard,🎮游戏平台,no-resolve
+  - RULE-SET,EA,🎮游戏平台,no-resolve
+  - RULE-SET,Xbox,🎮游戏平台,no-resolve
+  - RULE-SET,PlayStation,🎮游戏平台,no-resolve
+  - RULE-SET,Telegram,📲Telegram,no-resolve
+  - RULE-SET,TelegramUS,📲Telegram,no-resolve
+  - RULE-SET,TelegramSG,📲Telegram,no-resolve
+  - RULE-SET,TelegramNL,📲Telegram,no-resolve
+  - RULE-SET,Microsoft,Ⓜ️微软服务,no-resolve
+  - RULE-SET,OneDrive,Ⓜ️微软服务,no-resolve
+  - RULE-SET,MicrosoftEdge,Ⓜ️微软服务,no-resolve
+  - RULE-SET,YouTube,📺Youtube,no-resolve
+  - RULE-SET,YouTube_2,📺Youtube,no-resolve
+  - RULE-SET,YouTubeMusic,📺Youtube,no-resolve
+  - RULE-SET,Netflix,🎬奈飞,no-resolve
+  - RULE-SET,Netflix_Classical,🎬奈飞,no-resolve
+  - RULE-SET,Disney,🎬迪士尼,no-resolve
+  - RULE-SET,Disney_2,🎬迪士尼,no-resolve
+  - RULE-SET,OpenAI,🤖人工智能,no-resolve
+  - RULE-SET,chatgpt,🤖人工智能,no-resolve
+  - RULE-SET,OpenAI_2,🤖人工智能,no-resolve
+  - RULE-SET,AI,🤖人工智能,no-resolve
+  - RULE-SET,AppleTV,🌍国际媒体,no-resolve
+  - RULE-SET,GlobalMedia_Classical,🌍国际媒体,no-resolve
+  - RULE-SET,TikTok,🌍国际媒体,no-resolve
+  - RULE-SET,Twitch,🌍国际媒体,no-resolve
+  - RULE-SET,Twitter,🌍国际媒体,no-resolve
+  - RULE-SET,Instagram,🌍国际媒体,no-resolve
+  - RULE-SET,Facebook,🌍国际媒体,no-resolve
+  - RULE-SET,Emby,🌍国际媒体,no-resolve
+  - RULE-SET,FOXPlus,🌍国际媒体,no-resolve
+  - RULE-SET,Spotify,🌍国际媒体,no-resolve
+  - RULE-SET,Niconico,🌍国际媒体,no-resolve
+  - RULE-SET,Bahamut,🌍国际媒体,no-resolve
+  - RULE-SET,BBC,🌍国际媒体,no-resolve
+  - RULE-SET,Hulu,🌍国际媒体,no-resolve
+  - RULE-SET,Hulu_2,🌍国际媒体,no-resolve
+  - RULE-SET,HuluUSA,🌍国际媒体,no-resolve
+  - RULE-SET,HuluJP,🌍国际媒体,no-resolve
+  - RULE-SET,HuluJapan,🌍国际媒体,no-resolve
+  - RULE-SET,HBO,🌍国际媒体,no-resolve
+  - RULE-SET,HBOUSA,🌍国际媒体,no-resolve
+  - RULE-SET,HBOHK,🌍国际媒体,no-resolve
+  - RULE-SET,HBOAsia,🌍国际媒体,no-resolve
+  - RULE-SET,HBO_2,🌍国际媒体,no-resolve
+  - RULE-SET,HBO_GO_HKG,🌍国际媒体,no-resolve
+  - RULE-SET,Espn,🌍国际媒体,no-resolve
+  - RULE-SET,DAZN,🌍国际媒体,no-resolve
+  - RULE-SET,TVB,🌍国际媒体,no-resolve
+  - RULE-SET,PandoraTV,🌍国际媒体,no-resolve
+  - RULE-SET,AmazonPrimeVideo,🌍国际媒体,no-resolve
+  - RULE-SET,PrimeVideo,🌍国际媒体,no-resolve
+  - RULE-SET,ParamountPlus,🌍国际媒体,no-resolve
+  - RULE-SET,DiscoveryPlus,🌍国际媒体,no-resolve
+  - RULE-SET,Abema,🌍国际媒体,no-resolve
+  - RULE-SET,MyVideo,🌍国际媒体,no-resolve
+  - RULE-SET,Apple_Classical,🍎苹果服务,no-resolve
+  - RULE-SET,Siri,🍎苹果服务,no-resolve
+  - RULE-SET,SystemOTA,🍎苹果服务,no-resolve
+  - RULE-SET,AppleMusic,🍎苹果服务,no-resolve
+  - RULE-SET,iCloud,🍎苹果服务,no-resolve
+  - RULE-SET,AppStore,🍎苹果服务,no-resolve
+  - RULE-SET,AppleID,🍎苹果服务,no-resolve
+  - RULE-SET,FindMy,🍎苹果服务,no-resolve
+  - RULE-SET,Global_Classical,🙌默认代理,no-resolve
+  - RULE-SET,Proxy_Classical,🙌默认代理,no-resolve
+  - RULE-SET,IPTVOther_Classical,🙌默认代理,no-resolve
+  - RULE-SET,ASN.China,🚩国内流量,no-resolve
+  - RULE-SET,ChinaMax_Classical,🚩国内流量,no-resolve
+  - RULE-SET,ChinaDomain,🚩国内流量,no-resolve
+  - RULE-SET,Download,🚩国内流量,no-resolve
+  - RULE-SET,ChinaTelecom,🚩国内流量,no-resolve
+  - RULE-SET,ChinaMobile,🚩国内流量,no-resolve
+  - RULE-SET,ChinaUnicom,🚩国内流量,no-resolve
+  - RULE-SET,PrivateTracker,🚩国内流量,no-resolve
+  - RULE-SET,IPTVMainland_Classical,🚩国内流量,no-resolve
+  - RULE-SET,ChinaMedia,🚩国内流量,no-resolve
+  - RULE-SET,CloudCN,🚩国内流量,no-resolve
+  - RULE-SET,Direct,🚩国内流量,no-resolve
+  - GEOSITE,CN,🚩国内流量,no-resolve
+  - GEOSITE,geolocation-!cn,🙌默认代理,no-resolve
+  - GEOIP,CN,🚩国内流量,no-resolve
+  - DST-PORT,80,🙌默认代理
+  - DST-PORT,443,🙌默认代理
+  - DST-PORT,22,🙌默认代理
+  - MATCH,🐟漏网之鱼 # 不匹配规则的流量
