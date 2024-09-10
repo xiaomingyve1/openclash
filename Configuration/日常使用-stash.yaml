@@ -2,7 +2,7 @@ mixed-port: 7890
 allow-lan: true
 bind-address: '*'
 mode: rule
-log-level: info
+log-level: silent
 ipv6: true # IPv6代理开关 true / false
 udp: true
 external-controller: 127.0.0.1:9090
