@@ -464,17 +464,23 @@ proxy-groups:
 
 # 规则提供者
 rule-providers:
+  BlockHttpDNS_No_Resolve:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml
+    path: "./rule_provider/rule-provider_BlockHttpDNS_No_Resolve.yaml"
+    interval: 75600
+  Hijacking_No_Resolve:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml
+    path: "./rule_provider/rule-provider_Hijacking_No_Resolve.yaml"
+    interval: 75600
   MyDirect:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDirect.yaml
     path: "./rule_provider/rule-provider_MyDirect.yaml"
-    interval: 75600
-  MyProxy:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyProxy.yaml
-    path: "./rule_provider/rule-provider_MyProxy.yaml"
     interval: 75600
   Lan_No_Resolve:
     type: http
@@ -482,11 +488,47 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml
     path: "./rule_provider/rule-provider_Lan_No_Resolve.yaml"
     interval: 75600
+  MyDNS:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS.yaml
+    path: "./rule_provider/rule-provider_MyDNS.yaml"
+    interval: 75600
   UnBan:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
     path: "./rule_provider/rule-provider_UnBan.yaml"
+    interval: 75600
+  GoogleCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCN.yaml
+    path: "./rule_provider/rule-provider_GoogleCN.yaml"
+    interval: 75600
+  AmazonCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonCN/AmazonCN.yaml
+    path: "./rule_provider/rule-provider_AmazonCN.yaml"
+    interval: 75600
+  CSDN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CSDN/CSDN.yaml
+    path: "./rule_provider/rule-provider_CSDN.yaml"
+    interval: 75600
+  CloudCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudCN/CloudCN.yaml
+    path: "./rule_provider/rule-provider_CloudCN.yaml"
+    interval: 75600
+  Download:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
+    path: "./rule_provider/rule-provider_Download.yaml"
     interval: 75600
   GameDownload:
     type: http
@@ -500,77 +542,23 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml
     path: "./rule_provider/rule-provider_GameDownloadCN.yaml"
     interval: 75600
-  GoogleCN:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCN.yaml
-    path: "./rule_provider/rule-provider_GoogleCN.yaml"
-    interval: 75600
   SteamCN:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml
     path: "./rule_provider/rule-provider_SteamCN.yaml"
     interval: 75600
-  Game:
+  PrivateTracker:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
-    path: "./rule_provider/rule-provider_Game.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.yaml
+    path: "./rule_provider/rule-provider_PrivateTracker.yaml"
     interval: 75600
-  Epic:
+  IPTVMainland_Classical:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml
-    path: "./rule_provider/rule-provider_Epic.yaml"
-    interval: 75600
-  Origin:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Origin/Origin.yaml
-    path: "./rule_provider/rule-provider_Origin.yaml"
-    interval: 75600
-  Sony:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.yaml
-    path: "./rule_provider/rule-provider_Sony.yaml"
-    interval: 75600
-  Steam:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
-    path: "./rule_provider/rule-provider_Steam.yaml"
-    interval: 75600
-  Nintendo:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml
-    path: "./rule_provider/rule-provider_Nintendo.yaml"
-    interval: 75600
-  Blizzard:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.yaml
-    path: "./rule_provider/rule-provider_Blizzard.yaml"
-    interval: 75600
-  EA:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.yaml
-    path: "./rule_provider/rule-provider_EA.yaml"
-    interval: 75600
-  Xbox:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Xbox/Xbox.yaml
-    path: "./rule_provider/rule-provider_Xbox.yaml"
-    interval: 75600
-  PlayStation:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PlayStation/PlayStation.yaml
-    path: "./rule_provider/rule-provider_PlayStation.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVMainland/IPTVMainland_Classical.yaml
+    path: "./rule_provider/rule-provider_IPTVMainland_Classical.yaml"
     interval: 75600
   Telegram:
     type: http
@@ -595,24 +583,6 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramNL/TelegramNL.yaml
     path: "./rule_provider/rule-provider_TelegramNL.yaml"
-    interval: 75600
-  Microsoft:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
-    path: "./rule_provider/rule-provider_Microsoft.yaml"
-    interval: 75600
-  OneDrive:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml
-    path: "./rule_provider/rule-provider_OneDrive.yaml"
-    interval: 75600
-  MicrosoftEdge:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/MicrosoftEdge/MicrosoftEdge.yaml
-    path: "./rule_provider/rule-provider_MicrosoftEdge.yaml"
     interval: 75600
   YouTube:
     type: http
@@ -662,29 +632,257 @@ rule-providers:
     url: https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/OpenAI.yaml
     path: "./rule_provider/rule-provider_OpenAI.yaml"
     interval: 75600
-  chatgpt:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/chatgpt.yaml
-    path: "./rule_provider/rule-provider_chatgpt.yaml"
-    interval: 75600
   OpenAI_2:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
     path: "./rule_provider/rule-provider_OpenAI_2.yaml"
     interval: 75600
-  AI:
+  Gemini:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/AI.yaml
-    path: "./rule_provider/rule-provider_AI.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
+    path: "./rule_provider/rule-provider_Gemini.yaml"
+    interval: 75600
+  BardAI:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BardAI/BardAI.yaml
+    path: "./rule_provider/rule-provider_BardAI.yaml"
+    interval: 75600
+  MyAI:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyAI.yaml
+    path: "./rule_provider/rule-provider_MyAI.yaml"
+    interval: 75600
+  Apple_Classical:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
+    path: "./rule_provider/rule-provider_Apple_Classical.yaml"
     interval: 75600
   AppleTV:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleTV/AppleTV.yaml
     path: "./rule_provider/rule-provider_AppleTV.yaml"
+    interval: 75600
+  Siri:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Siri/Siri.yaml
+    path: "./rule_provider/rule-provider_Siri.yaml"
+    interval: 75600
+  SystemOTA:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SystemOTA/SystemOTA.yaml
+    path: "./rule_provider/rule-provider_SystemOTA.yaml"
+    interval: 75600
+  AppleMusic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMusic/AppleMusic.yaml
+    path: "./rule_provider/rule-provider_AppleMusic.yaml"
+    interval: 75600
+  iCloud:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloud/iCloud.yaml
+    path: "./rule_provider/rule-provider_iCloud.yaml"
+    interval: 75600
+  AppStore:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppStore/AppStore.yaml
+    path: "./rule_provider/rule-provider_AppStore.yaml"
+    interval: 75600
+  AppleID:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleID/AppleID.yaml
+    path: "./rule_provider/rule-provider_AppleID.yaml"
+    interval: 75600
+  FindMy:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FindMy/FindMy.yaml
+    path: "./rule_provider/rule-provider_FindMy.yaml"
+    interval: 75600
+  Beats:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Beats/Beats.yaml
+    path: "./rule_provider/rule-provider_Beats.yaml"
+    interval: 75600
+  AppleNews:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleNews/AppleNews.yaml
+    path: "./rule_provider/rule-provider_AppleNews.yaml"
+    interval: 75600
+  AppleMail:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail.yaml
+    path: "./rule_provider/rule-provider_AppleMail.yaml"
+    interval: 75600
+  FitnessPlus:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FitnessPlus/FitnessPlus.yaml
+    path: "./rule_provider/rule-provider_FitnessPlus.yaml"
+    interval: 75600
+  AppleDev:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleDev/AppleDev.yaml
+    path: "./rule_provider/rule-provider_AppleDev.yaml"
+    interval: 75600
+  AppleProxy:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleProxy/AppleProxy.yaml
+    path: "./rule_provider/rule-provider_AppleProxy.yaml"
+    interval: 75600
+  iCloudPrivateRelay:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloudPrivateRelay/iCloudPrivateRelay.yaml
+    path: "./rule_provider/rule-provider_iCloudPrivateRelay.yaml"
+    interval: 75600
+  Game:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
+    path: "./rule_provider/rule-provider_Game.yaml"
+    interval: 75600
+  Epic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml
+    path: "./rule_provider/rule-provider_Epic.yaml"
+    interval: 75600
+  Origin:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Origin/Origin.yaml
+    path: "./rule_provider/rule-provider_Origin.yaml"
+    interval: 75600
+  Sony:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.yaml
+    path: "./rule_provider/rule-provider_Sony.yaml"
+    interval: 75600
+  Steam:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
+    path: "./rule_provider/rule-provider_Steam.yaml"
+    interval: 75600
+  UBI:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.yaml
+    path: "./rule_provider/rule-provider_UBI.yaml"
+    interval: 75600
+  Nintendo:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml
+    path: "./rule_provider/rule-provider_Nintendo.yaml"
+    interval: 75600
+  Battle:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Battle/Battle.yaml
+    path: "./rule_provider/rule-provider_Battle.yaml"
+    interval: 75600
+  Blizzard:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.yaml
+    path: "./rule_provider/rule-provider_Blizzard.yaml"
+    interval: 75600
+  EA:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.yaml
+    path: "./rule_provider/rule-provider_EA.yaml"
+    interval: 75600
+  Xbox:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Xbox/Xbox.yaml
+    path: "./rule_provider/rule-provider_Xbox.yaml"
+    interval: 75600
+  PlayStation:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PlayStation/PlayStation.yaml
+    path: "./rule_provider/rule-provider_PlayStation.yaml"
+    interval: 75600
+  Riot:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Riot/Riot.yaml
+    path: "./rule_provider/rule-provider_Riot.yaml"
+    interval: 75600
+  WildRift:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WildRift/WildRift.yaml
+    path: "./rule_provider/rule-provider_WildRift.yaml"
+    interval: 75600
+  Rockstar:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Rockstar/Rockstar.yaml
+    path: "./rule_provider/rule-provider_Rockstar.yaml"
+    interval: 75600
+  Garena:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Garena/Garena.yaml
+    path: "./rule_provider/rule-provider_Garena.yaml"
+    interval: 75600
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+    path: "./rule_provider/rule-provider_Microsoft.yaml"
+    interval: 75600
+  OneDrive:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml
+    path: "./rule_provider/rule-provider_OneDrive.yaml"
+    interval: 75600
+  MicrosoftEdge:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/MicrosoftEdge/MicrosoftEdge.yaml
+    path: "./rule_provider/rule-provider_MicrosoftEdge.yaml"
+    interval: 75600
+  Copilot:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Copilot/Copilot.yaml
+    path: "./rule_provider/rule-provider_Copilot.yaml"
+    interval: 75600
+  GitHub:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml
+    path: "./rule_provider/rule-provider_GitHub.yaml"
+    interval: 75600
+  Teams:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Teams/Teams.yaml
+    path: "./rule_provider/rule-provider_Teams.yaml"
     interval: 75600
   GlobalMedia_Classical:
     type: http
@@ -727,6 +925,12 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml
     path: "./rule_provider/rule-provider_Emby.yaml"
+    interval: 75600
+  FOXNOW:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FOXNOW/FOXNOW.yaml
+    path: "./rule_provider/rule-provider_FOXNOW.yaml"
     interval: 75600
   FOXPlus:
     type: http
@@ -782,6 +986,12 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
     path: "./rule_provider/rule-provider_HuluJP.yaml"
     interval: 75600
+  HuluJapan:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml
+    path: "./rule_provider/rule-provider_HuluJapan.yaml"
+    interval: 75600
   HBO:
     type: http
     behavior: classical
@@ -817,12 +1027,6 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml
     path: "./rule_provider/rule-provider_HBO_GO_HKG.yaml"
-    interval: 75600
-  HuluJapan:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml
-    path: "./rule_provider/rule-provider_HuluJapan.yaml"
     interval: 75600
   Espn:
     type: http
@@ -878,59 +1082,17 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Abema/Abema.yaml
     path: "./rule_provider/rule-provider_Abema.yaml"
     interval: 75600
+  USMedia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/USMedia/USMedia.yaml
+    path: "./rule_provider/rule-provider_USMedia.yaml"
+    interval: 75600
   MyVideo:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyVideo.yaml
     path: "./rule_provider/rule-provider_MyVideo.yaml"
-    interval: 75600
-  Apple_Classical:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
-    path: "./rule_provider/rule-provider_Apple_Classical.yaml"
-    interval: 75600
-  Siri:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Siri/Siri.yaml
-    path: "./rule_provider/rule-provider_Siri.yaml"
-    interval: 75600
-  SystemOTA:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SystemOTA/SystemOTA.yaml
-    path: "./rule_provider/rule-provider_SystemOTA.yaml"
-    interval: 75600
-  AppleMusic:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMusic/AppleMusic.yaml
-    path: "./rule_provider/rule-provider_AppleMusic.yaml"
-    interval: 75600
-  iCloud:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloud/iCloud.yaml
-    path: "./rule_provider/rule-provider_iCloud.yaml"
-    interval: 75600
-  AppStore:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppStore/AppStore.yaml
-    path: "./rule_provider/rule-provider_AppStore.yaml"
-    interval: 75600
-  AppleID:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleID/AppleID.yaml
-    path: "./rule_provider/rule-provider_AppleID.yaml"
-    interval: 75600
-  FindMy:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FindMy/FindMy.yaml
-    path: "./rule_provider/rule-provider_FindMy.yaml"
     interval: 75600
   Global_Classical:
     type: http
@@ -943,6 +1105,66 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Classical.yaml
     path: "./rule_provider/rule-provider_Proxy_Classical.yaml"
+    interval: 75600
+  Google:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
+    path: "./rule_provider/rule-provider_Google.yaml"
+    interval: 75600
+  Scholar:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Scholar/Scholar.yaml
+    path: "./rule_provider/rule-provider_Scholar.yaml"
+    interval: 75600
+  Line:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml
+    path: "./rule_provider/rule-provider_Line.yaml"
+    interval: 75600
+  Discord:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Discord/Discord.yaml
+    path: "./rule_provider/rule-provider_Discord.yaml"
+    interval: 75600
+  PayPal:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
+    path: "./rule_provider/rule-provider_PayPal.yaml"
+    interval: 75600
+  Reddit:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Reddit/Reddit.yaml
+    path: "./rule_provider/rule-provider_Reddit.yaml"
+    interval: 75600
+  Amazon:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Amazon/Amazon.yaml
+    path: "./rule_provider/rule-provider_Amazon.yaml"
+    interval: 75600
+  AmazonCloud_Classical:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/AmazonCloud/AmazonCloud_Classical.yaml
+    path: "./rule_provider/rule-provider_AmazonCloud_Classical.yaml"
+    interval: 75600
+  AmazonIP_Classical:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonIP/AmazonIP_Classical.yaml
+    path: "./rule_provider/rule-provider_AmazonIP_Classical.yaml"
+    interval: 75600
+  CloudGlobal_Classical:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudGlobal/CloudGlobal_Classical.yaml
+    path: "./rule_provider/rule-provider_CloudGlobal_Classical.yaml"
     interval: 75600
   IPTVOther_Classical:
     type: http
@@ -962,17 +1184,11 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml
     path: "./rule_provider/rule-provider_ChinaMax_Classical.yaml"
     interval: 75600
-  ChinaDomain:
+  ChinaMedia:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml
-    path: "./rule_provider/rule-provider_ChinaDomain.yaml"
-    interval: 75600
-  Download:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
-    path: "./rule_provider/rule-provider_Download.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+    path: "./rule_provider/rule-provider_ChinaMedia.yaml"
     interval: 75600
   ChinaTelecom:
     type: http
@@ -992,135 +1208,151 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaUnicom/ChinaUnicom.yaml
     path: "./rule_provider/rule-provider_ChinaUnicom.yaml"
     interval: 75600
-  PrivateTracker:
+  ByteDance:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.yaml
-    path: "./rule_provider/rule-provider_PrivateTracker.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ByteDance/ByteDance.yaml
+    path: "./rule_provider/rule-provider_ByteDance.yaml"
     interval: 75600
-  IPTVMainland_Classical:
+  Direct_No_Resolve:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVMainland/IPTVMainland_Classical.yaml
-    path: "./rule_provider/rule-provider_IPTVMainland_Classical.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct_No_Resolve.yaml
+    path: "./rule_provider/rule-provider_Direct_No_Resolve.yaml"
     interval: 75600
-  ChinaMedia:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
-    path: "./rule_provider/rule-provider_ChinaMedia.yaml"
-    interval: 75600
-  CloudCN:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudCN/CloudCN.yaml
-    path: "./rule_provider/rule-provider_CloudCN.yaml"
-    interval: 75600
-  Direct:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
-    path: "./rule_provider/rule-provider_Direct.yaml"
-    interval: 75600
-# 规则
+
+# 规则（从上往下匹配）
 rules:
-  - RULE-SET,MyDirect,⛔直接连接,no-resolve
-  - RULE-SET,MyProxy,🧬DNS服务,no-resolve
-  - RULE-SET,Lan_No_Resolve,🚩国内流量,no-resolve
-  - RULE-SET,UnBan,🚩国内流量,no-resolve
-  - RULE-SET,GameDownload,🚩国内流量,no-resolve
-  - RULE-SET,GameDownloadCN,🚩国内流量,no-resolve
-  - RULE-SET,GoogleCN,🚩国内流量,no-resolve
-  - RULE-SET,SteamCN,🚩国内流量,no-resolve
-  - RULE-SET,Game,🎮游戏平台,no-resolve
-  - RULE-SET,Epic,🎮游戏平台,no-resolve
-  - RULE-SET,Origin,🎮游戏平台,no-resolve
-  - RULE-SET,Sony,🎮游戏平台,no-resolve
-  - RULE-SET,Steam,🎮游戏平台,no-resolve
-  - RULE-SET,Nintendo,🎮游戏平台,no-resolve
-  - RULE-SET,Blizzard,🎮游戏平台,no-resolve
-  - RULE-SET,EA,🎮游戏平台,no-resolve
-  - RULE-SET,Xbox,🎮游戏平台,no-resolve
-  - RULE-SET,PlayStation,🎮游戏平台,no-resolve
-  - RULE-SET,Telegram,📲Telegram,no-resolve
-  - RULE-SET,TelegramUS,📲Telegram,no-resolve
-  - RULE-SET,TelegramSG,📲Telegram,no-resolve
-  - RULE-SET,TelegramNL,📲Telegram,no-resolve
-  - RULE-SET,Microsoft,Ⓜ️微软服务,no-resolve
-  - RULE-SET,OneDrive,Ⓜ️微软服务,no-resolve
-  - RULE-SET,MicrosoftEdge,Ⓜ️微软服务,no-resolve
-  - RULE-SET,YouTube,📺Youtube,no-resolve
-  - RULE-SET,YouTube_2,📺Youtube,no-resolve
-  - RULE-SET,YouTubeMusic,📺Youtube,no-resolve
-  - RULE-SET,Netflix,🎬奈飞,no-resolve
-  - RULE-SET,Netflix_Classical,🎬奈飞,no-resolve
-  - RULE-SET,Disney,🎬迪士尼,no-resolve
-  - RULE-SET,Disney_2,🎬迪士尼,no-resolve
-  - RULE-SET,OpenAI,🤖人工智能,no-resolve
-  - RULE-SET,chatgpt,🤖人工智能,no-resolve
-  - RULE-SET,OpenAI_2,🤖人工智能,no-resolve
-  - RULE-SET,AI,🤖人工智能,no-resolve
-  - RULE-SET,AppleTV,🌍国际媒体,no-resolve
-  - RULE-SET,GlobalMedia_Classical,🌍国际媒体,no-resolve
-  - RULE-SET,TikTok,🌍国际媒体,no-resolve
-  - RULE-SET,Twitch,🌍国际媒体,no-resolve
-  - RULE-SET,Twitter,🌍国际媒体,no-resolve
-  - RULE-SET,Instagram,🌍国际媒体,no-resolve
-  - RULE-SET,Facebook,🌍国际媒体,no-resolve
-  - RULE-SET,Emby,🌍国际媒体,no-resolve
-  - RULE-SET,FOXPlus,🌍国际媒体,no-resolve
-  - RULE-SET,Spotify,🌍国际媒体,no-resolve
-  - RULE-SET,Niconico,🌍国际媒体,no-resolve
-  - RULE-SET,Bahamut,🌍国际媒体,no-resolve
-  - RULE-SET,BBC,🌍国际媒体,no-resolve
-  - RULE-SET,Hulu,🌍国际媒体,no-resolve
-  - RULE-SET,Hulu_2,🌍国际媒体,no-resolve
-  - RULE-SET,HuluUSA,🌍国际媒体,no-resolve
-  - RULE-SET,HuluJP,🌍国际媒体,no-resolve
-  - RULE-SET,HuluJapan,🌍国际媒体,no-resolve
-  - RULE-SET,HBO,🌍国际媒体,no-resolve
-  - RULE-SET,HBOUSA,🌍国际媒体,no-resolve
-  - RULE-SET,HBOHK,🌍国际媒体,no-resolve
-  - RULE-SET,HBOAsia,🌍国际媒体,no-resolve
-  - RULE-SET,HBO_2,🌍国际媒体,no-resolve
-  - RULE-SET,HBO_GO_HKG,🌍国际媒体,no-resolve
-  - RULE-SET,Espn,🌍国际媒体,no-resolve
-  - RULE-SET,DAZN,🌍国际媒体,no-resolve
-  - RULE-SET,TVB,🌍国际媒体,no-resolve
-  - RULE-SET,PandoraTV,🌍国际媒体,no-resolve
-  - RULE-SET,AmazonPrimeVideo,🌍国际媒体,no-resolve
-  - RULE-SET,PrimeVideo,🌍国际媒体,no-resolve
-  - RULE-SET,ParamountPlus,🌍国际媒体,no-resolve
-  - RULE-SET,DiscoveryPlus,🌍国际媒体,no-resolve
-  - RULE-SET,Abema,🌍国际媒体,no-resolve
-  - RULE-SET,MyVideo,🌍国际媒体,no-resolve
-  - RULE-SET,Apple_Classical,🍎苹果服务,no-resolve
-  - RULE-SET,Siri,🍎苹果服务,no-resolve
-  - RULE-SET,SystemOTA,🍎苹果服务,no-resolve
-  - RULE-SET,AppleMusic,🍎苹果服务,no-resolve
-  - RULE-SET,iCloud,🍎苹果服务,no-resolve
-  - RULE-SET,AppStore,🍎苹果服务,no-resolve
-  - RULE-SET,AppleID,🍎苹果服务,no-resolve
-  - RULE-SET,FindMy,🍎苹果服务,no-resolve
-  - RULE-SET,Global_Classical,🙌默认代理,no-resolve
-  - RULE-SET,Proxy_Classical,🙌默认代理,no-resolve
-  - RULE-SET,IPTVOther_Classical,🙌默认代理,no-resolve
-  - RULE-SET,ASN.China,🚩国内流量,no-resolve
-  - RULE-SET,ChinaMax_Classical,🚩国内流量,no-resolve
-  - RULE-SET,ChinaDomain,🚩国内流量,no-resolve
-  - RULE-SET,Download,🚩国内流量,no-resolve
-  - RULE-SET,ChinaTelecom,🚩国内流量,no-resolve
-  - RULE-SET,ChinaMobile,🚩国内流量,no-resolve
-  - RULE-SET,ChinaUnicom,🚩国内流量,no-resolve
-  - RULE-SET,PrivateTracker,🚩国内流量,no-resolve
-  - RULE-SET,IPTVMainland_Classical,🚩国内流量,no-resolve
-  - RULE-SET,ChinaMedia,🚩国内流量,no-resolve
-  - RULE-SET,CloudCN,🚩国内流量,no-resolve
-  - RULE-SET,Direct,🚩国内流量,no-resolve
-  - GEOSITE,CN,🚩国内流量,no-resolve
-  - GEOSITE,geolocation-!cn,🙌默认代理,no-resolve
-  - GEOIP,CN,🚩国内流量,no-resolve
-  - DST-PORT,80,🙌默认代理
-  - DST-PORT,443,🙌默认代理
-  - DST-PORT,22,🙌默认代理
-  - MATCH,🐟漏网之鱼 # 不匹配规则的流量
+- RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接,no-resolve
+- RULE-SET,Hijacking_No_Resolve,📵拒绝连接,no-resolve
+- RULE-SET,MyDirect,⛔直接连接,no-resolve
+- RULE-SET,Lan_No_Resolve,⛔直接连接,no-resolve
+- RULE-SET,MyDNS,🧬DNS服务,no-resolve
+- RULE-SET,UnBan,🚩国内流量,no-resolve
+- RULE-SET,GoogleCN,🚩国内流量,no-resolve
+- RULE-SET,AmazonCN,🚩国内流量,no-resolve
+- RULE-SET,CSDN,🚩国内流量,no-resolve
+- RULE-SET,CloudCN,🚩国内流量,no-resolve
+- RULE-SET,Download,🚩国内流量,no-resolve
+- RULE-SET,GameDownload,🚩国内流量,no-resolve
+- RULE-SET,GameDownloadCN,🚩国内流量,no-resolve
+- RULE-SET,SteamCN,🚩国内流量,no-resolve
+- RULE-SET,PrivateTracker,🚩国内流量,no-resolve
+- RULE-SET,IPTVMainland_Classical,🚩国内流量,no-resolve
+- RULE-SET,Telegram,📲Telegram,no-resolve
+- RULE-SET,TelegramUS,📲Telegram,no-resolve
+- RULE-SET,TelegramSG,📲Telegram,no-resolve
+- RULE-SET,TelegramNL,📲Telegram,no-resolve
+- RULE-SET,YouTube,📺Youtube,no-resolve
+- RULE-SET,YouTube_2,📺Youtube,no-resolve
+- RULE-SET,YouTubeMusic,📺Youtube,no-resolve
+- RULE-SET,Netflix,🎬奈飞,no-resolve
+- RULE-SET,Netflix_Classical,🎬奈飞,no-resolve
+- RULE-SET,Disney,🎬迪士尼,no-resolve
+- RULE-SET,Disney_2,🎬迪士尼,no-resolve
+- RULE-SET,OpenAI,🤖人工智能,no-resolve
+- RULE-SET,OpenAI_2,🤖人工智能,no-resolve
+- RULE-SET,Gemini,🤖人工智能,no-resolve
+- RULE-SET,BardAI,🤖人工智能,no-resolve
+- RULE-SET,MyAI,🤖人工智能,no-resolve
+- RULE-SET,Apple_Classical,🍎苹果服务,no-resolve
+- RULE-SET,AppleTV,🍎苹果服务,no-resolve
+- RULE-SET,Siri,🍎苹果服务,no-resolve
+- RULE-SET,SystemOTA,🍎苹果服务,no-resolve
+- RULE-SET,AppleMusic,🍎苹果服务,no-resolve
+- RULE-SET,iCloud,🍎苹果服务,no-resolve
+- RULE-SET,AppStore,🍎苹果服务,no-resolve
+- RULE-SET,AppleID,🍎苹果服务,no-resolve
+- RULE-SET,FindMy,🍎苹果服务,no-resolve
+- RULE-SET,Beats,🍎苹果服务,no-resolve
+- RULE-SET,AppleNews,🍎苹果服务,no-resolve
+- RULE-SET,AppleMail,🍎苹果服务,no-resolve
+- RULE-SET,FitnessPlus,🍎苹果服务,no-resolve
+- RULE-SET,AppleDev,🍎苹果服务,no-resolve
+- RULE-SET,AppleProxy,🍎苹果服务,no-resolve
+- RULE-SET,iCloudPrivateRelay,🍎苹果服务,no-resolve
+- RULE-SET,Game,🎮游戏平台,no-resolve
+- RULE-SET,Epic,🎮游戏平台,no-resolve
+- RULE-SET,Origin,🎮游戏平台,no-resolve
+- RULE-SET,Sony,🎮游戏平台,no-resolve
+- RULE-SET,Steam,🎮游戏平台,no-resolve
+- RULE-SET,UBI,🎮游戏平台,no-resolve
+- RULE-SET,Nintendo,🎮游戏平台,no-resolve
+- RULE-SET,Battle,🎮游戏平台,no-resolve
+- RULE-SET,Blizzard,🎮游戏平台,no-resolve
+- RULE-SET,EA,🎮游戏平台,no-resolve
+- RULE-SET,Xbox,🎮游戏平台,no-resolve
+- RULE-SET,PlayStation,🎮游戏平台,no-resolve
+- RULE-SET,Riot,🎮游戏平台,no-resolve
+- RULE-SET,WildRift,🎮游戏平台,no-resolve
+- RULE-SET,Rockstar,🎮游戏平台,no-resolve
+- RULE-SET,Garena,🎮游戏平台,no-resolve
+- RULE-SET,Microsoft,Ⓜ️微软服务,no-resolve
+- RULE-SET,OneDrive,Ⓜ️微软服务,no-resolve
+- RULE-SET,MicrosoftEdge,Ⓜ️微软服务,no-resolve
+- RULE-SET,Copilot,Ⓜ️微软服务,no-resolve
+- RULE-SET,GitHub,Ⓜ️微软服务,no-resolve
+- RULE-SET,Teams,Ⓜ️微软服务,no-resolve
+- RULE-SET,GlobalMedia_Classical,🌍国际媒体,no-resolve
+- RULE-SET,TikTok,🌍国际媒体,no-resolve
+- RULE-SET,Twitch,🌍国际媒体,no-resolve
+- RULE-SET,Twitter,🌍国际媒体,no-resolve
+- RULE-SET,Instagram,🌍国际媒体,no-resolve
+- RULE-SET,Facebook,🌍国际媒体,no-resolve
+- RULE-SET,Emby,🌍国际媒体,no-resolve
+- RULE-SET,FOXNOW,🌍国际媒体,no-resolve
+- RULE-SET,FOXPlus,🌍国际媒体,no-resolve
+- RULE-SET,Spotify,🌍国际媒体,no-resolve
+- RULE-SET,Niconico,🌍国际媒体,no-resolve
+- RULE-SET,Bahamut,🌍国际媒体,no-resolve
+- RULE-SET,BBC,🌍国际媒体,no-resolve
+- RULE-SET,Hulu,🌍国际媒体,no-resolve
+- RULE-SET,Hulu_2,🌍国际媒体,no-resolve
+- RULE-SET,HuluUSA,🌍国际媒体,no-resolve
+- RULE-SET,HuluJP,🌍国际媒体,no-resolve
+- RULE-SET,HuluJapan,🌍国际媒体,no-resolve
+- RULE-SET,HBO,🌍国际媒体,no-resolve
+- RULE-SET,HBOUSA,🌍国际媒体,no-resolve
+- RULE-SET,HBOHK,🌍国际媒体,no-resolve
+- RULE-SET,HBOAsia,🌍国际媒体,no-resolve
+- RULE-SET,HBO_2,🌍国际媒体,no-resolve
+- RULE-SET,HBO_GO_HKG,🌍国际媒体,no-resolve
+- RULE-SET,Espn,🌍国际媒体,no-resolve
+- RULE-SET,DAZN,🌍国际媒体,no-resolve
+- RULE-SET,TVB,🌍国际媒体,no-resolve
+- RULE-SET,PandoraTV,🌍国际媒体,no-resolve
+- RULE-SET,AmazonPrimeVideo,🌍国际媒体,no-resolve
+- RULE-SET,PrimeVideo,🌍国际媒体,no-resolve
+- RULE-SET,ParamountPlus,🌍国际媒体,no-resolve
+- RULE-SET,DiscoveryPlus,🌍国际媒体,no-resolve
+- RULE-SET,Abema,🌍国际媒体,no-resolve
+- RULE-SET,USMedia,🌍国际媒体,no-resolve
+- RULE-SET,MyVideo,🌍国际媒体,no-resolve
+- RULE-SET,Global_Classical,🙌默认代理,no-resolve
+- RULE-SET,Proxy_Classical,🙌默认代理,no-resolve
+- RULE-SET,Google,🙌默认代理,no-resolve
+- RULE-SET,Scholar,🙌默认代理,no-resolve
+- RULE-SET,Line,🙌默认代理,no-resolve
+- RULE-SET,Discord,🙌默认代理,no-resolve
+- RULE-SET,PayPal,🙌默认代理,no-resolve
+- RULE-SET,Reddit,🙌默认代理,no-resolve
+- RULE-SET,Amazon,🙌默认代理,no-resolve
+- RULE-SET,AmazonCloud_Classical,🙌默认代理,no-resolve
+- RULE-SET,AmazonIP_Classical,🙌默认代理,no-resolve
+- RULE-SET,CloudGlobal_Classical,🙌默认代理,no-resolve
+- RULE-SET,IPTVOther_Classical,🙌默认代理,no-resolve
+- RULE-SET,ASN.China,🚩国内流量,no-resolve
+- RULE-SET,ChinaMax_Classical,🚩国内流量,no-resolve
+- RULE-SET,ChinaMedia,🚩国内流量,no-resolve
+- RULE-SET,ChinaTelecom,🚩国内流量,no-resolve
+- RULE-SET,ChinaMobile,🚩国内流量,no-resolve
+- RULE-SET,ChinaUnicom,🚩国内流量,no-resolve
+- RULE-SET,ByteDance,🚩国内流量,no-resolve
+- RULE-SET,Direct_No_Resolve,🚩国内流量,no-resolve
+- GEOSITE,CN,🚩国内流量,no-resolve
+- GEOSITE,geolocation-!cn,🙌默认代理,no-resolve
+- GEOIP,CN,🚩国内流量,no-resolve
+- DST-PORT,80,🙌默认代理
+- DST-PORT,443,🙌默认代理
+- DST-PORT,22,🙌默认代理
+- MATCH,🐟漏网之鱼 # 不匹配规则的流量
