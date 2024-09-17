@@ -1,7 +1,6 @@
 #国外DNS服务器列表
 
 payload:
-
 # Google Public DNS
   - IP-CIDR,8.8.8.8/32,no-resolve
   - IP-CIDR,8.8.4.4/32,no-resolve
