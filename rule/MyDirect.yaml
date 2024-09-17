@@ -21,13 +21,13 @@ payload:
   - DOMAIN-SUFFIX,dns.alidns.com
   - IP-CIDR6,2400:3200::1/64,no-resolve
   - IP-CIDR6,3200:baba::1/64,no-resolve
-# 火山引擎
+#火山引擎
   - IP-CIDR,180.184.1.1/32,no-resolve
   - IP-CIDR,180.184.2.2/32,no-resolve
 #百度DNS
   - IP-CIDR,180.76.76.76/32,no-resolve
   - IP-CIDR6,2400:da00::6666/64,no-resolve
-#360安全DNS
+# 360安全DNS
   - IP-CIDR,101.226.4.6/32,no-resolve
   - IP-CIDR,218.30.118.6/32,no-resolve
   - IP-CIDR,123.125.81.6/32,no-resolve
@@ -59,6 +59,6 @@ payload:
   - IP-CIDR6,240e:d9:c200:14c:7472::19e0/64,no-resolve
   - IP-CIDR6,2408:8756:f5f:4::6/64,no-resolve
 
-#  未分类IPv4
+#未分类IPv4
   - IP-CIDR,1.12.12.12/32,no-resolve
 
