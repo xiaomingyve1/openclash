@@ -1,33 +1,50 @@
+#国外DNS服务器列表
+
 payload:
-  - DOMAIN-KEYWORD,1e100
-  - IP-CIDR,142.171.133.131/32,no-resolve
-  - IP-CIDR,103.115.43.2/32,no-resolve
-  - DOMAIN-SUFFIX,dns.google
-  - DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
-  - DOMAIN-SUFFIX,dot.sb
-  - DOMAIN-SUFFIX,dns.umbrella.com
-  - DOMAIN-SUFFIX,dns.quad9.net
-  - DOMAIN-SUFFIX,dns.google
-  - DOMAIN-SUFFIX,cloudflare-dns.com
-  - DOMAIN-SUFFIX,doh.dns.sb
-  - DOMAIN-SUFFIX,doh.opendns.com
-  - DOMAIN-SUFFIX,dns.quad9.net
-  - DOMAIN-SUFFIX,hk-hkg.doh.sb
+
+# Google Public DNS
   - IP-CIDR,8.8.8.8/32,no-resolve
   - IP-CIDR,8.8.4.4/32,no-resolve
+  - DOMAIN-SUFFIX,dns.google
+  - IP-CIDR6,2001:4860:4860::8888/64,no-resolve
+  - IP-CIDR6,2001:4860:4860::8844/64,no-resolve
+# Cloudflare DNS
   - IP-CIDR,1.1.1.1/32,no-resolve
   - IP-CIDR,1.0.0.1/32,no-resolve
-  - IP-CIDR,64.6.64.6/32,no-resolve
-  - IP-CIDR,64.6.65.6/32,no-resolve
+  - DOMAIN-SUFFIX,one.one.one.one
+  - DOMAIN-SUFFIX,cloudflare-dns.com
+  - DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
+  - IP-CIDR6,2606:4700:4700::1111/64,no-resolve
+  - IP-CIDR6,2606:4700:4700::1001/64,no-resolve
+# Quad9 DNS
   - IP-CIDR,9.9.9.9/32,no-resolve
   - IP-CIDR,9.9.9.10/32,no-resolve
   - IP-CIDR,149.112.112.112/32,no-resolve
   - IP-CIDR,149.112.112.10/32,no-resolve
+  - DOMAIN-SUFFIX,dns.quad9.net
+  - IP-CIDR6,2620:fe::fe/64,no-resolve
+  - IP-CIDR6,2620:fe::9/64,no-resolve
+# DNS.SB
+  - IP-CIDR,45.11.45.11/32,no-resolve
+  - DOMAIN-SUFFIX,dot.sb
+  - DOMAIN-SUFFIX,doh.dns.sb
+  - DOMAIN-SUFFIX,hk-hkg.doh.sb
+# OpenDNS
   - IP-CIDR,208.67.222.222/32,no-resolve
   - IP-CIDR,208.67.220.220/32,no-resolve
   - IP-CIDR,208.67.222.220/32,no-resolve
   - IP-CIDR,208.67.220.222/32,no-resolve
-  - IP-CIDR,185.121.177.177/32,no-resolve
-  - IP-CIDR,169.239.202.202/32,no-resolve
+  - DOMAIN-SUFFIX,doh.opendns.com
+# Level 3 Parent DNS(Windows升级)
+  - IP-CIDR,4.2.2.1/32,no-resolve
+  - IP-CIDR,4.2.2.2/32,no-resolve
+  - IP-CIDR,4.2.2.3/32,no-resolve
+  - IP-CIDR,4.2.2.4/32,no-resolve
+  - IP-CIDR,4.2.2.5/32,no-resolve
+  - IP-CIDR,4.2.2.6/32,no-resolve
+
+#  未分类IPv4
+  - IP-CIDR,64.6.64.6/32,no-resolve
+  - IP-CIDR,64.6.65.6/32,no-resolve
   - IP-CIDR,185.222.222.222/32,no-resolve
   - IP-CIDR,185.184.222.222/32,no-resolve
