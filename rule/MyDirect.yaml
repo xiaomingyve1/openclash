@@ -34,6 +34,9 @@ payload:
   - IP-CIDR,140.207.198.6/32,no-resolve
   - DOMAIN-SUFFIX,dot.360.cn
   - DOMAIN-SUFFIX,doh.360.cn
+# 114DNS
+  - IP-CIDR,114.114.114.114/32,no-resolve
+  - IP-CIDR,114.114.115.115/32,no-resolve
 #中国电信IPv6 DNS
   - IP-CIDR6,240e:4c:4008::1/64,no-resolve
   - IP-CIDR6,240e:4c:4808::1/64,no-resolve
@@ -43,9 +46,6 @@ payload:
 #中国联通IPv6 DNS
   - IP-CIDR6,2408:8888::8/64,no-resolve
   - IP-CIDR6,2408:8899::8/64,no-resolve
-# 114DNS
-  - IP-CIDR,114.114.114.114/32,no-resolve
-  - IP-CIDR,114.114.115.115/32,no-resolve
 # CNNIC DNS
   - IP-CIDR,1.2.4.8/32,no-resolve
   - IP-CIDR,210.2.4.8/32,no-resolve
@@ -59,9 +59,6 @@ payload:
   - IP-CIDR6,240e:d9:c200:14c:7472::19e0/64,no-resolve
   - IP-CIDR6,2408:8756:f5f:4::6/64,no-resolve
 
-
 #  未分类IPv4
   - IP-CIDR,1.12.12.12/32,no-resolve
-  - IP-CIDR,180.76.76.76/32,no-resolve
-  - IP-CIDR,140.207.198.6/32,no-resolve
 
