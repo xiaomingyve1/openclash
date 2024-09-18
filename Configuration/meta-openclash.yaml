@@ -81,6 +81,12 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml
     path: "./rule_provider/rule-provider_Hijacking_No_Resolve.yaml"
     interval: 75600
+  MyDNS:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS.yaml
+    path: "./rule_provider/rule-provider_MyDNS.yaml"
+    interval: 75600
   MyDirect:
     type: http
     behavior: classical
@@ -92,12 +98,6 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml
     path: "./rule_provider/rule-provider_Lan_No_Resolve.yaml"
-    interval: 75600
-  MyDNS:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS.yaml
-    path: "./rule_provider/rule-provider_MyDNS.yaml"
     interval: 75600
   UnBan:
     type: http
@@ -207,12 +207,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml
     path: "./rule_provider/rule-provider_YouTubeMusic.yaml"
     interval: 75600
-  Netflix:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Netflix.yaml
-    path: "./rule_provider/rule-provider_Netflix.yaml"
-    interval: 75600
   Netflix_Classical:
     type: http
     behavior: classical
@@ -224,12 +218,6 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
     path: "./rule_provider/rule-provider_Disney.yaml"
-    interval: 75600
-  Disney_2:
-    type: http
-    behavior: classical
-    url: https://git.dov.moe/Mirror/ios_rule_script/raw/commit/e547ffe0c7d87e1ea7b46a47b78941413e768b0e/rule/Clash/Disney/Disney.yaml
-    path: "./rule_provider/rule-provider_Disney_2.yaml"
     interval: 75600
   OpenAI:
     type: http
@@ -531,17 +519,11 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml
     path: "./rule_provider/rule-provider_Emby.yaml"
     interval: 75600
-  FOXNOW:
+  Fox:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FOXNOW/FOXNOW.yaml
-    path: "./rule_provider/rule-provider_FOXNOW.yaml"
-    interval: 75600
-  FOXPlus:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FOXPlus/FOXPlus.yaml
-    path: "./rule_provider/rule-provider_FOXPlus.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Fox/Fox.yaml
+    path: "./rule_provider/rule-provider_Fox.yaml"
     interval: 75600
   Spotify:
     type: http
@@ -789,6 +771,12 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml
     path: "./rule_provider/rule-provider_ChinaMax_Classical.yaml"
     interval: 75600
+  ChinaIPsBGP_Classical:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPsBGP/ChinaIPsBGP_Classical.yaml
+    path: "./rule_provider/rule-provider_ChinaIPsBGP_Classical.yaml"
+    interval: 75600
   ChinaMedia:
     type: http
     behavior: classical
@@ -819,6 +807,18 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ByteDance/ByteDance.yaml
     path: "./rule_provider/rule-provider_ByteDance.yaml"
     interval: 75600
+  CCTV:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CCTV/CCTV.yaml
+    path: "./rule_provider/rule-provider_CCTV.yaml"
+    interval: 75600
+  HiNet:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/HiNet/HiNet.yaml
+    path: "./rule_provider/rule-provider_HiNet.yaml"
+    interval: 75600
   Direct_No_Resolve:
     type: http
     behavior: classical
@@ -830,9 +830,9 @@ rule-providers:
 rules:
 - RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
 - RULE-SET,Hijacking_No_Resolve,📵拒绝连接
+- RULE-SET,MyDNS,🧬DNS服务
 - RULE-SET,MyDirect,⛔直接连接
 - RULE-SET,Lan_No_Resolve,⛔直接连接
-- RULE-SET,MyDNS,🧬DNS服务
 - RULE-SET,UnBan,🚩国内流量
 - RULE-SET,GoogleCN,🚩国内流量
 - RULE-SET,AmazonCN,🚩国内流量
@@ -851,10 +851,8 @@ rules:
 - RULE-SET,YouTube,📺Youtube
 - RULE-SET,YouTube_2,📺Youtube
 - RULE-SET,YouTubeMusic,📺Youtube
-- RULE-SET,Netflix,🎬奈飞
 - RULE-SET,Netflix_Classical,🎬奈飞
 - RULE-SET,Disney,🎬迪士尼
-- RULE-SET,Disney_2,🎬迪士尼
 - RULE-SET,OpenAI,🤖人工智能
 - RULE-SET,OpenAI_2,🤖人工智能
 - RULE-SET,Gemini,🤖人工智能
@@ -905,8 +903,7 @@ rules:
 - RULE-SET,Instagram,🌍国际媒体
 - RULE-SET,Facebook,🌍国际媒体
 - RULE-SET,Emby,🌍国际媒体
-- RULE-SET,FOXNOW,🌍国际媒体
-- RULE-SET,FOXPlus,🌍国际媒体
+- RULE-SET,Fox,🌍国际媒体
 - RULE-SET,Spotify,🌍国际媒体
 - RULE-SET,Niconico,🌍国际媒体
 - RULE-SET,Bahamut,🌍国际媒体
@@ -948,13 +945,16 @@ rules:
 - RULE-SET,IPTVOther_Classical,🙌默认代理
 - RULE-SET,ASN.China,🚩国内流量
 - RULE-SET,ChinaMax_Classical,🚩国内流量
+- RULE-SET,ChinaIPsBGP_Classical,🚩国内流量
 - RULE-SET,ChinaMedia,🚩国内流量
 - RULE-SET,ChinaTelecom,🚩国内流量
 - RULE-SET,ChinaMobile,🚩国内流量
 - RULE-SET,ChinaUnicom,🚩国内流量
 - RULE-SET,ByteDance,🚩国内流量
-- RULE-SET,Direct_No_Resolve,🚩国内流量
+- RULE-SET,CCTV,🚩国内流量
+- RULE-SET,HiNet,🚩国内流量
 - GEOSITE,CN,🚩国内流量
 - GEOSITE,geolocation-!cn,🙌默认代理
 - GEOIP,CN,🚩国内流量
+- RULE-SET,Direct_No_Resolve,⛔直接连接
 - MATCH,🐟漏网之鱼 # 不匹配规则的流量
