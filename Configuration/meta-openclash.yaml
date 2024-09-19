@@ -41,10 +41,14 @@ proxy-groups:
   - {name: 📺Youtube,<<: *use, type: select}
   - {name: 🎬奈飞,<<: *use, type: select}
   - {name: 🎬迪士尼,<<: *use, type: select}
+  # 地区限制
+  - {name: 🎬HBO,<<: *use, type: select, proxies: [⚡️🇸🇬狮城优选,⚖️🇸🇬狮城均衡], filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$}
+  - {name: 🎬Hulu,<<: *use, type: select, proxies: [⚡️🇺🇸美国优选,⚖️🇺🇸美国均衡], filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$}
+
   - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
-  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
   - {name: Ⓜ️微软服务, type: select, proxies: [🤖人工智能,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
+  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,🎬奈飞,🎬迪士尼,🎬HBO,🎬Hulu,👋手动选择,🤖人工智能,🌍国际媒体,🚦故障转移,⛔直接连接]}
 
 ###   以下策略组在 METACUBEXD 控制面板 已隐藏
 
@@ -218,6 +222,66 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml
     path: "./rule_provider/rule-provider_YouTubeMusic.yaml"
+    interval: 75600
+  HBO:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
+    path: "./rule_provider/rule-provider_HBO.yaml"
+    interval: 75600
+  HBOUSA:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOUSA/HBOUSA.yaml
+    path: "./rule_provider/rule-provider_HBOUSA.yaml"
+    interval: 75600
+  HBOHK:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml
+    path: "./rule_provider/rule-provider_HBOHK.yaml"
+    interval: 75600
+  HBOAsia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml
+    path: "./rule_provider/rule-provider_HBOAsia.yaml"
+    interval: 75600
+  HBO_2:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO.yaml
+    path: "./rule_provider/rule-provider_HBO_2.yaml"
+    interval: 75600
+  HBO_GO_HKG:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml
+    path: "./rule_provider/rule-provider_HBO_GO_HKG.yaml"
+    interval: 75600
+  Hulu:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hulu/Hulu.yaml
+    path: "./rule_provider/rule-provider_Hulu.yaml"
+    interval: 75600
+  HuluUSA:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml
+    path: "./rule_provider/rule-provider_HuluUSA.yaml"
+    interval: 75600
+  HuluJP:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
+    path: "./rule_provider/rule-provider_HuluJP.yaml"
+    interval: 75600
+  HuluJapan:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml
+    path: "./rule_provider/rule-provider_HuluJapan.yaml"
     interval: 75600
   Netflix_Classical:
     type: http
@@ -573,66 +637,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BBC/BBC.yaml
     path: "./rule_provider/rule-provider_BBC.yaml"
     interval: 75600
-  Hulu:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hulu/Hulu.yaml
-    path: "./rule_provider/rule-provider_Hulu.yaml"
-    interval: 75600
-  HuluUSA:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml
-    path: "./rule_provider/rule-provider_HuluUSA.yaml"
-    interval: 75600
-  HuluJP:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
-    path: "./rule_provider/rule-provider_HuluJP.yaml"
-    interval: 75600
-  HuluJapan:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml
-    path: "./rule_provider/rule-provider_HuluJapan.yaml"
-    interval: 75600
-  HBO:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
-    path: "./rule_provider/rule-provider_HBO.yaml"
-    interval: 75600
-  HBOUSA:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOUSA/HBOUSA.yaml
-    path: "./rule_provider/rule-provider_HBOUSA.yaml"
-    interval: 75600
-  HBOHK:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml
-    path: "./rule_provider/rule-provider_HBOHK.yaml"
-    interval: 75600
-  HBOAsia:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml
-    path: "./rule_provider/rule-provider_HBOAsia.yaml"
-    interval: 75600
-  HBO_2:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO.yaml
-    path: "./rule_provider/rule-provider_HBO_2.yaml"
-    interval: 75600
-  HBO_GO_HKG:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml
-    path: "./rule_provider/rule-provider_HBO_GO_HKG.yaml"
-    interval: 75600
   Espn:
     type: http
     behavior: classical
@@ -925,6 +929,16 @@ rules:
 - RULE-SET,YouTube,📺Youtube
 - RULE-SET,YouTube_2,📺Youtube
 - RULE-SET,YouTubeMusic,📺Youtube
+- RULE-SET,HBO,🎬HBO
+- RULE-SET,HBOUSA,🎬HBO
+- RULE-SET,HBOHK,🎬HBO
+- RULE-SET,HBOAsia,🎬HBO
+- RULE-SET,HBO_2,🎬HBO
+- RULE-SET,HBO_GO_HKG,🎬HBO
+- RULE-SET,Hulu,🎬Hulu
+- RULE-SET,HuluUSA,🎬Hulu
+- RULE-SET,HuluJP,🎬Hulu
+- RULE-SET,HuluJapan,🎬Hulu
 - RULE-SET,Netflix_Classical,🎬奈飞
 - RULE-SET,Netflix,🎬奈飞
 - RULE-SET,NetflixIP,🎬奈飞
@@ -984,16 +998,6 @@ rules:
 - RULE-SET,Niconico,🌍国际媒体
 - RULE-SET,Bahamut,🌍国际媒体
 - RULE-SET,BBC,🌍国际媒体
-- RULE-SET,Hulu,🌍国际媒体
-- RULE-SET,HuluUSA,🌍国际媒体
-- RULE-SET,HuluJP,🌍国际媒体
-- RULE-SET,HuluJapan,🌍国际媒体
-- RULE-SET,HBO,🌍国际媒体
-- RULE-SET,HBOUSA,🌍国际媒体
-- RULE-SET,HBOHK,🌍国际媒体
-- RULE-SET,HBOAsia,🌍国际媒体
-- RULE-SET,HBO_2,🌍国际媒体
-- RULE-SET,HBO_GO_HKG,🌍国际媒体
 - RULE-SET,Espn,🌍国际媒体
 - RULE-SET,DAZN,🌍国际媒体
 - RULE-SET,TVB,🌍国际媒体
