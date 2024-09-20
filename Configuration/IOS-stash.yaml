@@ -1,10 +1,14 @@
+# 全局配置
 mixed-port: 7890
+mode: rule
 allow-lan: true
 bind-address: '*'
-mode: rule
 log-level: silent
-ipv6: true # IPv6代理开关 true / false
-udp: true
+unified-delay: true # 统一延迟
+tcp-concurrent: true # TCP 并发
+find-process-mode: strict # 进程匹配 always / strict / off
+keep-alive-idle: 600  # 空闲时间 减少移动设备耗电问题
+keep-alive-interval: 15  # 间隔时间 
 external-controller: 127.0.0.1:9090
 
 #请在可视化更改配置，否则可能会导致无法运行
@@ -13,10 +17,10 @@ external-controller: 127.0.0.1:9090
 subscribe-url: 订阅链接请填到远程代理集
 #首页按住订阅可手动更新流量信息及日期信息(自带定时更新)⚠️⚠️⚠️⚠️⚠️
 proxy-providers:
-  明月配置: #替换下面⚠️订阅链接⚠️用于Stash更新节点服务器
+  明月配置: # 替换下面文字用于Stash获取机场流量信息并在主页显示
     type: http
     url: "订阅链接"
-    #替换上面⚠️订阅链接⚠️用于Stash更新节点服务器
+    # 替换上面文字用于Stash获取机场流量信息并在主页显示
     # Sub-Store与Clash类型订阅链接替换掉引号""内的订阅链接
     interval: 37800
     path: ./明月配置.yaml
@@ -28,76 +32,12 @@ proxy-providers:
     benchmark-url: https://www.gstatic.com/generate_204
     benchmark-timeout: 5
 
-# 缓存
-profile:
-  store-selected: true # 储存 API 对策略组选择，供下次启动时使用
-  store-fake-ip: true # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
-
-# 域名嗅探
-sniffer:
-  enable: true # 嗅探开关 true / false
-  force-dns-mapping: true
-  parse-pure-ip: true
-  override-destination: true
-  sniff:
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-    TLS:
-      ports: [443, 8443]
-    QUIC:
-      ports: [443, 8443]
-  force-domain:
-    - +.v2ex.com
-#  - '+'
-    - '+.netflix.com'
-    - '+.nflxvideo.net'
-    - '+.disneyplus.com'
-    - '+.amazonaws.com'
-    - '+.media.dssott.com'
-  skip-domain:
-    - '+.apple.com'
-    - '+.vivox.com'
-    - Mijia Cloud
-    - dlg.io.mi.com
-    - courier.push.apple.com
-    - gateway.push.apple.com
-    - rbsxbxp-mim.vivox.com
-    - rbsxbxp.www.vivox.com
-    - rbsxbxp-ws.vivox.com
-    - rbspsxp.www.vivox.com
-    - rbspsxp-mim.vivox.com
-    - rbspsxp-ws.vivox.com
-    - rbswxp.www.vivox.com
-    - rbswxp-mim.vivox.com
-    - disp-rbspsp-5-1.vivox.com
-    - disp-rbsxbp-5-1.vivox.com
-    - proxy.rbsxbp.vivox.com
-    - proxy.rbspsp.vivox.com
-    - proxy.rbswp.vivox.com
-    - rbswp.vivox.com
-    - rbsxbp.vivox.com
-    - rbspsp.vivox.com
-    - rbspsp.www.vivox.com
-    - rbswp.www.vivox.com
-    - rbsxbp.www.vivox.com
-    - rbsxbxp.vivox.com
-    - rbspsxp.vivox.com
-    - rbswxp.vivox.com
-
 # DNS 设置
 dns:
   enable: true
   ipv6: true
-  listen: 0.0.0.0:53
-  default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-  nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - system
-  enhanced-mode: fake-ip
+  listen: 0.0.0.0:1053
+  enhanced-mode: fake-ip # redir-host / fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   # 过滤集黑白名单 blacklist / whitelist
@@ -221,9 +161,84 @@ dns:
     - rule-set:ChinaTelecom # 绕过电信
     - rule-set:ChinaMobile  # 绕过移动
     - rule-set:ChinaUnicom  # 绕过联通
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  proxy-server-nameserver:
+   - 119.29.29.29
+   - 223.5.5.5
+   - 1.0.0.1
+   - 8.8.8.8
+  nameserver:
+    - https://223.5.5.5/dns-query #h3=true
+    - https://223.6.6.6/dns-query #h3=true
+  fallback:
+    - tls://8.8.8.8 #dns
+    - tls://1.0.0.1 #dns
+
+# 缓存
+profile:
+  store-selected: true # 储存 API 对策略组选择，供下次启动时使用
+  store-fake-ip: true # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
+
+# 域名嗅探
+sniffer:
+  enable: true # 嗅探开关 true / false
+  force-dns-mapping: true #强制进行 DNS 映射(绕过某些 DNS 污染或劫持)
+  parse-pure-ip: true #嗅探纯 IP 连接
+  override-destination: true # 是否使用嗅探结果作为实际访问
+  sniffing: # 需要嗅探协议
+    - tls
+    - http
+    - quic
+  sniff: # 嗅探指定的协议端口
+    HTTP:  # 默认嗅探 80
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:  # 默认嗅探 443
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain: # 强制嗅探域名
+  # - '+'
+    - '+.v2ex.com'
+    - '+.netflix.com'
+    - '+.nflxvideo.net'
+    - '+.disneyplus.com'
+    - '+.amazonaws.com'
+    - '+.media.dssott.com'
+  skip-domain: # 不进行嗅探域名
+    - '+.apple.com'
+    - '+.vivox.com'
+    - '+.push.apple.com'
+    - Mijia Cloud
+    - dlg.io.mi.com
+    - courier.push.apple.com
+    - gateway.push.apple.com
+    - rbsxbxp-mim.vivox.com
+    - rbsxbxp.www.vivox.com
+    - rbsxbxp-ws.vivox.com
+    - rbspsxp.www.vivox.com
+    - rbspsxp-mim.vivox.com
+    - rbspsxp-ws.vivox.com
+    - rbswxp.www.vivox.com
+    - rbswxp-mim.vivox.com
+    - disp-rbspsp-5-1.vivox.com
+    - disp-rbsxbp-5-1.vivox.com
+    - proxy.rbsxbp.vivox.com
+    - proxy.rbspsp.vivox.com
+    - proxy.rbswp.vivox.com
+    - rbswp.vivox.com
+    - rbsxbp.vivox.com
+    - rbspsp.vivox.com
+    - rbspsp.www.vivox.com
+    - rbswp.www.vivox.com
+    - rbsxbp.www.vivox.com
+    - rbsxbxp.vivox.com
+    - rbspsxp.vivox.com
+    - rbswxp.vivox.com
 
 proxy-groups:
-
   - name: 👋手动选择
     type: select
     use:
@@ -251,23 +266,27 @@ proxy-groups:
       - 🚦故障转移
       - 📵拒绝连接
 
-  - name: 📲Telegram
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚦故障转移
-      - ⛔直接连接
-      - 📵拒绝连接
-
   - name: 🎮游戏平台
     type: select
     proxies:
       - 🙌默认代理
-      - 👋手动选择
-      - 🚦故障转移
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
       - ⛔直接连接
-      - 📵拒绝连接
+
+  - name: 📲Telegram
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
 
   - name: 🤖人工智能
     type: select
@@ -324,6 +343,24 @@ proxy-groups:
       - 🇺🇸美国优选
       - 👋手动选择
 
+  - name: 🎬HBO
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇸🇬狮城优选
+    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
+    use:
+      - 明月配置
+
+  - name: 🎬Hulu
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇺🇸美国优选
+    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
+    use:
+      - 明月配置
+
   - name: 🚩国内流量
     type: select
     proxies:
@@ -342,23 +379,28 @@ proxy-groups:
       - 🚦故障转移
       - 📵拒绝连接
 
-  - name: 🧬DNS服务
+  - name: Ⓜ️微软服务
     type: select
     proxies:
+      - 🤖人工智能
       - 🙌默认代理
-      - 👋手动选择
       - 🚦故障转移
       - ⛔直接连接
       - 📵拒绝连接
 
-  - name: Ⓜ️微软服务
+  - name: 🧬DNS服务
     type: select
     proxies:
       - 🙌默认代理
+      - 🎬奈飞
+      - 🎬迪士尼
+      - 🎬HBO
+      - 🎬Hulu
       - 🤖人工智能
+      - 🌍国际媒体
+      - 👋手动选择
       - 🚦故障转移
       - ⛔直接连接
-      - 📵拒绝连接
 
   - name: 🇭🇰香港优选
     type: url-test
@@ -440,10 +482,9 @@ proxy-groups:
     disable-udp: false
     filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
     url: "https://www.gstatic.com/generate_204"
-    interval: 1800
+    interval: 60
     timeout: 2000
     max-failed-times: 3
-    lazy: null
     use:
       - 明月配置
     hidden: true
@@ -461,6 +502,10 @@ proxy-groups:
     proxies:
       - REJECT
     hidden: true
+
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
 
 # 规则提供者
 rule-providers:
@@ -613,6 +658,66 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml
     path: "./rule_provider/rule-provider_YouTubeMusic.yaml"
+    interval: 75600
+  HBO:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
+    path: "./rule_provider/rule-provider_HBO.yaml"
+    interval: 75600
+  HBOUSA:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOUSA/HBOUSA.yaml
+    path: "./rule_provider/rule-provider_HBOUSA.yaml"
+    interval: 75600
+  HBOHK:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml
+    path: "./rule_provider/rule-provider_HBOHK.yaml"
+    interval: 75600
+  HBOAsia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml
+    path: "./rule_provider/rule-provider_HBOAsia.yaml"
+    interval: 75600
+  HBO_2:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO.yaml
+    path: "./rule_provider/rule-provider_HBO_2.yaml"
+    interval: 75600
+  HBO_GO_HKG:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml
+    path: "./rule_provider/rule-provider_HBO_GO_HKG.yaml"
+    interval: 75600
+  Hulu:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hulu/Hulu.yaml
+    path: "./rule_provider/rule-provider_Hulu.yaml"
+    interval: 75600
+  HuluUSA:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml
+    path: "./rule_provider/rule-provider_HuluUSA.yaml"
+    interval: 75600
+  HuluJP:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
+    path: "./rule_provider/rule-provider_HuluJP.yaml"
+    interval: 75600
+  HuluJapan:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml
+    path: "./rule_provider/rule-provider_HuluJapan.yaml"
     interval: 75600
   Netflix_Classical:
     type: http
@@ -968,66 +1073,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BBC/BBC.yaml
     path: "./rule_provider/rule-provider_BBC.yaml"
     interval: 75600
-  Hulu:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hulu/Hulu.yaml
-    path: "./rule_provider/rule-provider_Hulu.yaml"
-    interval: 75600
-  HuluUSA:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml
-    path: "./rule_provider/rule-provider_HuluUSA.yaml"
-    interval: 75600
-  HuluJP:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
-    path: "./rule_provider/rule-provider_HuluJP.yaml"
-    interval: 75600
-  HuluJapan:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml
-    path: "./rule_provider/rule-provider_HuluJapan.yaml"
-    interval: 75600
-  HBO:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
-    path: "./rule_provider/rule-provider_HBO.yaml"
-    interval: 75600
-  HBOUSA:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOUSA/HBOUSA.yaml
-    path: "./rule_provider/rule-provider_HBOUSA.yaml"
-    interval: 75600
-  HBOHK:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml
-    path: "./rule_provider/rule-provider_HBOHK.yaml"
-    interval: 75600
-  HBOAsia:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml
-    path: "./rule_provider/rule-provider_HBOAsia.yaml"
-    interval: 75600
-  HBO_2:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO.yaml
-    path: "./rule_provider/rule-provider_HBO_2.yaml"
-    interval: 75600
-  HBO_GO_HKG:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml
-    path: "./rule_provider/rule-provider_HBO_GO_HKG.yaml"
-    interval: 75600
   Espn:
     type: http
     behavior: classical
@@ -1295,148 +1340,147 @@ rule-providers:
 
 # 规则（从上往下匹配）
 rules:
-- RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接,no-resolve
-- RULE-SET,Hijacking_No_Resolve,📵拒绝连接,no-resolve
-- RULE-SET,MyDNS_No_Resolve,🧬DNS服务,no-resolve
-- RULE-SET,MyDNS_CN_No_Resolve,⛔直接连接,no-resolve
-- RULE-SET,Lan_No_Resolve,⛔直接连接,no-resolve
-- RULE-SET,GoogleCN,🚩国内流量,no-resolve
-- RULE-SET,GoogleCNProxyIP,🚩国内流量,no-resolve
-- RULE-SET,AmazonCN,🚩国内流量,no-resolve
-- RULE-SET,CSDN,🚩国内流量,no-resolve
-- RULE-SET,CloudCN,🚩国内流量,no-resolve
-- RULE-SET,GameDownload,🚩国内流量,no-resolve
-- RULE-SET,GameDownloadCN,🚩国内流量,no-resolve
-- RULE-SET,SteamCN,🚩国内流量,no-resolve
-- RULE-SET,PrivateTracker,🚩国内流量,no-resolve
-- RULE-SET,IPTVMainland_Classical,🚩国内流量,no-resolve
-- RULE-SET,AMD,🚩国内流量,no-resolve
-- RULE-SET,Intel,🚩国内流量,no-resolve
-- RULE-SET,Nvidia,🚩国内流量,no-resolve
-- RULE-SET,Telegram,📲Telegram,no-resolve
-- RULE-SET,TelegramUS,📲Telegram,no-resolve
-- RULE-SET,TelegramSG,📲Telegram,no-resolve
-- RULE-SET,TelegramNL,📲Telegram,no-resolve
-- RULE-SET,YouTube,📺Youtube,no-resolve
-- RULE-SET,YouTube_2,📺Youtube,no-resolve
-- RULE-SET,YouTubeMusic,📺Youtube,no-resolve
-- RULE-SET,Netflix_Classical,🎬奈飞,no-resolve
-- RULE-SET,Netflix,🎬奈飞,no-resolve
-- RULE-SET,NetflixIP,🎬奈飞,no-resolve
-- RULE-SET,Disney,🎬迪士尼,no-resolve
-- RULE-SET,DisneyPlus,🎬迪士尼,no-resolve
-- RULE-SET,OpenAI,🤖人工智能,no-resolve
-- RULE-SET,OpenAI_2,🤖人工智能,no-resolve
-- RULE-SET,BardAI,🤖人工智能,no-resolve
-- RULE-SET,Gemini,🤖人工智能,no-resolve
-- RULE-SET,MyAI_Supplement,🤖人工智能,no-resolve
-- RULE-SET,AppleTV,🍎苹果服务,no-resolve
-- RULE-SET,Siri,🍎苹果服务,no-resolve
-- RULE-SET,SystemOTA,🍎苹果服务,no-resolve
-- RULE-SET,AppleMusic,🍎苹果服务,no-resolve
-- RULE-SET,iCloud,🍎苹果服务,no-resolve
-- RULE-SET,AppStore,🍎苹果服务,no-resolve
-- RULE-SET,AppleID,🍎苹果服务,no-resolve
-- RULE-SET,FindMy,🍎苹果服务,no-resolve
-- RULE-SET,Beats,🍎苹果服务,no-resolve
-- RULE-SET,AppleNews,🍎苹果服务,no-resolve
-- RULE-SET,AppleMail,🍎苹果服务,no-resolve
-- RULE-SET,FitnessPlus,🍎苹果服务,no-resolve
-- RULE-SET,AppleDev,🍎苹果服务,no-resolve
-- RULE-SET,AppleProxy,🍎苹果服务,no-resolve
-- RULE-SET,iCloudPrivateRelay,🍎苹果服务,no-resolve
-- RULE-SET,Apple_Classical,🍎苹果服务,no-resolve
-- RULE-SET,Epic,🎮游戏平台,no-resolve
-- RULE-SET,Origin,🎮游戏平台,no-resolve
-- RULE-SET,Sony,🎮游戏平台,no-resolve
-- RULE-SET,Steam,🎮游戏平台,no-resolve
-- RULE-SET,UBI,🎮游戏平台,no-resolve
-- RULE-SET,Nintendo,🎮游戏平台,no-resolve
-- RULE-SET,Battle,🎮游戏平台,no-resolve
-- RULE-SET,Blizzard,🎮游戏平台,no-resolve
-- RULE-SET,EA,🎮游戏平台,no-resolve
-- RULE-SET,Xbox,🎮游戏平台,no-resolve
-- RULE-SET,PlayStation,🎮游戏平台,no-resolve
-- RULE-SET,Riot,🎮游戏平台,no-resolve
-- RULE-SET,WildRift,🎮游戏平台,no-resolve
-- RULE-SET,Rockstar,🎮游戏平台,no-resolve
-- RULE-SET,Garena,🎮游戏平台,no-resolve
-- RULE-SET,Game,🎮游戏平台,no-resolve
-- RULE-SET,OneDrive,Ⓜ️微软服务,no-resolve
-- RULE-SET,MicrosoftEdge,Ⓜ️微软服务,no-resolve
-- RULE-SET,Copilot,Ⓜ️微软服务,no-resolve
-- RULE-SET,GitHub,Ⓜ️微软服务,no-resolve
-- RULE-SET,Teams,Ⓜ️微软服务,no-resolve
-- RULE-SET,Microsoft,Ⓜ️微软服务,no-resolve
-- RULE-SET,TikTok,🌍国际媒体,no-resolve
-- RULE-SET,Twitch,🌍国际媒体,no-resolve
-- RULE-SET,Twitter,🌍国际媒体,no-resolve
-- RULE-SET,Instagram,🌍国际媒体,no-resolve
-- RULE-SET,Facebook,🌍国际媒体,no-resolve
-- RULE-SET,Emby,🌍国际媒体,no-resolve
-- RULE-SET,Fox,🌍国际媒体,no-resolve
-- RULE-SET,Spotify,🌍国际媒体,no-resolve
-- RULE-SET,Niconico,🌍国际媒体,no-resolve
-- RULE-SET,Bahamut,🌍国际媒体,no-resolve
-- RULE-SET,BBC,🌍国际媒体,no-resolve
-- RULE-SET,Hulu,🌍国际媒体,no-resolve
-- RULE-SET,HuluUSA,🌍国际媒体,no-resolve
-- RULE-SET,HuluJP,🌍国际媒体,no-resolve
-- RULE-SET,HuluJapan,🌍国际媒体,no-resolve
-- RULE-SET,HBO,🌍国际媒体,no-resolve
-- RULE-SET,HBOUSA,🌍国际媒体,no-resolve
-- RULE-SET,HBOHK,🌍国际媒体,no-resolve
-- RULE-SET,HBOAsia,🌍国际媒体,no-resolve
-- RULE-SET,HBO_2,🌍国际媒体,no-resolve
-- RULE-SET,HBO_GO_HKG,🌍国际媒体,no-resolve
-- RULE-SET,Espn,🌍国际媒体,no-resolve
-- RULE-SET,DAZN,🌍国际媒体,no-resolve
-- RULE-SET,TVB,🌍国际媒体,no-resolve
-- RULE-SET,PandoraTV,🌍国际媒体,no-resolve
-- RULE-SET,AmazonPrimeVideo,🌍国际媒体,no-resolve
-- RULE-SET,PrimeVideo,🌍国际媒体,no-resolve
-- RULE-SET,ParamountPlus,🌍国际媒体,no-resolve
-- RULE-SET,DiscoveryPlus,🌍国际媒体,no-resolve
-- RULE-SET,Abema,🌍国际媒体,no-resolve
-- RULE-SET,Vimeo,🌍国际媒体,no-resolve
-- RULE-SET,Voxmedia,🌍国际媒体,no-resolve
-- RULE-SET,UKMedia,🌍国际媒体,no-resolve
-- RULE-SET,USMedia,🌍国际媒体,no-resolve
-- RULE-SET,VOA,🌍国际媒体,no-resolve
-- RULE-SET,IPTVOther_Classical,🌍国际媒体,no-resolve
-- RULE-SET,GlobalMedia_Classical,🌍国际媒体,no-resolve
-- RULE-SET,MyVideo_Replenish,🌍国际媒体,no-resolve
-- RULE-SET,Google,🙌默认代理,no-resolve
-- RULE-SET,Line,🙌默认代理,no-resolve
-- RULE-SET,Discord,🙌默认代理,no-resolve
-- RULE-SET,PayPal,🙌默认代理,no-resolve
-- RULE-SET,Reddit,🙌默认代理,no-resolve
-- RULE-SET,Heroku,🙌默认代理,no-resolve
-- RULE-SET,Wikipedia,🙌默认代理,no-resolve
-- RULE-SET,GlobalScholar,🙌默认代理,no-resolve
-- RULE-SET,Amazon,🙌默认代理,no-resolve
-- RULE-SET,AmazonIP_Classical,🙌默认代理,no-resolve
-- RULE-SET,AmazonCloud_Classical,🙌默认代理,no-resolve
-- RULE-SET,Clubhouse,🙌默认代理,no-resolve
-- RULE-SET,ClubhouseIP,🙌默认代理,no-resolve
-- RULE-SET,CloudGlobal_Classical,🙌默认代理,no-resolve
-- RULE-SET,Proxy_Classical,🙌默认代理,no-resolve
-- RULE-SET,Global_Classical,🙌默认代理,no-resolve
-- RULE-SET,ASN.China,🚩国内流量,no-resolve
-- RULE-SET,ChinaMax_Classical,🚩国内流量,no-resolve
-- RULE-SET,ChinaIPsBGP_Classical,🚩国内流量,no-resolve
-- RULE-SET,ChinaMedia,🚩国内流量,no-resolve
-- RULE-SET,ChinaTelecom,🚩国内流量,no-resolve
-- RULE-SET,ChinaMobile,🚩国内流量,no-resolve
-- RULE-SET,ChinaUnicom,🚩国内流量,no-resolve
-- RULE-SET,ByteDance,🚩国内流量,no-resolve
-- RULE-SET,CCTV,🚩国内流量,no-resolve
-- GEOSITE,CN,🚩国内流量,no-resolve
-- GEOSITE,geolocation-!cn,🙌默认代理,no-resolve
-- GEOIP,CN,🚩国内流量,no-resolve
-- RULE-SET,Download_No_Resolve,⛔直接连接,no-resolve
-- RULE-SET,Direct_No_Resolve,⛔直接连接,no-resolve
+- RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
+- RULE-SET,Hijacking_No_Resolve,📵拒绝连接
+- RULE-SET,MyDNS_No_Resolve,🧬DNS服务
+- RULE-SET,MyDNS_CN_No_Resolve,⛔直接连接
+- RULE-SET,Lan_No_Resolve,⛔直接连接
+- RULE-SET,GoogleCN,🚩国内流量
+- RULE-SET,GoogleCNProxyIP,🚩国内流量
+- RULE-SET,AmazonCN,🚩国内流量
+- RULE-SET,CSDN,🚩国内流量
+- RULE-SET,CloudCN,🚩国内流量
+- RULE-SET,GameDownload,🚩国内流量
+- RULE-SET,GameDownloadCN,🚩国内流量
+- RULE-SET,SteamCN,🚩国内流量
+- RULE-SET,PrivateTracker,🚩国内流量
+- RULE-SET,IPTVMainland_Classical,🚩国内流量
+- RULE-SET,AMD,🚩国内流量
+- RULE-SET,Intel,🚩国内流量
+- RULE-SET,Nvidia,🚩国内流量
+- RULE-SET,Telegram,📲Telegram
+- RULE-SET,TelegramUS,📲Telegram
+- RULE-SET,TelegramSG,📲Telegram
+- RULE-SET,TelegramNL,📲Telegram
+- RULE-SET,YouTube,📺Youtube
+- RULE-SET,YouTube_2,📺Youtube
+- RULE-SET,YouTubeMusic,📺Youtube
+- RULE-SET,HBO,🎬HBO
+- RULE-SET,HBOUSA,🎬HBO
+- RULE-SET,HBOHK,🎬HBO
+- RULE-SET,HBOAsia,🎬HBO
+- RULE-SET,HBO_2,🎬HBO
+- RULE-SET,HBO_GO_HKG,🎬HBO
+- RULE-SET,Hulu,🎬Hulu
+- RULE-SET,HuluUSA,🎬Hulu
+- RULE-SET,HuluJP,🎬Hulu
+- RULE-SET,HuluJapan,🎬Hulu
+- RULE-SET,Netflix_Classical,🎬奈飞
+- RULE-SET,Netflix,🎬奈飞
+- RULE-SET,NetflixIP,🎬奈飞
+- RULE-SET,Disney,🎬迪士尼
+- RULE-SET,DisneyPlus,🎬迪士尼
+- RULE-SET,OpenAI,🤖人工智能
+- RULE-SET,OpenAI_2,🤖人工智能
+- RULE-SET,BardAI,🤖人工智能
+- RULE-SET,Gemini,🤖人工智能
+- RULE-SET,MyAI_Supplement,🤖人工智能
+- RULE-SET,AppleTV,🍎苹果服务
+- RULE-SET,Siri,🍎苹果服务
+- RULE-SET,SystemOTA,🍎苹果服务
+- RULE-SET,AppleMusic,🍎苹果服务
+- RULE-SET,iCloud,🍎苹果服务
+- RULE-SET,AppStore,🍎苹果服务
+- RULE-SET,AppleID,🍎苹果服务
+- RULE-SET,FindMy,🍎苹果服务
+- RULE-SET,Beats,🍎苹果服务
+- RULE-SET,AppleNews,🍎苹果服务
+- RULE-SET,AppleMail,🍎苹果服务
+- RULE-SET,FitnessPlus,🍎苹果服务
+- RULE-SET,AppleDev,🍎苹果服务
+- RULE-SET,AppleProxy,🍎苹果服务
+- RULE-SET,iCloudPrivateRelay,🍎苹果服务
+- RULE-SET,Apple_Classical,🍎苹果服务
+- RULE-SET,Epic,🎮游戏平台
+- RULE-SET,Origin,🎮游戏平台
+- RULE-SET,Sony,🎮游戏平台
+- RULE-SET,Steam,🎮游戏平台
+- RULE-SET,UBI,🎮游戏平台
+- RULE-SET,Nintendo,🎮游戏平台
+- RULE-SET,Battle,🎮游戏平台
+- RULE-SET,Blizzard,🎮游戏平台
+- RULE-SET,EA,🎮游戏平台
+- RULE-SET,Xbox,🎮游戏平台
+- RULE-SET,PlayStation,🎮游戏平台
+- RULE-SET,Riot,🎮游戏平台
+- RULE-SET,WildRift,🎮游戏平台
+- RULE-SET,Rockstar,🎮游戏平台
+- RULE-SET,Garena,🎮游戏平台
+- RULE-SET,Game,🎮游戏平台
+- RULE-SET,OneDrive,Ⓜ️微软服务
+- RULE-SET,MicrosoftEdge,Ⓜ️微软服务
+- RULE-SET,Copilot,Ⓜ️微软服务
+- RULE-SET,GitHub,Ⓜ️微软服务
+- RULE-SET,Teams,Ⓜ️微软服务
+- RULE-SET,Microsoft,Ⓜ️微软服务
+- RULE-SET,TikTok,🌍国际媒体
+- RULE-SET,Twitch,🌍国际媒体
+- RULE-SET,Twitter,🌍国际媒体
+- RULE-SET,Instagram,🌍国际媒体
+- RULE-SET,Facebook,🌍国际媒体
+- RULE-SET,Emby,🌍国际媒体
+- RULE-SET,Fox,🌍国际媒体
+- RULE-SET,Spotify,🌍国际媒体
+- RULE-SET,Niconico,🌍国际媒体
+- RULE-SET,Bahamut,🌍国际媒体
+- RULE-SET,BBC,🌍国际媒体
+- RULE-SET,Espn,🌍国际媒体
+- RULE-SET,DAZN,🌍国际媒体
+- RULE-SET,TVB,🌍国际媒体
+- RULE-SET,PandoraTV,🌍国际媒体
+- RULE-SET,AmazonPrimeVideo,🌍国际媒体
+- RULE-SET,PrimeVideo,🌍国际媒体
+- RULE-SET,ParamountPlus,🌍国际媒体
+- RULE-SET,DiscoveryPlus,🌍国际媒体
+- RULE-SET,Abema,🌍国际媒体
+- RULE-SET,Vimeo,🌍国际媒体
+- RULE-SET,Voxmedia,🌍国际媒体
+- RULE-SET,UKMedia,🌍国际媒体
+- RULE-SET,USMedia,🌍国际媒体
+- RULE-SET,VOA,🌍国际媒体
+- RULE-SET,IPTVOther_Classical,🌍国际媒体
+- RULE-SET,GlobalMedia_Classical,🌍国际媒体
+- RULE-SET,MyVideo_Replenish,🌍国际媒体
+- RULE-SET,Google,🙌默认代理
+- RULE-SET,Line,🙌默认代理
+- RULE-SET,Discord,🙌默认代理
+- RULE-SET,PayPal,🙌默认代理
+- RULE-SET,Reddit,🙌默认代理
+- RULE-SET,Heroku,🙌默认代理
+- RULE-SET,Wikipedia,🙌默认代理
+- RULE-SET,GlobalScholar,🙌默认代理
+- RULE-SET,Amazon,🙌默认代理
+- RULE-SET,AmazonIP_Classical,🙌默认代理
+- RULE-SET,AmazonCloud_Classical,🙌默认代理
+- RULE-SET,Clubhouse,🙌默认代理
+- RULE-SET,ClubhouseIP,🙌默认代理
+- RULE-SET,CloudGlobal_Classical,🙌默认代理
+- RULE-SET,Proxy_Classical,🙌默认代理
+- RULE-SET,Global_Classical,🙌默认代理
+- RULE-SET,ASN.China,🚩国内流量
+- RULE-SET,ChinaMax_Classical,🚩国内流量
+- RULE-SET,ChinaIPsBGP_Classical,🚩国内流量
+- RULE-SET,ChinaMedia,🚩国内流量
+- RULE-SET,ChinaTelecom,🚩国内流量
+- RULE-SET,ChinaMobile,🚩国内流量
+- RULE-SET,ChinaUnicom,🚩国内流量
+- RULE-SET,ByteDance,🚩国内流量
+- RULE-SET,CCTV,🚩国内流量
+- GEOSITE,CN,🚩国内流量
+- GEOSITE,geolocation-!cn,🙌默认代理
+- GEOIP,CN,🚩国内流量
+- RULE-SET,Download_No_Resolve,⛔直接连接
+- RULE-SET,Direct_No_Resolve,⛔直接连接
 - DST-PORT,80,🙌默认代理
 - DST-PORT,443,🙌默认代理
-- DST-PORT,22,🙌默认代理
 - MATCH,🐟漏网之鱼 # 不匹配规则的流量
