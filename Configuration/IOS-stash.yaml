@@ -504,8 +504,10 @@ proxy-groups:
     hidden: true
 
 script:
-  shortcuts:
-    quic: network == 'udp' and dst_port == 443
+  shortcuts: # 可以在规则中引用
+    quic: network == 'udp' and dst_port == 443 # 匹配全部QUIC协议
+    quic-cn: network == 'udp' and geoip(dst_ip if dst_ip != '' else resolve_ip(host)) == 'CN' # 匹配quic-cn
+    quic-!cn: network == 'udp' and geoip(dst_ip if dst_ip != '' else resolve_ip(host)) != 'CN' # 匹配quic-!cn
 
 # 规则提供者
 rule-providers:
@@ -1340,6 +1342,8 @@ rule-providers:
 
 # 规则（从上往下匹配）
 rules:
+- SCRIPT,quic-!cn,REJECT # 拦截 国外QUIC 协议请求
+- GEOSITE,category-public-tracker,DIRECT
 - RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
 - RULE-SET,Hijacking_No_Resolve,📵拒绝连接
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务
@@ -1481,6 +1485,32 @@ rules:
 - GEOIP,CN,🚩国内流量
 - RULE-SET,Download_No_Resolve,⛔直接连接
 - RULE-SET,Direct_No_Resolve,⛔直接连接
+- SCRIPT,quic-cn,DIRECT # 接受 国内QUIC 协议请求
+- PROCESS-NAME,aria2c,DIRECT
+- PROCESS-NAME,BitComet,DIRECT
+- PROCESS-NAME,fdm,DIRECT
+- PROCESS-NAME,NetTransport,DIRECT
+- PROCESS-NAME,qbittorrent,DIRECT
+- PROCESS-NAME,Thunder,DIRECT
+- PROCESS-NAME,transmission-daemon,DIRECT
+- PROCESS-NAME,transmission-qt,DIRECT
+- PROCESS-NAME,uTorrent,DIRECT
+- PROCESS-NAME,WebTorrent,DIRECT
+- PROCESS-NAME,Folx,DIRECT
+- PROCESS-NAME,Transmission,DIRECT
+- PROCESS-NAME,WebTorrent Helper,DIRECT
+- PROCESS-NAME,v2ray,DIRECT
+- PROCESS-NAME,ss-local,DIRECT
+- PROCESS-NAME,ssr-local,DIRECT
+- PROCESS-NAME,ss-redir,DIRECT
+- PROCESS-NAME,ssr-redir,DIRECT
+- PROCESS-NAME,ss-server,DIRECT
+- PROCESS-NAME,trojan-go,DIRECT
+- PROCESS-NAME,xray,DIRECT
+- PROCESS-NAME,hysteria,DIRECT
+- PROCESS-NAME,singbox,DIRECT
+- PROCESS-NAME,UUBooster,DIRECT
+- PROCESS-NAME,uugamebooster,DIRECT
 - DST-PORT,80,🙌默认代理
 - DST-PORT,443,🙌默认代理
 - MATCH,🐟漏网之鱼 # 不匹配规则的流量
