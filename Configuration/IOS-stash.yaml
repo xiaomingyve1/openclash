@@ -1336,8 +1336,9 @@ rule-providers:
 
 script:
   shortcuts: # 可以在规则中引用
-    telegram-quic: network == 'udp' and dst_port == 443 and match_geosite('telegram') # 匹配 Telegram QUIC
+    google-quic: network == 'udp' and dst_port == 443 and match_geosite('google') # 匹配 Google QUIC
     youtube-quic: network == 'udp' and dst_port == 443 and match_geosite('youtube') # 匹配 YouTube QUIC
+    amazon-quic: network == 'udp' and dst_port == 443 and match_geosite('amazon') # 匹配 Amazon QUIC
     hbo-quic: network == 'udp' and dst_port == 443 and match_geosite('hbo') # 匹配 HBO QUIC
     hulu-quic: network == 'udp' and dst_port == 443 and match_geosite('hulu') # 匹配 Hulu QUIC
     netflix-quic: network == 'udp' and dst_port == 443 and match_geosite('netflix') # 匹配 Netflix QUIC
@@ -1346,36 +1347,29 @@ script:
     facebook-quic: network == 'udp' and dst_port == 443 and match_geosite('facebook') # 匹配 Facebook QUIC
     tiktok-quic: network == 'udp' and dst_port == 443 and match_geosite('tiktok') # 匹配 TikTok QUIC
     twitch-quic: network == 'udp' and dst_port == 443 and match_geosite('twitch') # 匹配 Twitch QUIC
-    twitter-quic: network == 'udp' and dst_port == 443 and match_geosite('twitter') # 匹配 Twitter QUIC
     microsoft-quic: network == 'udp' and dst_port == 443 and match_geosite('microsoft') # 匹配 Microsoft QUIC
-    amazonprimevideo-quic: network == 'udp' and dst_port == 443 and match_geosite('amazon-prime-video') # 匹配 Amazon Prime Video QUIC
-    google-quic: network == 'udp' and dst_port == 443 and match_geosite('google') # 匹配 Google QUIC
-    amazon-quic: network == 'udp' and dst_port == 443 and match_geosite('amazon') # 匹配 Amazon QUIC
 
 # 规则（从上往下匹配）
 rules:
-- SCRIPT,telegram-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,youtube-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,hbo-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,hulu-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,netflix-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,disney-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,instagram-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,facebook-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,tiktok-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,twitch-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,twitter-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,microsoft-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,amazonprimevideo-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,google-quic,📵拒绝连接 # 拦截 QUIC 协议请求
-- SCRIPT,amazon-quic,📵拒绝连接 # 拦截 QUIC 协议请求
+- SCRIPT,google-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,youtube-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,amazon-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,hbo-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,hulu-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,netflix-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,disney-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,instagram-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,facebook-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,tiktok-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,twitch-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
+- SCRIPT,microsoft-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
 
-- RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
-- RULE-SET,Hijacking_No_Resolve,📵拒绝连接
+- RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接,no-track #隐藏连接
+- RULE-SET,Hijacking_No_Resolve,📵拒绝连接,no-track #隐藏连接
+- RULE-SET,MyDNS_No_Resolve,🧬DNS服务,no-track #隐藏连接
+- RULE-SET,MyDNS_CN_No_Resolve,⛔直接连接,no-track #隐藏连接
+- RULE-SET,Lan_No_Resolve,⛔直接连接,no-track #隐藏连接
 - GEOSITE,category-public-tracker,⛔直接连接
-- RULE-SET,MyDNS_No_Resolve,🧬DNS服务
-- RULE-SET,MyDNS_CN_No_Resolve,⛔直接连接
-- RULE-SET,Lan_No_Resolve,⛔直接连接
 - RULE-SET,GoogleCN,🚩国内流量
 - RULE-SET,GoogleCNProxyIP,🚩国内流量
 - RULE-SET,AmazonCN,🚩国内流量
@@ -1512,31 +1506,6 @@ rules:
 - GEOIP,CN,🚩国内流量
 - RULE-SET,Download_No_Resolve,⛔直接连接
 - RULE-SET,Direct_No_Resolve,⛔直接连接
-- PROCESS-NAME,aria2c,DIRECT
-- PROCESS-NAME,BitComet,DIRECT
-- PROCESS-NAME,fdm,DIRECT
-- PROCESS-NAME,NetTransport,DIRECT
-- PROCESS-NAME,qbittorrent,DIRECT
-- PROCESS-NAME,Thunder,DIRECT
-- PROCESS-NAME,transmission-daemon,DIRECT
-- PROCESS-NAME,transmission-qt,DIRECT
-- PROCESS-NAME,uTorrent,DIRECT
-- PROCESS-NAME,WebTorrent,DIRECT
-- PROCESS-NAME,Folx,DIRECT
-- PROCESS-NAME,Transmission,DIRECT
-- PROCESS-NAME,WebTorrent Helper,DIRECT
-- PROCESS-NAME,v2ray,DIRECT
-- PROCESS-NAME,ss-local,DIRECT
-- PROCESS-NAME,ssr-local,DIRECT
-- PROCESS-NAME,ss-redir,DIRECT
-- PROCESS-NAME,ssr-redir,DIRECT
-- PROCESS-NAME,ss-server,DIRECT
-- PROCESS-NAME,trojan-go,DIRECT
-- PROCESS-NAME,xray,DIRECT
-- PROCESS-NAME,hysteria,DIRECT
-- PROCESS-NAME,singbox,DIRECT
-- PROCESS-NAME,UUBooster,DIRECT
-- PROCESS-NAME,uugamebooster,DIRECT
 - DST-PORT,80,🙌默认代理
 - DST-PORT,443,🙌默认代理
 - MATCH,🐟漏网之鱼 # 不匹配规则的流量
