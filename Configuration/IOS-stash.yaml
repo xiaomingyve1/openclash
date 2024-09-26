@@ -173,11 +173,6 @@ dns:
     - tls://8.8.8.8 #dns
     - tls://1.0.0.1 #dns
 
-# 缓存
-profile:
-  store-selected: true # 储存 API 对策略组选择，供下次启动时使用
-  store-fake-ip: true # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
-
 # 域名嗅探
 sniffer:
   enable: true # 嗅探开关 true / false
