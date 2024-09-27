@@ -1332,7 +1332,6 @@ rule-providers:
 
 # 规则（从上往下匹配）
 rules:
-- GEOSITE,category-public-tracker,⛔直接连接
 - RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
 - RULE-SET,Hijacking_No_Resolve,📵拒绝连接
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务

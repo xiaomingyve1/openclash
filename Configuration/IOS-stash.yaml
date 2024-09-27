@@ -1367,7 +1367,6 @@ rules:
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务,no-track #隐藏连接
 - RULE-SET,MyDNS_CN_No_Resolve,⛔直接连接,no-track #隐藏连接
 - RULE-SET,Lan_No_Resolve,⛔直接连接,no-track #隐藏连接
-- GEOSITE,category-public-tracker,⛔直接连接
 - RULE-SET,GoogleCN,🚩国内流量
 - RULE-SET,GoogleCNProxyIP,🚩国内流量
 - RULE-SET,AmazonCN,🚩国内流量
