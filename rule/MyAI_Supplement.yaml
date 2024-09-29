@@ -29,3 +29,8 @@ payload:
   - DOMAIN-SUFFIX,anthropic.com
   - DOMAIN-SUFFIX,claude.ai.com
   
+  # > Meta AI
+  - DOMAIN-SUFFIX,meta.ai
+
+  # > Perplexity AI
+  - DOMAIN-SUFFIX,perplexity.ai
