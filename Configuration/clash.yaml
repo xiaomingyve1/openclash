@@ -17,13 +17,13 @@ proxy-providers:
 # ❗️⚠️注意：将" 机场订阅URL "直接替换下面文字 订阅链接 ⚠️❗️ #
     url: "订阅链接"
 # ❗️⚠️注意：将" 机场订阅URL "直接替换下面文字 订阅链接 ⚠️❗️ #
-    interval: 37800
+    interval: 21600
     path: ./明月配置.yaml
     health-check:
       enable: true
       interval: 300
       url: https://cp.cloudflare.com/
-    filter: (?=.*())^((?!(官网|IEPL|专线)).)*$
+    filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|更新|官网)).)*$
     benchmark-url: https://www.gstatic.com/generate_204
     benchmark-timeout: 5
 
@@ -337,24 +337,24 @@ proxy-groups:
   - name: 🎬HBO
     type: select
     proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
       - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
+      - 🙌默认代理
       - 👋手动选择
+      - 🚦故障转移
+    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
+    use:
+      - 明月配置
 
   - name: 🎬Hulu
     type: select
     proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
       - 🇺🇸美国优选
+      - 🙌默认代理
       - 👋手动选择
+      - 🚦故障转移
+    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
+    use:
+      - 明月配置
 
   - name: 🚩国内流量
     type: select
@@ -408,7 +408,7 @@ proxy-groups:
     interval: 60
     tolerance: 20
     timeout: 2000
-    max-failed-times: 3
+    max-failed-times: 2
     use:
       - 明月配置
     hidden: true
@@ -423,7 +423,7 @@ proxy-groups:
     interval: 60
     tolerance: 20
     timeout: 2000
-    max-failed-times: 3
+    max-failed-times: 2
     use:
       - 明月配置
     hidden: true
@@ -438,7 +438,7 @@ proxy-groups:
     interval: 60
     tolerance: 20
     timeout: 2000
-    max-failed-times: 3
+    max-failed-times: 2
     use:
       - 明月配置
     hidden: true
@@ -453,7 +453,7 @@ proxy-groups:
     interval: 60
     tolerance: 20
     timeout: 2000
-    max-failed-times: 3
+    max-failed-times: 2
     use:
       - 明月配置
     hidden: true
@@ -468,7 +468,7 @@ proxy-groups:
     interval: 60
     tolerance: 20
     timeout: 2000
-    max-failed-times: 3
+    max-failed-times: 2
     use:
       - 明月配置
     hidden: true
@@ -480,7 +480,7 @@ proxy-groups:
     url: "https://www.gstatic.com/generate_204"
     interval: 300
     timeout: 2000
-    max-failed-times: 3
+    max-failed-times: 2
     use:
       - 明月配置
     hidden: true
@@ -555,6 +555,12 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudCN/CloudCN.yaml
     path: "./rule_provider/rule-provider_CloudCN.yaml"
     interval: 75600
+  Cloudflarecn:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloudflarecn/Cloudflarecn.yaml
+    path: "./rule_provider/rule-provider_Cloudflarecn.yaml"
+    interval: 75600
   SteamCN:
     type: http
     behavior: classical
@@ -602,6 +608,12 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.yaml
     path: "./rule_provider/rule-provider_Nvidia.yaml"
+    interval: 75600
+  Xunlei:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Xunlei/Xunlei.yaml
+    path: "./rule_provider/rule-provider_Xunlei.yaml"
     interval: 75600
   Epic:
     type: http
@@ -1119,6 +1131,18 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PandoraTV/PandoraTV.yaml
     path: "./rule_provider/rule-provider_PandoraTV.yaml"
     interval: 75600
+  Huffpost:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Huffpost/Huffpost.yaml
+    path: "./rule_provider/rule-provider_Huffpost.yaml"
+    interval: 75600
+  AppleDaily:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/AppleDaily/AppleDaily.yaml
+    path: "./rule_provider/rule-provider_AppleDaily.yaml"
+    interval: 75600
   AmazonPrimeVideo:
     type: http
     behavior: classical
@@ -1239,6 +1263,12 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ClubhouseIP/ClubhouseIP.yaml
     path: "./rule_provider/rule-provider_ClubhouseIP.yaml"
     interval: 75600
+  Speedtest:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Speedtest/Speedtest.yaml
+    path: "./rule_provider/rule-provider_Speedtest.yaml"
+    interval: 75600
   Line:
     type: http
     behavior: classical
@@ -1275,17 +1305,41 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Wikipedia/Wikipedia.yaml
     path: "./rule_provider/rule-provider_Wikipedia.yaml"
     interval: 75600
+  Docker:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Docker/Docker.yaml
+    path: "./rule_provider/rule-provider_Docker.yaml"
+    interval: 75600
   Crypto:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Crypto/Crypto.yaml
     path: "./rule_provider/rule-provider_Crypto.yaml"
     interval: 75600
+  Bestbuy:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Bestbuy/Bestbuy.yaml
+    path: "./rule_provider/rule-provider_Bestbuy.yaml"
+    interval: 75600
   GlobalScholar:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalScholar/GlobalScholar.yaml
     path: "./rule_provider/rule-provider_GlobalScholar.yaml"
+    interval: 75600
+  Whatsapp:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Whatsapp/Whatsapp.yaml
+    path: "./rule_provider/rule-provider_Whatsapp.yaml"
+    interval: 75600
+  KakaoTalk:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/KakaoTalk/KakaoTalk.yaml
+    path: "./rule_provider/rule-provider_KakaoTalk.yaml"
     interval: 75600
   Duckduckgo:
     type: http
@@ -1298,6 +1352,12 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GlobalSign/GlobalSign.yaml
     path: "./rule_provider/rule-provider_GlobalSign.yaml"
+    interval: 75600
+  Cloudflare:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloudflare/Cloudflare.yaml
+    path: "./rule_provider/rule-provider_Cloudflare.yaml"
     interval: 75600
   AmazonCloud_Classical:
     type: http
@@ -1413,6 +1473,7 @@ rules:
 - RULE-SET,GoogleCN,🚩国内流量
 - RULE-SET,AmazonCN,🚩国内流量
 - RULE-SET,CloudCN,🚩国内流量
+- RULE-SET,Cloudflarecn,🚩国内流量
 - RULE-SET,SteamCN,🚩国内流量
 - RULE-SET,GameDownload,🚩国内流量
 - RULE-SET,GameDownloadCN,🚩国内流量
@@ -1421,6 +1482,7 @@ rules:
 - RULE-SET,AMD,🚩国内流量
 - RULE-SET,Intel,🚩国内流量
 - RULE-SET,Nvidia,🚩国内流量
+- RULE-SET,Xunlei,🚩国内流量
 - RULE-SET,Epic,🎮游戏平台
 - RULE-SET,Origin,🎮游戏平台
 - RULE-SET,Sony,🎮游戏平台
@@ -1507,6 +1569,8 @@ rules:
 - RULE-SET,DAZN,🌍国际媒体
 - RULE-SET,TVB,🌍国际媒体
 - RULE-SET,PandoraTV,🌍国际媒体
+- RULE-SET,Huffpost,🌍国际媒体
+- RULE-SET,AppleDaily,🌍国际媒体
 - RULE-SET,AmazonPrimeVideo,🌍国际媒体
 - RULE-SET,PrimeVideo,🌍国际媒体
 - RULE-SET,ParamountPlus,🌍国际媒体
@@ -1527,16 +1591,22 @@ rules:
 - RULE-SET,AmazonIP_Classical,🙌默认代理
 - RULE-SET,Clubhouse,🙌默认代理
 - RULE-SET,ClubhouseIP,🙌默认代理
+- RULE-SET,Speedtest,🙌默认代理
 - RULE-SET,Line,🙌默认代理
 - RULE-SET,PayPal,🙌默认代理
 - RULE-SET,Reddit,🙌默认代理
 - RULE-SET,Heroku,🙌默认代理
 - RULE-SET,Discord,🙌默认代理
 - RULE-SET,Wikipedia,🙌默认代理
+- RULE-SET,Docker,🙌默认代理
 - RULE-SET,Crypto,🙌默认代理
+- RULE-SET,Bestbuy,🙌默认代理
 - RULE-SET,GlobalScholar,🙌默认代理
+- RULE-SET,Whatsapp,🙌默认代理
+- RULE-SET,KakaoTalk,🙌默认代理
 - RULE-SET,Duckduckgo,🙌默认代理
 - RULE-SET,GlobalSign,🙌默认代理
+- RULE-SET,Cloudflare,🙌默认代理
 - RULE-SET,AmazonCloud_Classical,🙌默认代理
 - RULE-SET,CloudGlobal_Classical,🙌默认代理
 - RULE-SET,Proxy_Classical,🙌默认代理
