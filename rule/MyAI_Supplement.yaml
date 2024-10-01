@@ -31,6 +31,49 @@ payload:
   
   # > Meta AI
   - DOMAIN-SUFFIX,meta.ai
+  - DOMAIN-SUFFIX,ai.meta.com
+  - DOMAIN-SUFFIX,llama10audio.com
+  - DOMAIN-SUFFIX,llama10chat.com
+  - DOMAIN-SUFFIX,llama10code.com
+  - DOMAIN-SUFFIX,llama10instruct.com
+  - DOMAIN-SUFFIX,llama10video.com
+  - DOMAIN-SUFFIX,llama10vision.com
+  - DOMAIN-SUFFIX,llama4video.ai
+  - DOMAIN-SUFFIX,llama4vision.ai
+  - DOMAIN-SUFFIX,llama5audio.com
+  - DOMAIN-SUFFIX,llama5video.com
+  - DOMAIN-SUFFIX,llama5vision.com
+  - DOMAIN-SUFFIX,llama6audio.com
+  - DOMAIN-SUFFIX,llama6chat.com
+  - DOMAIN-SUFFIX,llama6video.com
+  - DOMAIN-SUFFIX,llama6vision.com
+  - DOMAIN-SUFFIX,llama7audio.com
+  - DOMAIN-SUFFIX,llama7chat.com
+  - DOMAIN-SUFFIX,llama7code.com
+  - DOMAIN-SUFFIX,llama7instruct.com
+  - DOMAIN-SUFFIX,llama7video.com
+  - DOMAIN-SUFFIX,llama7vision.com
+  - DOMAIN-SUFFIX,llama8.net
+  - DOMAIN-SUFFIX,llama8audio.com
+  - DOMAIN-SUFFIX,llama8chat.com
+  - DOMAIN-SUFFIX,llama8code.com
+  - DOMAIN-SUFFIX,llama8instruct.com
+  - DOMAIN-SUFFIX,llama8video.com
+  - DOMAIN-SUFFIX,llama8vision.com
+  - DOMAIN-SUFFIX,llama9audio.com
+  - DOMAIN-SUFFIX,llama9chat.com
+  - DOMAIN-SUFFIX,llama9code.com
+  - DOMAIN-SUFFIX,llama9instruct.com
+  - DOMAIN-SUFFIX,llama9video.com
+  - DOMAIN-SUFFIX,llama9vision.com
+  - DOMAIN-SUFFIX,llamacon.ai
+  - DOMAIN-SUFFIX,llamaecoystem.ai
+  - DOMAIN-SUFFIX,llamagovernment.ai
+  - DOMAIN-SUFFIX,llamaimage.ai
+  - DOMAIN-SUFFIX,llamalarge.ai
+  - DOMAIN-SUFFIX,llamamobile.ai
+  - DOMAIN-SUFFIX,llamasmall.ai
+  - DOMAIN-SUFFIX,llamastartup.ai
 
   # > Perplexity AI
   - DOMAIN-SUFFIX,perplexity.ai
