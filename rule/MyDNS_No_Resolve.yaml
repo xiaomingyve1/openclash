@@ -43,6 +43,7 @@ payload:
   - IP-CIDR,4.2.2.6/32,no-resolve
 # afosne
   - DOMAIN-SUFFIX,dns.afosne.icu
+  - DOMAIN-SUFFIX,dns2.afosne.icu
 
 #未分类IPv4
   - IP-CIDR,64.6.64.6/32,no-resolve
