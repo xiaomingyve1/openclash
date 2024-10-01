@@ -1,4 +1,4 @@
-# openclash
+# openclash 专为流媒体检测优化
 
 在线订阅转换自定义.ini 模板
 需要后端支持规则集
