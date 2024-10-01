@@ -1,7 +1,7 @@
-# 国外DNS服务器列表
+#国外DNS服务器列表
 
 payload:
-# 解锁流媒体DNS服务器
+#解锁流媒体DNS服务器
 # afosne
   - DOMAIN-SUFFIX,dns.afosne.icu
   - DOMAIN-SUFFIX,dns2.afosne.icu
@@ -47,7 +47,7 @@ payload:
   - IP-CIDR,4.2.2.5/32,no-resolve
   - IP-CIDR,4.2.2.6/32,no-resolve
 
-# 未分类IPv4
+#未分类IPv4
   - IP-CIDR,64.6.64.6/32,no-resolve
   - IP-CIDR,64.6.65.6/32,no-resolve
   - IP-CIDR,185.222.222.222/32,no-resolve
