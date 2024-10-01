@@ -26,7 +26,7 @@ use: &use
   use:
     - 明月配置 
 # 订阅节点关键词过滤器
-  exclude-filter: "群|官网"
+  exclude-filter: "群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|更新|官网"
 
 # 策略组   --AI和流媒体用openclash的流媒体检测
 proxy-groups:
