@@ -178,7 +178,7 @@ sniffer:
   enable: true # 嗅探开关 true / false
   force-dns-mapping: true #强制进行 DNS 映射(绕过某些 DNS 污染或劫持)
   parse-pure-ip: true #嗅探纯 IP 连接
-  override-destination: true # 是否使用嗅探结果作为实际访问
+  override-destination: true # 全局使用嗅探结果作为实际访问
   sniffing: # 需要嗅探协议
     - tls
     - http
@@ -202,33 +202,10 @@ sniffer:
   skip-domain: # 不进行嗅探域名
     - '+.apple.com'
     - '+.vivox.com'
-    - '+.push.apple.com'
-    - Mijia Cloud
-    - dlg.io.mi.com
-    - courier.push.apple.com
-    - gateway.push.apple.com
-    - rbsxbxp-mim.vivox.com
-    - rbsxbxp.www.vivox.com
-    - rbsxbxp-ws.vivox.com
-    - rbspsxp.www.vivox.com
-    - rbspsxp-mim.vivox.com
-    - rbspsxp-ws.vivox.com
-    - rbswxp.www.vivox.com
-    - rbswxp-mim.vivox.com
-    - disp-rbspsp-5-1.vivox.com
-    - disp-rbsxbp-5-1.vivox.com
-    - proxy.rbsxbp.vivox.com
-    - proxy.rbspsp.vivox.com
-    - proxy.rbswp.vivox.com
-    - rbswp.vivox.com
-    - rbsxbp.vivox.com
-    - rbspsp.vivox.com
-    - rbspsp.www.vivox.com
-    - rbswp.www.vivox.com
-    - rbsxbp.www.vivox.com
-    - rbsxbxp.vivox.com
-    - rbspsxp.vivox.com
-    - rbswxp.vivox.com
+    - '+.oray.com'
+    - '+.sunlogin.net'
+    - 'Mijia Cloud'
+    - 'dlg.io.mi.com'
 
 proxy-groups:
   - name: 👋手动选择
