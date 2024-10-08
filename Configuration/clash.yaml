@@ -200,6 +200,10 @@ sniffer:
   skip-domain: # 不进行嗅探域名
     - '+.apple.com'
     - '+.vivox.com'
+    - '+.wechat.com'
+    - '+.qpic.cn'
+    - '+.qq.com'
+    - '+.wechatapp.com'
     - '+.oray.com'
     - '+.sunlogin.net'
     - Mijia Cloud
