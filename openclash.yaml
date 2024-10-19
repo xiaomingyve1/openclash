@@ -17,7 +17,7 @@ p:
 proxy-providers:
   明月配置:
     <<: *p
-    url:   #订阅链接
+    url:    #订阅链接
 # ❗️⚠️注意：将" 机场订阅URL "直接填在上面 url 后面⚠️❗️ #
 
 # 订阅文件及过滤
@@ -30,25 +30,27 @@ use: &use
 
 # 策略组   --AI和流媒体用openclash的流媒体检测
 proxy-groups:
+  - {name: 👋手动选择,<<: *use, type: select}
   - {name: 🙌默认代理, type: select, proxies: [⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
   - {name: 📲Telegram, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 🐟漏网之鱼, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
   - {name: 🎮游戏平台, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 👋手动选择,<<: *use, type: select}
+  - {name: 🗄️下载服务, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
+  - {name: 🐟漏网之鱼, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
 #  AI和国际媒体有些不能用香港节点--排除
   - {name: 🤖人工智能,<<: *use, type: select, filter: (?=.*())^((?!(港|🇭🇰|HK|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 🌍国际媒体,<<: *use, type: select, filter: (?=.*())^((?!(港|🇭🇰|HK|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
+  - {name: 🎬AmazonPrimeVideo,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 📺Youtube,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 🎬奈飞,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 🎬迪士尼,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
-  # 地区限制
+# 地区限制
   - {name: 🎬HBO,<<: *use, type: select, proxies: [⚡️🇸🇬狮城优选,⚖️🇸🇬狮城均衡,🙌默认代理,👋手动选择,🚦故障转移], filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$}
   - {name: 🎬Hulu,<<: *use, type: select, proxies: [⚡️🇺🇸美国优选,⚖️🇺🇸美国均衡,🙌默认代理,👋手动选择,🚦故障转移], filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$}
 
   - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: Ⓜ️微软服务, type: select, proxies: [🤖人工智能,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
-  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,🎬奈飞,🎬迪士尼,🎬HBO,🎬Hulu,👋手动选择,🤖人工智能,🌍国际媒体,🚦故障转移,⛔直接连接]}
+  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,📲Telegram,🎮游戏平台,🗄️下载服务,🐟漏网之鱼,🤖人工智能,🌍国际媒体,🎬AmazonPrimeVideo,📺Youtube,🎬奈飞,🎬迪士尼,🎬HBO,🎬Hulu,🚩国内流量,🍎苹果服务,Ⓜ️微软服务,👋手动选择]}
 
 ###   以下策略组在 METACUBEXD 控制面板 已隐藏
 
@@ -66,7 +68,7 @@ proxy-groups:
   - {name: ⚖️🇹🇼台湾均衡,<<: *use, type: load-balance, filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
   - {name: ⚖️🇺🇸美国均衡,<<: *use, type: load-balance, filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
 
-  # 故障转移
+# 故障转移
   - {name: 🚦故障转移,<<: *use, type: fallback, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$, interval: 60, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
   - {name: ⛔直接连接, type: select, udp: true, hidden: true, proxies: [ DIRECT ]}
   - {name: 📵拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ]}
@@ -103,6 +105,54 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml
     path: "./rule_provider/rule-provider_Hijacking_No_Resolve.yaml"
     interval: 75600
+  AMD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AMD/AMD.yaml
+    path: "./rule_provider/rule-provider_AMD.yaml"
+    interval: 75600
+  Intel:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Intel/Intel.yaml
+    path: "./rule_provider/rule-provider_Intel.yaml"
+    interval: 75600
+  Nvidia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.yaml
+    path: "./rule_provider/rule-provider_Nvidia.yaml"
+    interval: 75600
+  SteamCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml
+    path: "./rule_provider/rule-provider_SteamCN.yaml"
+    interval: 75600
+  GameDownload:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownload/GameDownload.yaml
+    path: "./rule_provider/rule-provider_GameDownload.yaml"
+    interval: 75600
+  GameDownloadCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml
+    path: "./rule_provider/rule-provider_GameDownloadCN.yaml"
+    interval: 75600
+  PrivateTracker:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.yaml
+    path: "./rule_provider/rule-provider_PrivateTracker.yaml"
+    interval: 75600
+  MyDownload_Increase:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/rule/MyDownload_Increase.yaml
+    path: "./rule_provider/rule-provider_MyDownload_Increase.yaml"
+    interval: 75600
   CSDN:
     type: http
     behavior: classical
@@ -133,59 +183,11 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloudflarecn/Cloudflarecn.yaml
     path: "./rule_provider/rule-provider_Cloudflarecn.yaml"
     interval: 75600
-  SteamCN:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml
-    path: "./rule_provider/rule-provider_SteamCN.yaml"
-    interval: 75600
-  GameDownload:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownload/GameDownload.yaml
-    path: "./rule_provider/rule-provider_GameDownload.yaml"
-    interval: 75600
-  GameDownloadCN:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml
-    path: "./rule_provider/rule-provider_GameDownloadCN.yaml"
-    interval: 75600
-  PrivateTracker:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.yaml
-    path: "./rule_provider/rule-provider_PrivateTracker.yaml"
-    interval: 75600
   IPTVMainland_Classical:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVMainland/IPTVMainland_Classical.yaml
     path: "./rule_provider/rule-provider_IPTVMainland_Classical.yaml"
-    interval: 75600
-  AMD:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AMD/AMD.yaml
-    path: "./rule_provider/rule-provider_AMD.yaml"
-    interval: 75600
-  Intel:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Intel/Intel.yaml
-    path: "./rule_provider/rule-provider_Intel.yaml"
-    interval: 75600
-  Nvidia:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.yaml
-    path: "./rule_provider/rule-provider_Nvidia.yaml"
-    interval: 75600
-  Xunlei:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Xunlei/Xunlei.yaml
-    path: "./rule_provider/rule-provider_Xunlei.yaml"
     interval: 75600
   Epic:
     type: http
@@ -324,6 +326,18 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml
     path: "./rule_provider/rule-provider_YouTubeMusic.yaml"
+    interval: 75600
+  AmazonPrimeVideo:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonPrimeVideo/AmazonPrimeVideo.yaml
+    path: "./rule_provider/rule-provider_AmazonPrimeVideo.yaml"
+    interval: 75600
+  PrimeVideo:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrimeVideo/PrimeVideo.yaml
+    path: "./rule_provider/rule-provider_PrimeVideo.yaml"
     interval: 75600
   HBO:
     type: http
@@ -715,18 +729,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/AppleDaily/AppleDaily.yaml
     path: "./rule_provider/rule-provider_AppleDaily.yaml"
     interval: 75600
-  AmazonPrimeVideo:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonPrimeVideo/AmazonPrimeVideo.yaml
-    path: "./rule_provider/rule-provider_AmazonPrimeVideo.yaml"
-    interval: 75600
-  PrimeVideo:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrimeVideo/PrimeVideo.yaml
-    path: "./rule_provider/rule-provider_PrimeVideo.yaml"
-    interval: 75600
   ParamountPlus:
     type: http
     behavior: classical
@@ -1041,20 +1043,20 @@ rules:
 - RULE-SET,Lan_No_Resolve,⛔直接连接
 - RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
 - RULE-SET,Hijacking_No_Resolve,📵拒绝连接
+- RULE-SET,AMD,🗄️下载服务
+- RULE-SET,Intel,🗄️下载服务
+- RULE-SET,Nvidia,🗄️下载服务
+- RULE-SET,SteamCN,🗄️下载服务
+- RULE-SET,GameDownload,🗄️下载服务
+- RULE-SET,GameDownloadCN,🗄️下载服务
+- RULE-SET,PrivateTracker,🗄️下载服务
+- RULE-SET,MyDownload_Increase,🗄️下载服务
 - RULE-SET,CSDN,🚩国内流量
 - RULE-SET,GoogleCN,🚩国内流量
 - RULE-SET,AmazonCN,🚩国内流量
 - RULE-SET,CloudCN,🚩国内流量
 - RULE-SET,Cloudflarecn,🚩国内流量
-- RULE-SET,SteamCN,🚩国内流量
-- RULE-SET,GameDownload,🚩国内流量
-- RULE-SET,GameDownloadCN,🚩国内流量
-- RULE-SET,PrivateTracker,🚩国内流量
 - RULE-SET,IPTVMainland_Classical,🚩国内流量
-- RULE-SET,AMD,🚩国内流量
-- RULE-SET,Intel,🚩国内流量
-- RULE-SET,Nvidia,🚩国内流量
-- RULE-SET,Xunlei,🚩国内流量
 - RULE-SET,Epic,🎮游戏平台
 - RULE-SET,Origin,🎮游戏平台
 - RULE-SET,Sony,🎮游戏平台
@@ -1078,6 +1080,8 @@ rules:
 - RULE-SET,YouTube,📺Youtube
 - RULE-SET,YouTube_2,📺Youtube
 - RULE-SET,YouTubeMusic,📺Youtube
+- RULE-SET,AmazonPrimeVideo,🎬AmazonPrimeVideo
+- RULE-SET,PrimeVideo,🎬AmazonPrimeVideo
 - RULE-SET,HBO,🎬HBO
 - RULE-SET,HBO_2,🎬HBO
 - RULE-SET,HBOUSA,🎬HBO
@@ -1143,8 +1147,6 @@ rules:
 - RULE-SET,PandoraTV,🌍国际媒体
 - RULE-SET,Huffpost,🌍国际媒体
 - RULE-SET,AppleDaily,🌍国际媒体
-- RULE-SET,AmazonPrimeVideo,🌍国际媒体
-- RULE-SET,PrimeVideo,🌍国际媒体
 - RULE-SET,ParamountPlus,🌍国际媒体
 - RULE-SET,DiscoveryPlus,🌍国际媒体
 - RULE-SET,Abema,🌍国际媒体
@@ -1197,6 +1199,8 @@ rules:
 - GEOSITE,CN,🚩国内流量
 - GEOSITE,geolocation-!cn,🙌默认代理
 - GEOIP,CN,🚩国内流量
-- RULE-SET,Download_No_Resolve,⛔直接连接
+- RULE-SET,Download_No_Resolve,🗄️下载服务
 - RULE-SET,Direct_No_Resolve,⛔直接连接
-- MATCH,🐟漏网之鱼 # 不匹配规则的流量
+- DST-PORT,80,🙌默认代理
+- DST-PORT,443,🙌默认代理
+- MATCH,🐟漏网之鱼 # 不匹配规则的流量（例如游戏）
