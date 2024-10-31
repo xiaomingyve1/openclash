@@ -165,6 +165,7 @@ dns:
    - 1.0.0.1
    - 8.8.8.8
   nameserver:
+    - https://doh.pub/dns-query
     - https://223.5.5.5/dns-query #h3=true
     - https://223.6.6.6/dns-query #h3=true
   fallback:
@@ -264,7 +265,7 @@ proxy-groups:
       - 🇺🇸美国优选
       - 👋手动选择
 
-  - name: 🎬AmazonPrimeVideo
+  - name: 🎬PrimeVideo
     type: select
     proxies:
       - 🙌默认代理
@@ -301,10 +302,11 @@ proxy-groups:
     type: select
     proxies:
       - 🇸🇬狮城优选
+      - 🇺🇸美国优选
       - 🙌默认代理
       - 👋手动选择
       - 🚦故障转移
-    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
+    filter: (?=.*(新|🇸🇬|SG|坡|狮城|美|US|(?i)Singapore|States|American))^((?!(港|日|台|韩)).)*$
     use:
       - 明月配置
 
@@ -312,10 +314,11 @@ proxy-groups:
     type: select
     proxies:
       - 🇺🇸美国优选
+      - 🇯🇵日本优选
       - 🙌默认代理
       - 👋手动选择
       - 🚦故障转移
-    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
+    filter: (?=.*(美|US|日|🇯🇵|JP|东京|(?i)States|American|Japan))^((?!(港|台|韩|新)).)*$
     use:
       - 明月配置
 
@@ -358,7 +361,7 @@ proxy-groups:
       - 🤖人工智能
       - 🌍国际媒体
       - 📺Youtube
-      - 🎬AmazonPrimeVideo
+      - 🎬PrimeVideo
       - 🎬奈飞
       - 🎬迪士尼
       - 🎬HBO
@@ -1476,8 +1479,8 @@ rules:
 - RULE-SET,YouTube,📺Youtube
 - RULE-SET,YouTube_2,📺Youtube
 - RULE-SET,YouTubeMusic,📺Youtube
-- RULE-SET,AmazonPrimeVideo,🎬AmazonPrimeVideo
-- RULE-SET,PrimeVideo,🎬AmazonPrimeVideo
+- RULE-SET,AmazonPrimeVideo,🎬PrimeVideo
+- RULE-SET,PrimeVideo,🎬PrimeVideo
 - RULE-SET,HBO,🎬HBO
 - RULE-SET,HBO_2,🎬HBO
 - RULE-SET,HBOUSA,🎬HBO
