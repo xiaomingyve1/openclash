@@ -20,6 +20,10 @@ payload:
   - DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
   - IP-CIDR6,2606:4700:4700::1111/64,no-resolve
   - IP-CIDR6,2606:4700:4700::1001/64,no-resolve
+# NextDNS
+  - IP-CIDR,45.90.28.0/32,no-resolve
+  - IP-CIDR,45.90.30.0/32,no-resolve
+  - DOMAIN-SUFFIX,dns.nextdns.io
 # Quad9 DNS
   - IP-CIDR,9.9.9.9/32,no-resolve
   - IP-CIDR,9.9.9.10/32,no-resolve
@@ -39,6 +43,47 @@ payload:
   - IP-CIDR,208.67.222.220/32,no-resolve
   - IP-CIDR,208.67.220.222/32,no-resolve
   - DOMAIN-SUFFIX,doh.opendns.com
+# Yandex DNS
+  - IP-CIDR,77.88.8.8/32,no-resolve
+  - IP-CIDR,77.88.8.1/32,no-resolve
+  - DOMAIN-SUFFIX,doh.yandex.net
+  - DOMAIN-SUFFIX,dns.yandex.net
+# CleanBrowsing
+  - IP-CIDR,185.228.168.9/32,no-resolve
+  - IP-CIDR,185.228.169.9/32,no-resolve
+  - DOMAIN-SUFFIX,doh.cleanbrowsing.org
+  - DOMAIN-SUFFIX,security-filter-dns.cleanbrowsing.org
+# HKBN DNS
+  - IP-CIDR,203.80.96.9/32,no-resolve
+  - IP-CIDR,203.80.96.10/32,no-resolve
+# NTT Communications DNS
+  - IP-CIDR,61.213.169.170/32,no-resolve
+  - IP-CIDR,61.213.169.171/32,no-resolve
+# NEC BIGLOBE DNS
+  - IP-CIDR,202.225.96.66/32,no-resolve
+  - IP-CIDR,202.225.96.68/32,no-resolve
+# Yahoo Japan DNS
+  - IP-CIDR,182.22.70.1/32,no-resolve
+  - IP-CIDR,182.22.70.2/32,no-resolve
+# jp.tiar.app
+  - IP-CIDR,172.104.93.80/32,no-resolve
+  - DOMAIN-SUFFIX,jp.tiarap.org
+  - DOMAIN-SUFFIX,p.tiar.app
+# 腾讯国际
+  - IP-CIDR,162.14.21.56/32,no-resolve
+  - IP-CIDR,162.14.21.178/32,no-resolve
+# Comodo Secure DNS 
+  - IP-CIDR,8.26.56.26/32,no-resolve
+  - DOMAIN-SUFFIX,doh.comodo.com
+  - DOMAIN-SUFFIX,dns.comodo.com
+# DNS.WATCH
+  - IP-CIDR,84.200.69.80/32,no-resolve
+  - DOMAIN-SUFFIX,dns.watch
+# Blahdns(新加坡)
+  - IP-CIDR,46.250.226.242/32,no-resolve
+  - DOMAIN-SUFFIX,doh-sg.blahdns.com
+  - DOMAIN-SUFFIX,dot-sg.blahdns.com
+  - IP-CIDR6,2407:3640:2205:1668::1/64,no-resolve
 # Level 3 Parent DNS(Windows升级)
   - IP-CIDR,4.2.2.1/32,no-resolve
   - IP-CIDR,4.2.2.2/32,no-resolve
