@@ -1,3 +1,15 @@
 payload:
  # PSN下载
   - DOMAIN,gst.prod.dl.playstation.net
+  
+ # XBOX游戏下载域名(国际):
+  - DOMAIN,xvcf1.xboxlive.com
+  - DOMAIN,xvcf2.xboxlive.com
+  - DOMAIN,assets1.xboxlive.com
+  - DOMAIN,assets2.xboxlive.com
+
+ # 商店下载/游戏下载(国内)/系统更新域名:
+  - DOMAIN,assets1.xboxlive.cn
+  - DOMAIN,assets2.xboxlive.cn
+  - DOMAIN,dl.delivery.mp.microsoft.com
+  - DOMAIN,tlu.dl.delivery.mp.microsoft.com
