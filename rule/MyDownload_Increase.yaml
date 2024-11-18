@@ -15,6 +15,7 @@ payload:
   - DOMAIN,tlu.dl.delivery.mp.microsoft.com
 
  # EPIC游戏下载节点
+  - DOMAIN-KEYWORD,epicgames-download
   - DOMAIN,download.epicgames.com
   - DOMAIN,download2.epicgames.com
   - DOMAIN,download3.epicgames.com
