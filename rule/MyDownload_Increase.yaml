@@ -8,8 +8,16 @@ payload:
   - DOMAIN,assets1.xboxlive.com
   - DOMAIN,assets2.xboxlive.com
 
- # 商店下载/游戏下载(国内)/系统更新域名:
+ # XBOX商店下载/游戏下载(国内)/系统更新域名:
   - DOMAIN,assets1.xboxlive.cn
   - DOMAIN,assets2.xboxlive.cn
   - DOMAIN,dl.delivery.mp.microsoft.com
   - DOMAIN,tlu.dl.delivery.mp.microsoft.com
+
+ # EPIC游戏下载节点
+  - DOMAIN,download.epicgames.com
+  - DOMAIN,download2.epicgames.com
+  - DOMAIN,download3.epicgames.com
+  - DOMAIN,download4.epicgames.com
+  - DOMAIN,fastly-download.epicgames.com
+  - DOMAIN,epicgames-download1.akamaized.net
