@@ -301,14 +301,13 @@ proxy-groups:
   - name: 🎬HBO
     type: select
     proxies:
-      - 🇸🇬狮城优选
-      - 🇺🇸美国优选
       - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
       - 👋手动选择
-      - 🚦故障转移
-    filter: (?=.*(新|🇸🇬|SG|坡|狮城|美|US|(?i)Singapore|States|American))^((?!(港|日|台|韩)).)*$
-    use:
-      - 明月配置
 
   - name: 🎬Hulu
     type: select
@@ -486,11 +485,23 @@ rule-providers:
     url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_CN_No_Resolve.yaml
     path: "./rule_provider/rule-provider_MyDNS_CN_No_Resolve.yaml"
     interval: 75600
+  MyDirect_Replenish:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/rule/MyDirect_Replenish.yaml
+    path: "./rule_provider/rule-provider_MyDirect_Replenish.yaml"
+    interval: 75600
   Lan_No_Resolve:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml
     path: "./rule_provider/rule-provider_Lan_No_Resolve.yaml"
+    interval: 75600
+  Myreject_Replenish:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/rule/Myreject_Replenish.yaml
+    path: "./rule_provider/rule-provider_Myreject_Replenish.yaml"
     interval: 75600
   BlockHttpDNS_No_Resolve:
     type: http
@@ -774,6 +785,12 @@ rule-providers:
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml
     path: "./rule_provider/rule-provider_HBO_GO_HKG.yaml"
     interval: 75600
+  MyHBO_Replenish:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/rule/MyHBO_Replenish.yaml
+    path: "./rule_provider/rule-provider_MyHBO_Replenish.yaml"
+    interval: 75600
   Hulu:
     type: http
     behavior: classical
@@ -798,6 +815,18 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
     path: "./rule_provider/rule-provider_HuluJP.yaml"
     interval: 75600
+  Disney:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
+    path: "./rule_provider/rule-provider_Disney.yaml"
+    interval: 75600
+  DisneyPlus:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/Ruleset/DisneyPlus.yaml
+    path: "./rule_provider/rule-provider_DisneyPlus.yaml"
+    interval: 75600
   Netflix:
     type: http
     behavior: classical
@@ -815,18 +844,6 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
     path: "./rule_provider/rule-provider_Netflix_Classical.yaml"
-    interval: 75600
-  Disney:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
-    path: "./rule_provider/rule-provider_Disney.yaml"
-    interval: 75600
-  DisneyPlus:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/Ruleset/DisneyPlus.yaml
-    path: "./rule_provider/rule-provider_DisneyPlus.yaml"
     interval: 75600
   OpenAI:
     type: http
@@ -1439,7 +1456,9 @@ rule-providers:
 rules:
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务
 - RULE-SET,MyDNS_CN_No_Resolve,⛔直接连接
+- RULE-SET,MyDirect_Replenish,⛔直接连接
 - RULE-SET,Lan_No_Resolve,⛔直接连接
+- RULE-SET,Myreject_Replenish,📵拒绝连接
 - RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
 - RULE-SET,Hijacking_No_Resolve,📵拒绝连接
 - RULE-SET,AMD,🗄️下载服务
@@ -1487,15 +1506,16 @@ rules:
 - RULE-SET,HBOHK,🎬HBO
 - RULE-SET,HBOAsia,🎬HBO
 - RULE-SET,HBO_GO_HKG,🎬HBO
+- RULE-SET,MyHBO_Replenish,🎬HBO
 - RULE-SET,Hulu,🎬Hulu
 - RULE-SET,HuluJapan,🎬Hulu
 - RULE-SET,HuluUSA,🎬Hulu
 - RULE-SET,HuluJP,🎬Hulu
+- RULE-SET,Disney,🎬迪士尼
+- RULE-SET,DisneyPlus,🎬迪士尼
 - RULE-SET,Netflix,🎬奈飞
 - RULE-SET,NetflixIP,🎬奈飞
 - RULE-SET,Netflix_Classical,🎬奈飞
-- RULE-SET,Disney,🎬迪士尼
-- RULE-SET,DisneyPlus,🎬迪士尼
 - RULE-SET,OpenAI,🤖人工智能
 - RULE-SET,BardAI,🤖人工智能
 - RULE-SET,Gemini,🤖人工智能
