@@ -1,0 +1,7 @@
+payload:
+#自定义Direct
+  - DST-PORT,123
+  - DOMAIN-SUFFIX,ntp.org
+  - DOMAIN-SUFFIX,time.windows.com
+  - DOMAIN-SUFFIX,hao123.com
+  - DOMAIN-KEYWORD,baidu
