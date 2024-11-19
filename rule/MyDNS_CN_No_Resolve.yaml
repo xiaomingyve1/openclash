@@ -1,10 +1,5 @@
-#国内DNS服务器列表
-
+# 国内DNS服务器列表
 payload:
-  - DOMAIN-SUFFIX,time.windows.com
-  - DOMAIN-SUFFIX,hao123.com
-  - DOMAIN-KEYWORD,baidu
-
 #腾讯DNS(DNSPod)
   - IP-CIDR,119.28.28.28/32,no-resolve
   - IP-CIDR,119.29.29.29/32,no-resolve
