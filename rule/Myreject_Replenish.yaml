@@ -1,4 +1,4 @@
 payload:
 #自定义reject
-  - IP-CIDR,95.161.76.100/31,no-resolve
-  - RULE-SET,category-public-tracker
+  - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(GEOSITE,geolocation-!cn) # quic
+  - IP-CIDR,95.161.76.100/31,REJECT-DROP,no-resolve
