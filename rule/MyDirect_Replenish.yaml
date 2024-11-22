@@ -5,6 +5,7 @@ payload:
   - DOMAIN-SUFFIX,ntp.org
   - DOMAIN-SUFFIX,hao123.com
   - DOMAIN-SUFFIX,speedtest.cn
+  - DOMAIN-SUFFIX,speed.neu6.edu.cn
   - DOMAIN-SUFFIX,time.windows.com
 
 # 代理工具
