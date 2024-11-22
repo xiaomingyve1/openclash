@@ -4,4 +4,26 @@ payload:
   - DOMAIN-KEYWORD,baidu
   - DOMAIN-SUFFIX,ntp.org
   - DOMAIN-SUFFIX,hao123.com
+  - DOMAIN-SUFFIX,speedtest.cn
   - DOMAIN-SUFFIX,time.windows.com
+
+# 代理工具
+  - PROCESS-NAME,v2ray
+  - PROCESS-NAME,Surge
+  - PROCESS-NAME,ss-local
+  - PROCESS-NAME,privoxy
+  - PROCESS-NAME,trojan
+  - PROCESS-NAME,trojan-go
+  - PROCESS-NAME,naive
+  - PROCESS-NAME,CloudflareWARP
+  - PROCESS-NAME,p4pclient
+  - PROCESS-NAME,Thunder
+  - PROCESS-NAME,DownloadService
+  - PROCESS-NAME,qbittorrent
+  - PROCESS-NAME,Transmission
+  - PROCESS-NAME,fdm
+  - PROCESS-NAME,aria2c
+  - PROCESS-NAME,Folx
+  - PROCESS-NAME,NetTransport
+  - PROCESS-NAME,uTorrent
+  - PROCESS-NAME,WebTorrent
