@@ -1,4 +1,4 @@
 payload:
 #自定义reject
   - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(GEOSITE,geolocation-!cn) # quic
-  - IP-CIDR,95.161.76.100/31,REJECT-DROP,no-resolve
+  - IP-CIDR,95.161.76.100/31,no-resolve
