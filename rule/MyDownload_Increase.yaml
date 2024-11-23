@@ -22,3 +22,22 @@ payload:
   - DOMAIN,download4.epicgames.com
   - DOMAIN,fastly-download.epicgames.com
   - DOMAIN,epicgames-download1.akamaized.net
+
+ # BitTorrent流量
+  - DST-PORT,6881-6889
+  - DST-PORT,6881
+  - DST-PORT,6969
+  - DST-PORT,51413
+  - IP-CIDR,185.5.136.0/22
+  - IP-CIDR,104.244.72.0/21
+  - IP-CIDR,89.248.174.0/24
+  - PROTOCOL,BitTorrent
+  - DOMAIN-KEYWORD,tracker
+  - DOMAIN-SUFFIX,tracker.bt.com
+  - DOMAIN-SUFFIX,tracker.nyaa.uk
+  - DOMAIN-SUFFIX,tracker.bt4g.org
+  - DOMAIN-SUFFIX,tracker.example.com
+  - DOMAIN-SUFFIX,tracker.opentrackr.org
+  - DOMAIN-SUFFIX,tracker.coppersurfer.tk
+  - DOMAIN-SUFFIX,tracker.openbittorrent.com
+  - DOMAIN-SUFFIX,tracker.leechers-paradise.org
