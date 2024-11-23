@@ -12,4 +12,5 @@ payload:
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tiktok))
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,twitch))
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,microsoft))
+  - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))) # quic
   - IP-CIDR,95.161.76.100/31,no-resolve
