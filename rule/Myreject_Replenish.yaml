@@ -1,4 +1,15 @@
 payload:
 #自定义reject
-  - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))) # quic
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,google))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,youtube))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,amazon))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,hbo))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,hulu))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,netflix))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,disney))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,instagram))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,facebook))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tiktok))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,twitch))
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,microsoft))
   - IP-CIDR,95.161.76.100/31,no-resolve
