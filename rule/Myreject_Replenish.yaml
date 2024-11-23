@@ -1,4 +1,3 @@
 payload:
 #自定义reject
-  - DST-PORT, 443, UDP, GEOSITE, geolocation-!cn # quic
   - IP-CIDR,95.161.76.100/31,no-resolve
