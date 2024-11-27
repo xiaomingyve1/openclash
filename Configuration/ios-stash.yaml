@@ -26,7 +26,7 @@ proxy-providers:
       interval: 300
       url: https://cp.cloudflare.com/
     filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|更新|官网|线路)).)*$
-    benchmark-url: https://www.gstatic.com/generate_204
+    benchmark-url: https://cp.cloudflare.com/generate_204
     benchmark-timeout: 5
 
 # DNS 设置
@@ -309,7 +309,12 @@ proxy-groups:
       - 🇯🇵日本优选
       - 🇹🇼台湾优选
       - 🇺🇸美国优选
+      - 🙌默认代理
       - 👋手动选择
+      - 🚦故障转移
+    filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
+    use:
+      - 明月配置
 
   - name: 🎬Hulu
     type: select
@@ -377,7 +382,7 @@ proxy-groups:
     disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
     filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
+    url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
     tolerance: 20
@@ -392,7 +397,7 @@ proxy-groups:
     disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
     filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
+    url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
     tolerance: 20
@@ -407,7 +412,7 @@ proxy-groups:
     disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
     filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
+    url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
     tolerance: 20
@@ -422,7 +427,7 @@ proxy-groups:
     disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
     filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$
-    url: "https://www.gstatic.com/generate_204"
+    url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
     tolerance: 20
@@ -437,7 +442,7 @@ proxy-groups:
     disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
     filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
-    url: "https://www.gstatic.com/generate_204"
+    url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
     tolerance: 20
@@ -451,7 +456,7 @@ proxy-groups:
     type: fallback
     disable-udp: false
     filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|官网|线路|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-    url: "https://www.gstatic.com/generate_204"
+    url: "https://cp.cloudflare.com/generate_204"
     interval: 300
     timeout: 2000
     max-failed-times: 2
