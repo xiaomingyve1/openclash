@@ -1455,8 +1455,8 @@ rule-providers:
 # 规则（从上往下匹配）
 rules:
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务
-- RULE-SET,MyDNS_CN_No_Resolve,⛔直接连接
-- RULE-SET,MyDirect_Replenish,⛔直接连接
+- RULE-SET,MyDNS_CN_No_Resolve,🚩国内流量
+- RULE-SET,MyDirect_Replenish,🚩国内流量
 - RULE-SET,Lan_No_Resolve,⛔直接连接
 - RULE-SET,Myreject_Replenish,📵拒绝连接
 - RULE-SET,BlockHttpDNS_No_Resolve,📵拒绝连接
@@ -1615,11 +1615,11 @@ rules:
 - RULE-SET,GovCN,🚩国内流量
 - RULE-SET,ByteDance,🚩国内流量
 - RULE-SET,CCTV,🚩国内流量
-- GEOSITE,CN,🚩国内流量
-- GEOSITE,geolocation-!cn,🙌默认代理
-- GEOIP,CN,🚩国内流量
 - RULE-SET,Download_No_Resolve,🗄️下载服务
 - RULE-SET,Direct_No_Resolve,⛔直接连接
+- GEOSITE,geolocation-!cn,🙌默认代理
+- GEOSITE,CN,🚩国内流量
+- GEOIP,CN,🚩国内流量
 - DST-PORT,80,🙌默认代理
 - DST-PORT,443,🙌默认代理
 - MATCH,🐟漏网之鱼 # 不匹配规则的流量（例如游戏）
