@@ -1,8 +1,8 @@
 payload:
 #自定义Direct
+  - DOMAIN-SUFFIX,.cn,DIRECT   # 明确匹配 .cn 顶级域名
   - DST-PORT,123
   - DOMAIN-KEYWORD,baidu
-  - DOMAIN-KEYWORD,linglong
   - DOMAIN-SUFFIX,ntp.org
   - DOMAIN-SUFFIX,hao123.com
   - DOMAIN-SUFFIX,speedtest.cn
