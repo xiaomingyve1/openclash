@@ -496,12 +496,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/rule/MyDirect_Replenish.yaml
     path: "./rule_provider/rule-provider_MyDirect_Replenish.yaml"
     interval: 75600
-  Lan_No_Resolve:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml
-    path: "./rule_provider/rule-provider_Lan_No_Resolve.yaml"
-    interval: 75600
   Myreject_Replenish:
     type: http
     behavior: classical
@@ -597,12 +591,6 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloudflarecn/Cloudflarecn.yaml
     path: "./rule_provider/rule-provider_Cloudflarecn.yaml"
-    interval: 75600
-  IPTVMainland_Classical:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVMainland/IPTVMainland_Classical.yaml
-    path: "./rule_provider/rule-provider_IPTVMainland_Classical.yaml"
     interval: 75600
   Epic:
     type: http
@@ -1444,22 +1432,27 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CCTV/CCTV.yaml
     path: "./rule_provider/rule-provider_CCTV.yaml"
     interval: 75600
-  Download_No_Resolve:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download_No_Resolve.yaml
-    path: "./rule_provider/rule-provider_Download_No_Resolve.yaml"
-    interval: 75600
   Direct_No_Resolve:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct_No_Resolve.yaml
     path: "./rule_provider/rule-provider_Direct_No_Resolve.yaml"
     interval: 75600
+  Download_No_Resolve:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download_No_Resolve.yaml
+    path: "./rule_provider/rule-provider_Download_No_Resolve.yaml"
+    interval: 75600
+  Lan_No_Resolve:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml
+    path: "./rule_provider/rule-provider_Lan_No_Resolve.yaml"
+    interval: 75600
 
 # 规则（从上往下匹配）
 rules:
-- RULE-SET,Lan_No_Resolve,⛔直接连接
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务
 - RULE-SET,MyDNS_CN_No_Resolve,🚩国内流量
 - RULE-SET,MyDirect_Replenish,🚩国内流量
@@ -1479,7 +1472,6 @@ rules:
 - RULE-SET,AmazonCN,🚩国内流量
 - RULE-SET,CloudCN,🚩国内流量
 - RULE-SET,Cloudflarecn,🚩国内流量
-- RULE-SET,IPTVMainland_Classical,🚩国内流量
 - RULE-SET,Epic,🎮游戏平台
 - RULE-SET,Origin,🎮游戏平台
 - RULE-SET,Sony,🎮游戏平台
@@ -1622,6 +1614,7 @@ rules:
 - RULE-SET,CCTV,🚩国内流量
 - RULE-SET,Direct_No_Resolve,🚩国内流量
 - RULE-SET,Download_No_Resolve,🗄️下载服务
+- RULE-SET,Lan_No_Resolve,⛔直接连接
 - GEOSITE,geolocation-!cn,🙌默认代理
 - GEOSITE,CN,🚩国内流量
 - GEOIP,CN,🚩国内流量
