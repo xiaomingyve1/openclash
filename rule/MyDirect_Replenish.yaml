@@ -1,6 +1,6 @@
 payload:
 #自定义Direct
-  - DOMAIN-SUFFIX,cn   # 明确匹配 .cn 顶级域名
+  - DOMAIN-KEYWORD,.cn   # 明确匹配 .cn 顶级域名
   - DST-PORT,123
   - DOMAIN-KEYWORD,baidu
   - DOMAIN-SUFFIX,ntp.org
