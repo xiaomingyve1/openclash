@@ -2,6 +2,7 @@ payload:
 #自定义Direct
   - DST-PORT,123
   - DOMAIN-KEYWORD,baidu
+  - DOMAIN-KEYWORD,linglong
   - DOMAIN-SUFFIX,ntp.org
   - DOMAIN-SUFFIX,hao123.com
   - DOMAIN-SUFFIX,speedtest.cn
