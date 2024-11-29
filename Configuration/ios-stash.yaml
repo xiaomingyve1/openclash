@@ -1454,35 +1454,14 @@ rule-providers:
     interval: 75600
 
 script:
-  shortcuts: # 可以在规则中引用
-    google-quic: network == 'udp' and dst_port == 443 and match_geosite('google') # 匹配 Google QUIC
-    youtube-quic: network == 'udp' and dst_port == 443 and match_geosite('youtube') # 匹配 YouTube QUIC
-    amazon-quic: network == 'udp' and dst_port == 443 and match_geosite('amazon') # 匹配 Amazon QUIC
-    hbo-quic: network == 'udp' and dst_port == 443 and match_geosite('hbo') # 匹配 HBO QUIC
-    hulu-quic: network == 'udp' and dst_port == 443 and match_geosite('hulu') # 匹配 Hulu QUIC
-    netflix-quic: network == 'udp' and dst_port == 443 and match_geosite('netflix') # 匹配 Netflix QUIC
-    disney-quic: network == 'udp' and dst_port == 443 and match_geosite('disney') # 匹配 Disney QUIC
-    instagram-quic: network == 'udp' and dst_port == 443 and match_geosite('instagram') # 匹配 Instagram QUIC
-    facebook-quic: network == 'udp' and dst_port == 443 and match_geosite('facebook') # 匹配 Facebook QUIC
-    tiktok-quic: network == 'udp' and dst_port == 443 and match_geosite('tiktok') # 匹配 TikTok QUIC
-    twitch-quic: network == 'udp' and dst_port == 443 and match_geosite('twitch') # 匹配 Twitch QUIC
-    microsoft-quic: network == 'udp' and dst_port == 443 and match_geosite('microsoft') # 匹配 Microsoft QUIC
+  shortcuts:
+    quic-CN: network == 'udp' and geoip(dst_ip if dst_ip != '' else resolve_ip(host)) == 'CN'
+    quic-!cn: network == 'udp' and dst_port == 443
 
 # 规则（从上往下匹配）
 rules:
-- SCRIPT,google-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,youtube-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,amazon-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,hbo-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,hulu-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,netflix-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,disney-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,instagram-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,facebook-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,tiktok-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,twitch-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-- SCRIPT,microsoft-quic,📵拒绝连接,no-track # 拦截 QUIC 协议请求并隐藏连接
-
+- SCRIPT,quic-CN,🚩国内流量
+- SCRIPT,quic-!cn,📵拒绝连接
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务
 - RULE-SET,MyDNS_CN_No_Resolve,🚩国内流量
 - RULE-SET,MyDirect_Replenish,🚩国内流量
