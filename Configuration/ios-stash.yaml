@@ -1455,12 +1455,10 @@ rule-providers:
 
 script:
   shortcuts:
-    quic-CN: network == 'udp' and geoip(dst_ip if dst_ip != '' else resolve_ip(host)) == 'CN'
-    quic-!cn: network == 'udp' and dst_port == 443
+    quic-!cn: network == 'udp' and dst_port == 443 and geoip(dst_ip if dst_ip != '' else resolve_ip(host)) != 'CN'
 
 # 规则（从上往下匹配）
 rules:
-- SCRIPT,quic-CN,🚩国内流量
 - SCRIPT,quic-!cn,📵拒绝连接
 - RULE-SET,MyDNS_No_Resolve,🧬DNS服务
 - RULE-SET,MyDNS_CN_No_Resolve,🚩国内流量
