@@ -8,22 +8,16 @@ payload:
   - DOMAIN-SUFFIX,time.windows.com
 
 # 代理工具
-  - PROCESS-NAME,v2ray
-  - PROCESS-NAME,Surge
-  - PROCESS-NAME,ss-local
+  - PROCESS-NAME,UUBooster # UU加速器
+  - PROCESS-NAME,SunloginClient_Desktop # 向日葵服务
+  - PROCESS-NAME,SunloginClient_Helper # 向日葵服务
+  - PROCESS-NAME,ClashX
+  - PROCESS-NAME,clash
+  - PROCESS-NAME,cloudflared
   - PROCESS-NAME,privoxy
+  - PROCESS-NAME,ss-local
+  - PROCESS-NAME,tailscaled
   - PROCESS-NAME,trojan
   - PROCESS-NAME,trojan-go
-  - PROCESS-NAME,naive
-  - PROCESS-NAME,CloudflareWARP
-  - PROCESS-NAME,p4pclient
-  - PROCESS-NAME,Thunder
-  - PROCESS-NAME,DownloadService
-  - PROCESS-NAME,qbittorrent
-  - PROCESS-NAME,Transmission
-  - PROCESS-NAME,fdm
-  - PROCESS-NAME,aria2c
-  - PROCESS-NAME,Folx
-  - PROCESS-NAME,NetTransport
-  - PROCESS-NAME,uTorrent
-  - PROCESS-NAME,WebTorrent
+  - PROCESS-NAME,v2ray
+  - PROCESS-NAME,xray
