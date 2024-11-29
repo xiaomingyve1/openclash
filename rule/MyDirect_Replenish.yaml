@@ -11,13 +11,27 @@ payload:
   - PROCESS-NAME,UUBooster # UU加速器
   - PROCESS-NAME,SunloginClient_Desktop # 向日葵服务
   - PROCESS-NAME,SunloginClient_Helper # 向日葵服务
-  - PROCESS-NAME,ClashX
   - PROCESS-NAME,clash
+  - PROCESS-NAME,clashX
   - PROCESS-NAME,cloudflared
   - PROCESS-NAME,privoxy
-  - PROCESS-NAME,ss-local
+  - PROCESS-NAME,lantern
   - PROCESS-NAME,tailscaled
+  - PROCESS-NAME,pptp
+  - PROCESS-NAME,l2tp
+  - PROCESS-NAME,openvpn
+  - PROCESS-NAME,psiphon
+  - PROCESS-NAME,goproxy
+  - PROCESS-NAME,outline
+  - PROCESS-NAME,softether
+  - PROCESS-NAME,protonvpn
+  - PROCESS-NAME,wireguard
+  - PROCESS-NAME,wireguard-go
+  - PROCESS-NAME,ss-local
+  - PROCESS-NAME,ss-server
   - PROCESS-NAME,trojan
   - PROCESS-NAME,trojan-go
   - PROCESS-NAME,v2ray
+  - PROCESS-NAME,v2ray-plugin
   - PROCESS-NAME,xray
+  - PROCESS-NAME,ssh
