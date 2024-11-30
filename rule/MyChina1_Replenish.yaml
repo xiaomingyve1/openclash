@@ -1,4 +1,6 @@
 payload:
 #自定义 China
+  - DOMAIN-SUFFIX,cn   # 明确匹配 .cn 中国顶级域名
+  - DST-PORT,123
   - DOMAIN-SUFFIX,ntp.org
   - DOMAIN-SUFFIX,time.windows.com
