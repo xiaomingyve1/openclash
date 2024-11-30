@@ -1,7 +1,6 @@
 payload:
 #自定义 Direct
-
-# 代理工具
+ # 代理工具
   - PROCESS-NAME,UUBooster # UU加速器
   - PROCESS-NAME,SunloginClient_Desktop # 向日葵服务
   - PROCESS-NAME,SunloginClient_Helper # 向日葵服务
