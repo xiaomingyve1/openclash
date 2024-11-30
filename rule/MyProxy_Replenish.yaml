@@ -1,3 +1,4 @@
 payload:
 #自定义 Proxy
   - DOMAIN-SUFFIX,google.com
+  - DOMAIN-SUFFIX,blackberry.com
