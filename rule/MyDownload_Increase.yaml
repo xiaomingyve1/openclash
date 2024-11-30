@@ -1,4 +1,5 @@
 payload:
+#自定义 Download
  # PSN下载
   - DOMAIN,gst.prod.dl.playstation.net
   
