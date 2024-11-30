@@ -1,0 +1,4 @@
+payload:
+#自定义 China
+  - DOMAIN-SUFFIX,ntp.org
+  - DOMAIN-SUFFIX,time.windows.com

@@ -1,0 +1,3 @@
+payload:
+#自定义 Microsoft
+  - DOMAIN-SUFFIX,microsoft.com

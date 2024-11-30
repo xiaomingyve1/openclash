@@ -1,0 +1,3 @@
+payload:
+#自定义 Telegram
+  - DOMAIN-SUFFIX,telegram.org
