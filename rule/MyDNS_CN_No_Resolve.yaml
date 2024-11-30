@@ -1,47 +1,47 @@
-# 国内DNS服务器列表
 payload:
-#腾讯DNS(DNSPod)
+#自定义 国内DNS
+ # 腾讯DNS(DNSPod)
   - IP-CIDR,119.28.28.28/32,no-resolve
   - IP-CIDR,119.29.29.29/32,no-resolve
   - DOMAIN-SUFFIX,dot.pub
   - DOMAIN-SUFFIX,doh.pub
   - IP-CIDR6,2402:4e00::/64,no-resolve
-#阿里DNS(Alidns)
+ # 阿里DNS(Alidns)
   - IP-CIDR,223.5.5.5/32,no-resolve
   - IP-CIDR,223.6.6.6/32,no-resolve
   - DOMAIN-SUFFIX,dns.alidns.com
   - IP-CIDR6,2400:3200::1/64,no-resolve
   - IP-CIDR6,3200:baba::1/64,no-resolve
-#火山引擎
+ # 火山引擎
   - IP-CIDR,180.184.1.1/32,no-resolve
   - IP-CIDR,180.184.2.2/32,no-resolve
-#百度DNS
+ # 百度DNS
   - IP-CIDR,180.76.76.76/32,no-resolve
   - IP-CIDR6,2400:da00::6666/64,no-resolve
-# 360安全DNS
+ # 360安全DNS
   - IP-CIDR,101.226.4.6/32,no-resolve
   - IP-CIDR,218.30.118.6/32,no-resolve
   - IP-CIDR,123.125.81.6/32,no-resolve
   - IP-CIDR,140.207.198.6/32,no-resolve
   - DOMAIN-SUFFIX,dot.360.cn
   - DOMAIN-SUFFIX,doh.360.cn
-# 114DNS
+ # 114DNS
   - IP-CIDR,114.114.114.114/32,no-resolve
   - IP-CIDR,114.114.115.115/32,no-resolve
-#中国电信IPv6 DNS
+ # 中国电信IPv6 DNS
   - IP-CIDR6,240e:4c:4008::1/64,no-resolve
   - IP-CIDR6,240e:4c:4808::1/64,no-resolve
-#中国移动IPv6 DNS
+ # 中国移动IPv6 DNS
   - IP-CIDR6,2409:8088::a/64,no-resolve
   - IP-CIDR6,2409:8088::b/64,no-resolve
-#中国联通IPv6 DNS
+ # 中国联通IPv6 DNS
   - IP-CIDR6,2408:8888::8/64,no-resolve
   - IP-CIDR6,2408:8899::8/64,no-resolve
-# CNNIC DNS
+ # CNNIC DNS
   - IP-CIDR,1.2.4.8/32,no-resolve
   - IP-CIDR,210.2.4.8/32,no-resolve
   - IP-CIDR6,2001:dc7:1000::1/64,no-resolve
-# Yeti DNS(以IPv6服务为主)
+ # Yeti DNS(以IPv6服务为主)
   - DOMAIN-SUFFIX,dns.ipv6dns.com
   - IP-CIDR6,240c:f:1:22::6/64,no-resolve
   - IP-CIDR6,240C::6644/64,no-resolve
@@ -50,6 +50,6 @@ payload:
   - IP-CIDR6,240e:d9:c200:14c:7472::19e0/64,no-resolve
   - IP-CIDR6,2408:8756:f5f:4::6/64,no-resolve
 
-#未分类IPv4
+ # 未分类IPv4
   - IP-CIDR,1.12.12.12/32,no-resolve
 
