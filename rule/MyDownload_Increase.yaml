@@ -12,8 +12,7 @@ payload:
  # XBOX商店下载/游戏下载(国内)/系统更新域名:
   - DOMAIN,assets1.xboxlive.cn
   - DOMAIN,assets2.xboxlive.cn
-  - DOMAIN,dl.delivery.mp.microsoft.com
-  - DOMAIN,tlu.dl.delivery.mp.microsoft.com
+  - DOMAIN-KEYWORD,dl.delivery.mp.microsoft.com
 
  # EPIC游戏下载节点
   - DOMAIN-KEYWORD,epicgames-download
