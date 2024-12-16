@@ -218,6 +218,7 @@ proxy-groups:
   - name: 🎮游戏平台
     type: select
     proxies:
+      - ⛔直接连接
       - 🙌默认代理
       - 🇭🇰香港优选
       - 🇸🇬狮城优选
@@ -225,20 +226,8 @@ proxy-groups:
       - 🇹🇼台湾优选
       - 🇺🇸美国优选
       - 👋手动选择
-      - ⛔直接连接
 
   - name: 📲Telegram
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 🤖人工智能
     type: select
     proxies:
       - 🙌默认代理
@@ -260,7 +249,7 @@ proxy-groups:
       - 🇺🇸美国优选
       - 👋手动选择
 
-  - name: 📺Youtube
+  - name: 🤖人工智能
     type: select
     proxies:
       - 🙌默认代理
@@ -271,7 +260,7 @@ proxy-groups:
       - 🇺🇸美国优选
       - 👋手动选择
 
-  - name: 🎬PrimeVideo
+  - name: 📺Youtube
     type: select
     proxies:
       - 🙌默认代理
@@ -304,6 +293,17 @@ proxy-groups:
       - 🇺🇸美国优选
       - 👋手动选择
 
+  - name: 🎬PrimeVideo
+    type: select
+    proxies:
+      - 🙌默认代理
+      - 🇭🇰香港优选
+      - 🇸🇬狮城优选
+      - 🇯🇵日本优选
+      - 🇹🇼台湾优选
+      - 🇺🇸美国优选
+      - 👋手动选择
+
   - name: 🎬HBO
     type: select
     proxies:
@@ -316,7 +316,7 @@ proxy-groups:
       - 🙌默认代理
       - 👋手动选择
       - 🚦故障转移
-    filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
+    filter: (?=.*(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城))^((?!(日|🇯🇵|JP|东京|台|🇹🇼|TW|湾|美|US)).)*$
     use:
       - 明月配置
 
@@ -328,7 +328,7 @@ proxy-groups:
       - 🙌默认代理
       - 👋手动选择
       - 🚦故障转移
-    filter: (?=.*(美|US|日|🇯🇵|JP|东京|(?i)States|American|Japan))^((?!(港|台|韩|新)).)*$
+    filter: (?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾)).)*$
     use:
       - 明月配置
 
@@ -368,12 +368,12 @@ proxy-groups:
       - 🗄️下载服务
       - 🎮游戏平台
       - 📲Telegram
-      - 🤖人工智能
       - 🌍国际媒体
+      - 🤖人工智能
       - 📺Youtube
-      - 🎬PrimeVideo
       - 🎬奈飞
       - 🎬迪士尼
+      - 🎬PrimeVideo
       - 🎬HBO
       - 🎬Hulu
       - 🚩国内流量
