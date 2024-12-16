@@ -307,7 +307,6 @@ proxy-groups:
   - name: 🎬HBO
     type: select
     proxies:
-      - 🙌默认代理
       - 🇭🇰香港优选
       - 🇸🇬狮城优选
       - 🇯🇵日本优选
