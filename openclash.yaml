@@ -56,7 +56,7 @@ proxy-groups:
   - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: Ⓜ️微软服务, type: select, proxies: [🤖人工智能,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接]}
-  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,📲Telegram,🎮游戏平台,🗄️下载服务,🐟漏网之鱼,🌍国际媒体,🤖人工智能,🎬PrimeVideo,📺Youtube,🎬奈飞,🎬迪士尼,🎬HBO,🎬Hulu,🚩国内流量,🍎苹果服务,Ⓜ️微软服务,👋手动选择]}
+  - {name: 🧬DNS服务, type: select, proxies: [⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⛔直接连接,📵拒绝连接]}
 
 ###   以下策略组在 METACUBEXD 控制面板 已隐藏
 
