@@ -21,7 +21,7 @@ proxy-providers:
     type: http
 #❗️⚠️注意：替换 订阅链接 换替:意注⚠️❗️#
     url: "订阅链接"
-#❗️⚠️意注：换替 链接阅订 替换:注意⚠️❗️#
+#❗️⚠️注意：替换 接链阅订 换替:意注⚠️❗️#
     interval: 21600
     path: ./明月配置.yaml
     health-check:
