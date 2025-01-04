@@ -1,45 +1,41 @@
 # 全局配置
-mixed-port: 7890
-mode: rule
-allow-lan: true
-bind-address: '*'
-log-level: silent
-unified-delay: true # 统一延迟
-tcp-concurrent: true # TCP 并发
-find-process-mode: strict # 进程匹配 always / strict / off
-keep-alive-idle: 600  # 空闲时间 减少移动设备耗电问题
-keep-alive-interval: 15  # 间隔时间 
-external-controller: 127.0.0.1:9090
-
-# ❗️⚠️注意：请在可视化更改配置，否则可能会导致无法运行 ⚠️❗️ #
-# ❗️⚠️注意：可视化编辑-远程代理集填写 订阅链接 ⚠️❗️ #
+port: 7890  # 代理服务的监听端口
+socks-port: 7891  # SOCKS代理端口
+mixed-port: 7893  # 混合端口
+redir-port: 7892  # 重定向端口
+tproxy-port: 7895  # TPROXY端口
+unified-delay: true  # 启用统一延迟
+tcp-concurrent: true  # 启用TCP并发
+find-process-mode: 'off'  # 进程匹配 always / strict / off
+bind-address: '*'  # 绑定所有IP地址
+mode: rule  # 设置代理模式
+log-level: silent  # 设置日志级别
+keep-alive-idle: 600  # TCP连接空闲时间
+keep-alive-interval: 30  # TCP连接活动的间隔时间
+external-controller: 127.0.0.1:9090 #页面端口
+secret:  # 页面登录密钥
 
 subscribe-url: 订阅链接请填到远程代理集
 proxy-providers:
   明月配置:
     type: http
+#❗️⚠️注意：替换 订阅链接 换替:意注⚠️❗️#
     url: "订阅链接"
+#❗️⚠️意注：换替 链接阅订 替换:注意⚠️❗️#
     interval: 21600
     path: ./明月配置.yaml
     health-check:
       enable: true
       interval: 300
-      url: https://cp.cloudflare.com/
+      url: https://cp.cloudflare.com
+      timeout: 2000
     filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|佣金|节点|延迟|更新|官网|线路)).)*$
-    benchmark-url: https://cp.cloudflare.com/generate_204
-    benchmark-timeout: 5
-
-# 规则集更新
-Ymal: &Classical
-  type: http
-  behavior: classical
-  interval: 75600
 
 # DNS 设置
 dns:
   enable: true
   ipv6: true
-  listen: 0.0.0.0:1053
+  listen: 0.0.0.0:1053 # DNS监听端口
   enhanced-mode: fake-ip # redir-host / fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
@@ -178,6 +174,24 @@ dns:
   fallback:
     - tls://8.8.8.8 #dns
     - tls://1.0.0.1 #dns
+
+# 规则集更新
+Ymal: &Classical
+  type: http
+  behavior: classical
+  interval: 75600
+
+# 数据库更新
+geox-url:
+  geosite: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
+  mmdb: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb
+  geoip: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat
+  asn: https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb
+
+geodata-mode: false  # geoip 使用文件,dat或者mmdb,可选 true为dat / false为mmdb
+geodata-loader: memconservative  # standard:标准加载器 / memconservative:小内存优化
+geo-auto-update: true # 自动更新
+geo-update-interval: 24 # 小时
 
 proxy-groups:
   - name: 👋手动选择
