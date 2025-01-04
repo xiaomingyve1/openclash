@@ -5,4 +5,6 @@
 
 本地文件可以隐藏策略组，更简洁。
 规则策略比较多，并不适合256mb设备，慎用！
-![策略组](https://github.com/user-attachments/assets/2df83a60-76ad-4f01-a6f4-48d29adccd9d)
+
+# 图例
+![策略组](https://github.com/user-attachments/assets/5339f037-c95b-49c2-8fcc-c1a385552c12)
