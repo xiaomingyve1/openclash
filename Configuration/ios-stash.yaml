@@ -1037,7 +1037,7 @@ script:
 
 # 规则（从上往下匹配）
 rules:
-- SCRIPT,quic-!cn,📵拒绝连接
+- SCRIPT,quic-!cn,📵拒绝连接,no-track
 - RULE-SET,MyDNS_Proxy_No_Resolve,🧬DNS服务
 - RULE-SET,MyDNS_CN_No_Resolve,🚩国内流量
 - RULE-SET,MyDirect_Replenish,🚩国内流量
