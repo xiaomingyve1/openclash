@@ -67,8 +67,8 @@ payload:
   - DOMAIN-SUFFIX,jp.tiarap.org
   - DOMAIN-SUFFIX,p.tiar.app
 # 腾讯国际
-# - IP-CIDR,162.14.21.56/32,no-resolve
-# - IP-CIDR,162.14.21.178/32,no-resolve
+  - IP-CIDR,162.14.21.56/32,no-resolve
+  - IP-CIDR,162.14.21.178/32,no-resolve
 # Comodo Secure DNS 
   - IP-CIDR,8.26.56.26/32,no-resolve
   - DOMAIN-SUFFIX,doh.comodo.com
