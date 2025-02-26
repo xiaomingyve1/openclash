@@ -19,9 +19,9 @@ subscribe-url: 订阅链接请填到远程代理集
 proxy-providers:
   明月配置:
     type: http
-#❗️⚠️注意：替换 订阅链接 换替:意注⚠️❗️#
-    url: "订阅链接"
-#❗️⚠️注意：替换 接链阅订 换替:意注⚠️❗️#
+#❗️❗️❗️⚠️⚠️注意：替换 订阅链接一 换替:意注⚠️⚠️❗️❗️❗️#
+    url: "订阅链接一"
+#❗️❗️❗️⚠️⚠️注意：替换 一接链阅订 换替:意注⚠️⚠️❗️❗️❗️#
     interval: 10800
     path: ./明月配置.yaml
     health-check:
@@ -29,7 +29,24 @@ proxy-providers:
       interval: 300
       url: https://cp.cloudflare.com
       timeout: 2000
-    filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
+      benchmark-url: https://cp.cloudflare.com
+      benchmark-timeout: 5
+    filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
+  其他配置:
+    type: http
+#❗️❗️❗️⚠️⚠️注意：替换 订阅链接二 换替:意注⚠️⚠️❗️❗️❗️#
+    url: "订阅链接二"
+#❗️❗️❗️⚠️⚠️注意：替换 二接链阅订 换替:意注⚠️⚠️❗️❗️❗️#
+    interval: 10800
+    path: ./其他配置.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://cp.cloudflare.com
+      timeout: 2000
+    benchmark-url: https://cp.cloudflare.com
+    benchmark-timeout: 5
+    filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
 
 # DNS 设置
 dns:
@@ -198,6 +215,7 @@ proxy-groups:
     type: select
     use:
       - 明月配置
+      - 其他配置
 
   - name: 🙌默认代理
     type: select
@@ -334,6 +352,7 @@ proxy-groups:
     filter: (?=.*(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城))^((?!(日|🇯🇵|JP|东京|台|🇹🇼|TW|湾|美|US)).)*$
     use:
       - 明月配置
+      - 其他配置
 
   - name: 🎬Hulu
     type: select
@@ -343,9 +362,10 @@ proxy-groups:
       - 🙌默认代理
       - 👋手动选择
       - 🚦故障转移
-    filter: (?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾)).)*$
+    filter: (?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼)).)*$
     use:
       - 明月配置
+      - 其他配置
 
   - name: 🚩国内流量
     type: select
@@ -398,6 +418,7 @@ proxy-groups:
     max-failed-times: 2
     use:
       - 明月配置
+      - 其他配置
     hidden: true
 
   - name: 🇸🇬狮城优选
@@ -413,13 +434,14 @@ proxy-groups:
     max-failed-times: 2
     use:
       - 明月配置
+      - 其他配置
     hidden: true
 
   - name: 🇯🇵日本优选
     type: url-test
     disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-    filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
+    filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$
     url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
@@ -428,6 +450,7 @@ proxy-groups:
     max-failed-times: 2
     use:
       - 明月配置
+      - 其他配置
     hidden: true
 
   - name: 🇹🇼台湾优选
@@ -443,6 +466,7 @@ proxy-groups:
     max-failed-times: 2
     use:
       - 明月配置
+      - 其他配置
     hidden: true
 
   - name: 🇺🇸美国优选
@@ -458,12 +482,13 @@ proxy-groups:
     max-failed-times: 2
     use:
       - 明月配置
+      - 其他配置
     hidden: true
 
   - name: 🚦故障转移
     type: fallback
     disable-udp: false
-    filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
+    filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
     url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
@@ -471,12 +496,13 @@ proxy-groups:
     max-failed-times: 2
     use:
       - 明月配置
+      - 其他配置
     hidden: true
 
   - name: ♻️自动选择
     type: url-test
     disable-udp: false
-    filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
+    filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
     url: "https://cp.cloudflare.com/generate_204"
     lazy: true
     interval: 60
@@ -485,6 +511,7 @@ proxy-groups:
     max-failed-times: 2
     use:
       - 明月配置
+      - 其他配置
     hidden: true
 
   - name: ⛔直接连接
