@@ -16,12 +16,12 @@ p:
 proxy-providers:
   明月配置:
     <<: *p
-    url:    #订阅链接1
-    override: {additional-prefix: '[明月配置] '}
+    url:    # 订阅链接A
+    override: {additional-prefix: '[A] '}
   其他配置:
     <<: *p
-    url:    #订阅链接2
-    override: {additional-prefix: '[其他配置] '}
+    url:    # 订阅链接B
+    override: {additional-prefix: '[B] '}
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "直接填在上面 url 后面⚠️⚠️❗️❗️❗️ #
 
 # 订阅文件及过滤
