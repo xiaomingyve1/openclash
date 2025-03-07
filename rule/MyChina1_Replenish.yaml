@@ -5,4 +5,6 @@ payload:
   - DOMAIN-SUFFIX,ntp.org
   - DOMAIN-SUFFIX,speedtest.cn
   - DOMAIN-SUFFIX,time.windows.com
-  
+
+# 字节跳动
+  - DOMAIN-SUFFIX,snssdk.com
