@@ -7,5 +7,6 @@
 规则策略比较多，并不适合256mb设备，慎用！
 
 # 图例
-![策略组](https://github.com/user-attachments/assets/903bd499-b295-4f6b-9ec3-f233c1691774)
-![解锁](https://github.com/user-attachments/assets/241dc58c-e96f-4146-bc21-6da52f1918a9)
+![策略组1](https://github.com/user-attachments/assets/322af5d5-0257-4b7c-a0d0-5aa690f0402b)
+![策略组2](https://github.com/user-attachments/assets/62c92c61-e429-48ce-88e1-6cdd54268312)
+![解锁](https://github.com/user-attachments/assets/beff0927-54be-487a-aaa8-d8f50ee99fe3)
