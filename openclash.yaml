@@ -60,7 +60,7 @@ proxy-groups:
   - {name: 🗄️下载服务, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
   - {name: 🐟漏网之鱼, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
 #  AI和国际媒体有些不能用香港节点--排除
-  - {name: 🌍国际媒体,<<: *use, type: select, proxies: [⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,👋手动选择], filter: (?=.*())^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|日|🇯🇵|JP|东京|台|🇹🇼|TW|湾|美|US|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
+  - {name: 🌍国际媒体,<<: *use, type: select, proxies: [🚥故障转移,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,👋手动选择], filter: (?=.*())^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|日|🇯🇵|JP|东京|台|🇹🇼|TW|湾|美|US|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 🤖人工智能,<<: *use, type: select, filter: (?=.*())^((?!(港|🇭🇰|HK|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 📺Youtube,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 🎬PrimeVideo,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
@@ -68,31 +68,32 @@ proxy-groups:
   - {name: 🎬迪士尼,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
   - {name: 🎬HBO,<<: *use, type: select, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$}
 # 不支持流媒体解锁检测
-  - {name: 🎬Hulu,<<: *use, type: select, proxies: [⚡️🇺🇸美国优选,⚖️🇺🇸美国均衡,⚡️🇯🇵日本优选,⚖️🇯🇵日本均衡,👋手动选择,🚦故障转移], filter: (?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼)).)*$}
+  - {name: 🎬Hulu,<<: *use, type: select, proxies: [⚡️🇺🇸美国优选,⚖️🇺🇸美国均衡,⚡️🇯🇵日本优选,⚖️🇯🇵日本均衡,👋手动选择,🚥故障转移], filter: (?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼)).)*$}
 
   - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
-  - {name: Ⓜ️微软服务, type: select, proxies: [⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,👋手动选择,⛔直接连接]}
-  - {name: 🧬DNS服务, type: select, proxies: [⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,👋手动选择,⛔直接连接]}
+  - {name: Ⓜ️微软服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
+  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
 
 ###   以下策略组在 X/Z 控制面板 已隐藏
 # 自动选择
-  - {name: ⚡️🇭🇰香港优选,<<: *use, type: url-test, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚡️🇸🇬狮城优选,<<: *use, type: url-test, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚡️🇯🇵日本优选,<<: *use, type: url-test, filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚡️🇹🇼台湾优选,<<: *use, type: url-test, filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚡️🇺🇸美国优选,<<: *use, type: url-test, filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, tolerance: 20, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚡️🇭🇰香港优选,<<: *use, type: url-test, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, tolerance: 20, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚡️🇸🇬狮城优选,<<: *use, type: url-test, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, tolerance: 20, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚡️🇯🇵日本优选,<<: *use, type: url-test, filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$, interval: 60, tolerance: 20, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚡️🇹🇼台湾优选,<<: *use, type: url-test, filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, tolerance: 20, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚡️🇺🇸美国优选,<<: *use, type: url-test, filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, tolerance: 20, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
 
 # 负载均衡
-  - {name: ⚖️🇭🇰香港均衡,<<: *use, type: load-balance, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚖️🇸🇬狮城均衡,<<: *use, type: load-balance, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚖️🇯🇵日本均衡,<<: *use, type: load-balance, filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$, interval: 60, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚖️🇹🇼台湾均衡,<<: *use, type: load-balance, filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
-  - {name: ⚖️🇺🇸美国均衡,<<: *use, type: load-balance, filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, lazy: true, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚖️🇭🇰香港均衡,<<: *use, type: load-balance, filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, interval: 60, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚖️🇸🇬狮城均衡,<<: *use, type: load-balance, filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$, interval: 60, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚖️🇯🇵日本均衡,<<: *use, type: load-balance, filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$, interval: 60, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚖️🇹🇼台湾均衡,<<: *use, type: load-balance, filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, interval: 60, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: ⚖️🇺🇸美国均衡,<<: *use, type: load-balance, filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, interval: 60, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true}
 
 #  基础策略
   - {name: ♻️自动选择,<<: *use, type: url-test, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$, interval: 60, tolerance: 20, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
   - {name: 🚦故障转移,<<: *use, type: fallback, filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$, interval: 60, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
+  - {name: 🚥故障转移,<<: *use, type: fallback, filter: (?=.*())^((?!(台|🇹🇼|TW|湾|港|🇭🇰|HK|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$, interval: 60, url: 'https://cp.cloudflare.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true}
   - {name: ⛔直接连接, type: select, udp: true, hidden: true, proxies: [ DIRECT ]}
   - {name: 📵拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ]}
 
