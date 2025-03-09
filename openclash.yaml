@@ -41,6 +41,10 @@ ntp:
   server: ntp.aliyun.com # NTP服务器地址
   port: 123 # NTP端口
   interval: 30 # 同步间隔（秒）
+# TCP Keep-Alive 配置
+disable-keep-alive: false # 目前在android端强制为true
+keep-alive-idle: 5 # TCP空闲时间 秒
+keep-alive-interval: 30 # Keep-Alive探测间隔 秒
 
 # 规则集更新
 Ymal: &Classical
