@@ -10,7 +10,8 @@ find-process-mode: 'off'  # 进程匹配 always / strict / off
 bind-address: '*'  # 绑定所有IP地址
 mode: rule  # 设置代理模式
 log-level: silent  # 设置日志级别
-keep-alive-idle: 600  # TCP连接空闲时间
+disable-keep-alive: false # 目前在android端强制为true
+keep-alive-idle: 5  # TCP连接空闲时间
 keep-alive-interval: 30  # TCP连接活动的间隔时间
 external-controller: 127.0.0.1:9090 #页面端口
 secret:  # 页面登录密钥
@@ -25,12 +26,14 @@ proxy-providers:
     interval: 10800
     path: ./机场🅰️.yaml
     health-check:
-      enable: true
+      enable: false
       interval: 300
-      url: https://cp.cloudflare.com
+      url: https://8.8.8.8/generate_204
       timeout: 2000
-    benchmark-url: https://cp.cloudflare.com
+      expected-status: 200/204
+    benchmark-url: https://8.8.8.8/generate_204
     benchmark-timeout: 5
+    expected-status: 200/204
     filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
   机场🅱️:
     type: http
@@ -41,18 +44,31 @@ proxy-providers:
     interval: 10800
     path: ./机场🅱️.yaml
     health-check:
-      enable: true
+      enable: false
       interval: 300
-      url: https://cp.cloudflare.com
+      url: https://8.8.8.8/generate_204
       timeout: 2000
-    benchmark-url: https://cp.cloudflare.com
+      expected-status: 200/204
+    benchmark-url: https://8.8.8.8/generate_204
     benchmark-timeout: 5
+    expected-status: 200/204
     filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
+
+# NTP时间同步配置
+ntp:
+  enable: true # 是否启用NTP
+  write-to-system: true # 是否写入系统时间
+  server: ntp.aliyun.com # NTP服务器地址
+  port: 123 # NTP端口
+  interval: 30 # 同步间隔（秒）
 
 # DNS 设置
 dns:
-  enable: true
-  ipv6: true
+  cache-algorithm: arc # 缓存算法
+  enable: true # 启用DNS
+  perfer-h3: true # 是否优先使用HTTP/3
+  ipv6: true # 启用IPv6 DNS
+  ipv6-timeout: 200 # IPv6 DNS查询超时（毫秒）
   listen: 0.0.0.0:1053 # DNS监听端口
   enhanced-mode: fake-ip # redir-host / fake-ip
   fake-ip-range: 198.18.0.1/16
@@ -214,9 +230,7 @@ geo-update-interval: 23 # 小时
 proxy-groups:
   - name: 👋手动选择
     type: select
-    use:
-      - 机场🅰️
-      - 机场🅱️
+    include-all: true
 
   - name: 🙌默认代理
     type: select
@@ -406,126 +420,134 @@ proxy-groups:
 
   - name: 🇭🇰香港优选
     type: url-test
-    disable-udp: false
+    disable-udp: true
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
     filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
+    url: https://8.8.8.8/generate_204
+    expected-status: 204
+    lazy: false
     interval: 60
     tolerance: 20
-    timeout: 2000
-    max-failed-times: 2
+    timeout: 2500
+    max-failed-times: 8
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: 🇸🇬狮城优选
     type: url-test
-    disable-udp: false
+    disable-udp: true
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
     filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
+    url: https://8.8.8.8/generate_204
+    expected-status: 204
+    lazy: false
     interval: 60
     tolerance: 20
-    timeout: 2000
-    max-failed-times: 2
+    timeout: 2500
+    max-failed-times: 8
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: 🇯🇵日本优选
     type: url-test
-    disable-udp: false
+    disable-udp: true
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
     filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
+    url: https://8.8.8.8/generate_204
+    expected-status: 204
+    lazy: false
     interval: 60
     tolerance: 20
-    timeout: 2000
-    max-failed-times: 2
+    timeout: 2500
+    max-failed-times: 8
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: 🇹🇼台湾优选
     type: url-test
-    disable-udp: false
+    disable-udp: true
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
     filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
+    url: https://8.8.8.8/generate_204
+    expected-status: 204
+    lazy: false
     interval: 60
     tolerance: 20
-    timeout: 2000
-    max-failed-times: 2
+    timeout: 2500
+    max-failed-times: 8
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: 🇺🇸美国优选
     type: url-test
-    disable-udp: false
+    disable-udp: true
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
     filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
+    url: https://8.8.8.8/generate_204
+    expected-status: 204
+    lazy: false
     interval: 60
     tolerance: 20
-    timeout: 2000
-    max-failed-times: 2
+    timeout: 2500
+    max-failed-times: 8
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: ♻️自动选择
     type: url-test
-    disable-udp: false
+    disable-udp: true
     filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
+    url: https://8.8.8.8/generate_204
+    expected-status: 204
+    lazy: false
     interval: 60
     tolerance: 20
-    timeout: 2000
-    max-failed-times: 2
+    timeout: 2500
+    max-failed-times: 8
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: 🚦故障转移
     type: fallback
-    disable-udp: false
+    disable-udp: true
     filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
-    interval: 60
-    timeout: 2000
-    max-failed-times: 2
+    url: https://1.1.1.1/cdn-cgi/trace
+    expected-status: 200/403
+    lazy: false
+    interval: 10
+    timeout: 5000
+    max-failed-times: 12
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: 🚥故障转移
     type: fallback
-    disable-udp: false
+    disable-udp: true
     filter: (?=.*())^((?!(台|🇹🇼|TW|湾|港|🇭🇰|HK|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-    url: "https://cp.cloudflare.com/generate_204"
-    lazy: true
-    interval: 60
-    timeout: 2000
-    max-failed-times: 2
+    url: https://1.1.1.1/cdn-cgi/trace
+    expected-status: 200/403
+    lazy: false
+    interval: 10
+    timeout: 5000
+    max-failed-times: 12
+    hidden: true
     use:
       - 机场🅰️
       - 机场🅱️
-    hidden: true
 
   - name: ⛔直接连接
     type: select
