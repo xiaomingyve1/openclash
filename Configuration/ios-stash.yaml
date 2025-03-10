@@ -24,7 +24,7 @@ proxy-providers:
     url: "订阅链接🅰️"
 #❗️❗️❗️⚠️⚠️注意：替换 🅰️接链阅订 换替:意注⚠️⚠️❗️❗️❗️#
     override: {additional-prefix: '[🅰️] '}
-    interval: 10800
+    interval: 3600
     path: ./机场🅰️.yaml
     health-check:
       enable: false
@@ -42,7 +42,7 @@ proxy-providers:
     url: "订阅链接🅱️"
 #❗️❗️❗️⚠️⚠️注意：替换 🅱️接链阅订 换替:意注⚠️⚠️❗️❗️❗️#
     override: {additional-prefix: '[🅱️] '}
-    interval: 10800
+    interval: 3600
     path: ./机场🅱️.yaml
     health-check:
       enable: false
