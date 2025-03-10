@@ -2,7 +2,7 @@
 p:
   &p {
     type: http,
-    interval: 10800,
+    interval: 3600,
     health-check:
       {
         enable: false,
