@@ -420,7 +420,7 @@ proxy-groups:
 
   - name: 🇭🇰香港优选
     type: url-test
-    disable-udp: true
+    disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
     filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
     url: https://8.8.8.8/generate_204
@@ -437,7 +437,7 @@ proxy-groups:
 
   - name: 🇸🇬狮城优选
     type: url-test
-    disable-udp: true
+    disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
     filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
     url: https://8.8.8.8/generate_204
@@ -454,7 +454,7 @@ proxy-groups:
 
   - name: 🇯🇵日本优选
     type: url-test
-    disable-udp: true
+    disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
     filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$
     url: https://8.8.8.8/generate_204
@@ -471,7 +471,7 @@ proxy-groups:
 
   - name: 🇹🇼台湾优选
     type: url-test
-    disable-udp: true
+    disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
     filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$
     url: https://8.8.8.8/generate_204
@@ -488,7 +488,7 @@ proxy-groups:
 
   - name: 🇺🇸美国优选
     type: url-test
-    disable-udp: true
+    disable-udp: false
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
     filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
     url: https://8.8.8.8/generate_204
@@ -505,7 +505,7 @@ proxy-groups:
 
   - name: ♻️自动选择
     type: url-test
-    disable-udp: true
+    disable-udp: false
     filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
     url: https://8.8.8.8/generate_204
     expected-status: 204
@@ -521,7 +521,7 @@ proxy-groups:
 
   - name: 🚦故障转移
     type: fallback
-    disable-udp: true
+    disable-udp: false
     filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
     url: https://1.1.1.1/cdn-cgi/trace
     expected-status: 200/403
@@ -536,7 +536,7 @@ proxy-groups:
 
   - name: 🚥故障转移
     type: fallback
-    disable-udp: true
+    disable-udp: false
     filter: (?=.*())^((?!(台|🇹🇼|TW|湾|港|🇭🇰|HK|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
     url: https://1.1.1.1/cdn-cgi/trace
     expected-status: 200/403
@@ -558,7 +558,7 @@ proxy-groups:
 
   - name: 📵拒绝连接
     type: select
-    disable-udp: true
+    disable-udp: false
     proxies:
       - REJECT
     hidden: true
