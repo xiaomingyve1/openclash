@@ -61,7 +61,7 @@ proxy-groups:
   - {name: 🎮游戏平台, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
   - {name: 🗄️下载服务, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
   - {name: 🐟漏网之鱼, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-#  流媒体检测解锁
+#  流媒体解锁检测
   - {name: 🌍国际媒体, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
   - {name: 🤖人工智能, type: select, include-all: true, filter: *FilterAll}
   - {name: 📺Youtube, type: select, include-all: true, filter: *FilterAll}
