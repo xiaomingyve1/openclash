@@ -1,30 +1,21 @@
-# 全局配置
-# NTP时间同步配置
-ntp:
-  enable: true # 是否启用NTP
-  write-to-system: true # 是否写入系统时间
-  server: ntp.aliyun.com # NTP服务器地址
-  port: 123 # NTP端口
-  interval: 30 # 同步间隔（秒）
-# TCP Keep-Alive 配置
-disable-keep-alive: false # 目前在android端强制为true
-keep-alive-idle: 5 # TCP空闲时间 秒
-keep-alive-interval: 30 # Keep-Alive探测间隔 秒
+# ============================================================================================================================
+# Github     @xiaomingyve1
+# 日期       2025年3月21日
+# 注意       在 proxy-providers 加入您的机场订阅链接
+# 地址       https://github.com/xiaomingyve1/openclash/tree/main
+# 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
+# 功能       支持手动选择、自动测速、兜底分流、故障转移、负载均衡、国家分组、多机场订阅等，适用openclash/Mihomo/Nikki  
+# 感谢       @blackmatrix7，@ACL4SSR，@VirgilClyne，@666OS
+# ===============================================================================================================================
 
 # 订阅更新
-Subscription: &sub {type: http, interval: 3600, health-check: {enable: false, url: 'https://8.8.8.8/generate_204', interval: 300}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
+Subscription: &sub {type: http, interval: 3600, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
 
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
 proxy-providers:
   🅰️配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[🅰️] '}}
   🅱️配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[🅱️] '}}
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
-
-# 规则集更新
-Ymal: &Classical
-  type: http
-  behavior: classical
-  interval: 75600
 
 # 数据库更新
 geox-url:
@@ -38,6 +29,8 @@ geodata-loader: standard  # standard:标准加载器 / memconservative:小内存
 geo-auto-update: true # 自动更新
 geo-update-interval: 23 # 小时
 
+# 规则集更新
+ClassicalYaml: &Classical {type: http, interval: 75600, behavior: classical, format: yaml}
 #  过滤关键词 
 FilterAll: &FilterAll '(?=.*())^((?!(流量)).)*$'
 FilterPart: &FilterPart '(?=.*())^((?!(港|🇭🇰|HK|台|🇹🇼|TW|湾|流量)).)*$'
@@ -49,28 +42,33 @@ FilterTW: &FilterTW '(?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新
 FilterUS: &FilterUS '(?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新|流量)).)*$'
 FilterHulu: &FilterHulu '(?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼|流量)).)*$'
 #  测速组 
-UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: false, url: https://8.8.8.8/generate_204, expected-status: 204, disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true, include-all: true}
-FallBack: &FallBack {type: fallback, interval: 97, lazy: false, url: https://1.1.1.1/cdn-cgi/trace,expected-status: 200/403,  disable-udp: false, timeout: 2000, max-failed-times: 2, hidden: true, include-all: true}
-LoadBalanceCH: &LoadBalanceCH {type: load-balance, interval: 131, lazy: false, url: https://1.1.1.1/cdn-cgi/trace,expected-status: 200/403,  disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 2, hidden: true, include-all: true}
+UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+LoadBalanceCH: &LoadBalanceCH {type: load-balance, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+LoadBalanceCR: &LoadBalanceCR {type: load-balance, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: round-robin, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+#  选择组
+SelectFB: &SelectFB {type: select, proxies: [🚦故障转移,🚥故障转移,♻️自动选择,👋手动选择,⛔直接连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
+SelectProxy: &SelectProxy {type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⛔直接连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
+SelectDIR: &SelectDIR {type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
 
 #  策略组
 proxy-groups:
   - {name: 👋手动选择, type: select, include-all: true}
-  - {name: 🙌默认代理, type: select, proxies: [🚦故障转移,♻️自动选择,👋手动选择,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 📲Telegram, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 🎮游戏平台, type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,⛔直接连接,📵拒绝连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 🗄️下载服务, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
-  - {name: 🐟漏网之鱼, type: select, proxies: [⛔直接连接,📵拒绝连接,🙌默认代理,👋手动选择,🚦故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,⚖️🇭🇰香港均衡,⚖️🇸🇬狮城均衡,⚖️🇯🇵日本均衡,⚖️🇹🇼台湾均衡,⚖️🇺🇸美国均衡]}
+  - {name: 🙌默认代理, <<: *SelectFB}
+  - {name: 📲Telegram, <<: *SelectProxy}
+  - {name: 🎮游戏平台, <<: *SelectProxy}
+  - {name: 🗄️下载服务, <<: *SelectDIR}
+  - {name: 🐟漏网之鱼, <<: *SelectDIR}
 #  流媒体解锁检测
   - {name: 🌍国际媒体, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
-  - {name: 🤖人工智能, type: select, include-all: true, filter: *FilterAll}
-  - {name: 📺Youtube, type: select, include-all: true, filter: *FilterAll}
-  - {name: 🎬PrimeVideo, type: select, include-all: true, filter: *FilterAll}
-  - {name: 🎬奈飞, type: select, include-all: true, filter: *FilterAll}
-  - {name: 🎬迪士尼, type: select, include-all: true, filter: *FilterAll}
-  - {name: 🎬HBO, type: select, include-all: true, filter: *FilterAll}
+  - {name: 🤖人工智能, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
+  - {name: 📺Youtube, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
+  - {name: 🎬PrimeVideo, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
+  - {name: 🎬奈飞, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
+  - {name: 🎬迪士尼, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
+  - {name: 🎬HBO, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
 # 不支持流媒体解锁检测
-  - {name: 🎬Hulu, type: select, include-all: true, filter: *FilterHulu, proxies: [⚡️🇺🇸美国优选,⚖️🇺🇸美国均衡,⚡️🇯🇵日本优选,⚖️🇯🇵日本均衡,👋手动选择,🚥故障转移]}
+  - {name: 🎬Hulu, type: select, include-all: true, filter: *FilterHulu, proxies: [⚡️🇺🇸美国优选,♾️🇭🇰美国故转,🔀🇺🇸美国散列,🔁🇺🇸美国轮询,⚡️🇯🇵日本优选,♾️🇭🇰日本故转,🔀🇯🇵日本散列,🔁🇯🇵日本轮询,👋手动选择]}
 
   - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
@@ -85,12 +83,26 @@ proxy-groups:
   - {name: ⚡️🇹🇼台湾优选, <<: *UrlTest, filter: *FilterTW}
   - {name: ⚡️🇺🇸美国优选, <<: *UrlTest, filter: *FilterUS}
 
+# 故障转移
+  - {name: ♾️🇭🇰香港故转, <<: *FallBack, filter: *FilterHK}
+  - {name: ♾️🇭🇰狮城故转, <<: *FallBack, filter: *FilterSG}
+  - {name: ♾️🇭🇰日本故转, <<: *FallBack, filter: *FilterJP}
+  - {name: ♾️🇭🇰台湾故转, <<: *FallBack, filter: *FilterTW}
+  - {name: ♾️🇭🇰美国故转, <<: *FallBack, filter: *FilterUS}
+
 # 负载均衡
-  - {name: ⚖️🇭🇰香港均衡, <<: *LoadBalanceCH, filter: *FilterHK}
-  - {name: ⚖️🇸🇬狮城均衡, <<: *LoadBalanceCH, filter: *FilterSG}
-  - {name: ⚖️🇯🇵日本均衡, <<: *LoadBalanceCH, filter: *FilterJP}
-  - {name: ⚖️🇹🇼台湾均衡, <<: *LoadBalanceCH, filter: *FilterTW}
-  - {name: ⚖️🇺🇸美国均衡, <<: *LoadBalanceCH, filter: *FilterUS}
+# 1. consistent-hashing（一致性哈希）
+  - {name: 🔀🇭🇰香港散列, <<: *LoadBalanceCH, filter: *FilterHK}
+  - {name: 🔀🇸🇬狮城散列, <<: *LoadBalanceCH, filter: *FilterSG}
+  - {name: 🔀🇯🇵日本散列, <<: *LoadBalanceCH, filter: *FilterJP}
+  - {name: 🔀🇹🇼台湾散列, <<: *LoadBalanceCH, filter: *FilterTW}
+  - {name: 🔀🇺🇸美国散列, <<: *LoadBalanceCH, filter: *FilterUS}
+# 2. round-robin（轮询）
+  - {name: 🔁🇭🇰香港轮询, <<: *LoadBalanceCR, filter: *FilterHK}
+  - {name: 🔁🇸🇬狮城轮询, <<: *LoadBalanceCR, filter: *FilterSG}
+  - {name: 🔁🇯🇵日本轮询, <<: *LoadBalanceCR, filter: *FilterJP}
+  - {name: 🔁🇹🇼台湾轮询, <<: *LoadBalanceCR, filter: *FilterTW}
+  - {name: 🔁🇺🇸美国轮询, <<: *LoadBalanceCR, filter: *FilterUS}
 
 #  基础策略
   - {name: ♻️自动选择, <<: *UrlTest, filter: *FilterAll}
