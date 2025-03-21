@@ -175,7 +175,7 @@
 ⛔直接连接,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml  
 🐟漏网之鱼,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/STUN/STUN.yaml  
 🙌默认代理,[]GEOSITE,geolocation-!cn    
-🚩国内流量,[]GEOSITE,CN 
+🚩国内流量,[]GEOSITE,CN     
 🚩国内流量,[]GEOIP,CN   
 🙌默认代理,[]DST-PORT,80    
 🙌默认代理,[]DST-PORT,443   
