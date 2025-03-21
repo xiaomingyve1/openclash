@@ -11,8 +11,8 @@ disable-keep-alive: false # 目前在android端强制为true
 keep-alive-idle: 5 # TCP空闲时间 秒
 keep-alive-interval: 30 # Keep-Alive探测间隔 秒
 
-# 订阅更新时间和健康检测
-Subscription: &sub {type: http, interval: 3600, health-check: {enable: false, url: 'https://8.8.8.8/generate_204', interval: 300}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
+# 订阅更新
+Subscription: &sub {type: http, interval: 3600, health-check: {enable: false, url: 'https://8.8.8.8/generate_204', interval: 300}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
 
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
 proxy-providers:
