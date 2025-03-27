@@ -1,4 +1,4 @@
-[任务计划crontab.txt](https://github.com/user-attachments/files/19478468/crontab.txt)# openclash 适用于流媒体增强
+# openclash 适用于流媒体增强
 
 下载 openclash.yaml 文件，直接上传到openclash-配置管理-编辑，填写订阅即可。  
 
