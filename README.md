@@ -8,9 +8,8 @@
 
 # 对于 UrlTest 失效的问题，可以通过计划任务crontab定时热加载配置（不重启不断网）刷新测速
 
-#（127.0.0.1:9090+admin）下面的两条 IP地址+端口+密钥 更改为自己路由器的  
+00 */1 * * * sh -c "CONFIG_FILE=\$(find /etc/openclash -type f -name '*.yaml' -exec grep -l 'external-controller:' {} \; | head -n 1); EC=\$(grep 'external-controller:' \"\$CONFIG_FILE\" | sed 's/.*external-controller:[[:space:]]*//g' | tr -d ' '); SECRET=\$(grep '^secret:' \"\$CONFIG_FILE\" | sed 's/.*secret:[[:space:]]*//g' | tr -d ' '); curl -X POST \"http://\${EC}/configs?force=true\" -H \"Authorization: Bearer \${SECRET}\" -H \"Content-Type: application/json\" -d \"{\\\"path\\\":\\\"\$CONFIG_FILE\\\"}\" && curl -X PUT \"http://\${EC}/configs\" -H \"Authorization: Bearer \${SECRET}\" -H \"Content-Type: application/json\" -d '{\"action\":\"reload\"}'"
 
-00 */1 * * * curl -s -X POST "http://127.0.0.1:9090/configs?force=true" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"path":"/etc/openclash/config.yaml"}' && curl -s -X PUT "http://127.0.0.1:9090/configs" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"action":"reload"}'
   
 # 图例
 ![策略组1](https://github.com/user-attachments/assets/27702213-5515-4d67-9ef1-cee3af70880a)
