@@ -7,6 +7,7 @@
 规则策略比较多，并不适合256mb设备，慎用！  
 
 # 对于 UrlTest 失效的问题，可以通过计划任务crontab定时热加载配置（不重启不断网）刷新测速
+# 填到openwrt的计划任务即可，00 */1 * * * 为每 1 个小时的 00 分运行一次
 
 00 */1 * * * sh -c "CONFIG_FILE=\$(find /etc/openclash -type f -name '*.yaml' -exec grep -l 'external-controller:' {} \; | head -n 1); EC=\$(grep 'external-controller:' \"\$CONFIG_FILE\" | sed 's/.*external-controller:[[:space:]]*//g' | tr -d ' '); SECRET=\$(grep '^secret:' \"\$CONFIG_FILE\" | sed 's/.*secret:[[:space:]]*//g' | tr -d ' '); curl -X POST \"http://\${EC}/configs?force=true\" -H \"Authorization: Bearer \${SECRET}\" -H \"Content-Type: application/json\" -d \"{\\\"path\\\":\\\"\$CONFIG_FILE\\\"}\" && curl -X PUT \"http://\${EC}/configs\" -H \"Authorization: Bearer \${SECRET}\" -H \"Content-Type: application/json\" -d '{\"action\":\"reload\"}'"
 
