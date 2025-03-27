@@ -7,8 +7,6 @@
 规则策略比较多，并不适合256mb设备，慎用！  
 
 # 对于 UrlTest 失效的问题，可以通过计划任务crontab定时热加载配置（不重启不断网）刷新测速
-# 任务计划.txt填到openwrt的计划任务即可，00 */1 * * * 为每 1 个小时的 00 分运行一次
-
   
 # 图例
 ![策略组1](https://github.com/user-attachments/assets/27702213-5515-4d67-9ef1-cee3af70880a)
