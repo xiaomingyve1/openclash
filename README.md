@@ -10,7 +10,7 @@
 
 #（127.0.0.1:9090+admin）下面的两条 IP地址+端口+密钥 更改为自己路由器的  
 
-00 */1 * * * curl -X POST "http://127.0.0.1:9090/configs" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"path":"/etc/openclash/config.yaml"}'; sleep 5; curl -X PUT "http://127.0.0.1:9090/configs?force=true" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"path":"","payload":""}'
+00 */1 * * * curl -s -X POST "http://127.0.0.1:9090/configs?force=true" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"path":"/etc/openclash/config.yaml"}' && curl -s -X PUT "http://127.0.0.1:9090/configs" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"action":"reload"}'
   
 # 图例
 ![策略组1](https://github.com/user-attachments/assets/27702213-5515-4d67-9ef1-cee3af70880a)
