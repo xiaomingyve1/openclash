@@ -1,1 +1,9 @@
+# 定时热加载配置（不重启不断网）刷新测速
+# 填到openwrt的计划任务即可，00 */1 * * * 为每 1 个小时的 00 分运行一次
+# 可使用ssh测试（删除 00 */1 * * * ）ssh 运行成功后无输出，运行错误会有提示
+
+# 自动获取IP地址+端口+密钥
 00 */1 * * * sh -c "find /etc/openclash -type f -name '*.yaml' -print0 | while IFS= read -r -d '' file; do EC=\$(sed -n '/^[[:space:]]*external-controller:/{s/^[[:space:]]*external-controller:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); [ -z \"\$EC\" ] && continue; SECRET=\$(sed -n '/^[[:space:]]*secret:/{s/^[[:space:]]*secret:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); if curl -sS --connect-timeout 5 -o /dev/null -w '%{http_code}' \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} | grep -q '^2'; then curl -sS -X POST \"http://\${EC}/configs?force=true\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d \"{\\\"path\\\":\\\"\$file\\\"}\" && curl -sS -X PUT \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d '{\"action\":\"reload\"}'; exit 0; fi; done" >/dev/null 2>&1
+
+# 手动替换（127.0.0.1:9090+admin）下面的两条 IP地址+端口+密钥 更改为自己路由器的
+00 */1 * * * curl -X POST "http://127.0.0.1:9090/configs" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"path":"/etc/openclash/config.yaml"}'; sleep 5; curl -X PUT "http://127.0.0.1:9090/configs?force=true" -H "Authorization: Bearer admin" -H "Content-Type: application/json" -d '{"path":"","payload":""}'
