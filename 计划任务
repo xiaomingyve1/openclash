@@ -2,6 +2,8 @@
 # 填到openwrt的计划任务即可，00 */1 * * * 为每 1 个小时的 00 分运行一次
 # 可使用ssh测试（删除 00 */1 * * * ）ssh 运行成功后无输出，运行错误会有提示
 
+###  二选一  ###  二选一  ###  二选一  ###
+
 # 自动获取IP地址+端口+密钥
 00 */1 * * * sh -c "find /etc/openclash -type f -name '*.yaml' -print0 | while IFS= read -r -d '' file; do EC=\$(sed -n '/^[[:space:]]*external-controller:/{s/^[[:space:]]*external-controller:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); [ -z \"\$EC\" ] && continue; SECRET=\$(sed -n '/^[[:space:]]*secret:/{s/^[[:space:]]*secret:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); if curl -sS --connect-timeout 5 -o /dev/null -w '%{http_code}' \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} | grep -q '^2'; then curl -sS -X POST \"http://\${EC}/configs?force=true\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d \"{\\\"path\\\":\\\"\$file\\\"}\" && curl -sS -X PUT \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d '{\"action\":\"reload\"}'; exit 0; fi; done" >/dev/null 2>&1
 
