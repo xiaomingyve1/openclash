@@ -13,7 +13,7 @@
 00 */1 * * * sleep 70 && sh -c "find /etc/openclash -type f -name '*.yaml' -print0 | while IFS= read -r -d '' file; do EC=\$(sed -n '/^[[:space:]]*external-controller:/{s/^[[:space:]]*external-controller:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); [ -z \"\$EC\" ] && continue; SECRET=\$(sed -n '/^[[:space:]]*secret:/{s/^[[:space:]]*secret:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); if curl -sS --connect-timeout 5 -o /dev/null -w '%{http_code}' \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} | grep -q '^2'; then curl -sS -X POST \"http://\${EC}/configs?force=true\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d \"{\\\"path\\\":\\\"\$file\\\"}\" && curl -sS -X PUT \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d '{\"action\":\"reload\"}'; exit 0; fi; done"
 
 
-# 解决 流媒体增强 检测长时间运行后失效问题（需要重启重启openclash）
+# 解决 流媒体增强 检测长时间运行后失效问题（需要重启openclash）
 # 定时重载防火墙并重启openclash，刷新解锁检测
 
 # 1.每天凌晨5点-删除流媒体缓存-重载防火墙-重启openclash
