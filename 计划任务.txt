@@ -17,4 +17,4 @@
 # openclash 运行时定时重载防火墙，刷新解锁检测
 
 # 1.定时检查 openclash 进程运行时重载防火墙
-00 5 * * * sleep 70 && sh -c 'if pgrep clash >/dev/null 2>&1; then /etc/init.d/firewall reload >/dev/null 2>&1; else echo "Error: clash is not running" >&2; exit 1; fi'
+00 5 * * * sleep 70 && sh -c 'if pgrep clash >/dev/null 2>&1; then rm -rf /etc/openclash/history/streaming_unlock_cache >/dev/null 2>&1 && /etc/init.d/firewall reload >/dev/null 2>&1; else echo "Error: clash is not running" >&2; exit 1; fi'
