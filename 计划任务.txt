@@ -13,8 +13,8 @@
 00 */1 * * * sleep 70 && sh -c "find /etc/openclash -type f -name '*.yaml' -print0 | while IFS= read -r -d '' file; do EC=\$(sed -n '/^[[:space:]]*external-controller:/{s/^[[:space:]]*external-controller:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); [ -z \"\$EC\" ] && continue; SECRET=\$(sed -n '/^[[:space:]]*secret:/{s/^[[:space:]]*secret:[[:space:]]*//p;q}' \"\$file\" | tr -d ' '); if curl -sS --connect-timeout 5 -o /dev/null -w '%{http_code}' \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} | grep -q '^2'; then curl -sS -X POST \"http://\${EC}/configs?force=true\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d \"{\\\"path\\\":\\\"\$file\\\"}\" && curl -sS -X PUT \"http://\${EC}/configs\" \${SECRET:+-H \"Authorization: Bearer \${SECRET}\"} -H \"Content-Type: application/json\" -d '{\"action\":\"reload\"}'; exit 0; fi; done"
 
 
-# 解决 流媒体增强 检测长时间运行后失效问题（不重启不断网）
-# openclash 运行时定时重载防火墙，刷新解锁检测
+# 解决 流媒体增强 检测长时间运行后失效问题（需要重启重启openclash）
+# 定时重载防火墙并重启openclash，刷新解锁检测
 
-# 1.定时检查 openclash 进程运行时重载防火墙
-00 5 * * * sleep 70 && sh -c 'if pgrep clash >/dev/null 2>&1; then rm -rf /etc/openclash/history/streaming_unlock_cache >/dev/null 2>&1 && /etc/init.d/firewall reload >/dev/null 2>&1; else echo "Error: clash is not running" >&2; exit 1; fi'
+# 1.每天凌晨5点-删除流媒体缓存-重载防火墙-重启openclash
+00 5 * * * sleep 70 && sh -c "$(echo aWYgcGdyZXAgY2xhc2ggPi9kZXYvbnVsbCAyPiYxOyB0aGVuIHJtIC1yZiAvZXRjL29wZW5jbGFzaC9oaXN0b3J5L3N0cmVhbWluZ191bmxvY2tfY2FjaGUgPi9kZXYvbnVsbCAyPiYxICYmIC9ldGMvaW5pdC5kL2ZpcmV3YWxsIHJlbG9hZCA+L2Rldi9udWxsIDI+JjEgJiYgL2V0Yy9pbml0LmQvb3BlbmNsYXNoIHJlc3RhcnQgPi9kZXYvbnVsbCAyPiYxOyBlbHNlIGVjaG8gIkVycm9yOiBjbGFzaCBpcyBub3QgcnVubmluZyIgPiYyOyBleGl0IDE7IGZpCg== | base64 -d)"
