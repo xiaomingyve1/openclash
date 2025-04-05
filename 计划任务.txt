@@ -5,12 +5,11 @@
 
 # 解决 UrlTest 策略组长时间运行后失效问题（不重启不断网）
 
-# 1.openclash 定时热加载配置刷新 UrlTest 测速
+# 1. openclash 定时热加载配置刷新 UrlTest 测速
 00 */1 * * * sleep 70 && sh -c 'kill -HUP $(pidof clash)'
 
 
 # 解决 流媒体增强 检测长时间运行后失效问题（需要重启openclash）
-# 定时重载防火墙并重启openclash，刷新解锁检测
 
-# 1.每天凌晨5点-删除流媒体缓存-重载防火墙-重启openclash
+# 1. 定时重载防火墙并重启openclash，刷新解锁检测
 00 5 * * * sleep 70 && sh -c "$(echo aWYgcGdyZXAgY2xhc2ggPi9kZXYvbnVsbCAyPiYxOyB0aGVuIHJtIC1yZiAvZXRjL29wZW5jbGFzaC9oaXN0b3J5L3N0cmVhbWluZ191bmxvY2tfY2FjaGUgPi9kZXYvbnVsbCAyPiYxICYmIC9ldGMvaW5pdC5kL2ZpcmV3YWxsIHJlbG9hZCA+L2Rldi9udWxsIDI+JjEgJiYgc2xlZXAgMTAgJiYgL2V0Yy9pbml0LmQvb3BlbmNsYXNoIHJlc3RhcnQgPi9kZXYvbnVsbCAyPiYxOyBlbHNlIGVjaG8gIkVycm9yOiBjbGFzaCBpcyBub3QgcnVubmluZyIgPiYyOyBleGl0IDE7IGZpCg== | base64 -d)"
