@@ -15,7 +15,5 @@
 00 5 * * * sleep 70 && sh -c "$(echo aWYgcGdyZXAgY2xhc2ggPi9kZXYvbnVsbCAyPiYxOyB0aGVuIHJtIC1yZiAvZXRjL29wZW5jbGFzaC9oaXN0b3J5L3N0cmVhbWluZ191bmxvY2tfY2FjaGUgPi9kZXYvbnVsbCAyPiYxICYmIC9ldGMvaW5pdC5kL2ZpcmV3YWxsIHJlbG9hZCA+L2Rldi9udWxsIDI+JjEgJiYgc2xlZXAgMTAgJiYgL2V0Yy9pbml0LmQvb3BlbmNsYXNoIHJlc3RhcnQgPi9kZXYvbnVsbCAyPiYxOyBlbHNlIGVjaG8gIkVycm9yOiBjbGFzaCBpcyBub3QgcnVubmluZyIgPiYyOyBleGl0IDE7IGZpCg== | base64 -d)"
 
 
-# 解决 长期运行时手动调整策略组太繁琐问题（不重启不断网）
-# 需要安装 jq 软件包！！ （104.0 KB）
-# 1.所有策略组 恢复至默认状态（更改密钥+地址端口）
-00 5 * * * sleep 70 && sh -c 'SECRET="密钥"; CONTROLLER="127.0.0.1:9090"; curl -s -H "Authorization: Bearer $SECRET" "http://$CONTROLLER/proxies" | jq -r ".proxies | to_entries[] | select(.value.type==\"Selector\") | \"\(.key) \(.value.all[0])\"" | while read -r group first_node; do curl -s -X PUT -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" -d "{\"name\":\"$first_node\"}" "http://$CONTROLLER/proxies/$(printf "%s" "$group" | jq -sRr @uri)" >/dev/null 2>&1; done'
+# 所有策略组 恢复至默认状态，需要安装 jq 软件包！
+sh -c 'a=$(grep -Rl external-controller /etc/openclash/|head -n1);[ -z "$a" ]&&exit 1;c=$(awk -F": " "/external-controller/ {print \$2}" "$a"|tr -d "\""|xargs);s=$(awk -F": " "/secret/ {print \$2}" "$a"|tr -d "\""|xargs);t=$(curl -s --max-time 5 -H"Authorization: Bearer $s" http://$c/proxies);[ -z "$t" ]&&exit 1;curl -s -H"Authorization: Bearer $s" http://$c/proxies|jq -r '"'"'.proxies|to_entries[]|select(.value.type=="Selector")|"\(.key) \(.value.all[0])"'"'"'|while read g n;do curl -s -XPUT -H"Authorization: Bearer $s" -H"Content-Type: application/json" -d "{\"name\":\"$n\"}" http://$c/proxies/$(printf %s "$g"|jq -sRr @uri)>/dev/null 2>&1;done'
