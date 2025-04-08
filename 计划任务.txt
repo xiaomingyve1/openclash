@@ -11,8 +11,8 @@
 
 # 解决 流媒体增强 检测长时间运行后失效问题（需要重启openclash）
 
-# 1. 定时重载防火墙并重启openclash，刷新解锁检测
-00 5 * * * sleep 70 && sh -c "$(echo aWYgcGdyZXAgY2xhc2ggPi9kZXYvbnVsbCAyPiYxOyB0aGVuIHJtIC1yZiAvZXRjL29wZW5jbGFzaC9oaXN0b3J5L3N0cmVhbWluZ191bmxvY2tfY2FjaGUgPi9kZXYvbnVsbCAyPiYxICYmIC9ldGMvaW5pdC5kL2ZpcmV3YWxsIHJlbG9hZCA+L2Rldi9udWxsIDI+JjEgJiYgc2xlZXAgMTAgJiYgL2V0Yy9pbml0LmQvb3BlbmNsYXNoIHJlc3RhcnQgPi9kZXYvbnVsbCAyPiYxOyBlbHNlIGVjaG8gIkVycm9yOiBjbGFzaCBpcyBub3QgcnVubmluZyIgPiYyOyBleGl0IDE7IGZpCg== | base64 -d)"
+# 1. 定时重载防火墙并 重启核心，刷新解锁检测
+00 5 * * * sleep 70 && sh -c 'f(){ while read; do :; done; }; { p=$(pidof clash)||exit;rm -rf /etc/openclash/history/streaming_unlock_cache;/etc/init.d/firewall reload;sleep 8;x=$(grep -Rl external-controller /etc/openclash/|head -1);[ -f "$x" ]||exit;y=$(awk -F": " "/external-controller/{print \$2}" "$x"|tr -d "\""|xargs);z=$(awk -F": " "/secret/{print \$2}" "$x"|tr -d "\""|xargs);[ "$y" ]&&[ "$z" ]&&curl -sXPOST -H"Authorization: Bearer $z" -H"Content-Type: application/json" "http://$y/restart"; } 2>&1|f'
 
 
 # 所有策略组 恢复至默认状态，需要安装 jq 软件包！
