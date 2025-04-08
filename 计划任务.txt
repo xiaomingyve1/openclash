@@ -9,10 +9,10 @@
 00 */1 * * * sleep 70 && sh -c 'kill -HUP $(pidof clash)'
 
 
-# 解决 流媒体增强 检测长时间运行后失效问题（会断网一次）
+# 解决 长时间运行后 某些网站失联 或流媒体检测失效问题
 
-# 1. 定时删除流媒体检测缓存后重载防火墙并重启核心，刷新解锁检测
-10 5 * * * sleep 70 && sh -c 'f(){ while read; do :; done; }; { p=$(pidof clash)||exit;rm -rf /etc/openclash/history/streaming_unlock_cache;/etc/init.d/firewall reload;sleep 8;x=$(grep -Rl external-controller /etc/openclash/|head -1);[ -f "$x" ]||exit;y=$(awk -F": " "/external-controller/{print \$2}" "$x"|tr -d "\""|xargs);z=$(awk -F": " "/secret/{print \$2}" "$x"|tr -d "\""|xargs);[ "$y" ]&&[ "$z" ]&&curl -sXPOST -H"Authorization: Bearer $z" -H"Content-Type: application/json" "http://$y/restart"; } 2>&1|f'
+# 1. 定时删除流媒体检测缓存后重载防火墙并重启面板，刷新缓存
+10 5 * * * sleep 70 && sh -c 'exec >&- 2>&-;pgrep clash||exit 1;rm -rf /etc/openclash/history/streaming_unlock_cache&&/etc/init.d/firewall reload&&sleep 10&&$(echo L2V0Yy9pbml0LmQvb3BlbmNsYXNo|base64 -d) restart'
 
 
 # 所有策略组 恢复至默认状态，需要安装 jq 软件包！
