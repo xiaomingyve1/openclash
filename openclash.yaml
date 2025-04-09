@@ -13,8 +13,15 @@ Subscription: &sub {type: http, interval: 3600, health-check: {enable: true, url
 
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
 proxy-providers:
-  🅰️配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[🅰️] '}}
-  🅱️配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[🅱️] '}}
+  1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣] '}}
+  2️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[2️⃣] '}}
+  3️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[3️⃣] '}}
+  4️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[4️⃣] '}}
+  5️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[5️⃣] '}}
+  6️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[6️⃣] '}}
+  7️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[7️⃣] '}}
+  8️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[8️⃣] '}}
+  9️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[9️⃣] '}}
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
 
 # 数据库更新
