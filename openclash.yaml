@@ -28,7 +28,7 @@ geox-url:
   geoip: "https://github.com/Loyalsoldier/geoip/releases/latest/download/geoip-only-cn-private.dat"
   geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
   mmdb: "https://testingcf.jsdelivr.net/gh/Hackl0us/GeoIP2-CN@release/Country.mmdb"
-  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+  asn: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb"
 geodata-mode: true  # geoip 使用文件,dat或者mmdb,可选 true为dat / false为mmdb
 geodata-loader: standard  # standard:标准加载器 / memconservative:小内存优化
 geo-auto-update: true # 自动更新
