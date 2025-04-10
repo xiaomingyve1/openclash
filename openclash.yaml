@@ -1,6 +1,6 @@
 # ============================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年3月21日
+# 日期       2025年4月10日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://github.com/xiaomingyve1/openclash/tree/main
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -10,9 +10,8 @@
 
 # 订阅更新 
 Subscription: &sub {type: http, interval: 3600, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
-
-# ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
 proxy-providers:
+# ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
   1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣] '}}
   2️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[2️⃣] '}}
   3️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[3️⃣] '}}
@@ -26,18 +25,14 @@ proxy-providers:
 
 # 数据库更新 
 geox-url:
-  geosite: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
-  mmdb: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb
-  geoip: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat
-  asn: https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb
-
+  geoip: "https://github.com/Loyalsoldier/geoip/releases/latest/download/geoip-only-cn-private.dat"
+  geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/Hackl0us/GeoIP2-CN@release/Country.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
 geodata-mode: true  # geoip 使用文件,dat或者mmdb,可选 true为dat / false为mmdb
 geodata-loader: standard  # standard:标准加载器 / memconservative:小内存优化
 geo-auto-update: true # 自动更新
 geo-update-interval: 23 # 小时
-
-# 规则集更新 
-ClassicalYaml: &Classical {type: http, interval: 75600, behavior: classical, format: yaml}
 
 #  节点组：过滤关键词 
 FilterAll: &FilterAll '(?=.*())^((?!(流量)).)*$'
@@ -58,7 +53,6 @@ LoadBalanceCR: &LoadBalanceCR {type: load-balance, interval: 131, lazy: true, ur
 SelectFB: &SelectFB {type: select, proxies: [🚦故障转移,🚥故障转移,♻️自动选择,👋手动选择,⛔直接连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
 SelectProxy: &SelectProxy {type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⛔直接连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
 SelectDIR: &SelectDIR {type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
-
 #  策略组 
 proxy-groups:
   - {name: 👋手动选择, type: select, include-all: true}
@@ -77,7 +71,6 @@ proxy-groups:
   - {name: 🎬HBO, type: select, include-all: true, filter: *FilterAll, proxies: [🚥故障转移]}
 # 不支持流媒体解锁检测 
   - {name: 🎬Hulu, type: select, include-all: true, filter: *FilterHulu, proxies: [⚡️🇺🇸美国优选,♾️🇭🇰美国故转,🔀🇺🇸美国散列,🔁🇺🇸美国轮询,⚡️🇯🇵日本优选,♾️🇭🇰日本故转,🔀🇯🇵日本散列,🔁🇯🇵日本轮询,👋手动选择]}
-
   - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: Ⓜ️微软服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
@@ -90,14 +83,12 @@ proxy-groups:
   - {name: ⚡️🇯🇵日本优选, <<: *UrlTest, filter: *FilterJP}
   - {name: ⚡️🇹🇼台湾优选, <<: *UrlTest, filter: *FilterTW}
   - {name: ⚡️🇺🇸美国优选, <<: *UrlTest, filter: *FilterUS}
-
 # 故障转移 
   - {name: ♾️🇭🇰香港故转, <<: *FallBack, filter: *FilterHK}
   - {name: ♾️🇭🇰狮城故转, <<: *FallBack, filter: *FilterSG}
   - {name: ♾️🇭🇰日本故转, <<: *FallBack, filter: *FilterJP}
   - {name: ♾️🇭🇰台湾故转, <<: *FallBack, filter: *FilterTW}
   - {name: ♾️🇭🇰美国故转, <<: *FallBack, filter: *FilterUS}
-
 # 负载均衡 
 # 1. consistent-hashing（一致性哈希）
   - {name: 🔀🇭🇰香港散列, <<: *LoadBalanceCH, filter: *FilterHK}
@@ -111,7 +102,6 @@ proxy-groups:
   - {name: 🔁🇯🇵日本轮询, <<: *LoadBalanceCR, filter: *FilterJP}
   - {name: 🔁🇹🇼台湾轮询, <<: *LoadBalanceCR, filter: *FilterTW}
   - {name: 🔁🇺🇸美国轮询, <<: *LoadBalanceCR, filter: *FilterUS}
-
 #  基础策略 
   - {name: ♻️自动选择, <<: *UrlTest, filter: *FilterAll}
   - {name: 🚦故障转移, <<: *FallBack, filter: *FilterAll}
@@ -119,6 +109,8 @@ proxy-groups:
   - {name: ⛔直接连接, type: select, disable-udp: false, hidden: true, proxies: [ DIRECT ]}
   - {name: 📵拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ]}
 
+# 规则集更新 
+ClassicalYaml: &Classical {type: http, interval: 75600, behavior: classical, format: yaml}
 # 规则提供者 
 rule-providers:
   # 🧬DNS服务
