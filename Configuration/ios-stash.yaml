@@ -113,8 +113,8 @@ SelectFB: &SelectFB {type: select, proxies: [🚦故障转移,🚥故障转移,�
 SelectProxy: &SelectProxy {type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⛔直接连接,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
 SelectDIR: &SelectDIR {type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
 
-# wifi策略可写 ssid-policy: {ss1: ⛔直接连接, ss2: 📵拒绝连接, ss3: ⛔直接连接, ss4: 📵拒绝连接, ss5: ⛔直接连接, ss6: 📵拒绝连接, ss7: ⛔直接连接, cellular: 🙌默认代理}
-# 例-{name: 🙌默认代理, <<: *SelectFB, ssid-policy: {明月: ⛔直接连接, mingyve: 🎛️香港策略, cellular: 🚦故障转移}}
+# wifi策略可写 ssid-policy: {cellular: 🙌默认代理, ss1: ⛔直接连接, ss2: ⛔直接连接, ss3: ⛔直接连接, ss4: ⛔直接连接, ss5: ⛔直接连接, ss6: ⛔直接连接, ss7: ⛔直接连接}
+# 例-{name: 🙌默认代理, <<: *SelectFB, ssid-policy: {cellular: 🚦故障转移, 明月: ⛔直接连接, mingyve: ⛔直接连接}}
 
 #  策略组 
 proxy-groups:
