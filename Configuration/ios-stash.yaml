@@ -1,4 +1,22 @@
-# 全局配置
+# ===========================================================================================================================
+# Github     @xiaomingyve1
+# 日期       2025年4月11日
+# 注意       仅支持stash，在 可视化编辑器-远程代理集 加入您的机场订阅链接
+# 地址       https://github.com/xiaomingyve1/openclash/tree/main
+# 功能       支持手动选择、自动测速、兜底分流、故障转移、负载均衡、国家分组、多机场订阅等
+# 感谢       @blackmatrix7，@ACL4SSR，@VirgilClyne，@666OS
+# ===========================================================================================================================
+
+# 订阅更新 
+Subscription: &sub {type: http, interval: 3600, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
+proxy-providers:
+# ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
+  1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣] '}}
+  2️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[2️⃣] '}}
+  3️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[3️⃣] '}}
+# ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
+
+# 全局配置 
 port: 7890  # 代理服务的监听端口
 socks-port: 7891  # SOCKS代理端口
 mixed-port: 7893  # 混合端口
@@ -10,561 +28,211 @@ find-process-mode: 'off'  # 进程匹配 always / strict / off
 bind-address: '*'  # 绑定所有IP地址
 mode: rule  # 设置代理模式
 log-level: silent  # 设置日志级别
-disable-keep-alive: false # 目前在android端强制为true
+disable-keep-alive: false # 客户端和服务器连接复用 true为禁用
 keep-alive-idle: 5  # TCP连接空闲时间
 keep-alive-interval: 30  # TCP连接活动的间隔时间
 external-controller: 127.0.0.1:9090 #页面端口
 secret:  # 页面登录密钥
-
-subscribe-url: 订阅链接请填到远程代理集
-proxy-providers:
-  机场🅰️:
-    type: http
-#❗️❗️❗️⚠️⚠️注意：替换 订阅链接🅰️ 换替:意注⚠️⚠️❗️❗️❗️#
-    url: "订阅链接🅰️"
-#❗️❗️❗️⚠️⚠️注意：替换 🅰️接链阅订 换替:意注⚠️⚠️❗️❗️❗️#
-    override: {additional-prefix: '[🅰️] '}
-    interval: 3600
-    path: ./机场🅰️.yaml
-    health-check:
-      enable: false
-      interval: 300
-      url: https://8.8.8.8/generate_204
-      timeout: 2000
-      expected-status: 200/204
-    benchmark-url: https://8.8.8.8/generate_204
-    benchmark-timeout: 5
-    expected-status: 200/204
-    filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-  机场🅱️:
-    type: http
-#❗️❗️❗️⚠️⚠️注意：替换 订阅链接🅱️ 换替:意注⚠️⚠️❗️❗️❗️#
-    url: "订阅链接🅱️"
-#❗️❗️❗️⚠️⚠️注意：替换 🅱️接链阅订 换替:意注⚠️⚠️❗️❗️❗️#
-    override: {additional-prefix: '[🅱️] '}
-    interval: 3600
-    path: ./机场🅱️.yaml
-    health-check:
-      enable: false
-      interval: 300
-      url: https://8.8.8.8/generate_204
-      timeout: 2000
-      expected-status: 200/204
-    benchmark-url: https://8.8.8.8/generate_204
-    benchmark-timeout: 5
-    expected-status: 200/204
-    filter: (?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-
-# NTP时间同步配置
-ntp:
-  enable: true # 是否启用NTP
-  write-to-system: true # 是否写入系统时间
-  server: ntp.aliyun.com # NTP服务器地址
-  port: 123 # NTP端口
-  interval: 30 # 同步间隔（秒）
-
-# DNS 设置
+# DNS 设置 
 dns:
-  cache-algorithm: arc # 缓存算法
   enable: true # 启用DNS
+  cache-algorithm: arc # 缓存算法
   perfer-h3: true # 是否优先使用HTTP/3
   ipv6: true # 启用IPv6 DNS
-  ipv6-timeout: 200 # IPv6 DNS查询超时（毫秒）
+  ipv6-timeout: 200 # IPv6 DNS查询超时
   listen: 0.0.0.0:1053 # DNS监听端口
   enhanced-mode: fake-ip # redir-host / fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   # 过滤集黑白名单 blacklist / whitelist
   # 默认为blacklist,即如果匹配成功不返回fake-ip
-  fake-ip-filter:
-    - '*'
-    - '+.lan'
-    - '+.local'
-    - '+.direct'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - '+.market.xiaomi.com'
-    - '+.push.apple.com'
-    - '+.docker.io'
-    - '+.miwifi.com'
-    - "*.localdomain"
-    - "*.example"
-    - "*.invalid"
-    - "*.localhost"
-    - "*.test"
-    - "*.home.arpa"
-    - time.*.com
-    - time.*.gov
-    - time.*.edu.cn
-    - time.*.apple.com
-    - time-ios.apple.com
-    - time1.*.com
-    - time2.*.com
-    - time3.*.com
-    - time4.*.com
-    - time5.*.com
-    - time6.*.com
-    - time7.*.com
-    - ntp.*.com
-    - ntp1.*.com
-    - ntp2.*.com
-    - ntp3.*.com
-    - ntp4.*.com
-    - ntp5.*.com
-    - ntp6.*.com
-    - ntp7.*.com
-    - "*.time.edu.cn"
-    - "*.ntp.org.cn"
-    - "+.pool.ntp.org"
-    - time1.cloud.tencent.com
-    - music.163.com
-    - "*.music.163.com"
-    - "*.126.net"
-    - musicapi.taihe.com
-    - music.taihe.com
-    - songsearch.kugou.com
-    - trackercdn.kugou.com
-    - "*.kuwo.cn"
-    - api-jooxtt.sanook.com
-    - api.joox.com
-    - joox.com
-    - y.qq.com
-    - "*.y.qq.com"
-    - streamoc.music.tc.qq.com
-    - mobileoc.music.tc.qq.com
-    - isure.stream.qqmusic.qq.com
-    - dl.stream.qqmusic.qq.com
-    - aqqmusic.tc.qq.com
-    - amobile.music.tc.qq.com
-    - "*.xiami.com"
-    - "*.music.migu.cn"
-    - music.migu.cn
-    - localhost.ptlogin2.qq.com
-    - localhost.sec.qq.com
-    - "+.qq.com"
-    - "+.tencent.com"
-    - "+.srv.nintendo.net"
-    - "*.n.n.srv.nintendo.net"
-    - "+.cdn.nintendo.net"
-    - "+.stun.playstation.net"
-    - xbox.*.*.microsoft.com
-    - "*.*.xboxlive.com"
-    - xbox.*.microsoft.com
-    - xnotify.xboxlive.com
-    - "+.battlenet.com.cn"
-    - "+.wotgame.cn"
-    - "+.wggames.cn"
-    - "+.wowsgame.cn"
-    - "+.wargaming.net"
-    - proxy.golang.org
-    - stun.*.*
-    - stun.*.*.*
-    - "+.stun.*.*"
-    - "+.stun.*.*.*"
-    - "+.stun.*.*.*.*"
-    - "+.stun.*.*.*.*.*"
-    - heartbeat.belkin.com
-    - "*.linksys.com"
-    - "*.linksyssmartwifi.com"
-    - "*.router.asus.com"
-    - mesu.apple.com
-    - swscan.apple.com
-    - swquery.apple.com
-    - swdownload.apple.com
-    - swcdn.apple.com
-    - swdist.apple.com
-    - lens.l.google.com
-    - stun.l.google.com
-    - na.b.g-tun.com
-    - "+.nflxvideo.net"
-    - "*.square-enix.com"
-    - "*.finalfantasyxiv.com"
-    - "*.ffxiv.com"
-    - "*.ff14.sdo.com"
-    - ff.dorado.sdo.com
-    - "*.mcdn.bilivideo.cn"
-    - "+.media.dssott.com"
-    - shark007.net
-    - Mijia Cloud
-    - "+.cmbchina.com"
-    - "+.cmbimg.com"
-    - local.adguard.org
-    - "+.sandai.net"
-    - "+.n0808.com"
-    - "+.uu.163.com"
-    - rule-set:ChinaTelecom # 绕过电信
-    - rule-set:ChinaMobile  # 绕过移动
-    - rule-set:ChinaUnicom  # 绕过联通
-  default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-  proxy-server-nameserver:
-   - 119.29.29.29
-   - 223.5.5.5
-   - 1.0.0.1
-   - 8.8.8.8
-  nameserver:
-    - https://doh.pub/dns-query #h3=true
-    - https://223.5.5.5/dns-query #h3=true
-  fallback:
-    - tls://8.8.8.8 #dns
-    - tls://1.0.0.1 #dns
+  fake-ip-filter: ['*.lan', '*.local', '*.home.arpa', '+.gitv.tv', '+.docker.io', '+.miwifi.com', '+.safebrowsing.apple', 'Mijia Cloud', 'time.*.com', 'time.*.gov', 'time.*.edu.cn', 'time.*.apple.com', 'time-ios.apple.com', 'time1.*.com', 'time2.*.com', 'time3.*.com', 'time4.*.com', 'time5.*.com', 'time6.*.com', 'time7.*.com', 'ntp.*.com', 'ntp1.*.com', 'ntp2.*.com', 'ntp3.*.com', 'ntp4.*.com', 'ntp5.*.com', 'ntp6.*.com', 'ntp7.*.com', '*.time.edu.cn', '*.ntp.org.cn', '+.pool.ntp.org', 'time1.cloud.tencent.com', 'geosite:cn']
+  default-nameserver: ['119.29.29.29', '180.184.1.1', '223.5.5.5']
+  proxy-server-nameserver: ['119.29.29.29', '223.5.5.5', '1.0.0.1', '8.8.8.8']
+  nameserver: ['https://doh.pub/dns-query', 'https://223.5.5.5/dns-query']
+  fallback: ['tls://1.0.0.1', 'tls://8.8.8.8']
 
-# 规则集更新
-Ymal: &Classical
-  type: http
-  behavior: classical
-  interval: 75600
+# 流量探测（嗅探） 
+sniffer:
+  enable: true
+  override-destination: true
+  sniff:
+    QUIC:
+      ports: [443, 8443]
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+  force-domain:: ['+.v2ex.com', '+.netflix.com', '+.nflxvideo.net', '+.disneyplus.com', '+.amazonaws.com', '+.media.dssott.com'] # 强制嗅探
+  skip-domain:: ['+.apple.com', '+.push.apple.com', '+.vivox.com', '+.wechat.com', '+.qpic.cn', '+.qq.com', '+.wechatapp.com', '+.oray.com', '+.sunlogin.net', 'Mijia Cloud', 'dlg.io.mi.com', 'geosite:cn'] # 忽略嗅探
+  force-dns-mapping: true
+  parse-pure-ip: true
 
-# 数据库更新
+# 代理模式 
+tun:
+  enable: true # 启用 TUN 模式
+  stack: system # 使用系统内核的 TUN 实现
+  device: utun # 指定 TUN 虚拟网卡名称
+  mtu: 9000 # 设置最大传输单元为 9000
+  dns-hijack: # 劫持 DNS 请求
+    - "any:53" # 劫持所有到 53 端口的 DNS 请求
+    - "tcp://any:53" # 劫持 TCP 协议的 DNS 请求
+  endpoint-independent-nat: true # 启用独立 NAT
+  auto-route: true # 自动添加路由规则
+  auto-redirect: true # 自动重定向流量
+  auto-detect-interface: true # 自动检测出口网卡
+
+# 数据库更新 
 geox-url:
-  geosite: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
-  mmdb: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb
-  geoip: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat
-  asn: https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb
-
-geodata-mode: true  # geoip使用文件 true为dat / false为mmdb
-geodata-loader: memconservative  # standard:标准加载器 / memconservative:小内存优化
+  geoip: "https://github.com/Loyalsoldier/geoip/releases/latest/download/geoip-only-cn-private.dat"
+  geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/Hackl0us/GeoIP2-CN@release/Country.mmdb"
+  asn: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb"
+geodata-mode: true  # geoip 使用文件,dat或者mmdb,可选 true为dat / false为mmdb
+geodata-loader: standard  # standard:标准加载器 / memconservative:小内存优化
 geo-auto-update: true # 自动更新
 geo-update-interval: 23 # 小时
 
+#  节点组：过滤关键词 
+FilterAll: &FilterAll '(?=.*())^((?!(流量)).)*$'
+FilterPart: &FilterPart '(?=.*())^((?!(港|🇭🇰|HK|台|🇹🇼|TW|湾|流量)).)*$'
+#  节点组：保留关键词^排除关键词 
+FilterHK: &FilterHK '(?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美|流量)).)*$'
+FilterSG: &FilterSG '(?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美|流量)).)*$'
+FilterJP: &FilterJP '(?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼|流量)).)*$'
+FilterTW: &FilterTW '(?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美|流量)).)*$'
+FilterUS: &FilterUS '(?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新|流量)).)*$'
+#  测速组 
+UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+LoadBalanceCH: &LoadBalanceCH {type: load-balance, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+LoadBalanceCR: &LoadBalanceCR {type: load-balance, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: round-robin, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+#  选择组 
+SelectFB: &SelectFB {type: select, proxies: [🚦故障转移,🚥故障转移,♻️自动选择,👋手动选择,⛔直接连接,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
+SelectProxy: &SelectProxy {type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⛔直接连接,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
+SelectDIR: &SelectDIR {type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
+
+# wifi策略可写 ssid-policy: {ss1: ⛔直接连接, ss2: 📵拒绝连接, ss3: ⛔直接连接, ss4: 📵拒绝连接, ss5: ⛔直接连接, ss6: 📵拒绝连接, ss7: ⛔直接连接, cellular: 🙌默认代理}
+# 例-{name: 🙌默认代理, <<: *SelectFB, ssid-policy: {明月: ⛔直接连接, mingyve: 🎛️香港策略, cellular: 🚦故障转移}}
+
+#  策略组 
 proxy-groups:
-  - name: 👋手动选择
-    type: select
-    include-all: true
-
-  - name: 🙌默认代理
-    type: select
-    proxies:
-      - 🚦故障转移
-      - ♻️自动选择
-      - 👋手动选择
-      - ⛔直接连接
-      - 📵拒绝连接
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-
-  - name: 🐟漏网之鱼
-    type: select
-    proxies:
-      - ⛔直接连接
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚦故障转移
-      - 📵拒绝连接
-
-  - name: 🗄️下载服务
+  - {name: 👋手动选择, type: select, include-all: true}
+  - {name: 🙌默认代理, <<: *SelectFB}
+  - {name: 🐟漏网之鱼, <<: *SelectDIR}
+  - {name: 🗄️下载服务, <<: *SelectDIR}
+  - {name: 🎮游戏平台, <<: *SelectProxy}
+  - {name: 📲Telegram, <<: *SelectProxy}
+  - {name: 🌍国际媒体, <<: *SelectProxy}
+  - {name: 🤖人工智能, <<: *SelectProxy}
+  - {name: 📺Youtube, <<: *SelectProxy}
+  - {name: 🎬奈飞, <<: *SelectProxy}
+  - {name: 🎬迪士尼, <<: *SelectProxy}
+  - {name: 🎬HBO, <<: *SelectProxy}
+  - {name: 🎬Hulu, <<: *SelectProxy}
+  - {name: 🎬PrimeVideo, <<: *SelectProxy}
+  - {name: 🚩国内流量, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
+  - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
+  - {name: Ⓜ️微软服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
+  - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
+  - name: 🎛️香港策略
     type: select
     proxies:
-      - ⛔直接连接
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚦故障转移
-      - 📵拒绝连接
-
-  - name: 🎮游戏平台
-    type: select
-    proxies:
-      - ⛔直接连接
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 📲Telegram
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 🌍国际媒体
-    type: select
-    proxies:
-      - 🚥故障转移
-      - 🙌默认代理
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 🤖人工智能
-    type: select
-    proxies:
-      - 🚥故障转移
-      - 🙌默认代理
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 📺Youtube
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 🎬奈飞
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 🎬迪士尼
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 🎬PrimeVideo
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 👋手动选择
-
-  - name: 🎬HBO
-    type: select
-    proxies:
-      - 🇭🇰香港优选
-      - 🇸🇬狮城优选
-      - 🇯🇵日本优选
-      - 🇹🇼台湾优选
-      - 🇺🇸美国优选
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚦故障转移
-    filter: (?=.*(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城))^((?!(日|🇯🇵|JP|东京|台|🇹🇼|TW|湾|美|US)).)*$
+      - ⚡️🇭🇰香港优选
+      - ♾️🇭🇰香港故转
+      - 🔀🇭🇰香港散列
+      - 🔁🇭🇰香港轮询
+    filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美|流量)).)*$
     use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: 🎬Hulu
+      - 1️⃣配置
+      - 2️⃣配置
+      - 3️⃣配置
+  - name: 🎛️狮城策略
     type: select
     proxies:
-      - 🇺🇸美国优选
-      - 🇯🇵日本优选
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚥故障转移
-    filter: (?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼)).)*$
+      - ⚡️🇸🇬狮城优选
+      - ♾️🇭🇰狮城故转
+      - 🔀🇸🇬狮城散列
+      - 🔁🇸🇬狮城轮询
+    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美|流量)).)*$
     use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: 🚩国内流量
+      - 1️⃣配置
+      - 2️⃣配置
+      - 3️⃣配置
+  - name: 🎛️日本策略
     type: select
     proxies:
-      - ⛔直接连接
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚦故障转移
-      - 📵拒绝连接
-
-  - name: 🍎苹果服务
+      - ⚡️🇯🇵日本优选
+      - ♾️🇭🇰日本故转
+      - 🔀🇯🇵日本散列
+      - 🔁🇯🇵日本轮询
+    filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼|流量)).)*$
+    use:
+      - 1️⃣配置
+      - 2️⃣配置
+      - 3️⃣配置
+  - name: 🎛️台湾策略
     type: select
     proxies:
-      - ⛔直接连接
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚦故障转移
-      - 📵拒绝连接
-
-  - name: Ⓜ️微软服务
+      - ⚡️🇹🇼台湾优选
+      - ♾️🇭🇰台湾故转
+      - 🔀🇹🇼台湾散列
+      - 🔁🇹🇼台湾轮询
+    filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美|流量)).)*$
+    use:
+      - 1️⃣配置
+      - 2️⃣配置
+      - 3️⃣配置
+  - name: 🎛️美国策略
     type: select
     proxies:
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚥故障转移
-      - ⛔直接连接
-      - 📵拒绝连接
-
-  - name: 🧬DNS服务
-    type: select
-    proxies:
-      - 🙌默认代理
-      - 👋手动选择
-      - 🚥故障转移
-      - ⛔直接连接
-      - 📵拒绝连接
-
-  - name: 🇭🇰香港优选
-    type: url-test
-    disable-udp: false
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-    filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$
-    url: https://8.8.8.8/generate_204
-    expected-status: 204
-    lazy: false
-    interval: 60
-    tolerance: 20
-    timeout: 2500
-    max-failed-times: 8
-    hidden: true
+      - ⚡️🇺🇸美国优选
+      - ♾️🇭🇰美国故转
+      - 🔀🇺🇸美国散列
+      - 🔁🇺🇸美国轮询
+    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新|流量)).)*$
     use:
-      - 机场🅰️
-      - 机场🅱️
+      - 1️⃣配置
+      - 2️⃣配置
+      - 3️⃣配置
 
-  - name: 🇸🇬狮城优选
-    type: url-test
-    disable-udp: false
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美)).)*$
-    url: https://8.8.8.8/generate_204
-    expected-status: 204
-    lazy: false
-    interval: 60
-    tolerance: 20
-    timeout: 2500
-    max-failed-times: 8
-    hidden: true
-    use:
-      - 机场🅰️
-      - 机场🅱️
+###   以下策略组已隐藏
+# 自动选择 
+  - {name: ⚡️🇭🇰香港优选, <<: *UrlTest, filter: *FilterHK}
+  - {name: ⚡️🇸🇬狮城优选, <<: *UrlTest, filter: *FilterSG}
+  - {name: ⚡️🇯🇵日本优选, <<: *UrlTest, filter: *FilterJP}
+  - {name: ⚡️🇹🇼台湾优选, <<: *UrlTest, filter: *FilterTW}
+  - {name: ⚡️🇺🇸美国优选, <<: *UrlTest, filter: *FilterUS}
+# 故障转移 
+  - {name: ♾️🇭🇰香港故转, <<: *FallBack, filter: *FilterHK}
+  - {name: ♾️🇭🇰狮城故转, <<: *FallBack, filter: *FilterSG}
+  - {name: ♾️🇭🇰日本故转, <<: *FallBack, filter: *FilterJP}
+  - {name: ♾️🇭🇰台湾故转, <<: *FallBack, filter: *FilterTW}
+  - {name: ♾️🇭🇰美国故转, <<: *FallBack, filter: *FilterUS}
+# 负载均衡 
+# 1. consistent-hashing（一致性哈希）
+  - {name: 🔀🇭🇰香港散列, <<: *LoadBalanceCH, filter: *FilterHK}
+  - {name: 🔀🇸🇬狮城散列, <<: *LoadBalanceCH, filter: *FilterSG}
+  - {name: 🔀🇯🇵日本散列, <<: *LoadBalanceCH, filter: *FilterJP}
+  - {name: 🔀🇹🇼台湾散列, <<: *LoadBalanceCH, filter: *FilterTW}
+  - {name: 🔀🇺🇸美国散列, <<: *LoadBalanceCH, filter: *FilterUS}
+# 2. round-robin（轮询）
+  - {name: 🔁🇭🇰香港轮询, <<: *LoadBalanceCR, filter: *FilterHK}
+  - {name: 🔁🇸🇬狮城轮询, <<: *LoadBalanceCR, filter: *FilterSG}
+  - {name: 🔁🇯🇵日本轮询, <<: *LoadBalanceCR, filter: *FilterJP}
+  - {name: 🔁🇹🇼台湾轮询, <<: *LoadBalanceCR, filter: *FilterTW}
+  - {name: 🔁🇺🇸美国轮询, <<: *LoadBalanceCR, filter: *FilterUS}
+#  基础策略 
+  - {name: ♻️自动选择, <<: *UrlTest, filter: *FilterAll}
+  - {name: 🚦故障转移, <<: *FallBack, filter: *FilterAll}
+  - {name: 🚥故障转移, <<: *FallBack, filter: *FilterPart}
+  - {name: ⛔直接连接, type: select, disable-udp: false, hidden: true, proxies: [ DIRECT ]}
+  - {name: 📵拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ]}
 
-  - name: 🇯🇵日本优选
-    type: url-test
-    disable-udp: false
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-    filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼)).)*$
-    url: https://8.8.8.8/generate_204
-    expected-status: 204
-    lazy: false
-    interval: 60
-    tolerance: 20
-    timeout: 2500
-    max-failed-times: 8
-    hidden: true
-    use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: 🇹🇼台湾优选
-    type: url-test
-    disable-udp: false
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
-    filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$
-    url: https://8.8.8.8/generate_204
-    expected-status: 204
-    lazy: false
-    interval: 60
-    tolerance: 20
-    timeout: 2500
-    max-failed-times: 8
-    hidden: true
-    use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: 🇺🇸美国优选
-    type: url-test
-    disable-udp: false
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$
-    url: https://8.8.8.8/generate_204
-    expected-status: 204
-    lazy: false
-    interval: 60
-    tolerance: 20
-    timeout: 2500
-    max-failed-times: 8
-    hidden: true
-    use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: ♻️自动选择
-    type: url-test
-    disable-udp: false
-    filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-    url: https://8.8.8.8/generate_204
-    expected-status: 204
-    lazy: false
-    interval: 60
-    tolerance: 20
-    timeout: 2500
-    max-failed-times: 8
-    hidden: true
-    use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: 🚦故障转移
-    type: fallback
-    disable-udp: false
-    filter: (?=.*())^((?!(流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-    url: https://1.1.1.1/cdn-cgi/trace
-    expected-status: 200/403
-    lazy: false
-    interval: 10
-    timeout: 5000
-    max-failed-times: 12
-    hidden: true
-    use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: 🚥故障转移
-    type: fallback
-    disable-udp: false
-    filter: (?=.*())^((?!(台|🇹🇼|TW|湾|港|🇭🇰|HK|流量|群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|延迟|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$
-    url: https://1.1.1.1/cdn-cgi/trace
-    expected-status: 200/403
-    lazy: false
-    interval: 10
-    timeout: 5000
-    max-failed-times: 12
-    hidden: true
-    use:
-      - 机场🅰️
-      - 机场🅱️
-
-  - name: ⛔直接连接
-    type: select
-    udp: true
-    proxies:
-      - DIRECT
-    hidden: true
-
-  - name: 📵拒绝连接
-    type: select
-    disable-udp: false
-    proxies:
-      - REJECT
-    hidden: true
-
-# 规则提供者
+# 规则集更新 
+ClassicalYaml: &Classical {type: http, interval: 75600, behavior: classical, format: yaml}
+# 规则提供者 
 rule-providers:
   # 🧬DNS服务
   MyDNS_Proxy_No_Resolve:
