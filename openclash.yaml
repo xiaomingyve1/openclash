@@ -1,15 +1,15 @@
-# ============================================================================================================================
+# ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年4月10日
+# 日期       2025年4月15日
 # 注意       在 proxy-providers 加入您的机场订阅链接
-# 地址       https://github.com/xiaomingyve1/openclash/tree/main
+# 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
 # 功能       支持手动选择、自动测速、兜底分流、故障转移、负载均衡、国家分组、多机场订阅等，适用openclash/Mihomo/Nikki  
 # 感谢       @blackmatrix7，@ACL4SSR，@VirgilClyne，@666OS
-# ===============================================================================================================================
+# ========================================================================================================================================================
 
 # 订阅更新 
-Subscription: &sub {type: http, interval: 3600, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
+Subscription: &sub {type: http, interval: 3600, dns-pre-resolve: true, max-retries: 2, max-failed-times: 3, health-check: {enable: true, interval: 300, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", dns-pre-resolve: true, max-concurrent-tests: 10, max-retries: 2, max-failed-times: 3}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
 proxy-providers:
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
   1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣] '}}
@@ -45,10 +45,10 @@ FilterTW: &FilterTW '(?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新
 FilterUS: &FilterUS '(?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新|流量)).)*$'
 FilterHulu: &FilterHulu '(?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼|流量)).)*$'
 #  测速组 
-UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
-FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
-LoadBalanceCH: &LoadBalanceCH {type: load-balance, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
-LoadBalanceCR: &LoadBalanceCR {type: load-balance, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: round-robin, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
+UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, dns-pre-resolve: true, follow_redirects: true, max-concurrent-tests: 10, timeout: 2000, max-retries: 2, max-failed-times: 3, hidden: true, include-all: true}
+FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, dns-pre-resolve: true, follow_redirects: true, max-concurrent-tests: 10, timeout: 2000, max-retries: 2, max-failed-times: 3, hidden: true, include-all: true}
+LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, dns-pre-resolve: true, follow_redirects: true, max-concurrent-tests: 10, timeout: 2000, max-retries: 2, max-failed-times: 3, hidden: true, include-all: true}
+LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, dns-pre-resolve: true, follow_redirects: true, max-concurrent-tests: 10, timeout: 2000, max-retries: 2, max-failed-times: 3, hidden: true, include-all: true}
 #  选择组 
 SelectFB: &SelectFB {type: select, proxies: [🚦故障转移,🚥故障转移,♻️自动选择,👋手动选择,⛔直接连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
 SelectProxy: &SelectProxy {type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⛔直接连接,⚡️🇭🇰香港优选,⚡️🇸🇬狮城优选,⚡️🇯🇵日本优选,⚡️🇹🇼台湾优选,⚡️🇺🇸美国优选,♾️🇭🇰香港故转,♾️🇭🇰狮城故转,♾️🇭🇰日本故转,♾️🇭🇰台湾故转,♾️🇭🇰美国故转,🔀🇭🇰香港散列,🔀🇸🇬狮城散列,🔀🇯🇵日本散列,🔀🇹🇼台湾散列,🔀🇺🇸美国散列,🔁🇭🇰香港轮询,🔁🇸🇬狮城轮询,🔁🇯🇵日本轮询,🔁🇹🇼台湾轮询,🔁🇺🇸美国轮询]}
@@ -114,548 +114,198 @@ ClassicalYaml: &Classical {type: http, interval: 75600, behavior: classical, for
 # 规则提供者 
 rule-providers:
   # 🧬DNS服务
-  MyDNS_Proxy_No_Resolve:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_Proxy_No_Resolve.yaml
-  MyDNS_CN_No_Resolve:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_CN_No_Resolve.yaml
-  MyDirect_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDirect_Replenish.yaml
-  MyReject_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyReject_Replenish.yaml
-  BlockHttpDNS_No_Resolve:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml
-  Hijacking_No_Resolve:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml
+  MyDNS_Proxy_No_Resolve:  {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_Proxy_No_Resolve.yaml}
+  MyDNS_CN_No_Resolve:     {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_CN_No_Resolve.yaml}
+  MyDirect_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDirect_Replenish.yaml}
+  MyReject_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyReject_Replenish.yaml}
+  BlockHttpDNS_No_Resolve: {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml}
+  Hijacking_No_Resolve:    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml}
  # 🗄️下载服务
-  AMD:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AMD/AMD.yaml
-  Intel:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Intel/Intel.yaml
-  Nvidia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.yaml
-  SteamCN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml
-  GameDownload:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownload/GameDownload.yaml
-  GameDownloadCN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml
-  Download:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
-  PrivateTracker:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.yaml
-  MyDownload_Increase:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDownload_Increase.yaml
+  AMD:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AMD/AMD.yaml}
+  Intel:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Intel/Intel.yaml}
+  Nvidia:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.yaml}
+  SteamCN:                 {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml}
+  GameDownload:            {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownload/GameDownload.yaml}
+  GameDownloadCN:          {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml}
+  Download:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml}
+  PrivateTracker:          {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.yaml}
+  MyDownload_Increase:     {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDownload_Increase.yaml}
  # 🚩国内流量
-  CSDN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CSDN/CSDN.yaml
-  GoogleCN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCN.yaml
-  AmazonCN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonCN/AmazonCN.yaml
-  CloudCN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudCN/CloudCN.yaml
-  Cloudflarecn:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflarecn/Cloudflarecn.yaml
-  MyChina1_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyChina1_Replenish.yaml
+  CSDN:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CSDN/CSDN.yaml}
+  GoogleCN:                {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCN.yaml}
+  AmazonCN:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonCN/AmazonCN.yaml}
+  CloudCN:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudCN/CloudCN.yaml}
+  Cloudflarecn:            {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflarecn/Cloudflarecn.yaml}
+  MyChina1_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyChina1_Replenish.yaml}
  # 🎮游戏平台
-  Epic:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml
-  Origin:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Origin/Origin.yaml
-  Sony:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.yaml
-  Steam:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
-  UBI:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.yaml
-  Nintendo:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml
-  Battle:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Battle/Battle.yaml
-  Blizzard:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.yaml
-  EA:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.yaml
-  Xbox:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Xbox/Xbox.yaml
-  Riot:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Riot/Riot.yaml
-  WildRift:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WildRift/WildRift.yaml
-  Rockstar:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Rockstar/Rockstar.yaml
-  Garena:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Garena/Garena.yaml
-  PlayStation:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PlayStation/PlayStation.yaml
-  Game:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
-  MyGame_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyGame_Replenish.yaml
+  Epic:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml}
+  Origin:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Origin/Origin.yaml}
+  Sony:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.yaml}
+  Steam:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml}
+  UBI:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.yaml}
+  Nintendo:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml}
+  Battle:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Battle/Battle.yaml}
+  Blizzard:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.yaml}
+  EA:                      {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.yaml}
+  Xbox:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Xbox/Xbox.yaml}
+  Riot:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Riot/Riot.yaml}
+  WildRift:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WildRift/WildRift.yaml}
+  Rockstar:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Rockstar/Rockstar.yaml}
+  Garena:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Garena/Garena.yaml}
+  PlayStation:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PlayStation/PlayStation.yaml}
+  Game:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml}
+  MyGame_Replenish:        {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyGame_Replenish.yaml}
  # 📲Telegram
-  Telegram:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
-  TelegramUS:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramUS/TelegramUS.yaml
-  TelegramSG:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramSG/TelegramSG.yaml
-  TelegramNL:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramNL/TelegramNL.yaml
-  MyTelegram_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyTelegram_Replenish.yaml
+  Telegram:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml}
+  TelegramUS:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramUS/TelegramUS.yaml}
+  TelegramSG:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramSG/TelegramSG.yaml}
+  TelegramNL:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramNL/TelegramNL.yaml}
+  MyTelegram_Replenish:    {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyTelegram_Replenish.yaml}
  # 📺Youtube
-  YouTube:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
-  YouTube1:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTube.yaml
-  YouTubeMusic:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml
-  MyYouTube_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyYouTube_Replenish.yaml
+  YouTube:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml}
+  YouTube1:                {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTube.yaml}
+  YouTubeMusic:            {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml}
+  MyYouTube_Replenish:     {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyYouTube_Replenish.yaml}
  # 🎬PrimeVideo
-  AmazonPrimeVideo:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonPrimeVideo/AmazonPrimeVideo.yaml
-  PrimeVideo:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrimeVideo/PrimeVideo.yaml
-  MyPrimeVideo_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyPrimeVideo_Replenish.yaml
+  AmazonPrimeVideo:        {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonPrimeVideo/AmazonPrimeVideo.yaml}
+  PrimeVideo:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrimeVideo/PrimeVideo.yaml}
+  MyPrimeVideo_Replenish:  {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyPrimeVideo_Replenish.yaml}
  # 🎬HBO
-  HBO:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO.yaml
-  HBO1:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
-  HBOUSA:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOUSA/HBOUSA.yaml
-  HBOHK:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml
-  HBOAsia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml
-  HBO_GO_HKG:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml
-  MyHBO_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyHBO_Replenish.yaml
+  HBO:                     {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO.yaml}
+  HBO1:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml}
+  HBOUSA:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOUSA/HBOUSA.yaml}
+  HBOHK:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml}
+  HBOAsia:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml}
+  HBO_GO_HKG:              {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HBO_GO_HKG.yaml}
+  MyHBO_Replenish:         {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyHBO_Replenish.yaml}
  # 🎬Hulu
-  Hulu:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hulu/Hulu.yaml
-  HuluJapan:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml
-  HuluUSA:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml
-  HuluJP:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
-  MyHulu_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyHulu_Replenish.yaml
+  Hulu:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hulu/Hulu.yaml}
+  HuluJapan:               {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/HuluJapan.yaml}
+  HuluUSA:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml}
+  HuluJP:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml}
+  MyHulu_Replenish:        {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyHulu_Replenish.yaml}
  # 🎬迪士尼
-  Disney:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
-  DisneyPlus:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/DisneyPlus.yaml
-  MyDisney_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDisney_Replenish.yaml
+  Disney:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml}
+  DisneyPlus:              {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/DisneyPlus.yaml}
+  MyDisney_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDisney_Replenish.yaml}
  # 🎬奈飞
-  Netflix:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Netflix.yaml
-  NetflixIP:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/NetflixIP.yaml
-  Netflix_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
-  MyNetflix_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyNetflix_Replenish.yaml
+  Netflix:                 {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Netflix.yaml}
+  NetflixIP:               {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/NetflixIP.yaml}
+  Netflix_Classical:       {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml}
+  MyNetflix_Replenish:     {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyNetflix_Replenish.yaml}
  # 🤖人工智能
-  OpenAI:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
-  BardAI:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BardAI/BardAI.yaml
-  Gemini:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
-  Claude:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Claude/Claude.yaml
-  Anthropic:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Anthropic/Anthropic.yaml
-  MyAI_Supplement:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyAI_Supplement.yaml
+  OpenAI:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml}
+  BardAI:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BardAI/BardAI.yaml}
+  Gemini:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml}
+  Claude:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Claude/Claude.yaml}
+  Anthropic:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Anthropic/Anthropic.yaml}
+  MyAI_Supplement:         {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyAI_Supplement.yaml}
  # 🍎苹果服务
-  AppleTV:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleTV/AppleTV.yaml
-  Siri:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Siri/Siri.yaml
-  SystemOTA:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SystemOTA/SystemOTA.yaml
-  AppleMusic:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMusic/AppleMusic.yaml
-  iCloud:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloud/iCloud.yaml
-  AppStore:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppStore/AppStore.yaml
-  AppleID:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleID/AppleID.yaml
-  FindMy:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FindMy/FindMy.yaml
-  Beats:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Beats/Beats.yaml
-  AppleNews:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleNews/AppleNews.yaml
-  AppleMail:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail.yaml
-  TestFlight:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TestFlight/TestFlight.yaml
-  FitnessPlus:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FitnessPlus/FitnessPlus.yaml
-  AppleDev:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleDev/AppleDev.yaml
-  AppleProxy:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleProxy/AppleProxy.yaml
-  iCloudPrivateRelay:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloudPrivateRelay/iCloudPrivateRelay.yaml
-  AppleFirmware:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleFirmware/AppleFirmware.yaml
-  AppleHardware:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleHardware/AppleHardware.yaml
-  AppleMedia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMedia/AppleMedia.yaml
-  Apple_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
-  MyApple_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyApple_Replenish.yaml
+  AppleTV:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleTV/AppleTV.yaml}
+  Siri:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Siri/Siri.yaml}
+  SystemOTA:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SystemOTA/SystemOTA.yaml}
+  AppleMusic:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMusic/AppleMusic.yaml}
+  iCloud:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloud/iCloud.yaml}
+  AppStore:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppStore/AppStore.yaml}
+  AppleID:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleID/AppleID.yaml}
+  FindMy:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FindMy/FindMy.yaml}
+  Beats:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Beats/Beats.yaml}
+  AppleNews:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleNews/AppleNews.yaml}
+  AppleMail:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail.yaml}
+  TestFlight:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TestFlight/TestFlight.yaml}
+  FitnessPlus:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FitnessPlus/FitnessPlus.yaml}
+  AppleDev:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleDev/AppleDev.yaml}
+  AppleProxy:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleProxy/AppleProxy.yaml}
+  iCloudPrivateRelay:      {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloudPrivateRelay/iCloudPrivateRelay.yaml}
+  AppleFirmware:           {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleFirmware/AppleFirmware.yaml}
+  AppleHardware:           {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleHardware/AppleHardware.yaml}
+  AppleMedia:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMedia/AppleMedia.yaml}
+  Apple_Classical:         {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml}
+  MyApple_Replenish:       {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyApple_Replenish.yaml}
  # Ⓜ️微软服务
-  Teams:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Teams/Teams.yaml
-  GitHub:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml
-  Copilot:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Copilot/Copilot.yaml
-  OneDrive:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml
-  Bing:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml
-  MicrosoftEdge:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/MicrosoftEdge/MicrosoftEdge.yaml
-  Microsoft:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
-  MyMicrosoft_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyMicrosoft_Replenish.yaml
+  Teams:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Teams/Teams.yaml}
+  GitHub:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml}
+  Copilot:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Copilot/Copilot.yaml}
+  OneDrive:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml}
+  Bing:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml}
+  MicrosoftEdge:           {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/MicrosoftEdge/MicrosoftEdge.yaml}
+  Microsoft:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml}
+  MyMicrosoft_Replenish:   {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyMicrosoft_Replenish.yaml}
  # 🌍国际媒体
-  TikTok:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml
-  Twitch:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitch/Twitch.yaml
-  Twitter:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml
-  Emby:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml
-  Fox:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Fox/Fox.yaml
-  VOA:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/VOA/VOA.yaml
-  Spotify:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
-  Bahamut:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
-  BBC:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BBC/BBC.yaml
-  Espn:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Espn/Espn.yaml
-  DAZN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DAZN/DAZN.yaml
-  TVB:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TVB/TVB.yaml
-  Abema:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Abema/Abema.yaml
-  Vimeo:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Vimeo/Vimeo.yaml
-  UKMedia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UKMedia/UKMedia.yaml
-  USMedia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/USMedia/USMedia.yaml
-  Facebook:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Facebook/Facebook.yaml
-  Niconico:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Niconico/Niconico.yaml
-  Voxmedia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Voxmedia/Voxmedia.yaml
-  PandoraTV:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PandoraTV/PandoraTV.yaml
-  Instagram:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Instagram/Instagram.yaml
-  DiscoveryPlus:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DiscoveryPlus/DiscoveryPlus.yaml
-  ParamountPlus:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ParamountPlus/ParamountPlus.yaml
-  Huffpost:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Huffpost/Huffpost.yaml
-  AppleDaily:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleDaily/AppleDaily.yaml
-  Dailymotion:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Dailymotion/Dailymotion.yaml
-  Gettyimages:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gettyimages/Gettyimages.yaml
-  IPTVOther_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVOther/IPTVOther_Classical.yaml
-  GlobalMedia_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
-  MyVideo_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyVideo_Replenish.yaml
+  TikTok:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml}
+  Twitch:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitch/Twitch.yaml}
+  Twitter:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml}
+  Emby:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml}
+  Fox:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Fox/Fox.yaml}
+  VOA:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/VOA/VOA.yaml}
+  Spotify:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml}
+  Bahamut:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml}
+  BBC:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BBC/BBC.yaml}
+  Espn:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Espn/Espn.yaml}
+  DAZN:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DAZN/DAZN.yaml}
+  TVB:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TVB/TVB.yaml}
+  Abema:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Abema/Abema.yaml}
+  Vimeo:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Vimeo/Vimeo.yaml}
+  UKMedia:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UKMedia/UKMedia.yaml}
+  USMedia:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/USMedia/USMedia.yaml}
+  Facebook:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Facebook/Facebook.yaml}
+  Niconico:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Niconico/Niconico.yaml}
+  Voxmedia:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Voxmedia/Voxmedia.yaml}
+  PandoraTV:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PandoraTV/PandoraTV.yaml}
+  Instagram:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Instagram/Instagram.yaml}
+  DiscoveryPlus:           {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DiscoveryPlus/DiscoveryPlus.yaml}
+  ParamountPlus:           {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ParamountPlus/ParamountPlus.yaml}
+  Huffpost:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Huffpost/Huffpost.yaml}
+  AppleDaily:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleDaily/AppleDaily.yaml}
+  Dailymotion:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Dailymotion/Dailymotion.yaml}
+  Gettyimages:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gettyimages/Gettyimages.yaml}
+  IPTVOther_Classical:     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVOther/IPTVOther_Classical.yaml}
+  GlobalMedia_Classical:   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml}
+  MyVideo_Replenish:       {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyVideo_Replenish.yaml}
  # 🙌默认代理
-  Google:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
-  Amazon:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Amazon/Amazon.yaml
-  Clubhouse:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Clubhouse/Clubhouse.yaml
-  ClubhouseIP:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ClubhouseIP/ClubhouseIP.yaml
-  Line:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml
-  PayPal:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
-  Reddit:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Reddit/Reddit.yaml
-  Heroku:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Heroku/Heroku.yaml
-  Discord:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Discord/Discord.yaml
-  Wikipedia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Wikipedia/Wikipedia.yaml
-  Docker:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Docker/Docker.yaml
-  Crypto:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Crypto/Crypto.yaml
-  GoogleCNProxyIP:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCNProxyIP.yaml
-  Bestbuy:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bestbuy/Bestbuy.yaml
-  GlobalScholar:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalScholar/GlobalScholar.yaml
-  AmazonIP_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonIP/AmazonIP_Classical.yaml
-  Whatsapp:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml
-  Speedtest:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
-  KakaoTalk:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/KakaoTalk/KakaoTalk.yaml
-  Duckduckgo:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Duckduckgo/Duckduckgo.yaml
-  GlobalSign:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalSign/GlobalSign.yaml
-  Cloudflare:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflare/Cloudflare.yaml
-  AmazonCloud_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/AmazonCloud/AmazonCloud_Classical.yaml
-  CloudGlobal_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudGlobal/CloudGlobal_Classical.yaml
-  AdobeActivation:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdobeActivation/AdobeActivation.yaml
-  Proxy_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Classical.yaml
-  Global_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Classical.yaml
-  MyProxy_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyProxy_Replenish.yaml
+  Google:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml}
+  Amazon:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Amazon/Amazon.yaml}
+  Clubhouse:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Clubhouse/Clubhouse.yaml}
+  ClubhouseIP:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ClubhouseIP/ClubhouseIP.yaml}
+  Line:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml}
+  PayPal:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml}
+  Reddit:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Reddit/Reddit.yaml}
+  Heroku:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Heroku/Heroku.yaml}
+  Discord:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Discord/Discord.yaml}
+  Wikipedia:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Wikipedia/Wikipedia.yaml}
+  Docker:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Docker/Docker.yaml}
+  Crypto:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Crypto/Crypto.yaml}
+  GoogleCNProxyIP:         {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCNProxyIP.yaml}
+  Bestbuy:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bestbuy/Bestbuy.yaml}
+  GlobalScholar:           {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalScholar/GlobalScholar.yaml}
+  AmazonIP_Classical:      {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonIP/AmazonIP_Classical.yaml}
+  Whatsapp:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml}
+  Speedtest:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml}
+  KakaoTalk:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/KakaoTalk/KakaoTalk.yaml}
+  Duckduckgo:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Duckduckgo/Duckduckgo.yaml}
+  GlobalSign:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalSign/GlobalSign.yaml}
+  Cloudflare:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflare/Cloudflare.yaml}
+  AmazonCloud_Classical:   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/AmazonCloud/AmazonCloud_Classical.yaml}
+  CloudGlobal_Classical:   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloud/CloudGlobal/CloudGlobal_Classical.yaml}
+  AdobeActivation:         {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdobeActivation/AdobeActivation.yaml}
+  Proxy_Classical:         {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Classical.yaml}
+  Global_Classical:        {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Classical.yaml}
+  MyProxy_Replenish:       {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyProxy_Replenish.yaml}
  # 🚩国内流量
-  ASN.China:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.yaml
-  ChinaMedia:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
-  ChinaIPsBGP_Classical:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPsBGP/ChinaIPsBGP_Classical.yaml
-  ChinaTelecom:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaTelecom/ChinaTelecom.yaml
-  ChinaMobile:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMobile/ChinaMobile.yaml
-  ChinaUnicom:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaUnicom/ChinaUnicom.yaml
-  CNNIC:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CNNIC/CNNIC.yaml
-  GovCN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GovCN/GovCN.yaml
-  ByteDance:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ByteDance/ByteDance.yaml
-  CCTV:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CCTV/CCTV.yaml
-  MyChina2_Replenish:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyChina2_Replenish.yaml
+  ASN.China:               {<<: *Classical, url: https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.yaml}
+  ChinaMedia:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml}
+  ChinaIPsBGP_Classical:   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPsBGP/ChinaIPsBGP_Classical.yaml}
+  ChinaTelecom:            {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaTelecom/ChinaTelecom.yaml}
+  ChinaMobile:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMobile/ChinaMobile.yaml}
+  ChinaUnicom:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaUnicom/ChinaUnicom.yaml}
+  CNNIC:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CNNIC/CNNIC.yaml}
+  GovCN:                   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GovCN/GovCN.yaml}
+  ByteDance:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ByteDance/ByteDance.yaml}
+  CCTV:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/CCTV/CCTV.yaml}
+  MyChina2_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyChina2_Replenish.yaml}
  # ⛔其他
-  Lan_No_Resolve:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml
-  STUN:
-    <<: *Classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/STUN/STUN.yaml
+  Lan_No_Resolve:          {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan_No_Resolve.yaml}
+  STUN:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/STUN/STUN.yaml}
 
 # 规则（从上往下匹配）
 rules:
