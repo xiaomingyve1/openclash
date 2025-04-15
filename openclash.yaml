@@ -12,15 +12,15 @@
 Subscription: &sub {type: http, interval: 3600, dns-pre-resolve: true, max-retries: 2, max-failed-times: 3, health-check: {enable: true, interval: 300, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", dns-pre-resolve: true, max-concurrent-tests: 10, max-retries: 2, max-failed-times: 3}, filter: '^(?!.*(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入))'}
 proxy-providers:
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
-  1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣] '}}
-  2️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[2️⃣] '}}
-  3️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[3️⃣] '}}
-  4️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[4️⃣] '}}
-  5️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[5️⃣] '}}
-  6️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[6️⃣] '}}
-  7️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[7️⃣] '}}
-  8️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[8️⃣] '}}
-  9️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[9️⃣] '}}
+  1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣]'}}
+  2️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[2️⃣]'}}
+  3️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[3️⃣]'}}
+  4️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[4️⃣]'}}
+  5️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[5️⃣]'}}
+  6️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[6️⃣]'}}
+  7️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[7️⃣]'}}
+  8️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[8️⃣]'}}
+  9️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[9️⃣]'}}
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
 
 # 数据库更新 
