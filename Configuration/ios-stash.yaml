@@ -144,11 +144,11 @@ proxy-groups:
   - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
 
 # 地区策略 
-  - {name: 🎛️香港策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyHK, filter: *FilterHK}
-  - {name: 🎛️狮城策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxySG, filter: *FilterSG}
-  - {name: 🎛️日本策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyJP, filter: *FilterJP}
-  - {name: 🎛️台湾策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyTW, filter: *FilterTW}
-  - {name: 🎛️美国策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyUS, filter: *FilterUS}
+  - {name: 🎛️香港策略, use: [1️⃣配置, 2️⃣配置, 3️⃣配置], <<: *subProxyHK, filter: *FilterHK}
+  - {name: 🎛️狮城策略, use: [1️⃣配置, 2️⃣配置, 3️⃣配置], <<: *subProxySG, filter: *FilterSG}
+  - {name: 🎛️日本策略, use: [1️⃣配置, 2️⃣配置, 3️⃣配置], <<: *subProxyJP, filter: *FilterJP}
+  - {name: 🎛️台湾策略, use: [1️⃣配置, 2️⃣配置, 3️⃣配置], <<: *subProxyTW, filter: *FilterTW}
+  - {name: 🎛️美国策略, use: [1️⃣配置, 2️⃣配置, 3️⃣配置], <<: *subProxyUS, filter: *FilterUS}
 
 ###   以下策略组已隐藏
 # 自动选择 
