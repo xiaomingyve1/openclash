@@ -112,6 +112,12 @@ LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interv
 SelectFB: &SelectFB {type: select, proxies: [🚦故障转移,🚥故障转移,♻️自动选择,👋手动选择,⛔直接连接,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
 SelectProxy: &SelectProxy {type: select, proxies: [🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,⛔直接连接,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
 SelectDIR: &SelectDIR {type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,🚥故障转移,🎛️香港策略,🎛️狮城策略,🎛️日本策略,🎛️台湾策略,🎛️美国策略]}
+# 地区组 
+SubProxyHK: &subProxyHK {type: select, proxies: [⚡️🇭🇰香港优选,♾️🇭🇰香港故转,🔀🇭🇰香港散列,🔁🇭🇰香港轮询]}
+SubProxySG: &subProxySG {type: select, proxies: [⚡️🇸🇬狮城优选,♾️🇭🇰狮城故转,🔀🇸🇬狮城散列,🔁🇸🇬狮城轮询]}
+SubProxyJP: &subProxyJP {type: select, proxies: [⚡️🇯🇵日本优选,♾️🇭🇰日本故转,🔀🇯🇵日本散列,🔁🇯🇵日本轮询]}
+SubProxyTW: &subProxyTW {type: select, proxies: [⚡️🇹🇼台湾优选,♾️🇭🇰台湾故转,🔀🇹🇼台湾散列,🔁🇹🇼台湾轮询]}
+SubProxyUS: &subProxyUS {type: select, proxies: [⚡️🇺🇸美国优选,♾️🇭🇰美国故转,🔀🇺🇸美国散列,🔁🇺🇸美国轮询]}
 
 # wifi策略可写 ssid-policy: {cellular: 🙌默认代理, ss1: ⛔直接连接, ss2: ⛔直接连接, ss3: ⛔直接连接, ss4: ⛔直接连接, ss5: ⛔直接连接, ss6: ⛔直接连接, ss7: ⛔直接连接}
 # 例-{name: 🙌默认代理, <<: *SelectFB, ssid-policy: {cellular: 🚦故障转移, 明月: ⛔直接连接, mingyve: ⛔直接连接}}
@@ -136,66 +142,13 @@ proxy-groups:
   - {name: 🍎苹果服务, type: select, proxies: [⛔直接连接,🙌默认代理,👋手动选择,🚦故障转移,📵拒绝连接]}
   - {name: Ⓜ️微软服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
   - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
-  - name: 🎛️香港策略
-    type: select
-    proxies:
-      - ⚡️🇭🇰香港优选
-      - ♾️🇭🇰香港故转
-      - 🔀🇭🇰香港散列
-      - 🔁🇭🇰香港轮询
-    filter: (?=.*(港|🇭🇰|HK|(?i)Hong))^((?!(台|日|韩|新|美|流量)).)*$
-    use:
-      - 1️⃣配置
-      - 2️⃣配置
-      - 3️⃣配置
-  - name: 🎛️狮城策略
-    type: select
-    proxies:
-      - ⚡️🇸🇬狮城优选
-      - ♾️🇭🇰狮城故转
-      - 🔀🇸🇬狮城散列
-      - 🔁🇸🇬狮城轮询
-    filter: (?=.*(新|🇸🇬|SG|坡|狮城|(?i)Singapore))^((?!(港|日|台|韩|美|流量)).)*$
-    use:
-      - 1️⃣配置
-      - 2️⃣配置
-      - 3️⃣配置
-  - name: 🎛️日本策略
-    type: select
-    proxies:
-      - ⚡️🇯🇵日本优选
-      - ♾️🇭🇰日本故转
-      - 🔀🇯🇵日本散列
-      - 🔁🇯🇵日本轮询
-    filter: (?=.*(日|🇯🇵|JP|东京|(?i)Japan))^((?!(港|台|韩|新|美|尼|流量)).)*$
-    use:
-      - 1️⃣配置
-      - 2️⃣配置
-      - 3️⃣配置
-  - name: 🎛️台湾策略
-    type: select
-    proxies:
-      - ⚡️🇹🇼台湾优选
-      - ♾️🇭🇰台湾故转
-      - 🔀🇹🇼台湾散列
-      - 🔁🇹🇼台湾轮询
-    filter: (?=.*(台|🇹🇼|TW|湾|(?i)Taiwan))^((?!(港|日|韩|新|美|流量)).)*$
-    use:
-      - 1️⃣配置
-      - 2️⃣配置
-      - 3️⃣配置
-  - name: 🎛️美国策略
-    type: select
-    proxies:
-      - ⚡️🇺🇸美国优选
-      - ♾️🇭🇰美国故转
-      - 🔀🇺🇸美国散列
-      - 🔁🇺🇸美国轮询
-    filter: (?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新|流量)).)*$
-    use:
-      - 1️⃣配置
-      - 2️⃣配置
-      - 3️⃣配置
+
+# 地区策略 
+  - {name: 🎛️香港策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyHK, filter: *FilterHK}
+  - {name: 🎛️狮城策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxySG, filter: *FilterSG}
+  - {name: 🎛️日本策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyJP, filter: *FilterJP}
+  - {name: 🎛️台湾策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyTW, filter: *FilterTW}
+  - {name: 🎛️美国策略, use: [1️⃣红杏, 2️⃣良心, 3️⃣五毛], <<: *subProxyUS, filter: *FilterUS}
 
 ###   以下策略组已隐藏
 # 自动选择 
