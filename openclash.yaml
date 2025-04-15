@@ -4,7 +4,7 @@
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
-# 功能       支持手动选择、自动测速、兜底分流、故障转移、负载均衡、国家分组、多机场订阅等，适用openclash/Mihomo/Nikki  
+# 功能       支持手动选择、自动测速、兜底分流、故障转移、负载均衡、国家分组、多机场订阅等，适用openclash/Mihomo/Nikki
 # 感谢       @blackmatrix7，@ACL4SSR，@VirgilClyne，@666OS
 # ========================================================================================================================================================
 
@@ -76,7 +76,7 @@ proxy-groups:
   - {name: Ⓜ️微软服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
   - {name: 🧬DNS服务, type: select, proxies: [🙌默认代理,👋手动选择,🚥故障转移,⛔直接连接,📵拒绝连接]}
 
-###   以下策略组在 X/Z 控制面板 已隐藏
+###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
   - {name: ⚡️🇭🇰香港优选, <<: *UrlTest, filter: *FilterHK}
   - {name: ⚡️🇸🇬狮城优选, <<: *UrlTest, filter: *FilterSG}
