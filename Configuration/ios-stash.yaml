@@ -150,7 +150,7 @@ proxy-groups:
   - {name: 🎛️台湾策略, use: [1️⃣配置, 2️⃣配置, 3️⃣配置], <<: *subProxyTW, filter: *FilterTW}
   - {name: 🎛️美国策略, use: [1️⃣配置, 2️⃣配置, 3️⃣配置], <<: *subProxyUS, filter: *FilterUS}
 
-###   以下策略组已隐藏
+###   以下策略组已隐藏 
 # 自动选择 
   - {name: ⚡️🇭🇰香港优选, <<: *UrlTest, filter: *FilterHK}
   - {name: ⚡️🇸🇬狮城优选, <<: *UrlTest, filter: *FilterSG}
