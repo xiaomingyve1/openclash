@@ -1,6 +1,6 @@
 # ==============================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年4月15日
+# 日期       2025年4月18日
 # 注意       仅支持stash，在 可视化编辑器-远程代理集 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/Configuration/ios-stash.yaml
 # 功能       支持手动选择、自动测速、兜底分流、故障转移、负载均衡、国家分组、多机场订阅等
@@ -88,7 +88,7 @@ geox-url:
   geoip: "https://github.com/Loyalsoldier/geoip/releases/latest/download/geoip-only-cn-private.dat"
   geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
   mmdb: "https://testingcf.jsdelivr.net/gh/Hackl0us/GeoIP2-CN@release/Country.mmdb"
-  asn: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb"
+  asn: "https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb"
 geodata-mode: true  # geoip 使用文件,dat或者mmdb,可选 true为dat / false为mmdb
 geodata-loader: standard  # standard:标准加载器 / memconservative:小内存优化
 geo-auto-update: true # 自动更新
