@@ -17,18 +17,18 @@ proxy-providers:
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
 
 # 全局配置 
+mode: rule  # 设置代理模式
 port: 7890  # 代理服务的监听端口
 socks-port: 7891  # SOCKS代理端口
-mixed-port: 7893  # 混合端口
 redir-port: 7892  # 重定向端口
+mixed-port: 7893  # 混合端口
 tproxy-port: 7895  # TPROXY端口
+log-level: silent  # 设置日志级别
+allow-lan: true  # 允许局域网设备访问
+bind-address: '*'  # 绑定所有可用网络接口
 unified-delay: true  # 启用统一延迟
 tcp-concurrent: true  # 启用TCP并发
 find-process-mode: 'off'  # 进程匹配 always / strict / off
-allow-lan: true  # 允许lan设备
-bind-address: '*'  # 绑定所有IP地址
-mode: rule  # 设置代理模式
-log-level: silent  # 设置日志级别
 disable-keep-alive: false # 客户端和服务器连接复用 true为禁用
 keep-alive-idle: 5  # TCP连接空闲时间
 keep-alive-interval: 30  # TCP连接活动的间隔时间
