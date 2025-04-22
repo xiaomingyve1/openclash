@@ -1,6 +1,6 @@
 # ==============================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年4月18日
+# 日期       2025年4月22日
 # 注意       仅支持stash，在 可视化编辑器-远程代理集 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/Configuration/ios-stash.yaml
 # 功能       支持手动选择、自动测速、兜底分流、故障转移、负载均衡、国家分组、多机场订阅等
@@ -25,14 +25,16 @@ tproxy-port: 7895  # TPROXY端口
 unified-delay: true  # 启用统一延迟
 tcp-concurrent: true  # 启用TCP并发
 find-process-mode: 'off'  # 进程匹配 always / strict / off
+allow-lan: true  # 允许lan设备
 bind-address: '*'  # 绑定所有IP地址
 mode: rule  # 设置代理模式
 log-level: silent  # 设置日志级别
 disable-keep-alive: false # 客户端和服务器连接复用 true为禁用
 keep-alive-idle: 5  # TCP连接空闲时间
 keep-alive-interval: 30  # TCP连接活动的间隔时间
-external-controller: 127.0.0.1:9090 #页面端口
-secret:  # 页面登录密钥
+external-controller: 0.0.0.0:9090 #页面端口
+secret:  # 页面登录密钥（空）
+
 # DNS 设置 
 dns:
   enable: true # 启用DNS
