@@ -39,7 +39,7 @@ secret:  # 页面登录密钥（空）
 dns:
   enable: true # 启用DNS
   cache-algorithm: arc # 缓存算法
-  perfer-h3: true # 是否优先使用HTTP/3
+  perfer-h3: false # 是否优先使用HTTP/3
   ipv6: true # 启用IPv6 DNS
   ipv6-timeout: 200 # IPv6 DNS查询超时
   listen: 0.0.0.0:1053 # DNS监听端口
