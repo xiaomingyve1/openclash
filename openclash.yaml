@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年4月18日
+# 日期       2025年4月23日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -292,6 +292,7 @@ rule-providers:
   Global_Classical:        {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Classical.yaml}
   MyProxy_Replenish:       {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyProxy_Replenish.yaml}
  # 🚩国内流量
+  ChinaMax:                {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml}
   ASN.China:               {<<: *Classical, url: https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.yaml}
   ChinaMedia:              {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml}
   ChinaIPsBGP_Classical:   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPsBGP/ChinaIPsBGP_Classical.yaml}
@@ -471,6 +472,7 @@ rules:
 - RULE-SET,Proxy_Classical,🙌默认代理
 - RULE-SET,Global_Classical,🙌默认代理
 - RULE-SET,MyProxy_Replenish,🙌默认代理
+- RULE-SET,ChinaMax,🚩国内流量
 - RULE-SET,ASN.China,🚩国内流量
 - RULE-SET,ChinaMedia,🚩国内流量
 - RULE-SET,ChinaIPsBGP_Classical,🚩国内流量
@@ -484,9 +486,6 @@ rules:
 - RULE-SET,MyChina2_Replenish,🚩国内流量
 - RULE-SET,Lan_No_Resolve,⛔直接连接
 - RULE-SET,STUN,🐟漏网之鱼
-- GEOSITE,geolocation-!cn,🙌默认代理
-- GEOSITE,CN,🚩国内流量
-- GEOIP,CN,🚩国内流量
 - DST-PORT,80,🙌默认代理
 - DST-PORT,443,🙌默认代理
 - MATCH,🐟漏网之鱼 # 不匹配规则的流量（例如游戏）
