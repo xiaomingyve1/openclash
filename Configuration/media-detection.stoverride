@@ -1,0 +1,58 @@
+name: 流媒体检测面板
+description: 检测各大流媒体平台的解锁状态和所在区域，并在主界面以 Tile 方式展示。
+version: 1.0
+author: ChatGPT
+
+override:
+  tiles:
+    - title: 流媒体检测
+      icon: play.rectangle.fill
+      style: info
+      script:
+        - name: 流媒体解锁状态
+          type: http
+          requests:
+            - name: fetch_stream_status
+              url: https://raw.githubusercontent.com/xiaomingyve1/stash/main/script%20file/stream_check.py    
+              method: POST
+          response_parse:
+            type: json
+            script: |
+              -- response example:
+              -- {
+              --   "Netflix": {"unlocked": true, "region": "Singapore"},
+              --   "YouTube": {"unlocked": true, "region": "Singapore"},
+              --   "Disney+": {"unlocked": false, "region": null},
+              --   ...
+              -- }
+              
+              local unlocked = {}
+              local locked = {}
+              local by_region = {}
+
+              for name, info in pairs(response) do
+                if info.unlocked then
+                  table.insert(unlocked, name)
+                  local region = info.region or "Unknown"
+                  by_region[region] = by_region[region] or {}
+                  table.insert(by_region[region], name)
+                else
+                  table.insert(locked, name)
+                end
+              end
+
+              -- 构造显示内容
+              local content = {
+                "已解锁: " .. table.concat(unlocked, ", "),
+                "未解锁: " .. table.concat(locked, ", ")
+              }
+
+              -- 各区域分类
+              for region, list in pairs(by_region) do
+                table.insert(content, region .. ": " .. table.concat(list, ", "))
+              end
+
+              return {
+                title = "流媒体检测结果",
+                content = table.concat(content, "\n")
+              }
