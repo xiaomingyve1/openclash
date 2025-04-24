@@ -1,15 +1,22 @@
 # streaming_check.stoverride
+name: 流媒体检测
+desc: 流媒体解锁检测面板
+
 metadata:
-  title: 流媒体检测面板
-  author: StashHelper
-  description: 流媒体解锁状态监测面板，支持7大平台状态检测
+  title: 🚦流媒体检测面板  # 添加可视化标识
+  id: streaming-check-v2  # 增加唯一标识符
   icon: chart.bar.fill
-  urls:
+  author: StashHelper
+  urls: 
     - https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/streaming_check.js
   update-interval: 1800
+  tile-visibility: visible  # 显式声明磁贴可见性
+
 tiles:
-  - type: custom
+  - type: script
     title: 流媒体状态
-    style: grid
+    icon: gauge
+    refresh-interval: 1800
+    layout: grid
     grid-columns: 2
     script: streaming_check.js
