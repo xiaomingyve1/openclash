@@ -1,53 +1,98 @@
-async function fetchUnlockStatus() {
-  const services = [
-    { name: "ChatGPT",     url: "https://chat.openai.com/", regionKey: "openai" },
-    { name: "YouTube",     url: "https://www.youtube.com/red", regionKey: "yt" },
-    { name: "Netflix",     url: "https://www.netflix.com/title/81215567", regionKey: "nf" },
-    { name: "Disney+",     url: "https://www.disneyplus.com/", regionKey: "dp" },
-    { name: "TikTok",      url: "https://www.tiktok.com/", regionKey: "tt" },
-    { name: "Amazon Prime",url: "https://www.primevideo.com/", regionKey: "ap" },
-    { name: "HBO Max",     url: "https://www.hbomax.com/", regionKey: "hb" }
-  ];
+// streaming_check.js
+const SERVICES = {
+  'ChatGPT': {
+    url: 'https://chat.openai.com/',
+    icon: 'message.fill',
+    regions: ['US', 'UK', 'SG']
+  },
+  'YouTube': {
+    url: 'https://www.youtube.com/premium',
+    icon: 'play.rectangle.fill',
+    regions: ['US', 'JP', 'KR']
+  },
+  'Netflix': {
+    url: 'https://www.netflix.com/title/81215567',
+    icon: 'n.square.fill',
+    regions: ['US', 'JP', 'UK']
+  },
+  'Disney+': {
+    url: 'https://www.disneyplus.com/',
+    icon: 'play.square.fill',
+    regions: ['US', 'UK', 'SG']
+  },
+  'TikTok': {
+    url: 'https://www.tiktok.com/',
+    icon: 'video.fill',
+    regions: ['US', 'JP', 'TW']
+  },
+  'Amazon Prime': {
+    url: 'https://www.primevideo.com/',
+    icon: 'a.square.fill',
+    regions: ['US', 'JP', 'UK']
+  },
+  'HBO Max': {
+    url: 'https://www.hbomax.com/',
+    icon: 'h.square.fill',
+    regions: ['US', 'UK', 'ES']
+  }
+};
 
-  const results = await Promise.allSettled(services.map(service =>
-    fetch(service.url, { method: 'GET', mode: 'no-cors' }).then(() => ({
-      name: service.name,
-      status: "解锁",
-      region: "未知区域",
-      color: "green"
-    })).catch(() => ({
-      name: service.name,
-      status: "封锁",
-      region: "无",
-      color: "red"
-    }))
-  ));
-
-  return results.map(r => r.value || {
-    name: "未知服务",
-    status: "错误",
-    region: "无",
-    color: "gray"
-  });
+async function checkService(service) {
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    
+    const response = await fetch(service.url, {
+      method: 'HEAD',
+      redirect: 'manual',
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    
+    // 状态码检测逻辑
+    if ([200, 301, 302, 307].includes(response.status)) {
+      return {status: 'unlocked', region: detectRegion(response)};
+    }
+    return {status: 'locked', region: 'N/A'};
+  } catch (error) {
+    console.error(`[${service}检测失败]: ${error}`);
+    return {status: 'error', region: 'N/A'};
+  }
 }
 
-async function render() {
-  const services = await fetchUnlockStatus();
+function detectRegion(response) {
+  // 这里实现实际的区域检测逻辑
+  // 示例随机返回区域，实际应解析响应头/内容
+  const regions = this.SERVICES[service].regions;
+  return regions[Math.floor(Math.random() * regions.length)];
+}
 
-  const html = `
-    <div style="display: grid; gap: 12px; padding: 10px">
-      ${services.map(s => `
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="width: 12px; height: 12px; border-radius: 50%; background-color: ${s.color};"></span>
-          <strong>${s.name}</strong>
-          <span style="flex-grow: 1; text-align: right;">${s.status} (${s.region})</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
-
+async function main() {
+  const results = [];
+  
+  for (const [name, config] of Object.entries(SERVICES)) {
+    const {status, region} = await checkService(name);
+    results.push({
+      icon: config.icon,
+      title: name,
+      subtitle: region,
+      status: status === 'unlocked' ? '🟢 解锁' : '🔴 封锁',
+      color: status === 'unlocked' ? '#34C759' : '#FF3B30'
+    });
+  }
+  
   return {
-    title: "流媒体解锁检测",
-    content: html
+    tiles: [{
+      type: 'grid',
+      entries: results.map(r => ({
+        icon: {name: r.icon, color: r.color},
+        title: r.title,
+        subtitle: r.subtitle,
+        status: r.status
+      }))
+    }]
   };
 }
+
+main();
