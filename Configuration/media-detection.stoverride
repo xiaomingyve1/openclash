@@ -1,0 +1,53 @@
+# 覆写名称：流媒体检测面板
+# 作用：检测各大流媒体服务的解锁状态及区域，并分类展示
+
+override_name: 流媒体检测面板
+version: 1.0
+name: 流媒体检测面板
+desc: 检测各大流媒体服务的解锁状态及区域
+
+panels:
+  - id: flowmedia_status_panel
+    title: 流媒体解锁检测
+    type: grid
+    columns:
+      - name: 服务名称
+        field: service
+      - name: 解锁状态
+        field: status
+      - name: 区域
+        field: region
+    # 列表数据通过脚本动态生成
+    data_source:
+      script: |
+        import requests
+
+        services = [
+          {"service": "ChatGPT"        , "url": "https://chat.openai.com/"       },
+          {"service": "YouTube"        , "url": "https://www.youtube.com/"       },
+          {"service": "Netflix"        , "url": "https://www.netflix.com/"       },
+          {"service": "Disney+"        , "url": "https://www.disneyplus.com/"    },
+          {"service": "TikTok"         , "url": "https://www.tiktok.com/"        },
+          {"service": "Amazon Prime"   , "url": "https://www.primevideo.com/"    },
+          {"service": "HBO Max"        , "url": "https://www.hbomax.com/"        },
+        ]
+
+        def check_unlock(entry):
+            try:
+                r = requests.head(entry["url"], timeout=5, allow_redirects=True)
+                # 简单依据状态码判断是否被墙或被区域限制
+                if r.status_code == 200:
+                    # 尝试从响应头或最终域名判断区域
+                    host = r.url.split('/')[2]
+                    region = host.split('.')[-1].upper()
+                    return {"service": entry["service"], "status": "已解锁", "region": region}
+                else:
+                    return {"service": entry["service"], "status": "未解锁", "region": "-"}
+            except Exception:
+                return {"service": entry["service"], "status": "未解锁", "region": "-"}
+
+        results = [check_unlock(s) for s in services]
+        return results
+
+    # 定时刷新，每 5 分钟检测一次
+    refresh_interval: 300
