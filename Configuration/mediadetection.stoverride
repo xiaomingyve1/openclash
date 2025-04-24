@@ -1,19 +1,11 @@
 # streaming_check.stoverride
-name: 流媒体检测
-desc: 流媒体解锁检测面板
-
-metadata:
-  title: "流媒体检测面板"  # 必须明确命名
-  id: streaming-panel-v3  # 唯一标识符，避免覆盖冲突:cite[3]:cite[8]
-  icon: chart.bar.fill    # 使用系统图标名称
-  urls:
-    - https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/streaming_check.js  # 脚本绝对路径
-  update-interval: 1800  # 30分钟更新
-  tile-visibility: visible  # 显式声明磁贴可见性:cite[3]
-
+name: 流媒体检测面板
+desc: 流媒体解锁状态监测面板
 tiles:
-  - type: script          # 必须声明类型为script
-    title: 服务状态
-    layout: grid          # 网格布局
-    grid-columns: 2       # 两列显示
-    script: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/streaming_check.js  # 绝对路径
+  - name: media_check
+    icon: play.tv.fill
+    backgroundColor: '#34C759'  # 调整为主色系
+script-providers:
+  media_check:
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/streaming_check.js
+    interval: 1800  # 30分钟更新
