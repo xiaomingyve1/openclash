@@ -1,0 +1,16 @@
+name: 流媒体检测面板
+tiles:
+  - name: 流媒体解锁检测
+    icon: tv
+    url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/stream_unlock_checker.js
+    size: large
+    interval: 1800 # 30分钟更新一次
+    style: native
+    tags:
+      - streaming
+      - 解锁检测
+      - 流媒体
+
+script:
+  type: javascript
+  entry: stream_unlock_checker.js
