@@ -86,11 +86,11 @@ proxy-groups:
   - {name: 迪士尼, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/disneyplus.png}
   - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HBO_Max.png}
 # 不支持流媒体解锁检测 
-  - {name: Hulu, type: select, include-all: true, <<: *SelectHulu, filter: *FilterHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu.png}
-  - {name: 国内流量, type: select, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
-  - {name: 苹果服务, type: select, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
-  - {name: 微软服务, type: select, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
-  - {name: DNS服务, type: select, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
+  - {name: Hulu, include-all: true, <<: *SelectHulu, filter: *FilterHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu.png}
+  - {name: 国内流量, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
+  - {name: 苹果服务, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
+  - {name: 微软服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
+  - {name: DNS服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
 
 ###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
