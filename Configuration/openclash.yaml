@@ -36,7 +36,7 @@ geo-update-interval: 23 # 小时
 
 #  节点组：过滤关键词 
 FilterAll: &FilterAll '(?i)(?=.*())^((?!(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
-Filterdaily: &Filterdaily '(?i)(?=.*())^((?!(x0\.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
+Filterdaily: &Filterdaily '(?i)(?=.*())^((?!(x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
 #  节点组：包含关键词 
 FilterOption: &FilterOption '(?i)(?=.*(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽))^((?!(1x)).)*$'
 #  节点组：保留关键词^排除关键词 
@@ -61,62 +61,63 @@ SelectRE: &SelectRE {type: select, proxies: [拒绝连接,丢弃连接,跳过规
 
 #  策略组 
 proxy-groups:
-  - {name: 手动日常, type: select, include-all: true, filter: *Filterdaily, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Clubhouse.png}
-  - {name: 手动自选, type: select, include-all: true, filter: *FilterOption, icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/select.png}
-  - {name: 默认代理, <<: *SelectFB, icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/network.png}
-  - {name: 广告规则, <<: *SelectRE, icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/block.png}
-  - {name: Telegram, <<: *SelectProxy, icon: https://raw.githubusercontent.com/Lanlan13-14/Icon-for-webui/main/telegram.png}
-  - {name: 游戏平台, <<: *SelectProxy, icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/game.png}
-  - {name: 下载服务, <<: *SelectDIR, icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/applications.png}
-  - {name: 漏网之鱼, <<: *SelectDIR, icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Omission.png}
+  - {name: 手动日常, type: select, include-all: true, filter: *Filterdaily, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose.png}
+  - {name: 手动自选, type: select, include-all: true, filter: *FilterOption, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose1.png}
+  - {name: 默认代理, <<: *SelectFB, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/proxy.png}
+  - {name: 广告规则, <<: *SelectRE, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blockAD.png}
+  - {name: Telegram, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/telegram.png}
+  - {name: 游戏平台, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/game.png}
+  - {name: 下载服务, <<: *SelectDIR, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Download.png}
+  - {name: 漏网之鱼, <<: *SelectDIR, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blackhole.png}
 #  流媒体解锁检测 
-  - {name: 国际媒体, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/Lanlan13-14/Icon-for-webui/main/global_media.png}
-  - {name: 人工智能, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png}
-  - {name: Youtube, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/Lanlan13-14/Icon-for-webui/main/youtube.png}
-  - {name: PrimeVideo, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/Lanlan13-14/Icon-for-webui/main/primevideo.png}
-  - {name: 奈飞, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png}
-  - {name: 迪士尼, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/disneyplus.png}
-  - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/airport168/clash_icon/main/HBO_Max.png}
+  - {name: 国际媒体, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/global_media.png}
+  - {name: 人工智能, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/ChatGPT.png}
+  - {name: Youtube, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/youtube.png}
+  - {name: PrimeVideo, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/primevideo.png}
+  - {name: 奈飞, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Netflix.png}
+  - {name: 迪士尼, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/disneyplus.png}
+  - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HBO_Max.png}
 # 不支持流媒体解锁检测 
-  - {name: Hulu, type: select, include-all: true, filter: *FilterHulu, proxies: [美国优选,美国故转,美国散列,美国轮询,日本优选,日本故转,日本散列,日本轮询,手动日常,手动自选], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Hulu.png}
-  - {name: 国内流量, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/CN%20(2).png}
-  - {name: 苹果服务, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/Apple_3.png}
-  - {name: 微软服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png}
-  - {name: DNS服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/suye886/clash-icon/main/brand.png}
+  - {name: Hulu, type: select, include-all: true, filter: *FilterHulu, proxies: [美国优选,美国故转,美国散列,美国轮询,日本优选,日本故转,日本散列,日本轮询,手动日常,手动自选], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu.png}
+  - {name: 国内流量, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
+  - {name: 苹果服务, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
+  - {name: 微软服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
+  - {name: DNS服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
 
 ###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
-  - {name: 香港优选, <<: *UrlTest, filter: *FilterHK, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png}
-  - {name: 狮城优选, <<: *UrlTest, filter: *FilterSG, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png}
-  - {name: 日本优选, <<: *UrlTest, filter: *FilterJP, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png}
-  - {name: 台湾优选, <<: *UrlTest, filter: *FilterTW, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png}
-  - {name: 美国优选, <<: *UrlTest, filter: *FilterUS, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png}
+  - {name: 香港优选, <<: *UrlTest, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
+  - {name: 狮城优选, <<: *UrlTest, filter: *FilterSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/SG.png}
+  - {name: 日本优选, <<: *UrlTest, filter: *FilterJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/JP.png}
+  - {name: 台湾优选, <<: *UrlTest, filter: *FilterTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/TW.png}
+  - {name: 美国优选, <<: *UrlTest, filter: *FilterUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/US.png}
 # 故障转移 
-  - {name: 香港故转, <<: *FallBack, filter: *FilterHK, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png}
-  - {name: 狮城故转, <<: *FallBack, filter: *FilterSG, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png}
-  - {name: 日本故转, <<: *FallBack, filter: *FilterJP, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png}
-  - {name: 台湾故转, <<: *FallBack, filter: *FilterTW, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png}
-  - {name: 美国故转, <<: *FallBack, filter: *FilterUS, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png}
+  - {name: 香港故转, <<: *FallBack, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
+  - {name: 狮城故转, <<: *FallBack, filter: *FilterSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/SG.png}
+  - {name: 日本故转, <<: *FallBack, filter: *FilterJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/JP.png}
+  - {name: 台湾故转, <<: *FallBack, filter: *FilterTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/TW.png}
+  - {name: 美国故转, <<: *FallBack, filter: *FilterUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/US.png}
 # 负载均衡 
 # 1. consistent-hashing（一致性哈希）
-  - {name: 香港散列, <<: *LoadBalanceCH, filter: *FilterHK, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png}
-  - {name: 狮城散列, <<: *LoadBalanceCH, filter: *FilterSG, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png}
-  - {name: 日本散列, <<: *LoadBalanceCH, filter: *FilterJP, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png}
-  - {name: 台湾散列, <<: *LoadBalanceCH, filter: *FilterTW, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png}
-  - {name: 美国散列, <<: *LoadBalanceCH, filter: *FilterUS, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png}
+  - {name: 香港散列, <<: *LoadBalanceCH, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
+  - {name: 狮城散列, <<: *LoadBalanceCH, filter: *FilterSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/SG.png}
+  - {name: 日本散列, <<: *LoadBalanceCH, filter: *FilterJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/JP.png}
+  - {name: 台湾散列, <<: *LoadBalanceCH, filter: *FilterTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/TW.png}
+  - {name: 美国散列, <<: *LoadBalanceCH, filter: *FilterUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/US.png}
 # 2. round-robin（轮询）
-  - {name: 香港轮询, <<: *LoadBalanceCR, filter: *FilterHK, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png}
-  - {name: 狮城轮询, <<: *LoadBalanceCR, filter: *FilterSG, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png}
-  - {name: 日本轮询, <<: *LoadBalanceCR, filter: *FilterJP, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png}
-  - {name: 台湾轮询, <<: *LoadBalanceCR, filter: *FilterTW, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png}
-  - {name: 美国轮询, <<: *LoadBalanceCR, filter: *FilterUS, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png}
+  - {name: 香港轮询, <<: *LoadBalanceCR, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
+  - {name: 狮城轮询, <<: *LoadBalanceCR, filter: *FilterSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/SG.png}
+  - {name: 日本轮询, <<: *LoadBalanceCR, filter: *FilterJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/JP.png}
+  - {name: 台湾轮询, <<: *LoadBalanceCR, filter: *FilterTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/TW.png}
+  - {name: 美国轮询, <<: *LoadBalanceCR, filter: *FilterUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/US.png}
 #  基础策略 
-  - {name: 自动选择, <<: *UrlTest, filter: *FilterAll, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/GoogleDrive.png}
-  - {name: 故障转移, <<: *FallBack, filter: *FilterAll, icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/endless.png}
-  - {name: 直接连接, type: select, disable-udp: false, hidden: true, proxies: [ DIRECT ], icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/Reject.png}
-  - {name: 拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ], icon: https://raw.githubusercontent.com/mphin/group_icons/main/icon/emoji/apple/emojiall_no_entry_sign.png}
-  - {name: 丢弃连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT-DROP ], icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/Final_1.png}
-  - {name: 跳过规则, type: select, disable-udp: true, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/Bypass.png}
+  - {name: 自动选择, <<: *UrlTest, filter: *FilterAll, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/UrlTest.png}
+  - {name: 故障转移, <<: *FallBack, filter: *FilterAll, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/FallBack.png}
+  - {name: 直接连接, type: select, disable-udp: false, hidden: true, proxies: [ DIRECT ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/direct.png}
+  - {name: 拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/REJECT.png}
+  - {name: 丢弃连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT-DROP ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/REJECT-DROP.png}
+  - {name: 跳过规则, type: select, disable-udp: true, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/PASS.png}
+
 # 规则集更新 
 ClassicalYaml: &Classical {type: http, interval: 75600, behavior: classical, format: yaml}
 # 规则提供者 
