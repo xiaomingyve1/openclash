@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年4月26日
+# 日期       2025年4月27日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -37,7 +37,7 @@ geo-update-interval: 23 # 小时
 #  节点组：过滤关键词 
 FilterAll: &FilterAll '(?i)(?=.*())^((?!(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
 Filterdaily: &Filterdaily '(?i)(?=.*())^((?!(x0\.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
-#  节点组：包含关键词
+#  节点组：包含关键词 
 FilterOption: &FilterOption '(?i)(?=.*(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽))^((?!(1x)).)*$'
 #  节点组：保留关键词^排除关键词 
 FilterHK: &FilterHK '(?i)(?=.*(港|🇭🇰|HK|Hong))^((?!(台|日|韩|新|美|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
@@ -56,7 +56,7 @@ LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interv
 SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,手动日常,手动自选,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 SelectProxy: &SelectProxy {type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
-#  拒绝组
+#  拒绝组 
 SelectRE: &SelectRE {type: select, proxies: [拒绝连接,丢弃连接,跳过规则,直接连接]}
 
 #  策略组 
@@ -81,8 +81,8 @@ proxy-groups:
   - {name: Hulu, type: select, include-all: true, filter: *FilterHulu, proxies: [美国优选,美国故转,美国散列,美国轮询,日本优选,日本故转,日本散列,日本轮询,手动日常,手动自选], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Hulu.png}
   - {name: 国内流量, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/CN%20(2).png}
   - {name: 苹果服务, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/andongGitHub/mihomo-icons/main/icons/Apple_3.png}
-  - {name: 微软服务, type: select, proxies: [默认代理,手动日常,手动自选,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png}
-  - {name: DNS服务, type: select, proxies: [默认代理,手动日常,手动自选,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/suye886/clash-icon/main/brand.png}
+  - {name: 微软服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png}
+  - {name: DNS服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/suye886/clash-icon/main/brand.png}
 
 ###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
