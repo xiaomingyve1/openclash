@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年4月27日
+# 日期       2025年4月28日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -34,6 +34,7 @@ geodata-loader: standard  # standard:标准加载器 / memconservative:小内存
 geo-auto-update: true # 自动更新
 geo-update-interval: 23 # 小时
 
+# 引用格式  filter: *
 #  节点组：过滤关键词 
 FilterAll: &FilterAll '(?i)(?=.*())^((?!(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
 Filterdaily: &Filterdaily '(?i)(?=.*())^((?!(x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
@@ -47,6 +48,7 @@ FilterTW: &FilterTW '(?i)(?=.*(台|🇹🇼|TW|湾|Taiwan))^((?!(港|日|韩|新
 FilterUS: &FilterUS '(?i)(?=.*(美|US|States|American))^((?!(港|台|日|韩|新|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽)).)*$'
 FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量)).)*$'
 FilterHulu: &FilterHulu '(?i)(?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼|流量)).)*$'
+# 引用格式  <<: *
 #  测速组 
 UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 10, timeout: 2000, max-retries: 2, max-failed-times: 3, hidden: true, include-all: true}
 FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 10, timeout: 2000, max-retries: 2, max-failed-times: 3, hidden: true, include-all: true}
@@ -58,6 +60,12 @@ SelectProxy: &SelectProxy {type: select, proxies: [默认代理,手动日常,手
 SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 #  拒绝组 
 SelectRE: &SelectRE {type: select, proxies: [拒绝连接,丢弃连接,跳过规则,直接连接]}
+#  Hulu组
+SelectHulu: &SelectHulu {type: select, proxies: [美国故转,美国优选,美国散列,美国轮询,日本故转,日本优选,日本散列,日本轮询,手动日常,手动自选]}
+#  直连组 
+SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则]}
+#  基础组 
+SelectBase: &SelectBase {type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则]}
 
 #  策略组 
 proxy-groups:
@@ -78,11 +86,11 @@ proxy-groups:
   - {name: 迪士尼, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/disneyplus.png}
   - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HBO_Max.png}
 # 不支持流媒体解锁检测 
-  - {name: Hulu, type: select, include-all: true, filter: *FilterHulu, proxies: [美国优选,美国故转,美国散列,美国轮询,日本优选,日本故转,日本散列,日本轮询,手动日常,手动自选], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu.png}
-  - {name: 国内流量, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
-  - {name: 苹果服务, type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
-  - {name: 微软服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
-  - {name: DNS服务, type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
+  - {name: Hulu, type: select, include-all: true, <<: *SelectHulu, filter: *FilterHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu.png}
+  - {name: 国内流量, type: select, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
+  - {name: 苹果服务, type: select, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
+  - {name: 微软服务, type: select, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
+  - {name: DNS服务, type: select, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
 
 ###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
