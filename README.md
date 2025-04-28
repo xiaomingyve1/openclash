@@ -4,11 +4,11 @@
 
 自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整插件设置/覆写设置。  
 
-规则策略比较多，并不适合256mb设备，慎用！  
+规则策略比较多，并不适合小内存的硬路由，慎用！  
 
 # 对于 UrlTest 失效的问题，可以通过计划任务crontab定时热加载配置（不重启不断网）刷新测速
   
 # 图例
-![策略组1](https://github.com/user-attachments/assets/27702213-5515-4d67-9ef1-cee3af70880a)
-![策略组2](https://github.com/user-attachments/assets/62c92c61-e429-48ce-88e1-6cdd54268312)
-![解锁](https://github.com/user-attachments/assets/beff0927-54be-487a-aaa8-d8f50ee99fe3)
+<img width="1057" alt="策略组1" src="https://github.com/user-attachments/assets/815b005a-7e6c-4e77-a74a-cc1f26e50cbe" />
+<img width="1060" alt="策略组2" src="https://github.com/user-attachments/assets/224dd989-fca9-47c4-9cd6-01810b533446" />
+<img width="442" alt="解锁" src="https://github.com/user-attachments/assets/6f5184f7-33f0-4c2d-a9d4-af225d47316c" />
