@@ -58,6 +58,7 @@ LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interv
 SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,手动日常,手动自选,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 SelectProxy: &SelectProxy {type: select, proxies: [默认代理,手动日常,手动自选,故障转移,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,手动日常,手动自选,故障转移,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
+Selectother: &Selectother {type: select, proxies: [故障转移,默认代理,手动日常,手动自选,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 #  拒绝组 
 SelectRE: &SelectRE {type: select, proxies: [拒绝连接,丢弃连接,跳过规则,直接连接]}
 #  Hulu组
@@ -77,16 +78,18 @@ proxy-groups:
   - {name: 游戏平台, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/game.png}
   - {name: 下载服务, <<: *SelectDIR, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Download.png}
   - {name: 漏网之鱼, <<: *SelectDIR, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blackhole.png}
+  - {name: Emby, <<: *Selectother, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/emby.png}
+  - {name: 货币平台, <<: *Selectother, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/BKCLOUD.png}
 #  流媒体解锁检测 
   - {name: 国际媒体, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/global_media.png}
-  - {name: 人工智能, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/ChatGPT.png}
+  - {name: 人工智能, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/ai.png}
   - {name: Youtube, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/youtube.png}
   - {name: PrimeVideo, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/primevideo.png}
   - {name: 奈飞, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Netflix.png}
   - {name: 迪士尼, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/disneyplus.png}
   - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HBO_Max.png}
 # 不支持流媒体解锁检测 
-  - {name: Hulu, include-all: true, <<: *SelectHulu, filter: *FilterHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu.png}
+  - {name: Hulu, include-all: true, <<: *SelectHulu, filter: *FilterHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu1.png}
   - {name: 国内流量, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
   - {name: 苹果服务, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
   - {name: 微软服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
@@ -127,7 +130,7 @@ proxy-groups:
   - {name: 跳过规则, type: select, disable-udp: true, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/PASS.png}
 
 # 规则集更新 
-ClassicalYaml: &Classical {type: http, interval: 75600, behavior: classical, format: yaml}
+ClassicalYaml: &Classical  {type: http, interval: 75600, behavior: classical, format: yaml}
 # 规则提供者 
 rule-providers:
   # DNS服务
@@ -210,6 +213,9 @@ rule-providers:
   NetflixIP:               {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/NetflixIP.yaml}
   Netflix_Classical:       {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml}
   MyNetflix_Replenish:     {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyNetflix_Replenish.yaml}
+ # Emby
+  Emby:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml}
+  MyEmby_Replenish:        {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyEmby_Replenish.yaml}
  # 人工智能
   OpenAI:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml}
   BardAI:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BardAI/BardAI.yaml}
@@ -252,7 +258,6 @@ rule-providers:
   TikTok:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml}
   Twitch:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitch/Twitch.yaml}
   Twitter:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml}
-  Emby:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml}
   Fox:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Fox/Fox.yaml}
   VOA:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/VOA/VOA.yaml}
   Spotify:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml}
@@ -279,19 +284,21 @@ rule-providers:
   IPTVOther_Classical:     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVOther/IPTVOther_Classical.yaml}
   GlobalMedia_Classical:   {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml}
   MyVideo_Replenish:       {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyVideo_Replenish.yaml}
+ # 货币平台
+  PayPal:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml}
+  Crypto:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Crypto/Crypto.yaml}
+  MyCurrency_Replenish:    {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyCurrency_Replenish.yaml}
  # 默认代理
   Google:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml}
   Amazon:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Amazon/Amazon.yaml}
   Clubhouse:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Clubhouse/Clubhouse.yaml}
   ClubhouseIP:             {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ClubhouseIP/ClubhouseIP.yaml}
   Line:                    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml}
-  PayPal:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml}
   Reddit:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Reddit/Reddit.yaml}
   Heroku:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Heroku/Heroku.yaml}
   Discord:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Discord/Discord.yaml}
   Wikipedia:               {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Wikipedia/Wikipedia.yaml}
   Docker:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Docker/Docker.yaml}
-  Crypto:                  {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Crypto/Crypto.yaml}
   GoogleCNProxyIP:         {<<: *Classical, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCNProxyIP.yaml}
   Bestbuy:                 {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bestbuy/Bestbuy.yaml}
   GlobalScholar:           {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalScholar/GlobalScholar.yaml}
@@ -396,6 +403,8 @@ rules:
 - RULE-SET,NetflixIP,奈飞
 - RULE-SET,Netflix_Classical,奈飞
 - RULE-SET,MyNetflix_Replenish,奈飞
+- RULE-SET,Emby,Emby
+- RULE-SET,MyEmby_Replenish,Emby
 - RULE-SET,OpenAI,人工智能
 - RULE-SET,BardAI,人工智能
 - RULE-SET,Gemini,人工智能
@@ -434,7 +443,6 @@ rules:
 - RULE-SET,TikTok,国际媒体
 - RULE-SET,Twitch,国际媒体
 - RULE-SET,Twitter,国际媒体
-- RULE-SET,Emby,国际媒体
 - RULE-SET,Fox,国际媒体
 - RULE-SET,VOA,国际媒体
 - RULE-SET,Spotify,国际媒体
@@ -461,18 +469,20 @@ rules:
 - RULE-SET,IPTVOther_Classical,国际媒体
 - RULE-SET,GlobalMedia_Classical,国际媒体
 - RULE-SET,MyVideo_Replenish,国际媒体
+- RULE-SET,PayPal,货币平台
+- RULE-SET,Crypto,货币平台
+- RULE-SET,MyCurrency_Replenish,货币平台
+- GEOSITE,category-cryptocurrency,货币平台
 - RULE-SET,Google,默认代理
 - RULE-SET,Amazon,默认代理
 - RULE-SET,Clubhouse,默认代理
 - RULE-SET,ClubhouseIP,默认代理
 - RULE-SET,Line,默认代理
-- RULE-SET,PayPal,默认代理
 - RULE-SET,Reddit,默认代理
 - RULE-SET,Heroku,默认代理
 - RULE-SET,Discord,默认代理
 - RULE-SET,Wikipedia,默认代理
 - RULE-SET,Docker,默认代理
-- RULE-SET,Crypto,默认代理
 - RULE-SET,GoogleCNProxyIP,默认代理
 - RULE-SET,Bestbuy,默认代理
 - RULE-SET,GlobalScholar,默认代理
