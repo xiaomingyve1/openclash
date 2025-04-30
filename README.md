@@ -10,5 +10,5 @@
   
 # 图例
 ![策略组1](https://github.com/user-attachments/assets/5a4bf250-9866-4bc2-8fce-c6929193125d)
-![策略组2](https://github.com/user-attachments/assets/b6258de7-efb1-46c9-83c9-ddb917a57ad5)
+![策略组2](https://github.com/user-attachments/assets/c7fcedde-9b57-4b7c-bc93-71a9b4434a69)
 <img width="442" alt="解锁" src="https://github.com/user-attachments/assets/6f5184f7-33f0-4c2d-a9d4-af225d47316c" />
