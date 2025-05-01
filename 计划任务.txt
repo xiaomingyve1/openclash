@@ -9,10 +9,13 @@
 00 */1 * * * sleep 70 && sh -c 'kill -HUP $(pidof clash)'
 
 
-# 解决 长时间运行后 某些网站失联 或流媒体检测失效问题
+# 解决 长时间运行后 某些网站失联 或流媒体检测失效问题（需重启openclash）
 
 # 1. 定时删除流媒体检测缓存后重载防火墙并重启面板，刷新缓存
 10 5 * * * sleep 70 && sh -c 'exec >&- 2>&-;pgrep clash||exit 1;rm -rf /etc/openclash/history/streaming_unlock_cache&&/etc/init.d/firewall reload&&sleep 10&&$(echo L2V0Yy9pbml0LmQvb3BlbmNsYXNo|base64 -d) restart'
+
+# 2. 定时更新大陆白名单并删除缓存后重载防火墙并重启面板，刷新缓存
+10 5 * * * sleep 70 && sh -c 'exec >&- 2>&-; pgrep clash || exit 1; UPDATED=$($(echo L3Vzci9zaGFyZS9vcGVuY2xhc2gvb3BlbmNsYXNoX2NobnJvdXRlLnNo | base64 -d) --check-update); sleep 70; if [ "$UPDATED" = "1" ]; then exit 0; fi; rm -rf /etc/openclash/history/streaming_unlock_cache && /etc/init.d/firewall reload && sleep 10 && $(echo L2V0Yy9pbml0LmQvb3BlbmNsYXNo | base64 -d) restart'
 
 
 # 所有策略组 恢复至默认状态，需要安装 jq 软件包！
