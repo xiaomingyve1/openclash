@@ -1,17 +1,17 @@
 payload:
 # 自定义 Reject
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,amazon))             # Amazon 电商及 AWS 相关域名
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,google))             # Google 全域名
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,youtube))            # YouTube 全域名
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,telegram))           # Telegram 服务、Bot 和 CDN 域名
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,microsoft))          # Microsoft 及 Office365、Azure 等域名
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,streaming))          # 国际流媒体服务
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,social_media))       # 国际社交媒体平台
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,category-speedtest)) # Speedtest 测速相关域名
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,geolocation-!cn))    # 非中国大陆的常见服务域名
-  - AND,((PROTOCOL,QUIC),(DST-PORT,443),(GEOSITE,tld-!cn))            # 全球其他顶级域（如 .us、.jp、.tw 等）
-#  - AND,((PROTOCOL,QUIC),(DST-PORT,443)),(NOT,(GEOSITE,cn))           # 排除所有中国大陆域名
-#  - AND,((PROTOCOL,QUIC),(DST-PORT,443)),(NOT,(GEOSITE,tld-cn))       # 排除所有由 CNNIC 管理的顶级域（.cn、.中国）
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,amazon))             # Amazon 电商及 AWS 相关域名
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,google))             # Google 全域名
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,youtube))            # YouTube 全域名
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,telegram))           # Telegram 服务、Bot 和 CDN 域名
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,microsoft))          # Microsoft 及 Office365、Azure 等域名
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,streaming))          # 国际流媒体服务
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,social_media))       # 国际社交媒体平台
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,category-speedtest)) # Speedtest 测速相关域名
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,geolocation-!cn))    # 非中国大陆的常见服务域名
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tld-!cn))            # 全球其他顶级域（如 .us、.jp、.tw 等）
+  - AND,((NETWORK,UDP),(DST-PORT,443)),(NOT,(GEOSITE,cn))           # 排除所有中国大陆域名
+  - AND,((NETWORK,UDP),(DST-PORT,443)),(NOT,(GEOSITE,tld-cn))       # 排除所有由 CNNIC 管理的顶级域（.cn、.中国）
 
 # 禁止 PCDN
 # - DOMAIN,api.app.skysrt.com
