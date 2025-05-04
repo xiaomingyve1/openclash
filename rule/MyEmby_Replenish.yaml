@@ -4,6 +4,8 @@ payload:
   - DOMAIN,hongxingyunmovie.vip
   # 涅槃
   - DOMAIN-SUFFIX,revival.baby
+  # 精靈學院
+  - DOMAIN-SUFFIX,1steam.one
 
   - DOMAIN,2pfdml.mobaiemby.site
   - DOMAIN,cc.coemn.com
