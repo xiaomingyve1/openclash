@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年5月4日
+# 日期       2025年5月6日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -50,7 +50,7 @@ FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量)).)*$'
 FilterHulu: &FilterHulu '(?i)(?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼|流量)).)*$'
 # 引用格式  <<: *
 #  测速组 
-UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
