@@ -30,8 +30,7 @@ geox-url:
   mmdb: "https://testingcf.jsdelivr.net/gh/Hackl0us/GeoIP2-CN@release/Country.mmdb"
   asn: "https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb"
 geodata-mode: true  # geoip 使用文件,dat或者mmdb,可选 true为dat / false为mmdb
-geodata-loader: memconservative  # standard:标准加载器 / memconservative:小内存优化
-cache-size: 64MB  # 限制地理数据缓存不超过64MB
+geodata-loader: standard  # standard:标准加载器 / memconservative:小内存优化
 geo-auto-update: true # 自动更新
 geo-update-interval: 23 # 小时
 
