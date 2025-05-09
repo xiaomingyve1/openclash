@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年5月7日
+# 日期       2025年5月9日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -9,7 +9,7 @@
 # ========================================================================================================================================================
 
 # 订阅更新 
-Subscription: &sub {type: http, interval: 3600, max-retries: 2, max-failed-times: 2, health-check: {enable: true, interval: 300, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", max-concurrent-tests: 2, max-retries: 2, max-failed-times: 2}, filter: '(?i)(?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$'}
+Subscription: &sub {type: http, interval: 3600, max-retries: 2, max-failed-times: 2, health-check: {enable: true, interval: 300, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", max-concurrent-tests: 1, max-retries: 2, max-failed-times: 2}, filter: '(?i)(?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$'}
 proxy-providers:
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
   1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣]'}}
@@ -50,10 +50,10 @@ FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量)).)*$'
 FilterHulu: &FilterHulu '(?i)(?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼|流量)).)*$'
 # 引用格式  <<: *
 #  测速组 
-UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
-FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
-LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
-LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 2, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 #  选择组 
 SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,手动选择,手动自选,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 SelectProxy: &SelectProxy {type: select, proxies: [默认代理,手动选择,手动自选,故障转移,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
@@ -61,7 +61,7 @@ SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,手动�
 Selectother: &Selectother {type: select, proxies: [故障转移,默认代理,手动选择,手动自选,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 #  拒绝组 
 SelectRE: &SelectRE {type: select, proxies: [拒绝连接,丢弃连接,跳过规则,直接连接]}
-#  Hulu组
+#  Hulu组 
 SelectHulu: &SelectHulu {type: select, proxies: [美国故转,美国优选,美国散列,美国轮询,日本故转,日本优选,日本散列,日本轮询,手动选择,手动自选]}
 #  直连组 
 SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,手动选择,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则]}
