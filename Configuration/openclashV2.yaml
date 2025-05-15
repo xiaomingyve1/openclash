@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年5月14日
+# 日期       2025年5月15日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -143,7 +143,7 @@ proxy-groups:
   - {name: 跳过规则, type: select, disable-udp: true, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/PASS.png}
 
 # 规则集更新 
-ClassicalYaml: &Classical  {type: http, interval: 75600, behavior: classical, format: yaml}
+ClassicalYaml: &Classical  {type: http, force: true, interval: 75600, behavior: classical, format: yaml, proxy: 默认代理}
 # 规则提供者 
 rule-providers:
   # DNS服务
