@@ -1,5 +1,30 @@
 payload:
 #自定义 AI
+  - DOMAIN-SUFFIX,pay.openai.com
+  - DOMAIN-SUFFIX,chat.openai.com
+  - DOMAIN-SUFFIX,challenges.cloudflare.com
+  - DOMAIN-SUFFIX,auth0.openai.com
+  - DOMAIN-SUFFIX,platform.openai.com
+  - DOMAIN-SUFFIX,ios.chat.openai.com
+  - DOMAIN-SUFFIX,invoice.stripe.com
+  - DOMAIN-SUFFIX,poe.com
+  - DOMAIN-SUFFIX,perplexity.ai
+  - DOMAIN-SUFFIX,claude.ai.com
+  - DOMAIN-SUFFIX,makersuite.google.com
+  - DOMAIN-SUFFIX,circumlunar.space
+  - DOMAIN-SUFFIX,vulpes.one
+  - DOMAIN-SUFFIX,mozz.us
+  - DOMAIN-SUFFIX,conman.org
+  - DOMAIN-SUFFIX,bortzmeyer.org
+  - DOMAIN-SUFFIX,groq.com
+  - DOMAIN-SUFFIX,difyai.com
+  - DOMAIN-SUFFIX,genspark.ai
+  - DOMAIN-SUFFIX,googleapis.com
+  - DOMAIN-SUFFIX,googleapis.cn
+  - DOMAIN-SUFFIX,gstatic.com
+  - DOMAIN-SUFFIX,signalr.net
+  - DOMAIN-KEYWORD,anthropic
+  - DOMAIN-KEYWORD,Claude
   # > Meta AI
   - DOMAIN-SUFFIX,meta.ai
   - DOMAIN-SUFFIX,ai.meta.com
