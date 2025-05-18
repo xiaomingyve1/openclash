@@ -143,7 +143,7 @@ proxy-groups:
   - {name: 跳过规则, type: select, disable-udp: true, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/PASS.png}
 
 # 规则集更新 
-ClassicalYaml: &Classical  {type: http, force: true, interval: 75600, behavior: classical, format: yaml, proxy: 默认代理}
+ClassicalYaml: &Classical  {type: http, interval: 75600, behavior: classical, format: yaml, proxy: 默认代理}
 # 规则提供者 
 rule-providers:
   # DNS服务
