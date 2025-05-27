@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年5月9日
+# 日期       2025年5月27日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -9,7 +9,7 @@
 # ========================================================================================================================================================
 
 # 订阅更新 
-Subscription: &sub {type: http, interval: 3600, max-retries: 2, max-failed-times: 2, health-check: {enable: true, interval: 300, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", max-concurrent-tests: 1, max-retries: 2, max-failed-times: 2}, filter: '(?i)(?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$'}
+Subscription: &sub {type: http, interval: 3600, max-retries: 2, max-failed-times: 2, health-check: {enable: true, interval: 137, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", max-concurrent-tests: 3, max-retries: 2, max-failed-times: 2}, filter: '(?i)(?=.*())^((?!(群|套餐|期|距离|临|回|招|备|建议|防|禁|推|TG|试|为|佣金|节点|官网|线路|封锁|延迟|广|跳|登|急|少|差|停|计|用|失|质|向|实验|邀请|返利|循环|客服|网站|网址|获取|订阅|机场|下次|版本|官址|已用|联系|邮箱|工单|贩卖|通知|倒卖|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入)).)*$'}
 proxy-providers:
 # ❗️❗️❗️⚠️⚠️注意：将" 机场订阅URL "替换 订阅链接 文字⚠️⚠️❗️❗️❗️ #
   1️⃣配置: {<<: *sub, url: '订阅链接', override: {additional-prefix: '[1️⃣]'}}
@@ -37,49 +37,55 @@ geo-update-interval: 23 # 小时
 # 引用格式  filter: *
 #  节点组：过滤关键词 
 FilterAll: &FilterAll '(?i)(?=.*())^((?!(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
-Filterdaily: &Filterdaily '(?i)(?=.*())^((?!(x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
-#  节点组：包含关键词 
-FilterOption: &FilterOption '(?i)(?=.*(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6))^((?!(1x|x1)).)*$'
+Filterdaily: &Filterdaily '(?i)(?=.*())^((?!(港|🇭🇰|HK|Hong|新|🇸🇬|SG|坡|狮城|Singapore|日|🇯🇵|JP|东京|Japan|台|🇹🇼|TW|湾|Taiwan|美|US|States|American)).)*$'
 #  节点组：保留关键词^排除关键词 
 FilterHK: &FilterHK '(?i)(?=.*(港|🇭🇰|HK|Hong))^((?!(台|日|韩|新|美|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
 FilterSG: &FilterSG '(?i)(?=.*(新|🇸🇬|SG|坡|狮城|Singapore))^((?!(港|日|台|韩|美|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
 FilterJP: &FilterJP '(?i)(?=.*(日|🇯🇵|JP|东京|Japan))^((?!(港|台|韩|新|美|尼|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
 FilterTW: &FilterTW '(?i)(?=.*(台|🇹🇼|TW|湾|Taiwan))^((?!(港|日|韩|新|美|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
 FilterUS: &FilterUS '(?i)(?=.*(美|US|States|American))^((?!(港|台|日|韩|新|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
+#  节点组：策略组 
+FilterallHK: &FilterallHK '(?i)(?=.*(港|🇭🇰|HK|Hong))^((?!(台|日|韩|新|美|流量)).)*$'
+FilterallSG: &FilterallSG '(?i)(?=.*(新|🇸🇬|SG|坡|狮城|Singapore))^((?!(港|日|台|韩|美|流量)).)*$'
+FilterallJP: &FilterallJP '(?i)(?=.*(日|🇯🇵|JP|东京|Japan))^((?!(港|台|韩|新|美|尼|流量)).)*$'
+FilterallTW: &FilterallTW '(?i)(?=.*(台|🇹🇼|TW|湾|Taiwan))^((?!(港|日|韩|新|美|流量)).)*$'
+FilterallUS: &FilterallUS '(?i)(?=.*(美|US|States|American))^((?!(港|台|日|韩|新|流量)).)*$'
 FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量)).)*$'
-FilterHulu: &FilterHulu '(?i)(?=.*(美|US|日|🇯🇵|JP|东京))^((?!(港|🇭🇰|HK|新|🇸🇬|SG|坡|狮城|台|🇹🇼|TW|湾|尼|流量)).)*$'
 # 引用格式  <<: *
 #  测速组 
-UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
-FallBack: &FallBack {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
-LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
-LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 1, timeout: 2, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 1000, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+FallBack: &FallBack {type: fallback, interval: 97, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 1000, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing, interval: 131, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 300, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
+LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 300, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 #  选择组 
-SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,手动选择,手动自选,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
-SelectProxy: &SelectProxy {type: select, proxies: [默认代理,手动选择,手动自选,故障转移,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
-SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,手动选择,手动自选,故障转移,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
-Selectother: &Selectother {type: select, proxies: [故障转移,默认代理,手动选择,手动自选,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港故转,狮城故转,日本故转,台湾故转,美国故转,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
+SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,冷门自选,直接连接,拒绝连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
+SelectProxy: &SelectProxy {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
+SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港优选,狮城优选,日本优选,台湾优选,美国优选,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
+#  Hulu组 
+SelectHulu: &SelectHulu {type: select, proxies: [美国策略,日本策略,香港策略,狮城策略,台湾策略,故障转移,冷门自选]}
+#  直连组 
+SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港策略,狮城策略,日本策略,台湾策略,美国策略,拒绝连接,丢弃连接,跳过规则]}
+#  基础组 
+SelectBase: &SelectBase {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港策略,狮城策略,日本策略,台湾策略,美国策略,拒绝连接,丢弃连接,跳过规则]}
 #  拒绝组 
 SelectRE: &SelectRE {type: select, proxies: [拒绝连接,丢弃连接,跳过规则,直接连接]}
-#  Hulu组 
-SelectHulu: &SelectHulu {type: select, proxies: [美国故转,美国优选,美国散列,美国轮询,日本故转,日本优选,日本散列,日本轮询,手动选择,手动自选]}
-#  直连组 
-SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,手动选择,手动自选,故障转移,拒绝连接,丢弃连接,跳过规则]}
-#  基础组 
-SelectBase: &SelectBase {type: select, proxies: [默认代理,手动选择,手动自选,故障转移,直接连接,拒绝连接,丢弃连接,跳过规则]}
+#  地区组 
+SubProxyHK: &subProxyHK {type: select, proxies: [香港故转]}
+SubProxySG: &subProxySG {type: select, proxies: [狮城故转]}
+SubProxyJP: &subProxyJP {type: select, proxies: [日本故转]}
+SubProxyTW: &subProxyTW {type: select, proxies: [台湾故转]}
+SubProxyUS: &subProxyUS {type: select, proxies: [美国故转]}
 
 #  策略组 
 proxy-groups:
-  - {name: 手动选择, type: select, include-all: true, filter: *Filterdaily, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose.png}
-  - {name: 手动自选, type: select, include-all: true, filter: *FilterOption, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose1.png}
+  - {name: 冷门自选, type: select, include-all: true, filter: *Filterdaily, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose.png}
   - {name: 默认代理, <<: *SelectFB, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/proxy.png}
-  - {name: 广告规则, <<: *SelectRE, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blockAD.png}
   - {name: Telegram, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/telegram.png}
   - {name: 游戏平台, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/game.png}
   - {name: 下载服务, <<: *SelectDIR, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Download.png}
   - {name: 漏网之鱼, <<: *SelectDIR, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blackhole.png}
-  - {name: Emby, <<: *Selectother, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/emby.png}
-  - {name: 货币平台, <<: *Selectother, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/BKCLOUD.png}
+  - {name: Emby, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/emby.png}
+  - {name: 货币平台, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/BKCLOUD.png}
 #  流媒体解锁检测 
   - {name: 国际媒体, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/global_media.png}
   - {name: 人工智能, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/ai.png}
@@ -89,11 +95,18 @@ proxy-groups:
   - {name: 迪士尼, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/disneyplus.png}
   - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HBO_Max.png}
 # 不支持流媒体解锁检测 
-  - {name: Hulu, include-all: true, <<: *SelectHulu, filter: *FilterHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu1.png}
+  - {name: Hulu, <<: *SelectHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu1.png}
   - {name: 国内流量, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
   - {name: 苹果服务, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
   - {name: 微软服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
   - {name: DNS服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
+  - {name: 广告规则, <<: *SelectRE, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blockAD.png}
+# 地区策略 
+  - {name: 香港策略, include-all: true, <<: *subProxyHK, filter: *FilterallHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/hongkong.png}
+  - {name: 狮城策略, include-all: true, <<: *subProxySG, filter: *FilterallSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/singapore.png}
+  - {name: 日本策略, include-all: true, <<: *subProxyJP, filter: *FilterallJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/japan.png}
+  - {name: 台湾策略, include-all: true, <<: *subProxyTW, filter: *FilterallTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/taiwan.png}
+  - {name: 美国策略, include-all: true, <<: *subProxyUS, filter: *FilterallUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/unitedstates.png}
 
 ###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
@@ -130,7 +143,7 @@ proxy-groups:
   - {name: 跳过规则, type: select, disable-udp: true, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/PASS.png}
 
 # 规则集更新 
-ClassicalYaml: &Classical  {type: http, interval: 75600, behavior: classical, format: yaml}
+ClassicalYaml: &Classical  {type: http, interval: 75600, behavior: classical, format: yaml, proxy: 默认代理}
 # 规则提供者 
 rule-providers:
   # DNS服务
