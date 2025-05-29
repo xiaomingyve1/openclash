@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年5月28日
+# 日期       2025年5月30日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -37,7 +37,7 @@ geo-update-interval: 23 # 小时
 # 引用格式  filter: *
 #  节点组：过滤关键词 
 FilterAll: &FilterAll '(?i)(?=.*())^((?!(流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
-Filterdaily: &Filterdaily '(?i)(?=.*())^((?!(港|🇭🇰|HK|Hong|新|🇸🇬|SG|坡|狮城|Singapore|日|🇯🇵|JP|东京|Japan|台|🇹🇼|TW|湾|Taiwan|美|US|States|American)).)*$'
+FilterCold: &FilterCold '(?i)(?=.*())^((?!(港|🇭🇰|HK|Hong|新|🇸🇬|SG|坡|狮城|Singapore|日|🇯🇵|JP|东京|Japan|台|🇹🇼|TW|湾|Taiwan|美|US|States|American)).)*$'
 #  节点组：保留关键词^排除关键词 
 FilterHK: &FilterHK '(?i)(?=.*(港|🇭🇰|HK|Hong))^((?!(台|日|韩|新|美|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
 FilterSG: &FilterSG '(?i)(?=.*(新|🇸🇬|SG|坡|狮城|Singapore))^((?!(港|日|台|韩|美|流量|x0.5|x2|x3|x5|x8|x10|x12|x15|0.5x|2x|3x|5x|8x|10x|12x|15x|倍|直连|家宽|ipv6)).)*$'
@@ -78,7 +78,7 @@ SubProxyUS: &subProxyUS {type: select, proxies: [美国故转]}
 
 #  策略组 
 proxy-groups:
-  - {name: 冷门自选, type: select, include-all: true, filter: *Filterdaily, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose.png}
+  - {name: 冷门自选, type: select, include-all: true, filter: *FilterCold, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose.png}
   - {name: 默认代理, <<: *SelectFB, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/proxy.png}
   - {name: Telegram, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/telegram.png}
   - {name: 游戏平台, <<: *SelectProxy, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/game.png}
