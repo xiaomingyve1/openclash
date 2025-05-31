@@ -19,7 +19,22 @@
 
 
 # 所有策略组 恢复至默认状态，需要安装 jq 软件包！
+
+# 1. 旧版openwrt版本使用命令
 sh -c 'a=$(grep -Rl external-controller /etc/openclash/|head -n1);c=$(awk -F": " "/external-controller/{print \$2}" $a|tr -d "\""|xargs);s=$(awk -F": " "/secret/{print \$2}" $a|tr -d "\""|xargs);curl -sH"Authorization:Bearer $s" http://$c/proxies|jq -r '\''.proxies|to_entries[]|select(.value.type=="Selector")|"\(.key) \(.value.all[0])"'\''|while read g n;do curl -sXPUT -H"Authorization:Bearer $s" -H"Content-Type:application/json" -d"{\"name\":\"$n\"}" "http://$c/proxies/$(printf %s "$g"|jq -sRr @uri)";done'
 
+# 2. 新版openwrt版本使用命令
+sh -c '
+a=$(grep -Rl "external-controller" /etc/openclash/ | head -n1); \
+c=$(awk -F": " "/external-controller/{print \$2}" "$a" | tr -d "\"" | xargs); \
+s=$(awk -F": " "/secret/{print \$2}" "$a" | tr -d "\"" | xargs); \
+curl -sH "Authorization:Bearer $s" "http://$c/proxies" | \
+jq -r '"'"'.proxies | to_entries[] | select(.value.type=="Selector") | "\(.key) \(.value.all[0])"'"'"' | \
+while read -r g n; do \
+  encoded_g=$(printf "%s" "$g" | jq -sRr "@uri"); \
+  curl -sX PUT -H "Authorization:Bearer $s" -H "Content-Type: application/json" \
+  -d "{\"name\":\"$n\"}" "http://$c/proxies/$encoded_g"; \
+done
+' # 复制到这回车运行
 
 # 个人自用命令
