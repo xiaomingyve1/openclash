@@ -5,6 +5,11 @@ payload:
  # 微星驱动下载
   - DOMAIN,liveupdate-cn.msi.com
  
+# 自用测试
+  - DOMAIN-SUFFIX,ddnsto.com
+  - DOMAIN-SUFFIX,tocmcc.cn
+  - DOMAIN-SUFFIX,kooldns.cn
+
  # XBOX游戏下载域名(国际):
   - DOMAIN,xvcf1.xboxlive.com
   - DOMAIN,xvcf2.xboxlive.com
