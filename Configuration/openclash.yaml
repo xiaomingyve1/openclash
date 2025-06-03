@@ -64,11 +64,11 @@ SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,自动�
 #  Hulu组 
 SelectHulu: &SelectHulu {type: select, proxies: [美国策略,日本策略,香港策略,狮城策略,台湾策略,故障转移,冷门自选]}
 #  直连组 
-SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港策略,狮城策略,日本策略,台湾策略,美国策略,拒绝连接,丢弃连接,跳过规则]}
+SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港策略,狮城策略,日本策略,台湾策略,美国策略,丢弃连接,拒绝连接,跳过规则]}
 #  基础组 
-SelectBase: &SelectBase {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港策略,狮城策略,日本策略,台湾策略,美国策略,拒绝连接,丢弃连接,跳过规则]}
+SelectBase: &SelectBase {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港策略,狮城策略,日本策略,台湾策略,美国策略,丢弃连接,拒绝连接,跳过规则]}
 #  拒绝组 
-SelectRE: &SelectRE {type: select, proxies: [拒绝连接,丢弃连接,跳过规则,直接连接]}
+SelectRE: &SelectRE {type: select, proxies: [丢弃连接,拒绝连接,跳过规则,直接连接]}
 #  地区组 
 SubProxyHK: &subProxyHK {type: select, proxies: [香港故转,香港优选]}
 SubProxySG: &subProxySG {type: select, proxies: [狮城故转,狮城优选]}
