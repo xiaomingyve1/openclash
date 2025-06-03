@@ -96,7 +96,6 @@ proxy-groups:
   - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HBO_Max.png}
 # 不支持流媒体解锁检测 
   - {name: Hulu, <<: *SelectHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu1.png}
-  - {name: 国内流量, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
   - {name: 苹果服务, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
   - {name: 微软服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
   - {name: DNS服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
@@ -107,7 +106,8 @@ proxy-groups:
   - {name: 日本策略, include-all: true, <<: *subProxyJP, filter: *FilterallJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/japan.png}
   - {name: 台湾策略, include-all: true, <<: *subProxyTW, filter: *FilterallTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/taiwan.png}
   - {name: 美国策略, include-all: true, <<: *subProxyUS, filter: *FilterallUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/unitedstates.png}
-
+# 固定策略 
+  - {name: 国内流量,  type: select, proxies: [直接连接], hidden: true, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
 ###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
   - {name: 香港优选, <<: *UrlTest, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
