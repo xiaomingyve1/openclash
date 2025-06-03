@@ -96,9 +96,9 @@ proxy-groups:
   - {name: HBO, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HBO_Max.png}
 # 不支持流媒体解锁检测 
   - {name: Hulu, <<: *SelectHulu, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Hulu1.png}
-  - {name: 苹果服务, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
-  - {name: 微软服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
   - {name: DNS服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
+  - {name: 微软服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
+  - {name: 苹果服务, <<: *SelectCN, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Apple.png}
   - {name: 广告规则, <<: *SelectRE, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blockAD.png}
 # 地区策略 
   - {name: 香港策略, include-all: true, <<: *subProxyHK, filter: *FilterallHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/hongkong.png}
