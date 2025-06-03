@@ -9,6 +9,8 @@ payload:
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,geolocation-!cn))    # 非中国大陆的常见服务域名
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tld-!cn))            # 全球其他顶级域（如 .us、.jp、.tw 等）
 
+# 小米摄像头
+  - IP-CIDR,223.104.71.229/32,no-resolve
 # 禁止 PCDN
 # - DOMAIN,api.app.skysrt.com
 # - DOMAIN,api.upgrade.skysrt.com
