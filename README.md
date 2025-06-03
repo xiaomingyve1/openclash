@@ -9,7 +9,7 @@
 # 对于 UrlTest 失效的问题，可以通过计划任务crontab定时热加载配置（不重启不断网）刷新测速
   
 # 图例
-<img width="1124" alt="全部策略组" src="https://github.com/user-attachments/assets/e6bdcd50-69f0-460b-a975-83d198e4be3b" />
+<img width="1126" alt="全部策略组" src="https://github.com/user-attachments/assets/df20570a-b24b-4686-a795-afc42c174c9c" />
 <img width="1056" alt="策略组1" src="https://github.com/user-attachments/assets/813bb9bb-4bc1-4f99-b07d-1f7daf45b47f" />
 <img width="1053" alt="策略组2" src="https://github.com/user-attachments/assets/298f43da-7a5f-4ffc-bd60-aa574a57fbbc" />
 <img width="1056" alt="策略组3" src="https://github.com/user-attachments/assets/0bfa4fd2-4d0f-497d-add3-8a0849a44b7c" />
