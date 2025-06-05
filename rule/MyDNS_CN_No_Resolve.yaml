@@ -32,13 +32,25 @@ payload:
  # 114DNS
   - IP-CIDR,114.114.114.114/32,no-resolve
   - IP-CIDR,114.114.115.115/32,no-resolve
- # 中国电信IPv6 DNS
+ # 中国电信
+  - IP-CIDR,202.96.128.86/32,no-resolve
+  - IP-CIDR,202.96.128.166/32,no-resolve
+  - IP-CIDR,101.226.4.6/32,no-resolve
+  - IP-CIDR,218.30.118.6/32,no-resolve
   - IP-CIDR6,240e:4c:4008::1/64,no-resolve
   - IP-CIDR6,240e:4c:4808::1/64,no-resolve
- # 中国移动IPv6 DNS
+ # 中国移动
+  - IP-CIDR,211.136.192.6/32,no-resolve
+  - IP-CIDR,211.136.20.204/32,no-resolve
+  - IP-CIDR,211.138.180.2/32,no-resolve
+  - IP-CIDR,211.138.180.3/32,no-resolve
   - IP-CIDR6,2409:8088::a/64,no-resolve
   - IP-CIDR6,2409:8088::b/64,no-resolve
- # 中国联通IPv6 DNS
+ # 中国联通
+  - IP-CIDR,210.21.196.6/32,no-resolve
+  - IP-CIDR,221.5.88.88/32,no-resolve
+  - IP-CIDR,123.125.81.6/32,no-resolve
+  - IP-CIDR,140.207.198.6/32,no-resolve
   - IP-CIDR6,2408:8888::8/64,no-resolve
   - IP-CIDR6,2408:8899::8/64,no-resolve
  # CNNIC DNS
