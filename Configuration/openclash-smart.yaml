@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年6月7日
+# 日期       2025年6月8日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -50,7 +50,6 @@ FilterallSG: &FilterallSG '(?i)(?=.*(新|🇸🇬|SG|坡|狮城|Singapore))^((?!
 FilterallJP: &FilterallJP '(?i)(?=.*(日|🇯🇵|JP|东京|Japan))^((?!(港|台|韩|新|美|尼|流量)).)*$'
 FilterallTW: &FilterallTW '(?i)(?=.*(台|🇹🇼|TW|湾|Taiwan))^((?!(港|日|韩|新|美|流量)).)*$'
 FilterallUS: &FilterallUS '(?i)(?=.*(美|US|States|American))^((?!(港|台|日|韩|新|流量)).)*$'
-FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量)).)*$'
 # 引用格式  <<: *
 #  测速组 
 UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 1000, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
@@ -59,11 +58,11 @@ Smart: &Smart {type: smart, interval: 97, uselightgbm: true, collectdata: false,
 LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing, interval: 131, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 300, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: false, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 300, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 #  选择组 
-SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,冷门自选,直接连接,拒绝连接,香港智能,狮城智能,日本智能,台湾智能,美国智能,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
-SelectProxy: &SelectProxy {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港智能,狮城智能,日本智能,台湾智能,美国智能,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
-SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港智能,狮城智能,日本智能,台湾智能,美国智能,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
+SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,冷门自选,直接连接,拒绝连接,香港智能,狮城智能,日本智能,台湾智能,美国智能,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
+SelectProxy: &SelectProxy {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港智能,狮城智能,日本智能,台湾智能,美国智能,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
+SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港智能,狮城智能,日本智能,台湾智能,美国智能,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
 #  解锁组 
-SelectUn: &SelectUn {type: select, include-all: true, filter: *FilterMedia, proxies: [狮城智能,日本智能,美国智能,香港智能,台湾智能]}
+SelectUn: &SelectUn {type: select, proxies: [狮城智能,日本智能,美国智能,香港智能,台湾智能,狮城策略,日本策略,美国策略,香港策略,台湾策略,故障转移,冷门自选]}
 #  Hulu组 
 SelectHulu: &SelectHulu {type: select, proxies: [美国智能,美国策略,日本智能,日本策略,香港智能,香港策略,狮城智能,狮城策略,台湾智能,台湾策略,故障转移,冷门自选]}
 #  直连组 
@@ -130,26 +129,13 @@ proxy-groups:
   - {name: 日本故转, <<: *FallBack, filter: *FilterJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/JP.png}
   - {name: 台湾故转, <<: *FallBack, filter: *FilterTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/TW.png}
   - {name: 美国故转, <<: *FallBack, filter: *FilterUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/US.png}
-# 负载均衡 
-# 1. consistent-hashing（一致性哈希）
-  - {name: 香港散列, <<: *LoadBalanceCH, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
-  - {name: 狮城散列, <<: *LoadBalanceCH, filter: *FilterSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/SG.png}
-  - {name: 日本散列, <<: *LoadBalanceCH, filter: *FilterJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/JP.png}
-  - {name: 台湾散列, <<: *LoadBalanceCH, filter: *FilterTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/TW.png}
-  - {name: 美国散列, <<: *LoadBalanceCH, filter: *FilterUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/US.png}
-# 2. round-robin（轮询）
-  - {name: 香港轮询, <<: *LoadBalanceCR, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
-  - {name: 狮城轮询, <<: *LoadBalanceCR, filter: *FilterSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/SG.png}
-  - {name: 日本轮询, <<: *LoadBalanceCR, filter: *FilterJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/JP.png}
-  - {name: 台湾轮询, <<: *LoadBalanceCR, filter: *FilterTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/TW.png}
-  - {name: 美国轮询, <<: *LoadBalanceCR, filter: *FilterUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/US.png}
 #  基础策略 
   - {name: 自动选择, <<: *UrlTest, filter: *FilterAll, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/UrlTest.png}
   - {name: 故障转移, <<: *FallBack, filter: *FilterAll, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/FallBack.png}
   - {name: 直接连接, type: select, disable-udp: false, hidden: true, proxies: [ DIRECT ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/direct.png}
   - {name: 拒绝连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/REJECT.png}
   - {name: 丢弃连接, type: select, disable-udp: true, hidden: true, proxies: [ REJECT-DROP ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/REJECT-DROP.png}
-  - {name: 跳过规则, type: select, disable-udp: true, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/PASS.png}
+  - {name: 跳过规则, type: select, disable-udp: false, hidden: true, proxies: [ PASS ], icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/PASS.png}
 
 # 规则集更新 
 ClassicalYaml: &Classical  {type: http, interval: 21600, behavior: classical, format: yaml, proxy: 默认代理}
