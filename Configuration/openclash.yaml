@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年6月8日
+# 日期       2025年6月15日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -147,11 +147,11 @@ ClassicalYaml: &Classical  {type: http, interval: 21600, behavior: classical, fo
 # 规则提供者 
 rule-providers:
   # DNS服务
-  BlockHttpDNS_No_Resolve: {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml}
-  Hijacking_No_Resolve:    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml}
   MyDNS_Proxy_No_Resolve:  {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_Proxy_No_Resolve.yaml}
   MyDNS_CN_No_Resolve:     {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_CN_No_Resolve.yaml}
   MyDirect_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDirect_Replenish.yaml}
+  BlockHttpDNS_No_Resolve: {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml}
+  Hijacking_No_Resolve:    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml}
   MyReject_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyReject_Replenish.yaml}
  # 下载服务
   AMD:                     {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AMD/AMD.yaml}
@@ -346,12 +346,12 @@ rule-providers:
 
 # 规则（从上往下匹配）
 rules:
-- GEOSITE,category-ads-all,广告规则
-- RULE-SET,BlockHttpDNS_No_Resolve,广告规则
-- RULE-SET,Hijacking_No_Resolve,广告规则
 - RULE-SET,MyDNS_Proxy_No_Resolve,DNS服务
 - RULE-SET,MyDNS_CN_No_Resolve,国内流量
 - RULE-SET,MyDirect_Replenish,国内流量
+- GEOSITE,category-ads-all,广告规则
+- RULE-SET,BlockHttpDNS_No_Resolve,广告规则
+- RULE-SET,Hijacking_No_Resolve,广告规则
 - RULE-SET,MyReject_Replenish,广告规则
 - RULE-SET,AMD,下载服务
 - RULE-SET,Intel,下载服务
