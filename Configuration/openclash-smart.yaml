@@ -61,9 +61,9 @@ SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,冷门自
 SelectProxy: &SelectProxy {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
 SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询,香港策略,狮城策略,日本策略,台湾策略,美国策略]}
 #  解锁组 
-SelectUn: &SelectUn {type: select, proxies: [狮城散列,日本散列,美国散列,香港散列,台湾散列,狮城策略,日本策略,美国策略,香港策略,台湾策略,故障转移,冷门自选]}
+SelectUn: &SelectUn {type: select, proxies: [狮城散列,日本散列,美国散列,香港散列,台湾散列,狮城策略,日本策略,美国策略,香港策略,台湾策略,故障转移,冷门自选,跳过规则]}
 #  Hulu组 
-SelectHulu: &SelectHulu {type: select, proxies: [美国散列,美国策略,日本散列,日本策略,香港散列,香港策略,狮城散列,狮城策略,台湾散列,台湾策略,故障转移,冷门自选]}
+SelectHulu: &SelectHulu {type: select, proxies: [美国散列,日本散列,香港散列,狮城散列,台湾散列,美国策略,日本策略,香港策略,狮城策略,台湾策略,故障转移,冷门自选,跳过规则]}
 #  直连组 
 SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港策略,狮城策略,日本策略,台湾策略,美国策略,丢弃连接,拒绝连接,跳过规则]}
 #  基础组 
