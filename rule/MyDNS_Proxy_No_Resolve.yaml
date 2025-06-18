@@ -74,17 +74,17 @@ payload:
   - IP-CIDR,208.67.220.220/32,no-resolve
   - IP-CIDR,208.67.222.220/32,no-resolve
   - IP-CIDR,208.67.220.222/32,no-resolve
+  - IP-CIDR,208.67.222.123/32,no-resolve
+  - IP-CIDR,208.67.220.123/32,no-resolve
   - DOMAIN-SUFFIX,doh.opendns.com
   - DOMAIN-SUFFIX,dns.opendns.com
   - DOMAIN-SUFFIX,doh.umbrella.com
   - DOMAIN-SUFFIX,dns.umbrella.com
   - DOMAIN-SUFFIX,dns.sse.cisco.com
-  - IP-CIDR6,2620:119:35::35/64,no-resolve
-  - IP-CIDR6,2620:119:53::53/64,no-resolve
-  - IP-CIDR,208.67.222.123/32,no-resolve
-  - IP-CIDR,208.67.220.123/32,no-resolve
   - DOMAIN-SUFFIX,familyshield.opendns.com
   - DOMAIN-SUFFIX,familyshield.sse.cisco.com
+  - IP-CIDR6,2620:119:35::35/64,no-resolve
+  - IP-CIDR6,2620:119:53::53/64,no-resolve
   - IP-CIDR6,2620:119:35::123/64,no-resolve
   - IP-CIDR6,2620:119:53::123/64,no-resolve
 # Yandex DNS
