@@ -75,6 +75,21 @@ payload:
   - IP-CIDR6,240e:eb:8001:e01::53/64,no-resolve
   - IP-CIDR6,240e:d9:c200:14c:7472::19e0/64,no-resolve
   - IP-CIDR6,2408:8756:f5f:4::6/64,no-resolve
+# 台湾中华电信Chunghwa Telecom
+  - IP-CIDR,168.95.1.1/32,no-resolve
+  - IP-CIDR,168.95.192.1/32,no-resolve
+  - IP-CIDR6,2001:b000:168::1/64,no-resolve
+  - IP-CIDR6,2001:b000:168::2/64,no-resolve
+# OpenDNS
+  - IP-CIDR,208.67.222.222/32,no-resolve
+  - IP-CIDR,208.67.220.220/32,no-resolve
+  - IP-CIDR6,2620:119:35::35/64,no-resolve
+  - IP-CIDR6,2620:119:53::53/64,no-resolve
+ # Cloudflare DNS
+  - IP-CIDR,104.16.132.229/32,no-resolve
+  - IP-CIDR,104.16.133.229/32,no-resolve
+  - IP-CIDR6,2606:4700::6810:84e5/64,no-resolve
+  - IP-CIDR6,2606:4700::6810:85e5/64,no-resolve
 
  # 未分类IPv4
 
