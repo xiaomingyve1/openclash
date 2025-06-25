@@ -52,6 +52,8 @@ payload:
   - IP-CIDR6,240e:4c:4008::1/64,no-resolve
   - IP-CIDR6,240e:4c:4808::1/64,no-resolve
  # 中国移动
+  - IP-CIDR,120.196.122.69/32,no-resolve
+  - IP-CIDR,120.196.141.86/32,no-resolve
   - IP-CIDR,211.136.192.6/32,no-resolve
   - IP-CIDR,211.136.20.204/32,no-resolve
   - IP-CIDR,211.138.180.2/32,no-resolve
