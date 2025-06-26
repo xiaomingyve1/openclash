@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年6月16日
+# 日期       2025年6月26日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://raw.githubusercontent.com/xiaomingyve1/openclash/refs/heads/main/openclash.yaml
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -50,7 +50,7 @@ FilterallSG: &FilterallSG '(?i)(?=.*(新|🇸🇬|SG|坡|狮城|Singapore))^((?!
 FilterallJP: &FilterallJP '(?i)(?=.*(日|🇯🇵|JP|东京|Japan))^((?!(港|台|韩|新|美|尼|流量)).)*$'
 FilterallTW: &FilterallTW '(?i)(?=.*(台|🇹🇼|TW|湾|Taiwan))^((?!(港|日|韩|新|美|流量)).)*$'
 FilterallUS: &FilterallUS '(?i)(?=.*(美|US|States|American))^((?!(港|台|日|韩|新|流量)).)*$'
-FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量)).)*$'
+FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量|x2|x3|x5|x8|x10|x12|x15|2x|3x|5x|8x|10x|12x|15x|倍|ipv6)).)*$'
 # 引用格式  <<: *
 #  测速组 
 UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, follow_redirects: true, max-concurrent-tests: 10, timeout: 1000, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
@@ -62,13 +62,13 @@ SelectFB: &SelectFB {type: select, proxies: [故障转移,自动选择,冷门自
 SelectProxy: &SelectProxy {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港策略,狮城策略,日本策略,台湾策略,美国策略,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 SelectDIR: &SelectDIR {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港策略,狮城策略,日本策略,台湾策略,美国策略,香港散列,狮城散列,日本散列,台湾散列,美国散列,香港轮询,狮城轮询,日本轮询,台湾轮询,美国轮询]}
 #  Hulu组 
-SelectHulu: &SelectHulu {type: select, proxies: [美国策略,日本策略,香港策略,狮城策略,台湾策略,故障转移,冷门自选]}
-#  直连组 
-SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港策略,狮城策略,日本策略,台湾策略,美国策略,丢弃连接,拒绝连接,跳过规则]}
+SelectHulu: &SelectHulu {type: select, proxies: [美国策略,日本策略,香港策略,狮城策略,台湾策略,故障转移,冷门自选,跳过规则]}
 #  基础组 
 SelectBase: &SelectBase {type: select, proxies: [默认代理,自动选择,冷门自选,故障转移,直接连接,香港策略,狮城策略,日本策略,台湾策略,美国策略,丢弃连接,拒绝连接,跳过规则]}
+#  直连组 
+SelectCN: &SelectCN {type: select, proxies: [直接连接,默认代理,自动选择,冷门自选,故障转移,香港策略,狮城策略,日本策略,台湾策略,美国策略,丢弃连接,拒绝连接,跳过规则]}
 #  拒绝组 
-SelectRE: &SelectRE {type: select, proxies: [丢弃连接,拒绝连接,跳过规则,直接连接]}
+SelectRE: &SelectRE {type: select, proxies: [丢弃连接,拒绝连接,跳过规则,直接连接,默认代理,冷门自选]}
 #  地区组 
 SubProxyHK: &subProxyHK {type: select, include-all: true, filter: *FilterallHK, proxies: [香港故转,香港优选]}
 SubProxySG: &subProxySG {type: select, include-all: true, filter: *FilterallSG, proxies: [狮城故转,狮城优选]}
@@ -106,9 +106,9 @@ proxy-groups:
   - {name: 日本策略, <<: *subProxyJP, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/japan.png}
   - {name: 台湾策略, <<: *subProxyTW, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/taiwan.png}
   - {name: 美国策略, <<: *subProxyUS, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/unitedstates.png}
+###   以下策略组在 X/Z 控制面板 已隐藏 
 # 固定策略 
   - {name: 国内流量,  type: select, proxies: [直接连接], hidden: true, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/CN.png}
-###   以下策略组在 X/Z 控制面板 已隐藏 
 # 自动选择 
   - {name: 香港优选, <<: *UrlTest, filter: *FilterHK, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/HK.png}
   - {name: 狮城优选, <<: *UrlTest, filter: *FilterSG, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/SG.png}
@@ -150,6 +150,7 @@ rule-providers:
   MyDNS_Proxy_No_Resolve:  {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_Proxy_No_Resolve.yaml}
   MyDNS_CN_No_Resolve:     {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDNS_CN_No_Resolve.yaml}
   MyDirect_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyDirect_Replenish.yaml}
+  Privacy_Classical:       {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Privacy/Privacy_Classical_No_Resolve.yaml}
   BlockHttpDNS_No_Resolve: {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml}
   Hijacking_No_Resolve:    {<<: *Classical, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml}
   MyReject_Replenish:      {<<: *Classical, url: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/rule/MyReject_Replenish.yaml}
@@ -350,6 +351,7 @@ rules:
 - RULE-SET,MyDNS_CN_No_Resolve,国内流量
 - RULE-SET,MyDirect_Replenish,国内流量
 - GEOSITE,category-ads-all,广告规则
+- RULE-SET,Privacy_Classical,广告规则
 - RULE-SET,BlockHttpDNS_No_Resolve,广告规则
 - RULE-SET,Hijacking_No_Resolve,广告规则
 - RULE-SET,MyReject_Replenish,广告规则
