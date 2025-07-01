@@ -1,6 +1,6 @@
 # ========================================================================================================================================================
 # Github     @xiaomingyve1
-# 日期       2025年6月26日
+# 日期       2025年7月1日
 # 注意       在 proxy-providers 加入您的机场订阅链接
 # 地址       https://github.com/xiaomingyve1/openclash
 # 说明       自用于openclash的流媒体增强，此版本仅更改策略组和规则集，需要自行调整面板设置/覆写
@@ -51,6 +51,7 @@ FilterallJP: &FilterallJP '(?i)(?=.*(日|🇯🇵|JP|东京|Japan))^((?!(港|台
 FilterallTW: &FilterallTW '(?i)(?=.*(台|🇹🇼|TW|湾|Taiwan))^((?!(港|日|韩|新|美|流量)).)*$'
 FilterallUS: &FilterallUS '(?i)(?=.*(美|US|States|American))^((?!(港|台|日|韩|新|流量)).)*$'
 FilterMedia: &FilterMedia '(?i)(?=.*())^((?!(流量|x2|x3|x5|x8|x10|x12|x15|2x|3x|5x|8x|10x|12x|15x|倍|ipv6)).)*$'
+Filterlimit: &Filterlimit '(?i)(?=.*())^((?!(港|🇭🇰|HK|Hong|流量|x2|x3|x5|x8|x10|x12|x15|2x|3x|5x|8x|10x|12x|15x|倍|ipv6)).)*$'
 # 引用格式  <<: *
 #  测速组 
 UrlTest: &UrlTest {type: url-test, interval: 61, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, follow_redirects: true, max-concurrent-tests: 10, timeout: 1000, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
@@ -89,8 +90,8 @@ proxy-groups:
   - {name: 微软服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Microsoft.png}
   - {name: DNS服务, <<: *SelectBase, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/DNS.png}
 #  流媒体解锁检测 
-  - {name: 国际媒体, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/global_media.png}
-  - {name: 人工智能, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/ai.png}
+  - {name: 国际媒体, type: select, include-all: true, filter: *Filterlimit, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/global_media.png}
+  - {name: 人工智能, type: select, include-all: true, filter: *Filterlimit, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/ai.png}
   - {name: Youtube, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/youtube.png}
   - {name: PrimeVideo, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/primevideo.png}
   - {name: 奈飞, type: select, include-all: true, filter: *FilterMedia, icon: https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/Netflix.png}
