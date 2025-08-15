@@ -8,6 +8,11 @@ payload:
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,category-speedtest)) # Speedtest 测速相关域名
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,geolocation-!cn))    # 非中国大陆的常见服务域名
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tld-!cn))            # 全球其他顶级域（如 .us、.jp、.tw 等）
+# MUMU模拟器
+  - DOMAIN,mumu.nie.netease.com
+  - DOMAIN,store-api.mumu.163.com
+  - DOMAIN,mumu-apk.fp.ps.netease.com
+  - DOMAIN-KEYWORD,mumu
 
 # 小米摄像头
   - IP-CIDR,223.104.71.229/32,no-resolve
