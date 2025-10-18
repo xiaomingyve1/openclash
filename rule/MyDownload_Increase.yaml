@@ -1,7 +1,5 @@
 payload:
 #自定义 Download
-  - DOMAIN,dl.wodown.com
-
  # PSN下载
   - DOMAIN,gst.prod.dl.playstation.net
   - DOMAIN-SUFFIX,update.playstation.net
