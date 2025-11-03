@@ -1,13 +1,13 @@
 payload:
 #自定义 Emby
   # 红杏
-  - DOMAIN,hongxingyunmovie.vip
+  - DOMAIN-SUFFIX,hongxingyunmovie.vip
   # 涅槃
   - DOMAIN-SUFFIX,revival.baby
   # 精靈學院
   - DOMAIN-SUFFIX,1steam.one
   # emos
-  - DOMAIN,emos.lol
+  - DOMAIN-SUFFIX,emos.lol
 
   - DOMAIN,2pfdml.mobaiemby.site
   - DOMAIN,cc.coemn.com
@@ -163,4 +163,5 @@ payload:
   - IP-CIDR,202.61.247.129/32,no-resolve
   - IP-CIDR,202.61.255.248/32,no-resolve
   - IP-CIDR,212.90.120.164/32,no-resolve
+
 
