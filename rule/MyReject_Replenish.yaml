@@ -9,15 +9,19 @@ payload:
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,geolocation-!cn))    # 非中国大陆的常见服务域名
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tld-!cn))            # 全球其他顶级域（如 .us、.jp、.tw 等）
 # MUMU模拟器
+  - DOMAIN-KEYWORD,mumu
   - DOMAIN-SUFFIX,mumu.163.com
   - DOMAIN-SUFFIX,mumu.nie.netease.com
+  - DOMAIN,ps.res.netease.com
+  - DOMAIN,sentry.netease.com
   - DOMAIN,hubble.mumu.163.com
   - DOMAIN,mumu.nie.netease.com
   - DOMAIN,api-pro.mumu.163.com
   - DOMAIN,store-api.mumu.163.com
+  - DOMAIN,shence-api.mumu.163.com
+  - DOMAIN,mumu-tool.webapp.163.com
   - DOMAIN,mumu-apk.fp.ps.netease.com
   - DOMAIN,report.mumu.nie.netease.com
-  - DOMAIN-KEYWORD,mumu
 
 # 小米摄像头
   - IP-CIDR,223.104.71.229/32,no-resolve
