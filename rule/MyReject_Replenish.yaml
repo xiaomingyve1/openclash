@@ -9,7 +9,6 @@ payload:
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,geolocation-!cn))    # 非中国大陆的常见服务域名
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tld-!cn))            # 全球其他顶级域（如 .us、.jp、.tw 等）
 # MUMU模拟器
-  - DOMAIN-SUFFIX,nie.163.com
   - DOMAIN-SUFFIX,mumu.163.com
   - DOMAIN-SUFFIX,mumu.nie.netease.com
   - DOMAIN,hubble.mumu.163.com
