@@ -11,7 +11,6 @@ payload:
 # MUMU模拟器
   - DOMAIN-KEYWORD,mumu
   - DOMAIN-SUFFIX,mumu.163.com
-  - DOMAIN-SUFFIX,mumu.nie.netease.com
   - DOMAIN,ps.res.netease.com
   - DOMAIN,sentry.netease.com
   - DOMAIN,hubble.mumu.163.com
@@ -24,7 +23,7 @@ payload:
   - DOMAIN,report.mumu.nie.netease.com
 
 # 小米摄像头
-  - IP-CIDR,223.104.71.229/32,no-resolve
+  - IP-CIDR,223.104.71.229/32,no-resolve            # 导致连接数爆满
 # 禁止 PCDN
 # - DOMAIN,api.app.skysrt.com
 # - DOMAIN,api.upgrade.skysrt.com
