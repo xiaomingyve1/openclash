@@ -100,20 +100,20 @@ payload:
   - DOMAIN,nl.rcd.iqiyi
   - DOMAIN,store.iqiyi
 # # 腾讯视频
-  - DOMAIN,adslvfile.qq.com
-  - DOMAIN,adsfile.qq.com
-  - DOMAIN,play.qq.com
-  - DOMAIN,tj.video.qq.com
-  - DOMAIN,vv.video.qq.com
-  - DOMAIN,livep.l.qq.com
-  - DOMAIN,rcgi.video.qq.com
-  - DOMAIN,aid.video.qq.com
-  - DOMAIN,pinghot.qq.com
-  - DOMAIN,54Kfqq.com
-  - DOMAIN,qqbm.zhuiying.net
-  - DOMAIN,qqbmad.mycode8.net
-  - DOMAIN,vhotlxp.video.qq.com
-  - DOMAIN,livem.l.qq.com
+# - DOMAIN,adslvfile.qq.com
+# - DOMAIN,adsfile.qq.com
+# - DOMAIN,play.qq.com
+# - DOMAIN,tj.video.qq.com
+# - DOMAIN,vv.video.qq.com
+# - DOMAIN,livep.l.qq.com
+# - DOMAIN,rcgi.video.qq.com
+# - DOMAIN,aid.video.qq.com
+# - DOMAIN,pinghot.qq.com
+# - DOMAIN,54Kfqq.com
+# - DOMAIN,qqbm.zhuiying.net
+# - DOMAIN,qqbmad.mycode8.net
+# - DOMAIN,vhotlxp.video.qq.com
+# - DOMAIN,livem.l.qq.com
 # # CNTV
   - DOMAIN,a.cctv.com
   - DOMAIN,a.cntv.cn
