@@ -9,8 +9,13 @@ payload:
   - DOMAIN,ottsdk.itv.video
   - DOMAIN,tempmail.plus
 
-  # DOMAIN-SUFFIX
+  
+   #自己域名过滤
   - DOMAIN-SUFFIX,4820286.xyz
+  - DOMAIN-SUFFIX,keket.cn
+  - DOMAIN-SUFFIX,haohaoxixi.cn,国内网站
+  - DOMAIN-SUFFIX,*.haohaoxixi.cn,国内网站
+  # DOMAIN-SUFFIX
   - DOMAIN-SUFFIX,alice.ws
   - DOMAIN-SUFFIX,apple-dns.cn
   - DOMAIN-SUFFIX,archive.org
