@@ -9,7 +9,6 @@ rules:
   - DOMAIN,ottsdk.itv.video
   - DOMAIN,tempmail.plus
   # 3. 域名后缀条件（修正通配符，无*.前缀）
-  - DOMAIN-KEYWORD,google
   - DOMAIN-SUFFIX,4820286.xyz
   - DOMAIN-SUFFIX,keket.cn
   - DOMAIN-SUFFIX,haohaoxixi.cn
