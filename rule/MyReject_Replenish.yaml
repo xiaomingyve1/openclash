@@ -8,7 +8,7 @@ payload:
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,category-speedtest)) # Speedtest 测速相关域名
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,geolocation-!cn))    # 非中国大陆的常见服务域名
   - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,tld-!cn))            # 全球其他顶级域（如 .us、.jp、.tw 等）
-  #- AND,((PROTOCOL,UDP),(DOMAIN-SUFFIX,googlevideo.com))            # 匹配所有使用 UDP 协议访问 googlevideo.com 域名的流量（主要是 YouTube 视频的 QUIC 连接）
+  - AND,((NETWORK,UDP),(DOMAIN-SUFFIX,googlevideo.com))            # 匹配所有使用 UDP 协议访问 googlevideo.com 域名的流量（主要是 YouTube 视频的 QUIC 连接）
 # MUMU模拟器
   - DOMAIN-KEYWORD,mumu
   - DOMAIN-SUFFIX,mumu.163.com
