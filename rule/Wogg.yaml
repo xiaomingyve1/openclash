@@ -1,5 +1,9 @@
 # 名称: 直连修正
 payload:
+ # 单个域名条件
+  - DOMAIN,gst.prod.dl.playstation.net
+  - DOMAIN,ottsdk.itv.video
+  - DOMAIN,tempmail.plus
   # 私人域名 
   - DOMAIN-SUFFIX,4820286.xyz
   - DOMAIN-SUFFIX,keket.cn
