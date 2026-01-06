@@ -82,7 +82,7 @@ payload:
   - DOMAIN-SUFFIX,wogg.net
   - DOMAIN-SUFFIX,woggapi.333232.xyz
   - DOMAIN-SUFFIX,wogg.xyz
-  - DOMAIN-SUFFIX,wogg.one
+  #- DOMAIN-SUFFIX,wogg.one
   - DOMAIN-SUFFIX,gying.net
   - DOMAIN-SUFFIX,gying.org
   - DOMAIN-SUFFIX,gying.si
