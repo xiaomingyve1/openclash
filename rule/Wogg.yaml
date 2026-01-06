@@ -1,6 +1,6 @@
 # 名称: 直连修正
 payload:
- # 单个域名条件
+ # 单个域名条件 
   - DOMAIN,gst.prod.dl.playstation.net
   - DOMAIN,ottsdk.itv.video
   - DOMAIN,tempmail.plus
