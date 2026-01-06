@@ -1,6 +1,6 @@
 # 名称: 直连修正
 payload:
-  # 私人域名
+  # 私人域名 
   - DOMAIN-SUFFIX,4820286.xyz
   - DOMAIN-SUFFIX,keket.cn
   - DOMAIN-SUFFIX,haohaoxixi.cn
