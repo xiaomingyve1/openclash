@@ -1,5 +1,4 @@
 # 名称: 直连修正
-
 payload:
   # DOMAIN
   - DOMAIN,gst.prod.dl.playstation.net
