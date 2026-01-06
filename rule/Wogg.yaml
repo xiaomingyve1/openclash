@@ -1,5 +1,4 @@
 # 名称: 直连修正 (优化版 - 已移除不支持的进程名规则)
-
 payload:
   # DOMAIN
   - DOMAIN,gst.prod.dl.playstation.net
