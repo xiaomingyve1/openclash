@@ -4,21 +4,17 @@ payload:
   - DOMAIN,gst.prod.dl.playstation.net   # PSN 下载/加速
   - DOMAIN,ottsdk.itv.video              # 视频 SDK
   - DOMAIN,tempmail.plus               # 临时邮箱
-
 # --- 私人域名 (建议直连) ---
   - DOMAIN-SUFFIX,4820286.xyz
   - DOMAIN-SUFFIX,keket.cn
   - DOMAIN-SUFFIX,haohaoxixi.cn
   - DOMAIN-SUFFIX,alice.ws
-
 # --- TPTV (电视直播相关) ---
   - DOMAIN-SUFFIX,mobaibox.com
   - IP-CIDR,183.207.0.0/16,no-resolve    # 移动宽带业务段
-
 # --- YSP (央视频 / CCTV) ---
   - DOMAIN-SUFFIX,cctv.cn
   - DOMAIN-SUFFIX,yangshipin.cn
-
 # --- ITV (中国移动 / 咪咕) ---
   - DOMAIN-SUFFIX,dnsany.com
   - DOMAIN-SUFFIX,cmvideo.cn
