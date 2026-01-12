@@ -10,6 +10,7 @@ payload:
   - DOMAIN-SUFFIX,haohaoxixi.cn
   - DOMAIN-SUFFIX,alice.ws
   - DOMAIN-SUFFIX,605579.xyz
+  - DOMAIN-SUFFIX,wchenhong.cn
 # --- TPTV (电视直播相关) ---
   - DOMAIN-SUFFIX,mobaibox.com
   - IP-CIDR,183.207.0.0/16,no-resolve    # 移动宽带业务段
