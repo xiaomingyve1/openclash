@@ -1,5 +1,7 @@
 payload:
 #自定义 Direct
+mumu远控
+  - DOMAIN,api-pro.mumu.163.com
  # 代理工具
   - PROCESS-NAME,UUBooster # UU加速器
   - PROCESS-NAME,SunloginClient_Desktop # 向日葵服务
