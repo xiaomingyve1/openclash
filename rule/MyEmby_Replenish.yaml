@@ -8,6 +8,10 @@ payload:
   - DOMAIN-SUFFIX,1steam.one
   # emos
   - DOMAIN-SUFFIX,emos.lol
+  # 守候
+  - DOMAIN-SUFFIX,cn2gias.uk
+  # misty
+  - DOMAIN-SUFFIX,misty.cx
 
   - DOMAIN,2pfdml.mobaiemby.site
   - DOMAIN,cc.coemn.com
@@ -163,5 +167,7 @@ payload:
   - IP-CIDR,202.61.247.129/32,no-resolve
   - IP-CIDR,202.61.255.248/32,no-resolve
   - IP-CIDR,212.90.120.164/32,no-resolve
+
+
 
 
