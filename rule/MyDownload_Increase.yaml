@@ -67,3 +67,7 @@ payload:
   - PROCESS-NAME,transmission-daemon
   - PROCESS-NAME,transmission-qt
   - PROCESS-NAME,uTorrent
+
+  # --- 其他工具 ---
+  - PROCESS-NAME,p4pclient
+  - PROCESS-NAME,pstatp.com
