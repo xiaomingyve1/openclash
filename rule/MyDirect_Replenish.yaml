@@ -34,7 +34,7 @@ mumu远控
   - PROCESS-NAME,xray
   - PROCESS-NAME,ssh
 
- # --- 单个域名规则 (精确匹配) ---
+# --- 单个域名规则 (精确匹配) ---
   - DOMAIN,ottsdk.itv.video              # 视频 SDK
   - DOMAIN,tempmail.plus               # 临时邮箱
 # --- 私人域名 (建议直连) ---
