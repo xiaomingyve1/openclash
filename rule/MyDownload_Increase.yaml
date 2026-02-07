@@ -3,6 +3,8 @@ payload:
  # PSN下载
   - DOMAIN,gst.prod.dl.playstation.net
   - DOMAIN-SUFFIX,update.playstation.net
+ # steam下载
+  - DOMAIN-SUFFIX,steamcontent.com
  # 微星驱动下载
   - DOMAIN,liveupdate-cn.msi.com
 # 英特尔驱动下载
