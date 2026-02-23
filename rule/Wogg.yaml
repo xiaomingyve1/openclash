@@ -102,6 +102,9 @@ payload:
   - DOMAIN-SUFFIX,woggapi.333232.xyz
   - DOMAIN-SUFFIX,wogg.xyz
   #- DOMAIN-SUFFIX,wogg.one
+  - DOMAIN-SUFFIX,214521.xyz
+  - DOMAIN-SUFFIX,yydsys.top
+  - DOMAIN-SUFFIX,yydsys.cc
   - DOMAIN-SUFFIX,gying.net
   - DOMAIN-SUFFIX,gying.org
   - DOMAIN-SUFFIX,gying.si
