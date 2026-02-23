@@ -8,7 +8,7 @@ payload:
   - DOMAIN-SUFFIX,4820286.xyz
   - DOMAIN-SUFFIX,keket.cn
   - DOMAIN-SUFFIX,dash66.cc
-  - DOMAIN-SUFFIX,dash66.cc
+  - DOMAIN-SUFFIX,*.dash66.cc
   - DOMAIN-SUFFIX,haohaoxixi.cn
   - DOMAIN-SUFFIX,alice.ws
   - DOMAIN-SUFFIX,605579.xyz
