@@ -1,5 +1,4 @@
 payload:
-#自定义 YouTube
   - DOMAIN-SUFFIX,playstation.com
   - DOMAIN-SUFFIX,playstation.net
   - DOMAIN-SUFFIX,playstationnetwork.com
