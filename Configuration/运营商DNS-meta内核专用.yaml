@@ -42,15 +42,15 @@ ClassicalYaml: &pcy {type: http, interval: 86400, behavior: classical, format: y
 # 远程订阅组
 # 注意：请提供您的机场订阅链接，每个链接一行，并为每个机场命名，末尾的[A]为每个节点添加机场名称前缀，可自定义
 proxy-providers:
-  A.滿鑫歡喜: {<<: *sub, url: 'https://dl.keket.cn/mc', interval: 43200, filter: '^(?!.*(Traffic|Expire|https|ISP|^(.*)\s\d{2}(?!.*2022)|Philippines|Malaysia|Vietnam|Indonesia))', override: {additional-prefix: '[牧场] '}}
-  B.鑫滿意足: {<<: *sub, url: 'https://dl.keket.cn/pq', interval: 21600,  override: {additional-prefix: '[赔钱] '}}
-  C.萬馬奔騰: {<<: *sub, url: 'https://gbshct.spphhnhg.top/link/4aZOEmUg7rTg9NmOaVwoDtcRJFr9sFL7?sub=3&extend=1', interval: 10800, override: {additional-prefix: '[猫熊] '}}
-  C.馬到成功 : {<<: *sub, url: 'https://dl.keket.cn/lw', interval: 33200, override: {additional-prefix: '[CF自建] '}}
-  #E.Cloudflare: {<<: *sub, url: 'https://dl.keket.cn/lw', override: {additional-prefix: '[CF自建] '}}
-  F.Cloudflare: {<<: *sub, url: 'https://dl.keket.cn/dq', override: {additional-prefix: '[订阅到期] '}}
-  #G.Cloudflare: {<<: *sub, url: 'https://youtu.dydyyd.com/api/v1/client/subscribe?token=27608496d47256b78a2aaccdf319636f', interval: 33200, override: {additional-prefix: '[域名优选] '}}
- # F.Cloudflare: {<<: *sub, url: 'https://dl.keket.cn/addapi', interval: 43200, override: {additional-prefix: '[addapi] '}}
- # G.Cloudflare: {<<: *sub, url: 'https://dl.keket.cn/yxdyscq', interval: 53200, override: {additional-prefix: '[订阅生成器] '}}
+  A.滿鑫歡喜: {<<: *sub, url: '机场订阅地址1', interval: 43200, filter: '^(?!.*(Traffic|Expire|https|ISP|^(.*)\s\d{2}(?!.*2022)|Philippines|Malaysia|Vietnam|Indonesia))', override: {additional-prefix: '[牧场] '}}
+  B.鑫滿意足: {<<: *sub, url: '机场订阅地址1', interval: 21600,  override: {additional-prefix: '[赔钱] '}}
+  C.萬馬奔騰: {<<: *sub, url: '机场订阅地址1', interval: 10800, override: {additional-prefix: '[猫熊] '}}
+  C.馬到成功 : {<<: *sub, url: '机场订阅地址1', interval: 33200, override: {additional-prefix: '[CF自建] '}}
+  D.Cloudflare: {<<: *sub, url: '机场订阅地址1', override: {additional-prefix: '[CF自建] '}}
+  E.Cloudflare: {<<: *sub, url: '机场订阅地址1', override: {additional-prefix: '[订阅到期] '}}
+  F.Cloudflare: {<<: *sub, url: '机场订阅地址1', interval: 33200, override: {additional-prefix: '[域名优选] '}}
+  G.Cloudflare: {<<: *sub, url: '机场订阅地址1', interval: 43200, override: {additional-prefix: '[addapi] '}}
+  H.Cloudflare: {<<: *sub, url: '机场订阅地址1', interval: 53200, override: {additional-prefix: '[订阅生成器] '}}
 
 
 # 全局配置
