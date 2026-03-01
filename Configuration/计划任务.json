@@ -1,0 +1,3 @@
+12 */3 * * * sleep 70 && sh -c 'kill -HUP $(pidof clash)'
+0 5 * * 4 /etc/init.d/openclash restart
+15 5 * * 4 sleep 70 && touch /etc/banner && reboot
