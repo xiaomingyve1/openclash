@@ -22,12 +22,12 @@ LoadBalanceCH: &LoadBalanceCH {type: load-balance, strategy: consistent-hashing,
 LoadBalanceCR: &LoadBalanceCR {type: load-balance, strategy: round-robin, interval: 131, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 300, max-retries: 2, max-failed-times: 2, hidden: true, include-all: true}
 FallBackGZ: &FallBackGZ {type: fallback, interval: 97, lazy: true, url: 'https://www.gstatic.com/generate_204', expected-status: 204, method: "HEAD", disable-udp: false, follow_redirects: true, max-concurrent-tests: 3, timeout: 300, max-retries: 2, max-failed-times: 2, hidden: true, include-all: false}
 # 锚点 - 选择组 
-SelectFB: &SelectFB {type: select, proxies: [自动选择, 手动切换, 故障转移, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转, 自建故转, 香港优选-自动, 狮城优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动, 自建优选-自动,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略, 冷门自选, 链式代理, 全球直连]}
-SelectLMT: &SelectLMT {type: select, proxies: [自动选择, 节点选择, 手动切换, 故障转移, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转, 自建故转,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略,自建策略, 冷门自选, 链式代理]}
-SelectHK: &SelectHK {type: select, proxies: [香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略, 冷门自选, 手动切换, 链式代理, 全球直连]}
-SelectSG: &SelectSG {type: select, proxies: [狮城策略, 故障转移, 香港策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略,冷门自选, 手动切换, 链式代理, 全球直连]}
-SelectUS: &SelectUS {type: select, proxies: [美国策略, 故障转移, 香港策略, 狮城策略, 日本策略, 韩国策略, 台湾策略, 欧盟策略,自建策略, 冷门自选, 手动切换, 链式代理, 全球直连]}
-SelectProxy: &SelectProxy {type: select, proxies: [自动选择, 节点选择, 手动切换, 故障转移, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转,  自建故转, 香港优选-自动, 狮城优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动, 自建优选-自动,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略,冷门自选, 链式代理, 全球直连]}
+SelectFB: &SelectFB {type: select, proxies: [自动选择, 手动切换, 全球直连, 故障转移, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转, 自建故转, 香港优选-自动, 狮城优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动, 自建优选-自动,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略, 冷门自选, 链式代理]}
+SelectLMT: &SelectLMT {type: select, proxies: [自动选择, 节点选择, 手动切换, 全球直连, 故障转移,  香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转, 自建故转,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略,自建策略, 冷门自选, 链式代理]}
+SelectHK: &SelectHK {type: select, proxies: [香港策略, 狮城策略, 全球直连, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略, 冷门自选, 手动切换, 链式代理]}
+SelectSG: &SelectSG {type: select, proxies: [狮城策略, 故障转移, 全球直连, 香港策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略,冷门自选, 手动切换, 链式代理]}
+SelectUS: &SelectUS {type: select, proxies: [美国策略, 故障转移, 全球直连, 香港策略, 狮城策略, 日本策略, 韩国策略, 台湾策略, 欧盟策略,自建策略, 冷门自选, 手动切换, 链式代理]}
+SelectProxy: &SelectProxy {type: select, proxies: [自动选择, 节点选择, 手动切换, 全球直连, 故障转移, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转,  自建故转, 香港优选-自动, 狮城优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动, 自建优选-自动,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略, 自建策略,冷门自选, 链式代理]}
 # 锚点 - 规则集 
 DomainMrs:     &pdm {type: http, interval: 86400, behavior: domain, format: mrs}
 DomainText:    &pdt {type: http, interval: 86400, behavior: domain, format: text}
@@ -172,7 +172,7 @@ proxy-groups:
   - {name: 国内网站,        type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/China.png"}
   - {name: 国外网站,        <<: *SelectProxy, icon: "https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Global.png"}
   - {name: 冷门自选,        type: select, include-all: true, filter: *FilterOther, icon: "https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/choose.png"}
-  - {name: 漏网之鱼,        type: select, proxies: [自动选择, 全球直连, 节点选择 , 手动切换, 故障转移, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转,自建故转, 香港优选-自动, 狮城优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动,自建优选-自动,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略,自建策略,冷门自选, 链式代理], icon: "https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blackhole.png"}
+  - {name: 漏网之鱼,        type: select, proxies: [自动选择, 节点选择, 手动切换, 全球直连, 故障转移, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 韩国故转, 欧盟故转,自建故转, 香港优选-自动, 狮城优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动,自建优选-自动,香港策略, 狮城策略, 日本策略, 韩国策略, 美国策略, 台湾策略, 欧盟策略,自建策略,冷门自选, 链式代理], icon: "https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blackhole.png"}
   - {name: 广告拦截,        type: select, udp: true, hidden: false, proxies: [ 拒绝连接, 丢弃连接, 跳过规则, 全球直连 ], icon: "https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/blockAD.png"}
   - {name: 全球直连,        type: select, udp: true, hidden: true, proxies: [ DIRECT ], icon: "https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/direct.png"}
   - {name: 拒绝连接,        type: select, udp: true, hidden: true, proxies: [ REJECT ], icon: "https://raw.githubusercontent.com/xiaomingyve1/openclash/main/icon/REJECT.png"}
@@ -189,7 +189,7 @@ proxy-groups:
   - {name: 欧盟优选-自动,   <<: *UrlTest, filter: *FilterEU, icon: "https://github.com/Koolson/Qure/raw/master/IconSet/Color/Germany.png"}
   - {name: 自建优选-自动,   <<: *UrlTest, filter: *FilterCF, icon: "https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png"}
   # 故障转移
-  - {name: 故障转移,   <<: *FallBackGZ, proxies: [香港优选-自动, 狮城优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动,自建优选-自动], icon: "https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/PostBox_1.png"}
+  - {name: 故障转移,   <<: *FallBackGZ, proxies: [狮城优选-自动, 香港优选-自动, 日本优选-自动, 美国优选-自动, 台湾优选-自动, 韩国优选-自动, 欧盟优选-自动,自建优选-自动], icon: "https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/PostBox_1.png"}
   - {name: 香港故转,   <<: *FallBack, filter: *FilterHK, icon: "https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png"}
   - {name: 狮城故转,   <<: *FallBack, filter: *FilterSG, icon: "https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png"}
   - {name: 日本故转,   <<: *FallBack, filter: *FilterJP, icon: "https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png"}
@@ -293,6 +293,11 @@ rule-providers:
   MyReject_Replenish:      {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/MyReject_Replenish.yaml}
   BlockHttpDNS_No_Resolve: {<<: *pcy, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml}
   Hijacking_No_Resolve:    {<<: *pcy, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml}
+  # TV直播
+  TV_Hongkong:             {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Hongkong.yaml}
+  TV_Singapore:            {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Singapore.yaml}
+  TV_Taiwan:               {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Taiwan.yaml}
+  TV_Usa:                  {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Usa.yaml}
 # 分流规则 
 rules:
 # >屏蔽QUIC
@@ -305,18 +310,16 @@ rules:
     # 常用工具进程直连
   - RULE-SET,DirectProcess,国内网站
   # 以下规则需要台湾线路
-  ## Hamivideo
-  - DOMAIN-SUFFIX,cdn.hinet.net,台湾策略
-  # 以下规则需要海外线路
-  ## 4GTV & Hamivideo
-  - DOMAIN-SUFFIX,4gtv.tv,手动切换
-  - DOMAIN-SUFFIX,hinet.net,手动切换
-  - DOMAIN-SUFFIX,ofiii.com,手动切换
+  ## TV直播
+  - RULE-SET,TV_Hongkong,香港策略
+  - RULE-SET,TV_Singapore,狮城策略
+  - RULE-SET,TV_Taiwan,台湾策略
+  - RULE-SET,TV_Usa,美国策略
   #- GEOSITE,category-ads-all,广告拦截
+  - RULE-SET,Wogg,国内网站
   - DOMAIN-SUFFIX,googleapis.cn,国外网站
   - RULE-SET,private_domain,国内网站
-  - RULE-SET,private_ip,国内网站,no-resolve
-  - RULE-SET,Wogg,国内网站
+  - RULE-SET,private_ip,国内网站
   #- RULE-SET,cloudflare,国内网站
   - RULE-SET,MyDNS_Proxy_No_Resolve,DNS服务
   - RULE-SET,MyDNS_CN_No_Resolve,国内网站
@@ -377,7 +380,7 @@ rules:
   - RULE-SET,Chinamax,国内网站
   - RULE-SET,cn_domain,国内网站
   - RULE-SET,Geolocation-!cn,国外网站
-  - RULE-SET,cn_ip,国内网站,no-resolve
+  - RULE-SET,cn_ip,国内网站
   - DST-PORT,80,节点选择
   - DST-PORT,443,节点选择
   - MATCH,漏网之鱼
