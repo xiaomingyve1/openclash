@@ -307,7 +307,7 @@ rule-providers:
   MyReject_Replenish:      {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/MyReject_Replenish.yaml}
   BlockHttpDNS_No_Resolve: {<<: *pcy, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml}
   Hijacking_No_Resolve:    {<<: *pcy, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml}
-  # TV服务
+  # TV直播
   TV_Hongkong:             {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Hongkong.yaml}
   TV_Singapore:            {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Singapore.yaml}
   TV_Taiwan:               {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Taiwan.yaml}
