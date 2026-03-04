@@ -305,6 +305,11 @@ rule-providers:
   MyReject_Replenish:      {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/MyReject_Replenish.yaml}
   BlockHttpDNS_No_Resolve: {<<: *pcy, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BlockHttpDNS/BlockHttpDNS_No_Resolve.yaml}
   Hijacking_No_Resolve:    {<<: *pcy, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml}
+# TV直播
+  TV_Hongkong:             {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Hongkong.yaml}
+  TV_Singapore:            {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Singapore.yaml}
+  TV_Taiwan:               {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Taiwan.yaml}
+  TV_Usa:                  {<<: *pcy, url: https://raw.githubusercontent.com/keket0/openclash/refs/heads/keket/rule/TV_Usa.yaml}
 # 分流规则 
 rules:
 # >屏蔽QUIC
@@ -317,18 +322,17 @@ rules:
     # 常用工具进程直连
   - RULE-SET,DirectProcess,国内网站
   # 以下规则需要台湾线路
-  ## Hamivideo
-  - DOMAIN-SUFFIX,cdn.hinet.net,台湾策略
-  # 以下规则需要海外线路
-  ## 4GTV & Hamivideo
-  - DOMAIN-SUFFIX,4gtv.tv,手动切换
-  - DOMAIN-SUFFIX,hinet.net,手动切换
-  - DOMAIN-SUFFIX,ofiii.com,手动切换
+  ## TV直播
+  - RULE-SET,TV_Hongkong,香港策略
+  - RULE-SET,TV_Singapore,狮城策略
+  - RULE-SET,TV_Taiwan,台湾策略
+  - RULE-SET,TV_Usa,美国策略
   #- GEOSITE,category-ads-all,广告拦截
+  - RULE-SET,Wogg,国内网站
   - DOMAIN-SUFFIX,googleapis.cn,国外网站
   - RULE-SET,private_domain,国内网站
   - RULE-SET,private_ip,国内网站
-  - RULE-SET,Wogg,国内网站
+  #- RULE-SET,cloudflare,国内网站
   - RULE-SET,MyDNS_Proxy_No_Resolve,DNS服务
   - RULE-SET,MyDNS_CN_No_Resolve,国内网站
   - RULE-SET,MyDirect_Replenish,国内网站
