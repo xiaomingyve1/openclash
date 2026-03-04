@@ -6,7 +6,6 @@ payload:
   - DOMAIN-SUFFIX,cdn.hinet.net
   - DOMAIN-SUFFIX,ofiii.com
   - DOMAIN-SUFFIX,ipify.org
-  - DOMAIN-SUFFIX,githubusercontent.com
   - DOMAIN-KEYWORD,hamivideo
   - DOMAIN-SUFFIX,4gtv.tv
   - DOMAIN-SUFFIX,akamaized
@@ -30,8 +29,6 @@ payload:
   - DOMAIN-SUFFIX,thetvdb.com
   - DOMAIN-SUFFIX,112114.xyz
   - DOMAIN-SUFFIX,fanart.tv
-  - DOMAIN-SUFFIX,missav.ai
-  - DOMAIN-SUFFIX,xhamster.com
   - DOMAIN-SUFFIX,sub.v1.mk
   - DOMAIN-SUFFIX,4kfox.com
   - DOMAIN-SUFFIX,litenews.cn
