@@ -1,15 +1,12 @@
 payload:
   - DOMAIN-SUFFIX,163189.xyz
-  - DOMAIN-SUFFIX,bunny.run
   - DOMAIN-SUFFIX,video.mytvsuper.xyz
   - DOMAIN-SUFFIX,fengshows.com
   - DOMAIN-SUFFIX,fengshows.cn
-  - DOMAIN-SUFFIX,github.com
   - DOMAIN-SUFFIX,mytvsuper.com.mp
   - DOMAIN-SUFFIX,aktv-stream.m16tv.cfd
   - DOMAIN-SUFFIX,bigbigchannel.com.hk
   - DOMAIN-SUFFIX,bigbigshop.com
-  - DOMAIN-SUFFIX,content.jwplatform.com
   - DOMAIN-SUFFIX,encoretvb.com
   - DOMAIN-SUFFIX,mytvsuper.com
   - DOMAIN-SUFFIX,mytvsuperlimited.hb.omtrdc.net
@@ -22,9 +19,8 @@ payload:
   - DOMAIN-SUFFIX,tvbeventpower.com.hk
   - DOMAIN-SUFFIX,docker.mytvsuper.us.kg
   - DOMAIN-SUFFIX,tvbusa.com
-  - DOMAIN-SUFFIX,tvbweekly.com
+  - DOMAIN-SUFFIX,tvweekly.com
   - DOMAIN-SUFFIX,tvmedia.net.au
-  - DOMAIN-SUFFIX,videos-f.jwpsrv.com
   - DOMAIN-SUFFIX,567852.xyz
   - DOMAIN-SUFFIX,console.567852.xyz
   - DOMAIN-SUFFIX,youboranqs01.com
@@ -34,14 +30,13 @@ payload:
   - DOMAIN-SUFFIX,assets.livednow.com
   - DOMAIN-SUFFIX,mytvsuper.us.kg
   - DOMAIN-SUFFIX,mainserver.567852.xyz
+  - DOMAIN-KEYWORD,hlove
   - DOMAIN-SUFFIX,hlove.tv
   - DOMAIN-SUFFIX,iptv200.com
   - DOMAIN-SUFFIX,ymedium.top
   - DOMAIN-SUFFIX,gditv.us.kg
   - DOMAIN-SUFFIX,creativehub.sbs
   - DOMAIN-SUFFIX,plusai.me
-  - DOMAIN-SUFFIX,akile.io
   - DOMAIN-SUFFIX,smart.pendy.dpdns.org
   - DOMAIN-SUFFIX,smt.goiptv.us.ci
-  - DOMAIN-SUFFIX,filegear-sg.me
   - DOMAIN-SUFFIX,stream-link.org
