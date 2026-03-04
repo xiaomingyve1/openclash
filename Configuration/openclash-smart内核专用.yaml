@@ -48,9 +48,9 @@ ClassicalYaml: &pcy {type: http, interval: 86400, behavior: classical, format: y
 # 远程订阅组
 # 注意：请提供您的机场订阅链接，每个链接一行，并为每个机场命名，末尾的[A]为每个节点添加机场名称前缀，可自定义
 proxy-providers:
-  A.滿鑫歡喜: {<<: *sub, url: 'https://api-salkjdhajs-cdm.mcwy.xyz/api/v1/helps/js?token=c7a50464599bce55395ead39c3013acf', interval: 43200, filter: '^(?!.*(Traffic|Expire|https|ISP|Hong.*?A|Singapore.*?A|Japan.*?A|United.*?A|Taiwan.*?A|Philippines|Malaysia|Vietnam|Indonesia))', override: {additional-prefix: '[牧场] '}}
-  B.鑫滿意足: {<<: *sub, url: 'https://pqjc.site/api/v1/client/subscribe?token=ae2fa25c358e4c081cf3e7102f8b4a18', interval: 21600,  override: {additional-prefix: '[赔钱] '}}
-  C.萬馬奔騰: {<<: *sub, url: 'https://gbshct.spphhnhg.top/link/4aZOEmUg7rTg9NmOaVwoDtcRJFr9sFL7?sub=3&extend=1', interval: 10800, override: {additional-prefix: '[猫熊] '}}
+  A.滿鑫歡喜: {<<: *sub, url: '', interval: 43200, filter: '^(?!.*(Traffic|Expire|https|ISP|Hong.*?A|Singapore.*?A|Japan.*?A|United.*?A|Taiwan.*?A|Philippines|Malaysia|Vietnam|Indonesia))', override: {additional-prefix: '[牧场] '}}
+  B.鑫滿意足: {<<: *sub, url: '', interval: 21600,  override: {additional-prefix: '[赔钱] '}}
+  C.萬馬奔騰: {<<: *sub, url: '', interval: 10800, override: {additional-prefix: '[猫熊] '}}
 
 # 全局配置
 port: 7890
