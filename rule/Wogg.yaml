@@ -1,10 +1,10 @@
-# 名称: 直连修正
 payload:
- # --- 单个域名规则 (精确匹配) ---
+  # --- 单个域名规则 (精确匹配) ---
   - DOMAIN,gst.prod.dl.playstation.net   # PSN 下载/加速
   - DOMAIN,ottsdk.itv.video              # 视频 SDK
   - DOMAIN,tempmail.plus               # 临时邮箱
-# --- 私人域名 (建议直连) ---
+
+  # --- 私人域名 (建议直连) ---
   - DOMAIN-SUFFIX,4820286.xyz
   - DOMAIN-SUFFIX,keket.cn
   - DOMAIN-SUFFIX,mr-dash66.cc
@@ -12,22 +12,23 @@ payload:
   - DOMAIN-SUFFIX,alice.ws
   - DOMAIN-SUFFIX,605579.xyz
   - DOMAIN-SUFFIX,wchenhong.cn
-# --- TPTV (电视直播相关) ---
+
+  # --- TPTV (电视直播相关) ---
   - DOMAIN-SUFFIX,mobaibox.com
   - IP-CIDR,183.207.0.0/16,no-resolve    # 移动宽带业务段
-# --- YSP (央视频 / CCTV) ---
+
+  # --- YSP (央视频 / CCTV) ---
   - DOMAIN-SUFFIX,cctv.cn
   - DOMAIN-SUFFIX,yangshipin.cn
-# --- ITV (中国移动 / 咪咕) ---
+
+  # --- ITV (中国移动 / 咪咕) ---
   - DOMAIN-SUFFIX,dnsany.com
   - DOMAIN-SUFFIX,cmvideo.cn
   - DOMAIN-SUFFIX,chinamobile.com
-  - DOMAIN-SUFFIX,yangshipin.cn
-  ## ITV
-  - DOMAIN-SUFFIX,dnsany.com
-  - DOMAIN-SUFFIX,cmvideo.cn
-  - DOMAIN-SUFFIX,chinamobile.com
-    # DOMAIN-SUFFIX
+  - DOMAIN-SUFFIX,itv.cmvideo.cn
+  - DOMAIN-SUFFIX,ottrrs.hl.chinamobile.com
+
+  # --- 常规 DOMAIN-SUFFIX 规则 ---
   - DOMAIN-SUFFIX,apple-dns.cn
   - DOMAIN-SUFFIX,archive.org
   - DOMAIN-SUFFIX,coverartarchive.org
@@ -47,9 +48,7 @@ payload:
   - DOMAIN-SUFFIX,cloudstudio.work
   - DOMAIN-SUFFIX,ngrok-free.app
   - DOMAIN-SUFFIX,gradio.live
-  - DOMAIN-SUFFIX,tempmail.plus
   - DOMAIN-SUFFIX,imee.me
-  #自用规则
   - DOMAIN-SUFFIX,movie.douban.com
   - DOMAIN-SUFFIX,mddcloud.com.cn
   - DOMAIN-SUFFIX,aliyundrive.asia
@@ -57,8 +56,6 @@ payload:
   - DOMAIN-SUFFIX,ddys.wiki
   - DOMAIN-SUFFIX,ddys.pro
   - DOMAIN-SUFFIX,ddys.mov
-  - DOMAIN-KEYWORD,cjjd18
-  - DOMAIN-KEYWORD,cjjd19
   - DOMAIN-SUFFIX,metrics-collector.xaidc.com
   - DOMAIN-SUFFIX,ddys.art
   - DOMAIN-SUFFIX,zh188.net
@@ -68,15 +65,6 @@ payload:
   - DOMAIN-SUFFIX,tv.apple.com
   - DOMAIN-SUFFIX,ctyunxs.cn
   - DOMAIN-SUFFIX,hls.aoxtv.com
-  - DOMAIN-KEYWORD,ffzy-play
-  - DOMAIN-KEYWORD,bfzycdn.com
-  - DOMAIN-KEYWORD,lzcdn
-  - DOMAIN-KEYWORD,v.cdnlz
-  - DOMAIN-KEYWORD,lz-cdn
-  - DOMAIN-KEYWORD,default.akamaized.net
-  - DOMAIN-KEYWORD,vip.ffzy-online
-  - DOMAIN-KEYWORD,vip.ffzy-play
-  - DOMAIN-KEYWORD,ffzyread
   - DOMAIN-SUFFIX,kuaikan-api.com
   - DOMAIN-SUFFIX,cz.cz01.site
   - DOMAIN-SUFFIX,czzy88.com
@@ -89,7 +77,6 @@ payload:
   - DOMAIN-SUFFIX,czzy77.com
   - DOMAIN-SUFFIX,v1.ax
   - DOMAIN-SUFFIX,pstatp.com
-  - DOMAIN-KEYWORD,tt.cuc.myqcloud.com.cn
   - DOMAIN-SUFFIX,ikzybf.com
   - DOMAIN-SUFFIX,bfikuncdn.com
   - DOMAIN-SUFFIX,www.douyin.com
@@ -100,7 +87,6 @@ payload:
   - DOMAIN-SUFFIX,wogg.net
   - DOMAIN-SUFFIX,woggapi.333232.xyz
   - DOMAIN-SUFFIX,wogg.xyz
-  #- DOMAIN-SUFFIX,wogg.one
   - DOMAIN-SUFFIX,214521.xyz
   - DOMAIN-SUFFIX,yydsys.top
   - DOMAIN-SUFFIX,yydsys.cc
@@ -115,9 +101,6 @@ payload:
   - DOMAIN-SUFFIX,108uc.com
   - DOMAIN-SUFFIX,youxi8848.com
   - DOMAIN-SUFFIX,huban.xyz
-  - DOMAIN-KEYWORD,liaocheng
-  - DOMAIN-KEYWORD,wogg
-  - DOMAIN-KEYWORD,xiaohebook
   - DOMAIN-SUFFIX,banye.tech
   - DOMAIN-SUFFIX,feimaoai.site
   - DOMAIN-SUFFIX,yun.mcloud.139.com
@@ -131,12 +114,8 @@ payload:
   - DOMAIN-SUFFIX,a-volute.com
   - DOMAIN-SUFFIX,steelseries.com
   - DOMAIN-SUFFIX,eu.org
-  - DOMAIN-KEYWORD,gying
-  - DOMAIN-KEYWORD,gyg
   - DOMAIN-SUFFIX,immortalwrt.org
-  - DOMAIN-KEYWORD,yunpan
   - DOMAIN-SUFFIX,digicert.com
-  #- DOMAIN-SUFFIX,ttt.sh
   - DOMAIN-SUFFIX,onetrust.com
   - DOMAIN-SUFFIX,demdex.net
   - DOMAIN-SUFFIX,bytetcc.com
@@ -264,7 +243,6 @@ payload:
   - DOMAIN-SUFFIX,member.alipan.com
   - DOMAIN-SUFFIX,lf3-cdn-tos.bytecdntp.com
   - DOMAIN-SUFFIX,stars.shuqireader.com
-  - DOMAIN-SUFFIX,ottrrs.hl.chinamobile.com
   - DOMAIN-SUFFIX,tv.yydsys.top
   - DOMAIN-SUFFIX,paste.to
   - DOMAIN-SUFFIX,pic.wujinpp.com
@@ -356,25 +334,41 @@ payload:
   - DOMAIN-SUFFIX,960303.xyz
   - DOMAIN-SUFFIX,www.maomia
   - DOMAIN-SUFFIX,4kdy.vip
-  #小云直播
   - DOMAIN-SUFFIX,6868a.cc
   - DOMAIN-SUFFIX,6868b.cc
   - DOMAIN-SUFFIX,6868c.cc
   - DOMAIN-SUFFIX,f666666.xyz
   - DOMAIN-SUFFIX,sdzhgt.com
   - DOMAIN-SUFFIX,speed.cloudflare.com
-  - DOMAIN-SUFFIX,4kfm.com
   - DOMAIN-SUFFIX,myip.ipip.net
   - DOMAIN-SUFFIX,r.inews.qq.com
-  - DOMAIN-SUFFIX,itv.cmvideo.cn
-  - DOMAIN-SUFFIX,dnsany.com
   - DOMAIN-SUFFIX,bxcdn.ndvfp.cn
   - DOMAIN-SUFFIX,757888.xyz
   - DOMAIN-SUFFIX,3a.ink
   - DOMAIN-SUFFIX,1905.com
   - DOMAIN-SUFFIX,darwinchow.com
   - DOMAIN-SUFFIX,188766.xyz
-  - DOMAIN-KEYWORD,muouso
   - DOMAIN-SUFFIX,666291.xyz
-  - DOMAIN-KEYWORD,muou
   - DOMAIN-SUFFIX,goimg.asia
+
+  # --- DOMAIN-KEYWORD 规则 ---
+  - DOMAIN-KEYWORD,cjjd18
+  - DOMAIN-KEYWORD,cjjd19
+  - DOMAIN-KEYWORD,ffzy-play
+  - DOMAIN-KEYWORD,bfzycdn.com
+  - DOMAIN-KEYWORD,lzcdn
+  - DOMAIN-KEYWORD,v.cdnlz
+  - DOMAIN-KEYWORD,lz-cdn
+  - DOMAIN-KEYWORD,default.akamaized.net
+  - DOMAIN-KEYWORD,vip.ffzy-online
+  - DOMAIN-KEYWORD,vip.ffzy-play
+  - DOMAIN-KEYWORD,ffzyread
+  - DOMAIN-KEYWORD,tt.cuc.myqcloud.com.cn
+  - DOMAIN-KEYWORD,liaocheng
+  - DOMAIN-KEYWORD,wogg
+  - DOMAIN-KEYWORD,xiaohebook
+  - DOMAIN-KEYWORD,gying
+  - DOMAIN-KEYWORD,gyg
+  - DOMAIN-KEYWORD,yunpan
+  - DOMAIN-KEYWORD,muouso
+  - DOMAIN-KEYWORD,muou
