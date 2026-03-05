@@ -73,7 +73,7 @@ profile:
   store-selected: true
   store-fake-ip: true
 authentication:
-  - zzgogo:Aa1992353
+  - zzgogo:Aa
 # 跳过认证的IP段
 skip-auth-prefixes:
   - 127.0.0.1/8 
