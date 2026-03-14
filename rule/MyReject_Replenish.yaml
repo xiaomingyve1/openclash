@@ -24,7 +24,7 @@ payload:
   - DOMAIN,report.mumu.nie.netease.com
 
 # 小米摄像头
-  - IP-CIDR,223.104.71.229/32,no-resolve                            # 导致连接数爆满
+# - IP-CIDR,223.104.71.229/32,no-resolve                            # 导致连接数爆满
 # 禁止 PCDN
   - DOMAIN,api.app.skysrt.com
   - DOMAIN,api.upgrade.skysrt.com
