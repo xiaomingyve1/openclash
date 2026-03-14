@@ -4,7 +4,6 @@ payload:
   - DOMAIN,a.mumu.163.com
   - DOMAIN,api-pro.mumu.163.com
   - DOMAIN,sig-3207-a.mumu.163.com
-# tailscale
 # Tailscale 规则集 - 强制直连
   - DOMAIN-SUFFIX,tailscale.com
   - DOMAIN-SUFFIX,ts.net
