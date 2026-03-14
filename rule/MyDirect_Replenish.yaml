@@ -4,11 +4,6 @@ payload:
   - DOMAIN,a.mumu.163.com
   - DOMAIN,api-pro.mumu.163.com
   - DOMAIN,sig-3207-a.mumu.163.com
-# Tailscale 规则集 - 强制直连
-  - DOMAIN-SUFFIX,tailscale.com
-  - DOMAIN-SUFFIX,ts.net
-  - DOMAIN-KEYWORD,derp
-  - IP-CIDR,100.64.0.0/10,DIRECT
 
  # 代理工具
   - PROCESS-NAME,UUBooster # UU加速器
