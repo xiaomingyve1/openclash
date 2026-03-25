@@ -7,6 +7,7 @@ payload:
   - DOMAIN,liveupdate-cn.msi.com
   - DOMAIN,downloadmirror.intel.com
   - DOMAIN-KEYWORD,drivereasy
+  - DOMAIN-KEYWORD,easylist-downloads
 
  # XBOX游戏下载域名(国际):
   - DOMAIN,xvcf1.xboxlive.com
