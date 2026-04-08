@@ -13,6 +13,9 @@ payload:
   - DOMAIN-SUFFIX,605579.xyz
   - DOMAIN-SUFFIX,wchenhong.cn
 
+  # --- linux站 ----
+  - DOMAIN-SUFFIX,linux.do
+  
   # --- TPTV (电视直播相关) ---
   - DOMAIN-SUFFIX,mobaibox.com
   - IP-CIDR,183.207.0.0/16,no-resolve    # 移动宽带业务段
