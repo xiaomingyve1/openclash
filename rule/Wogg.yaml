@@ -133,7 +133,7 @@ payload:
   - DOMAIN-SUFFIX,cloudflareinsights.com
   - DOMAIN-SUFFIX,wdfl.co
   - DOMAIN-SUFFIX,immersivetranslate.com
-  - DOMAIN-SUFFIX,cloudflare.com
+  #- DOMAIN-SUFFIX,cloudflare.com
   - DOMAIN-SUFFIX,dash.cloudflare.com
   - DOMAIN-SUFFIX,adobedc.net
   - DOMAIN-SUFFIX,yhgfb-cn-static.com
