@@ -1,4 +1,8 @@
 payload:
+# 直连ip
+  - IP-CIDR,43.139.248.121/32,no-resolve
+  - IP-CIDR,106.55.228.246/32,no-resolve
+
 #自定义 国内DNS
  # EasyMosDNS
  # - DOMAIN-SUFFIX,doh.apad.pro
